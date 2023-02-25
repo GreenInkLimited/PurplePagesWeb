@@ -1,0 +1,479 @@
+/*==================product======================*/
+.product {
+    margin-top: 3rem;
+}
+
+.product__container {
+    display: grid;
+    gap: 5%;
+    margin-top: 5rem;
+}
+
+
+.product__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem 1rem;
+    font-family: "avenir-lt-45-book";
+}
+
+.product__value {
+    align-items: center;
+    border-radius: 10px;
+}
+
+.product__wrapper p {
+    color: #C7005C;
+    font-size: 14px;
+}
+
+.rating {
+    color: #FFBF00;
+}
+/*=======================filter=======================*/
+.filter__container{
+    margin-top: 7rem;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.main__filter {
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    
+    transition: var(--transition);
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+/*=========================business profile================*/
+.profile__infor-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.profile__info-left{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.profile__info-img{
+    height: 150px;
+    width: 150px;
+    border-radius: 150px;
+}
+
+.profile__category {
+    color: #C7005C;
+}
+
+.profile__info_body h3 {
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.profile__infor-wrapper .btn{
+    display: flex;
+    justify-content: end;
+}
+
+/*====================tabs========================================*/
+.bloc-tabs {
+    display: flex;
+    justify-content: center;
+    /* add this line */
+    align-items: center;
+    border-bottom: 1px solid #BDBDBD;
+    flex-direction: row;
+    
+}
+
+.tabs {
+
+    padding: 15px;
+    text-align: center;
+    width: 10%;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    background: transparent;
+    outline: none;
+}
+
+
+
+.active-tabs {
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    color: #C42AF7;
+    border-bottom: 2px solid #C42AF7;
+
+}
+
+.active-tabs::before {
+    content: "";
+    display: block;
+    position: absolute;
+    color: #C42AF7;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% + 2px);
+    height: 5px;
+}
+
+
+.tabs__information{
+    display: grid;
+}
+
+.tabs__information small{
+    display: flex;
+    align-items: center;
+    font-family: "avenir-lt-45-book";
+    margin-bottom: 12px;
+}
+
+.tabs__information .icon{
+    color: var(--color-secondary);
+    margin-right: 18px;
+}
+
+.tabs__information .location {
+    display: flex;
+}
+
+.tabs__information .location small{
+    width: 250px;
+}
+
+button {
+    border: none;
+    font-family: "avenir-lt-45-book";
+    font-size: 10px;
+
+}
+
+/*===============================tabs=============*/
+
+.content {
+    background: white;
+    padding: 20px;
+
+    width: 65%;    
+    
+    display: none;
+}
+
+.contentx {
+    background: white;
+    padding: 20px;
+   
+    display: none;
+}
+
+.content h4 {
+    color: var(--color-secondary);
+    font-family: "avenir-lt-45-book";
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.content hr {
+    width: 100%;
+    height: 0.5px;
+    background:#BDBDBD;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.content p {
+    width: 100%;
+    
+}
+
+.active-content {
+    display: block;
+}
+
+.tabs__marketplace{
+    color: #C7005C;
+    display: grid;
+    font-family: "avenir-lt-45-book";
+}
+
+.first-content-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+    
+/*==================product and service======================*/
+
+
+.productandservice__container {
+    
+    flex-direction: row;
+    margin-top: 40px;
+}
+
+
+.productandservice__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem 1rem;
+    font-family: "avenir-lt-45-book";
+}
+
+.productandservice__value {
+    align-items: center;
+    border-radius: 10px;
+}
+
+.productandservice__wrapper p {
+    color: #4F4F4F;
+    font-size: 14px;
+}
+
+.frame{
+    height: 12px;
+    width: 44px;
+}
+
+
+
+/*=======================reviews=======================*/
+.review__container{
+    margin-top: 40px;
+}
+.reviews__tab {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reviews__tab h4 {
+    font-family: "avenir-lt-85-heavy";
+    display: flex;
+}
+
+.review__value{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-bottom: 40px
+}
+
+.review_left {
+    padding-top: 3px;
+}
+
+.review_left h4 {
+    font-family: "avenir-lt-85-heavy";
+    padding-top: 10px;
+}
+
+.review__right h4{
+    font-family: "avenir-lt-85-heavy";
+}
+
+.review__right p {
+    width: 75%;
+}
+
+.review_left small {
+    font-family: "avenir-lt-45-book";
+    font-size: 12px;
+}
+
+.review__top__right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.review__top__right h3{
+    font-family: "avenir-lt-85-heavy";
+    font-size: 30px;
+}
+
+.review__top__right span {
+    font-family: "avenir-lt-85-heavy";
+    font-size: 20px;
+}
+
+.review__top__right .rating{
+    margin-bottom: 10px;
+}
+
+
+/*==============================progress=====================*/
+
+.progress {
+    background-color: #E0E0E0;
+    border-radius: 12px;
+    position: relative;
+    margin: 12px 0;
+    height: 8px;
+    width: 100px;
+    align-items: center;
+}
+
+.review__top__right{
+    margin-right: 60px;
+}
+
+.progress_content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.on_the_left{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 5px;
+    font-family: "avenir-lt-45-book";
+    font-size: 13px;
+
+}
+
+.on_the_right{
+    margin-left: 3px;
+    align-items: center;
+    font-family: "avenir-lt-45-book";
+    font-size: 13px;
+}
+
+.on_the_left .rating{
+    font-size: 10px;
+    margin-left: 2px;
+}
+.progress-done {
+    background: #FFBF00;
+    border-radius: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 0;
+    opacity: 0;
+    transition: 1s ease 0.3s;
+}
+
+/*==================single product======================*/
+.singleproduct__detail {
+    margin-top: 7rem;
+    align-items: center;
+}
+
+.singleproduct-left img{
+    width: 524px;
+   
+}
+
+
+.singleproduct-content {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: space-between;
+}
+
+.singleproduct-right {
+    align-items: center;
+}
+
+.singleproduct-right h4 {
+    font-family: "avenir-lt-45-book";
+    font-size: 16px;
+}
+
+.singleproduct__right-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.singleproduct__right-header img{
+    width: 24px;
+    height: 24px;
+}
+
+.singleproduct-right h3 {
+    font-family: "avenir-lt-45-book";
+    font-size: 24px;
+}
+
+.product__desc{
+    margin-top: 20px;
+}
+
+.product__desc__header{
+    font-family: "avenir-lt-45-book";
+    font-size: 18px;
+}
+
+.singlepotter__bottom{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.singlepotter__bottom_left{
+    display: flex;
+    flex-direction: row;
+}
+
+.singlepotter__bottom_left img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.singlepotter__bottom_left h5{
+    font-family: "avenir-lt-45-book";
+}
+
+.singlepotter__bottom_left small{
+    font-family: "avenir-lt-45-book";
+    color: #C7005C;
+}
+
+.singlepotter__bottom_right{
+    display: flex;
+    flex-direction: row;
+}
+
+.singlepotter__bottom_right .bookmark{
+    margin-right: 30px;
+}
+
+.singlepotter__bottom_right img{
+    width: 24px;
+        height: 24px;
+}
+
+/*======================more products===============*/
+
+.productandservice__container h3{
+    font-family: "avenir-lt-45-book";
+    margin-bottom: 20px;
+}

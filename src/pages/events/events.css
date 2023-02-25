@@ -1,0 +1,235 @@
+/*==================events and ticketing======================*/
+.events {
+    margin-top: 3rem;
+}
+
+.events__container {
+    display: grid;
+    gap: 10%;
+    margin-top: 2rem;
+}
+
+
+.events__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem 1rem;
+    font-family: "avenir-lt-45-book";
+}
+
+.events__value {
+    display: flex;
+    flex-direction: row;
+    background-color: #F3D4FD80;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.events__value img {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.event__searchContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.event__search{
+    margin-top: 2rem;
+    background-color: var(--color-white);
+    height: 40px;
+    width: 80%;
+    border-radius: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+.event__search__bg{
+    background-color: var(--color-secondary);
+        border-radius: 30px;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.event__search__icon {
+    height: 20px;
+    width: 20px;
+    
+}
+
+.input {
+    border: none;
+    padding: 5px;
+    font-family: 'avenir-lt-45-book';
+    width: 80%;
+    outline: none;
+}
+
+
+
+/*==================trending events======================*/
+.trending__events {
+    margin-top: 5rem;
+}
+
+.trending__events__container {
+    display: grid;
+    gap: 10%;
+    margin-top: 2rem;
+}
+
+
+.trending__events__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2.4rem 3rem;
+    font-family: "avenir-lt-45-book";
+}
+
+.trending__events__value {
+    border: 1px solid ;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.trending__events__value .category {
+    color: #C7005C;
+    margin-top: 16px;
+}
+
+.trending__events__value .detail{
+    color: #828282;
+    font-size: 14px;
+}
+
+.trending__events__value .date {
+    color: #828282;
+    font-size: 14px;
+    margin-right: 20px;
+}
+
+.trending__events__value .link {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+/*==================explore======================*/
+.explore{
+    margin-top: 5rem;
+}
+
+.explore__container {
+    display: grid;
+
+    gap: 10%;
+    margin-top: 2rem;
+}
+
+
+.explore__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2.4rem 3rem;
+    font-family: "avenir-lt-45-book";
+}
+
+.explore__value {
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/*===================host event ============================ */
+
+.host__event__container{
+    background: var(--color-secondary);
+    color: var(--color-white);
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
+    margin-top: 5rem;
+}
+
+.host__event__container h2 {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    color: var(--color-white);
+}
+
+.host__event__container .link{
+    margin-bottom: 60px;
+}
+
+/*==================events detail======================*/
+.event__detail {
+    margin-top: 3rem;
+}
+
+
+
+
+.event__detail-content {
+    display: grid;
+    grid-template-columns: 60% 30%;
+    justify-content: space-between;
+    font-family: "avenir-lt-45-book";
+}
+
+.event__detail-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    box-shadow: 0px 1px 2px rgba(34, 2, 44, 0.3), 0px 1px 3px 1px rgba(34, 2, 44, 0.15);
+    border-radius: 20px;
+    border: 1px solid;
+    padding: 10px;
+    
+}
+
+.event__detail-right h3{
+    font-family: "avenir-lt-85-heavy";
+    font-size: 32px;
+}
+
+.event__detail-right .btn.fill{
+    align-items: center;
+    margin-top: 15%;
+    justify-content: center;
+    text-align: center;
+}
+
+.event__detail-desc {
+    margin-top: 3rem;
+}
+
+.event__detail-desc p {
+    font-size: 27px;
+}
+
+.event__detail-desc small{
+    font-family: "avenir-lt-45-book";
+    display: grid;
+    grid-template-columns: 85%;
+    font-size: 16px;
+}
+
+
