@@ -2,7 +2,7 @@ nav {
     height: 5rem;
     width: 100vw;
     display: grid;
-    background-color: var(--color-primary);
+    background-color: var(--footer-color);;
     place-items: center;
     position: fixed;
     top: 0;
@@ -75,23 +75,24 @@ nav {
     .nav__links {
         position: absolute;
         top: 100%;
-        right: 0;
+        left: -30;
         flex-direction: column;
         gap: 0;
     }
     .nav__links li {
-        height: 4rem;
+        height: 2.5rem;
+        border-bottom: 0.1px solid rgba(101, 5, 133, 0.1);
         width: 100%;
-        box-shadow: -2rem 2rem 5rem rgba(0,0,0,0.4);
+        
     }
     .nav__links li a{
-        color: var(--color-gray-100);
-        background-color: var(--color-secondary);
+        
+        background-color: var(--footer-color);
         height: 100%;
         width: 100%;
         display: flex;
         align-items: center;
-        padding: 1rem 5rem 1rem 3rem;
+        padding: 0.1rem 5rem 0.1rem 1rem;
     }
 
     .show__nav {

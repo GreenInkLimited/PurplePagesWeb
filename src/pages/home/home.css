@@ -1,6 +1,6 @@
 .main__header {
     width: 100vw;
-    height: calc(80vh - 3rem);
+    height: calc(80vh - 6rem);
     display: grid;
     place-items: center;
     margin-top: 3rem;
@@ -50,6 +50,73 @@
     position: relative;
 }
 
+.main__header-right img{
+    width: 656px;
+}
+
+
+
+/*=============community======================*/
+
+.community {
+    margin-top: 5rem;
+    height: 20rem;
+    overflow: hidden;
+}
+
+.community__container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: grid;
+    place-items: center;
+
+}
+
+.community__container-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../../assets/bg.png);
+    background-size: cover;
+    background-position: center;
+}
+.subheader__content {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16rem;
+
+}
+
+.community__size-container {
+    background: var(--color-white);
+    padding: 20px;
+    text-align: center;
+}
+
+.community__size-container h2 {
+    font-family: "avenir-lt-85-heavy";
+}
+.community__content {
+    position: relative;
+    width: 44%;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+}
+
+.community__size-container h2{
+    color: black;
+}
+
+.community__content h2{
+    color: var(--color-white);
+}
 /*======== programs ======================== */
 
 .programs {
@@ -73,6 +140,7 @@
     font-family: 'ClashDisplay-Bold', sans-serif;
     color: #0C111A;
     font-size: 24px;
+    padding: 0;
 }
 
 
@@ -86,6 +154,7 @@
    grid-template-columns: 40% 50%;
    gap: 10%; 
     margin-top: 2rem;
+    
 }
 
 .values__image {
@@ -101,6 +170,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2.4rem 2.4rem;
+    
     font-family: "avenir-lt-45-book";
 }
 
@@ -108,6 +178,7 @@
     background-color: var(--color-white);
     box-shadow: 1rem 2rem 5rem rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+    padding: 2rem 2rem;
 }
 
 /*================testimonails============================*/
@@ -130,6 +201,11 @@
     justify-content: center;
     color: var(--color-white) !important;
     text-align: center;
+    margin-bottom: 48px;
+}
+
+.testimonial__quote{
+    font-size: 32px;
 }
 
 .card.testimonial {
@@ -165,18 +241,23 @@
 
 footer {
     background: var(--footer-color);
+    z-index: 100;
     margin-top: 3rem;
     padding-top: 3rem;
     font-size: 0.9rem;
 }
 
 .footer__container {
-    display: grid;
-    grid-template-columns: 15rem 1fr 1fr 1fr 1fr;
-    gap: 6rem;
-
+    display: flex;
+    justify-content: space-between;
+    gap: 7rem;
 }
 
+.contact__icon{
+    color: var(--color-secondary);
+    margin-right: 5px;
+    align-items: center;
+}
 .footer__container article {
     display: flex;
     flex-direction: column;
@@ -187,6 +268,10 @@ footer {
 
 .footer__container article p {
     margin-top: 0.5rem;
+}
+
+.footer__copyright h4{
+    color: var(--color-secondary);
 }
 
 
@@ -200,30 +285,39 @@ footer {
 .footer__socials{
     display: flex;
     flex-direction: row;
-    margin-top: 2.5rem;
+    margin-top: 0.5rem;
     gap: 1rem;
 }
 
 .footer__copyright {
     color: var(--color-secondary);
-    text-align: center;
-    padding: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-top: 1rem;
     font-family: "avenir-lt-45-book";
+    margin-top: 40px;
+    padding-bottom: 40px;
+}
+
+.copyright{
+    margin-top: 1.5rem;
 }
 
 /*=======================use purple pages ======================*/
 .use {
     background: var(--color-secondary);
     position: relative;
+    margin-bottom: 120px;
 }
 
 .use::before {
     content: "";
     position: absolute;
     top: 330;
+    max-height: 152px;
     left: 0;
-    z-index: 1;
+   overflow: hidden;
     width: 100%;
     height: 100%;
     background-image: url('../../assets/pattern.png');
@@ -235,7 +329,7 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     position: relative;
-    z-index: 1;
+    
 }
 
 
@@ -314,15 +408,51 @@ footer {
         margin-top: 3rem;
     }
 
+
     /*---values----*/
     .values__wrapper {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
+
+    .values__container{
+        gap: 1.5rem; 
+        }
     /*---footer-----*/
     .footer__container {
         display: grid;
         grid-template-columns: 1fr 1fr ;  
-        
+    }
+    /*---community-----*/
+
+    .community__content {
+        width: 90%;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .community__size-container {
+        background: var(--color-white);
+        padding: 10px;
+        text-align: center;
+    }
+
+    .community__container-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 250px;
+        background-image: url(../../assets/bg.png);
+    }
+    .community {
+        margin-top: 0.1rem;
+        height: 250px;
+        overflow: hidden;
+    }
+    /*---use-----*/
+    .use__container {
+        display: grid;
     }
 
 }

@@ -8,7 +8,7 @@ const TrendingEvents = () => {
   return (
     <section className='trending__events'> 
         <div className="container">
-           <h2>TRENDING EVENTS</h2>
+           <h2>Trending Events</h2>
            <div className="trending__events__container">
             
            
@@ -18,7 +18,7 @@ const TrendingEvents = () => {
                             return <div className="trending__events__value" key={id}>
                                 <img src={icon} alt="icon"/>
                                 <p className='category'>{category}</p>
-                                <h4 className='title'>{title}</h4>
+                                <h4 className='title'><b>{title}</b></h4>
                                 <p className='date'><MdOutlineDateRange />  {day}, {date} at {time}</p>
                                 <TextTruncate
                                     line={3}

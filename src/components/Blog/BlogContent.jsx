@@ -1,6 +1,5 @@
 import React from 'react'
 import { blog } from '../../data';
-import { ImStarEmpty, ImStarFull, ImStarHalf } from 'react-icons/im'
 import { Link } from 'react-router-dom';
 
 const BlogContent = () => {

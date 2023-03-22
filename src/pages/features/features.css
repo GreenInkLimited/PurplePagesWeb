@@ -1,0 +1,100 @@
+/*======== businessandbrand ======================== */
+
+.businessandbrand {
+    margin-top: 7rem;
+}
+
+.businessandbrand__wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    
+}
+
+.businessandbrand__program{
+    border-right: 1px solid rgba(199, 0, 92, 0.15);
+    border-bottom: 1px solid rgba(199, 0, 92, 0.15);
+    padding: 20px;
+}
+
+.businessandbrand__program img{
+    height: 33.33px;
+}
+
+.businessandbrand__program:nth-child(3) {
+    border-right: none;
+}
+
+.businessandbrand__program:last-child {
+    border-right: none;
+}
+
+.businessandbrand__program:nth-last-child(-n+3) {
+    border-bottom: none;
+}
+
+.businessandbrand__program a {
+    margin-top: 2.5rem;
+    display: flex;
+}
+
+.businessandbrand__program h4 {
+    font-family: 'avenir-lt-85-heavy', sans-serif;
+    color: #0C111A;
+    font-size: 24px;
+    padding: 0;
+}
+
+.feature__video-clip{
+    margin-top: 8rem;
+}
+
+.feature__video-clip img{
+    width: 100%;
+    
+    object-fit: contain;
+}
+
+/*==================enduser======================*/
+.enduser {
+    margin-top: 3rem;
+}
+
+.enduser__container {
+    display: grid;
+    grid-template-columns: 40% 50%;
+    gap: 10%;
+    margin-top: 2rem;
+
+}
+
+.enduser__image {
+    filter: saturate(1);
+    transition: var(--transition);
+}
+
+.enduser__image:hover {
+    filter: saturate(0.25);
+}
+
+.enduser__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4rem 2.4rem;
+
+    font-family: "avenir-lt-45-book";
+}
+
+.enduser__value {
+    background-color: var(--color-white);
+    padding-top: 2.2rem;
+    border-radius: 20px;
+    
+}
+
+.enduser__value p{
+    line-height: 1.5rem;
+    font-size: 16px;
+}

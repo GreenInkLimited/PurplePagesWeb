@@ -6,7 +6,7 @@ const Categories = () => {
     return (
     <section className='events'> 
         <div className="container">
-        <h2>TRENDING categories</h2>
+        <h2>Trending Categories</h2>
             <div className="events__container">
                 <div className='events__wrapper'>
                     {

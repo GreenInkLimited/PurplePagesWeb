@@ -1,0 +1,189 @@
+.signup_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.signup__content img{
+    height: 44px;
+    width: 115px;
+    
+}
+
+.signup__content{
+    display: flex;
+    flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+}
+
+.signup__with__alt {
+    display: flex;
+    
+    justify-content: center;
+}
+
+.signup__with__alt img{
+    height: 23.85px;
+    width: 24px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.signup__body{
+    width: 635px;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 70px;
+    border-radius: 24px;
+    margin-top: 20px;
+}
+
+.sigmup__with__alt__two{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.signup_paragraph b{
+    color: rgba(20, 1, 27, 1);
+}
+
+.signup_paragraph p {
+    color: rgba(130, 130, 130, 1);
+    margin-bottom: 40px;
+    margin-right: 10px;
+}
+
+.signup_paragraph span{
+    font-family: 'avenir-lt-45-book';
+    color: rgba(101, 5, 133, 1);
+}
+
+.signup__body h1{
+    font-family: 'avenir-lt-85-heavy';
+    font-size: 32px;
+    text-align: center;
+}
+
+.signup__content h1{
+    font-family: 'avenir-lt-85-heavy';
+    font-size: 32px;
+    text-align: center;
+    
+}
+
+.signup_paragraph{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.agree__to__terms{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.agree__to__terms p{
+    margin-left: 10px;
+}
+
+.agree__to__terms span{
+    color: rgba(101, 5, 133, 1);
+    font-family: 'avenir-lt-45-book';
+    margin-left: 5px;
+}
+
+form {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    font-size: 16px;
+} 
+
+.input {
+    width: 100%;
+    height: 35px;
+    padding: 7px;
+    outline: none;
+    margin-bottom: 16px;
+    border-radius: 5px;
+    border: 1px solid rgb(220, 220, 220);
+}
+
+
+label {
+    margin-top: 1rem;
+    font-family: 'avenir-lt-45-book';
+    margin-bottom: 8px;
+}
+
+input[type="submit"] {
+    font-family: 'avenir-lt-45-book';
+    margin-top: 2rem;
+    cursor: pointer;
+    background: #650585;
+    color: white;
+    border: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #E0E0E0;
+    font-family: 'avenir-lt-45-book';
+    font-size: 12px,
+}
+
+
+
+.all__interests {
+    margin-left: 185px;
+    margin-right: 185px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.interest__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(224, 224, 224, 1);
+    padding: 4px 8px 4px 8px;
+    border-radius: 12px;
+    gap: 13px;
+}
+
+.submit{
+    font-family: 'avenir-lt-45-book';
+    margin-top: 2rem;
+    cursor: pointer;
+    background: #650585;
+    color: white;
+    border: none;
+    width: 464px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    border-radius: 8px;
+    background-color: rgba(101, 5, 133, 0.4);
+}
+
+.interest__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,46 @@
+.faqs {
+    margin-top: 7rem;
+    margin-bottom: 1000px;
+    
+}
+
+.faqs h2{
+    margin-bottom: 76px;
+}
+
+.faqs__wrapper h4 {
+    margin-top: 60px;
+    margin-bottom: 24px;
+    font-family: 'avenir-lt-85-heavy';
+    text-transform: uppercase;
+    
+}
+
+.accordion {
+    width: 852px;
+    margin-bottom: 30px;
+    margin-top: 36px;
+}
+
+.title {
+    color: #7F2F99;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.accordion__content {
+    max-height: 0;
+    margin-top: 16px;
+    overflow: hidden;
+    
+    transition: all 0.5s cubic-bezier(0,1,0,1);
+}
+
+.accordion__content.show{
+    height: auto;
+    max-height: 999px;
+    transition: all 0.5s cubic-bezier(1,0,1,0);
+}
+ 

@@ -1,0 +1,269 @@
+/*=======================about us =================================*/
+.about__header {
+    margin-top: 4rem;
+    height: 35rem;
+    overflow: hidden;
+}
+
+.about__header__container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    
+    place-items: center;
+    background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.about__header__container-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+
+.about__header__content {
+    position: relative;
+    width: 550px;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+}
+
+.about__subheader__content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16rem;
+}
+
+.about__header__content h2 {
+    color: var(--color-white);
+    padding-bottom: 40px;
+    font-family: "ClashDisplay-Bold";
+}
+
+/*==================what we do (values)======================*/
+.aboutus {
+    margin-top: 3rem;
+}
+
+.about__values__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 25%;
+    margin-top: 2rem;
+
+}
+
+.about__values__image {
+    filter: saturate(1);
+    transition: var(--transition);
+    width: 489px;
+    height: 575px;
+}
+
+.about__values__image:hover {
+    filter: saturate(0.25);
+}
+
+.about__values__wrapper {
+    display: grid;
+    
+    grid-template-columns: 1fr;
+    gap: 2.4rem 2.4rem;
+    line-height: 1.7;
+    font-family: "avenir-lt-45-book";
+}
+
+.about__values__wrapper p {
+    font-size: 18px;
+}
+
+.about__values__value {
+    background-color: var(--color-white);
+    box-shadow: 1rem 2rem 5rem rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 2rem 2rem;
+}
+
+/*==================pillars======================*/
+
+.pillars {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.pillars__values__container{
+    background-color: rgba(199, 0, 92, 0.05);
+    border-radius: 24px;
+    padding: 80px;
+}
+
+.pillars__values__wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10rem;
+}
+
+.pillars__values__wrapper h4{
+    font-size: 28px;
+    color: var(--color-secondary);
+    font-family: "avenir-lt-85-heavy";
+    margin-bottom: 18px;
+}
+
+.pillars__icon{
+    background-color: rgba(130, 130, 130, 0.4);
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.pillars__values__wrapper img{
+    height: 28px;
+    width: 21.33px;
+    align-items: center;
+}
+
+.pillars__values__wrapper p{
+    font-size: 20px;
+}
+
+/*==================core values======================*/
+.core__values {
+    margin-top: 3rem;
+}
+
+.core__values h2{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.core__values__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 110px;
+    margin-top: 2rem;
+
+}
+
+.core__values__image {
+    filter: saturate(1);
+    transition: var(--transition);
+    width: 585px;
+    height: 616px;
+}
+
+.core__values__image:hover {
+    filter: saturate(0.25);
+}
+
+.core__values__wrapper {
+    display: grid;
+
+    grid-template-columns: 1fr;
+    
+    line-height: 1.7;
+    font-family: "avenir-lt-45-book";
+    margin-top: 150px;
+}
+
+
+.core__values__wrapper p {
+    font-size: 20px;
+    margin-top: 24px;
+}
+
+.core__values__wrapper h4{
+    font-size: 36px;
+    color: #410E52;
+}
+
+.core__values__right h3{
+    font-size: 48px;
+    color: #410E52;
+    font-family: 'ClashDisplay-Bold';
+}
+
+.core__values__value {
+    background-color: var(--color-white);
+    box-shadow: 1rem 2rem 5rem rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 2rem 2rem;
+}
+
+/*=======================ready purple pages ======================*/
+.ready {
+    margin-top: 5rem;
+    background: var(--color-secondary);
+    position: relative;
+    height: 483px;
+    border-radius: 30px;
+}
+
+.ready::before {
+    content: "";
+    position: absolute;
+    top: 330;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/pattern.png');
+
+}
+
+.ready__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+}
+
+
+
+.ready__left
+{
+    margin-top: 7rem;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ready__left h2 {
+    color: var(--color-white);
+}
+
+.ready__left p {
+    color: #f2f2f2;
+    font-size: 20px;
+    padding-bottom: 30px;
+}
+
+.ready__links {
+    display: flex;
+    gap: 1.5rem;
+
+}

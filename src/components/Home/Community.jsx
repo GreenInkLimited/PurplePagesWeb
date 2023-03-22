@@ -3,12 +3,12 @@ import Background from "../../assets/bg.png"
 
 const Community = () => {
   return (
-     <header className='header'>
-        <div className="header__container">
-            <div className="header__container-bg">
-                <img src={Background} alt="community bg" />
+     <div className='community'>
+        <div className="community__container">
+            <div className="community__container-bg">
+                
             </div>
-            <div className="header__content">
+            <div className="community__content">
                 <h2>The Purple Pages Community</h2>
                 <p>Purple Pages is committed to serve SMEs across the nation. We have an engaged community of diverse professionals and business owners that benefit from our premium value offerings.</p>
             </div>
@@ -27,7 +27,7 @@ const Community = () => {
                 </div>
             </div>
         </div>
-    </header>
+    </div>
 
   )
 }

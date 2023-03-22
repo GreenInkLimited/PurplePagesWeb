@@ -9,11 +9,17 @@ import Icon from '../assets/icon.png'
 import Notify from '../assets/notify.png'
 import './appnavbar.css';
 import {MdKeyboardArrowDown} from 'react-icons/md'
+import Notification from './Notification';
+import Profile from './Profile';
 
 
 const AppNavbar = () => {
     const [isNavShowing, setIsNavShowing] = useState(false);
+     const [onClick, setOnClick] = useState(false)
+    const [openNotification, setOpenNotification] = useState(false)
+    const [openProfile, setOpenProfile] = useState(false)
   return (
+    <>
     <nav className='my__nav'>
       <div className="container nav__containers">
         <Link to="/" className='logo' onClick={() => setIsNavShowing(false)}>
@@ -48,11 +54,12 @@ const AppNavbar = () => {
        <ul>
         <li>
             <div className='nav__right'>
-                <img src={Notify} alt="Nav Logo" />
+                <img onClick={() => setOpenNotification((prev) => !prev)} src={Notify} alt="Nav Logo" />
+                
                 <div className='nav__profile'>
                     <img src={Icon} alt="Nav Logo" />
                     <p>Purple Closet</p>
-                    <MdKeyboardArrowDown />
+                    <MdKeyboardArrowDown onClick={() => setOpenProfile((prev) => !prev)}/>
                 </div>
             </div>
         </li>
@@ -63,7 +70,15 @@ const AppNavbar = () => {
         }
        </button>
       </div>
+      
     </nav>
+    {
+        openNotification && <Notification />
+    }
+    {
+        openProfile && <Profile />
+    }
+    </>
   )
 }
 

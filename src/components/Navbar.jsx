@@ -11,7 +11,13 @@ const Navbar = () => {
     const [isNavShowing, setIsNavShowing] = useState(false);
   return (
     <nav>
+        
       <div className="container nav__container">
+         <button className='nav__toggle-btn' onClick={() => setIsNavShowing(prev => !prev)}>
+        {
+            isNavShowing ? <MdOutlineClose />  : <GoThreeBars />
+        }
+       </button>
         <Link to="/" className='logo' onClick={() => setIsNavShowing(false)}>
             <img src={Logo} alt="Nav Logo" />
         </Link>
@@ -31,18 +37,14 @@ const Navbar = () => {
 
        <ul>
         <li>
-            <Link to="/signup">
+            <Link to="/auth">
                 <button className='nav__btn'>
                     Login
                 </button>
             </Link>
         </li>
        </ul>
-       <button className='nav__toggle-btn' onClick={() => setIsNavShowing(prev => !prev)}>
-        {
-            isNavShowing ? <MdOutlineClose />  : <GoThreeBars />
-        }
-       </button>
+      
       </div>
     </nav>
   )

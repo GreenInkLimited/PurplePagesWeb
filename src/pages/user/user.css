@@ -1,0 +1,800 @@
+/*====================tabs========================================*/
+.user-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 150px;
+}
+
+.user__bloc-tabs {
+    width: 15%;
+    flex-direction: row;
+    margin-left: 150px;
+
+}
+
+.user__bloc-profile{
+    display: flex;
+}
+
+.user__bloc-profile img{
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    margin-right: 10px;
+}
+
+.user__content-tabs {
+    width: 80%;
+}
+
+.user__tabs {
+    padding: 10px;
+    padding-left: 20px;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+
+    background: transparent;
+    outline: none;
+}
+
+
+
+.active-user__tabs {
+    background: transparent;
+    border-left: 1px solid transparent;
+
+    border-left: 3px solid #C42AF7;
+
+
+}
+
+.active-user__tabs::before {
+    content: "";
+    display: block;
+    position: absolute;
+    color: #C42AF7;
+    transform: translateX(-50%);
+    height: 5px;
+}
+
+
+.tabs__user-information {
+    display: grid;
+}
+
+.tabs__user-information small {
+    display: flex;
+    align-items: center;
+    font-family: "avenir-lt-45-book";
+    margin-bottom: 12px;
+}
+
+.tabs__user-information .icon {
+    color: var(--color-secondary);
+    margin-right: 18px;
+}
+
+.tabs__user-information .location {
+    display: flex;
+}
+
+.tabs__user-information .location small {
+    width: 250px;
+}
+
+.button {
+    border: none;
+    font-family: "avenir-lt-45-book";
+    font-size: 14px;
+
+}
+
+/*===============================settings tabs=============*/
+
+.user__content {
+    display: none;
+}
+
+.user__contentx {
+    display: none;
+}
+
+.user__content h4 {
+    color: var(--color-secondary);
+    font-family: "avenir-lt-45-book";
+    margin-bottom: 15px;
+}
+
+.account__settings__tab__content{
+    width: 90%;
+}
+
+.user__content hr {
+    width: 100%;
+    height: 0.5px;
+    background: #BDBDBD;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.user__content p {
+    width: 100%;
+
+}
+
+.active-user__content {
+    display: block;
+}
+
+.tabs__user-marketplace {
+    color: #C7005C;
+    display: grid;
+    font-family: "avenir-lt-45-book";
+}
+
+.user__bloc-tabs h4 {
+    font-family: "avenir-lt-85-heavy";
+    margin-bottom: 40px;
+}
+
+.first__user-content h3 {
+    font-family: "ClashDisplay-bold";
+    font-size: 30px;
+    margin-bottom: 32px;
+}
+
+.first__user-content {
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.account__settings-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.business__account-header h4{
+    font-family: 'avenir-lt-85-heavy';
+}
+
+
+.business__account-header{
+   
+    margin-bottom: 20px;
+    flex-direction: row;
+}
+
+.account__settings-left p{
+    margin-bottom: 25px;
+}
+
+.account__settings-right p{
+    margin-bottom: 25px;
+}
+
+.business__settings-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.business__account__addadmin{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.admin__lists{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.admin__list__username{
+    display: flex;
+    flex-direction: row;
+}
+
+.admin__list__username img{
+    object-fit: contain;
+    max-width: 20px;
+    max-height: 20px;
+    margin-right: 10px;
+}
+
+.delete__admin{
+    color: #C7005C;
+}
+
+.business__account__addadmin h4{
+    color: #C42AF7;
+}
+
+.admin__access__option{
+    margin-top: 40px;
+}
+
+
+.notification__preferences{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 20px;
+}
+
+.notification__preferences h4{
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.pust__email-notification{
+    display: flex;
+    gap: 7rem;
+}
+
+.notification__preferences-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.notification__preferences-body p{
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.subscriptions-detail{
+    display: flex;
+    gap: 8.3rem;
+    padding-right: 10px;
+}
+
+.check{
+    color: #C42AF7;
+}
+
+/*=========================subscription tabs==============*/
+
+.subscription__user-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.subscription__user-content h3{
+    font-family: "ClashDisplay-Bold";
+}
+
+.subscription__user-content h4{
+    color: #C7005C;
+    font-family: 'avenir-lt-45-book';
+}
+
+.subscription__section p{
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.subscription__section{
+    margin-bottom: 32px;
+}
+
+/*=========================user profile================*/
+.userprofile__infor-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.userprofile__info-left {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.userprofile__container{
+    align-items: center;
+    position: relative;
+}
+
+.userprofile__info-img {
+    
+    height: 150px;
+    width: 150px;
+    border-radius: 150px;
+}
+
+.userprofile__category {
+    color: #C7005C;
+}
+
+.userprofile__info_body{
+    display: flex;
+    flex-direction: column;
+}
+
+.userprofile__info_body h3 {
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.userprofile__infor-wrapper .subscribe {
+    display: flex;
+    margin-right: 150px;
+}
+
+
+
+.user__header__container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+
+/*====================user tabs========================================*/
+.bloc-user__utabs {
+    display: flex;
+    border-bottom: 1px solid #BDBDBD;
+    flex-direction: row;
+}
+
+.user__utabs {
+    padding: 15px;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5rem;
+    background: transparent;
+    outline: none;
+}
+
+.first__user__utab__content{
+    margin-top: 20px;
+}
+
+.active-user__utabs {
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    color: #C42AF7;
+    border-bottom: 2px solid #C42AF7;
+}
+
+.active-user__utabs::before {
+    content: "";
+    display: block;
+    position: absolute;
+    color: #C42AF7;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 5px;
+}
+
+
+.user__utabs__information {
+    display: grid;
+}
+
+.user__utabs__information small {
+    display: flex;
+    align-items: center;
+    font-family: "avenir-lt-45-book";
+    margin-bottom: 12px;
+}
+
+.user__utabs__information .icon {
+    color: var(--color-secondary);
+}
+
+.user__utabs__information .user__utabs__location {
+    display: flex;
+}
+
+.user__utabs__information .user__utabs__location small {
+    width: 250px;
+}
+
+.bloc-user__utabs button {
+    border: none;
+    font-family: "avenir-lt-45-book";
+    font-size: 12px;
+}
+
+/*===============================tabs=============*/
+
+.user__utab__content {
+    
+    width: 100%;
+    display: none;
+}
+
+.user__utab__contentx {
+    display: none;
+}
+
+.user__utab__content h4 {
+    color: var(--color-secondary);
+    font-family: "avenir-lt-45-book";
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.user__utab__content hr {
+    width: 100%;
+    height: 0.5px;
+    background: #BDBDBD;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.user__utab__content p {
+    width: 80%;
+
+}
+
+.active-user__utab__content {
+    display: block;
+    margin-bottom: 40px;
+}
+
+.user__utabs__marketplace {
+    color: #C7005C;
+    display: flex;
+    flex-direction: row;
+    font-family: "avenir-lt-45-book";
+}
+
+.user__utabs__marketplace img{
+    max-height: 24px;
+    max-width: 40px;
+}
+
+.user__submenu__content{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.user__submenu__content img{
+    width: 18px;
+}
+
+.first-content-user__utab__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.user__utabs__information .icon{
+    margin-right: 10px;
+}
+
+.reviews__utab{
+    width: 90%;
+}
+
+/*==================product and service======================*/
+
+
+.user__productandservice__container {
+
+    flex-direction: row;
+    margin-top: 40px;
+    width: 90%;
+}
+
+
+.user__productandservice__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem 1rem;
+    font-family: "avenir-lt-45-book";
+}
+
+.user__productandservice__value {
+    align-items: center;
+    border-radius: 10px;
+}
+
+.user__productandservice__wrapper p {
+    color: #4F4F4F;
+    font-size: 14px;
+}
+
+.frame {
+    height: 12px;
+    width: 44px;
+}
+
+/*==========================ads history=======================*/
+
+.adshistory__wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px 20px;
+}
+
+.adshistory__program img{
+    width: 290px;
+    height: 190px;
+}
+
+.adshistory__wrapper p{
+    margin-top: 10px;
+}
+
+.adshistory__wrapper small{
+    color: #C42AF7;
+    margin-top: 5px;
+}
+
+.adshistory__header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.adshistory__header h4{
+    font-family: 'avenir-lt-85-heavy';
+}
+
+/*==========================email marketing=======================*/
+
+.email__marketing-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+.email__marketing-header h3{
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.email__marketing-wrapper{
+    width: 90%;
+    
+}
+
+.email__marketing-wrapper h5{
+    font-family: 'avenir-lt-85-heavy';
+    margin-bottom: 40px;
+}
+
+.email__marketting-sender{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.email__marketing-senderleft{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.email__marketing-senderleft img{
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+}
+
+.email__marketing-senderdetails small{
+    color: var(--color-secondary);
+}
+
+.email__marketing-senderright p{
+    color:#C42AF7;
+}
+
+.more__email-marketing {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.email__marketing-clip{
+    width: 273px;
+    height: 137px;
+    margin-top: 30px;
+}
+
+.email__marketing-clip img{
+    width: 273px;
+    height: 137px;
+    object-fit: contain;
+}
+
+.email__marketing-info{
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    gap: 5px;
+    
+}
+
+.email__marketing-info img{
+    height: 32px;
+    width: 32px;
+}
+
+.more__emails{
+    margin-bottom: 40px;
+}
+
+.more__email-marketing h4{
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.more__email-marketing p{
+    color: #C42AF7;
+}
+
+.email__seeless{
+    display: flex;
+    justify-content: flex-end;
+    color: #C7005C;
+    margin-top: 5px;
+    margin-bottom: 40px;
+}
+
+/*==================trending events======================*/
+.ftrending__events {
+    margin-top: 5rem;
+}
+
+.events h3{
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.ftrending__events h3{
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.ftrending__events__container {
+    display: grid;
+    gap: 10%;
+    margin-top: 2rem;
+}
+
+
+.ftrending__events__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.4rem 3rem;
+    font-family: "avenir-lt-45-book";
+    
+}
+
+.ftrending__events__value {
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+.ftrending__events__value .category {
+    color: #C7005C;
+    margin-top: 16px;
+}
+
+.ftrending__events__value .detail {
+    color: #828282;
+    font-size: 14px;
+}
+
+.ftrending__events__value .date {
+    color: #828282;
+    font-size: 14px;
+    margin-right: 20px;
+}
+
+.ftrending__events__value .link {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+/*==================explore======================*/
+.fexplore {
+    margin-top: 5rem;
+}
+
+.fexplore{
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.fexplore__container {
+    display: grid;
+
+    gap: 10%;
+    margin-top: 2rem;
+}
+
+
+.fexplore__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.2rem 1.2rem;
+    font-family: "avenir-lt-45-book";
+}
+
+.fexplore__value {
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.fexplore__value p{
+    margin-top: 12px;
+}
+
+.your__event-container{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-top: 60px;
+}
+
+
+.your__event-container img{
+    width: 394px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.your__event-container {
+    height: 200px;
+}
+
+.event__details h2{
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.event__details-start{
+    font-family: 'avenir-lt-45-book';
+    color: #009932;
+}
+
+.event__details-end {
+    font-family: 'avenir-lt-45-book';
+    color: #C7005C;
+}
+
+.your__event-sold{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 18px;
+    height: 250px;
+    margin-top: auto;
+}
+
+
+.your__event-sold img{
+    width: 20px;
+    height: 18px;
+}

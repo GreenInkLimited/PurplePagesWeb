@@ -5,6 +5,9 @@ import {CiLocationOn} from "react-icons/ci"
 import ProductAndService from "./ProductAndService";
 import { Link } from "react-router-dom";
 import Reviews from "./Reviews";
+import Marketplace1 from "../../assets/Marketplace1.png"
+import Marketplace2 from "../../assets/Marketplace2.png"
+import Marketplace3 from "../../assets/Marketplace3.png"
 
 function Tabs() {
   const [toggleState, setToggleState] = useState(1);
@@ -67,12 +70,11 @@ function Tabs() {
          <p>
             Click on any marketplace below to shop with us
           </p>
-          
-          <div className="tabs__marketplace">
-            <small className="tabs__marketplace">Pocket</small>
-            <small className="tabs__marketplace">Shopify</small>
-            <small className="tabs__marketplace">Jumia Market</small>
-            <small className="tabs__marketplace">Jiji</small>
+          <br/>
+          <div className="user__utabs__marketplace">
+            <img src={Marketplace1} />
+             <img src={Marketplace2} />
+              <img className="jumia__marketplace" src={Marketplace3} />
           </div>
         </div>
         </div>

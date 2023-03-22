@@ -39,9 +39,9 @@
 }
 
 .main__filter {
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-    border-radius: 8px;
     
+    border-radius: 8px;
+    background-color: #ffffff;
     transition: var(--transition);
     height: 30px;
     display: flex;
@@ -78,9 +78,13 @@
     font-family: 'avenir-lt-85-heavy';
 }
 
-.profile__infor-wrapper .btn{
+.profile__infor-wrapper .subscribe{
     display: flex;
     justify-content: end;
+}
+
+.product-wishlist__name{
+    font-size: 24px;
 }
 
 /*====================tabs========================================*/
@@ -167,18 +171,13 @@ button {
 /*===============================tabs=============*/
 
 .content {
-    background: white;
     padding: 20px;
-
     width: 65%;    
-    
     display: none;
 }
 
 .contentx {
-    background: white;
     padding: 20px;
-   
     display: none;
 }
 
@@ -476,4 +475,53 @@ button {
 .productandservice__container h3{
     font-family: "avenir-lt-45-book";
     margin-bottom: 20px;
+}
+
+
+
+/*=============== media queries (small screens)================*/
+@media screen and (max-width:600px) {
+.product__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1rem;
+    font-family: "avenir-lt-45-book";
+}
+
+.filter__container {
+    margin-top: 7rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.main__filter {
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    background-color: #ffffff;
+    transition: var(--transition);
+    height: 30px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.main__filter input{
+    width: 100%;
+}
+
+.profile__info-img {
+    flex-direction: row;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 20px;
+    justify-content: space-around;
+}
+
+.profile__infor-wrapper {
+    display: grid;
+    
+
+}
+
 }

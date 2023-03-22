@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
+import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 import { countries } from '../../data';
 
 const Coverage = () => {
@@ -33,7 +33,7 @@ const Coverage = () => {
       <div className="container testimonials__container">
         <div className="testimonials__btn-container">
           <button className="testimonials__btn" onClick={prevTestimonialHandler}>
-            <IoIosArrowDropleftCircle />
+            <MdNavigateBefore/>
           </button>
         </div>
         {countries.slice(index, index + 7).map((country) => (
@@ -46,7 +46,7 @@ const Coverage = () => {
         ))}
         <div className="testimonials__btn-container">
           <button className="testimonials__btn" onClick={nextTestimonialHandler}>
-            <IoIosArrowDroprightCircle />
+            <MdNavigateNext />
           </button>
         </div>
       </div>

@@ -1,0 +1,352 @@
+/*====================tabs========================================*/
+.personal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 150px;
+}
+
+.personal__bloc-tabs {
+    width: 15%;
+    flex-direction: row;
+
+}
+
+.personal__bloc-profile {
+
+    display: flex;
+}
+
+.personal__bloc-profile img {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    margin-right: 10px;
+}
+
+.personal__content-tabs {
+    width: 80%;
+}
+
+.personal__tabs {
+    padding: 10px;
+    padding-left: 20px;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+
+    background: transparent;
+    outline: none;
+}
+
+
+
+.active-personal__tabs {
+    background: transparent;
+    border-left: 1px solid transparent;
+
+    border-left: 3px solid #C42AF7;
+
+
+}
+
+.active-personal__tabs::before {
+    content: "";
+    display: block;
+    position: absolute;
+    color: #C42AF7;
+    transform: translateX(-50%);
+    height: 5px;
+}
+
+
+.tabs__personal-information {
+    display: grid;
+}
+
+.tabs__personal-information small {
+    display: flex;
+    align-items: center;
+    font-family: "avenir-lt-45-book";
+    margin-bottom: 12px;
+}
+
+.tabs__personal-information .icon {
+    color: var(--color-secondary);
+    margin-right: 18px;
+}
+
+.tabs__personal-information .location {
+    display: flex;
+}
+
+.tabs__personal-information .location small {
+    width: 250px;
+}
+
+button {
+    border: none;
+    font-family: "avenir-lt-45-book";
+    font-size: 14px;
+
+}
+
+/*===============================settings tabs=============*/
+
+.personal__content {
+    display: none;
+}
+
+.personal__contentx {
+    display: none;
+
+}
+
+.personal__content h4 {
+    color: var(--color-secondary);
+    font-family: "avenir-lt-45-book";
+    margin-bottom: 15px;
+}
+
+.personal__content hr {
+    width: 100%;
+    height: 0.5px;
+    background: #BDBDBD;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.personal__content p {
+    width: 100%;
+
+}
+
+.active-personal__content {
+    display: block;
+}
+
+.tabs__personal-marketplace {
+    color: #C7005C;
+    display: grid;
+    font-family: "avenir-lt-45-book";
+}
+
+.personal__bloc-tabs h4 {
+    font-family: "avenir-lt-85-heavy";
+    margin-bottom: 40px;
+}
+
+.first__personal-content h3 {
+    font-family: "ClashDisplay-bold";
+    font-size: 30px;
+    margin-bottom: 32px;
+}
+
+.first__personal-content {
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.account__settings-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.account__settings-header h4 {
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.account__settings-edit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #E0E0E0;
+    gap: 10px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.account__settings-edit .edit_icon {
+    color: #4F4F4F;
+}
+
+.account__settings-content {
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: row;
+}
+
+.account__settings-left p {
+    margin-bottom: 25px;
+}
+
+.account__settings-right p {
+    margin-bottom: 25px;
+}
+
+.account__settings-right {
+
+    margin-left: 400px;
+}
+
+.notification__preferences {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 20px;
+}
+
+.notification__preferences h4 {
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.pust__email-notification {
+    display: flex;
+    gap: 7rem;
+}
+
+.notification__preferences-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.notification__preferences-body p {
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.subscriptions-detail {
+    display: flex;
+    gap: 8.3rem;
+    padding-right: 10px;
+}
+
+.check {
+    color: #C42AF7;
+}
+
+/*=========================subscription tabs==============*/
+
+.subscription__personal-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.subscription__personal-content h3 {
+    font-family: "ClashDisplay-Bold";
+}
+
+.subscription__personal-content h4 {
+    color: #C7005C;
+    font-family: 'avenir-lt-45-book';
+}
+
+.subscription__section p {
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.subscription__section {
+    margin-bottom: 32px;
+}
+
+/*=========================personal profile================*/
+.personalprofile__infor-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.personalprofile__info-left {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.personalprofile__container {
+    align-items: center;
+    position: relative;
+}
+
+.personalprofile__info-img {
+
+    height: 150px;
+    width: 150px;
+    border-radius: 150px;
+}
+
+.personalprofile__category {
+    color: #C7005C;
+}
+
+.personalprofile__info_body {
+    display: flex;
+    flex-direction: column;
+}
+
+.personalprofile__info_body h3 {
+    font-family: 'avenir-lt-85-heavy';
+}
+
+.personalprofile__infor-wrapper .subscribe {
+    display: flex;
+    margin-right: 150px;
+}
+
+
+
+.personal__header__container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+
+
+/*==================product and service======================*/
+
+
+.personal__productandservice__container {
+
+    flex-direction: row;
+    margin-top: 40px;
+    width: 90%;
+}
+
+
+.personal__productandservice__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem 1rem;
+    font-family: "avenir-lt-45-book";
+}
+
+.personal__productandservice__value {
+    align-items: center;
+    border-radius: 10px;
+}
+
+.personal__productandservice__wrapper p {
+    color: #4F4F4F;
+    font-size: 14px;
+}
+
+.frame {
+    height: 12px;
+    width: 44px;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import SectionHead from '../SectionHead'
-import {programs} from '../../data'
+import {why} from '../../data'
 import Card from '../../UI/Card'
 
 const Programs = () => {
@@ -11,7 +11,7 @@ const Programs = () => {
       
       <div className="programs__wrapper">
          {
-            programs.map(({id, icon, title, info, path}) => {
+            why.map(({id, icon, title, info, path}) => {
                 return (
                     <Card className="programs__program" key={id }>
                        <img src={icon}/>

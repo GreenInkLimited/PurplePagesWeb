@@ -6,8 +6,8 @@ import SectionHead from '../SectionHead';
 
 const WhatWeDo = () => {
   return (
-    <section className='values'> 
-        <div className="container">
+    <div className='values container'> 
+        
             <SectionHead title="What we do at Purple Pages" paragraph="We offer SMEs a stack of digital marketing services they need to optimize business growth and productivity."/>
            <div className="values__container">
             <div className="values__left">
@@ -29,8 +29,8 @@ const WhatWeDo = () => {
                 </div>
             </div>
         </div>
-        </div>
-    </section>
+        
+    </div>
   )
 }
 

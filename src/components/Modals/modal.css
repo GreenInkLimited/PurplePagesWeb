@@ -1,0 +1,380 @@
+.modal__background{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(200, 200, 200, 0.9);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal__container{
+    width: 800px;
+    height: 800px;
+    background-color: white;
+    
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    margin-bottom: 50px;
+}
+
+.modal__container h2{
+    margin-bottom: 20px;
+}
+
+.model__text h4{
+    font-family: "avenir-lt-45-book";
+    font-size: 20px;
+}
+
+.modal__header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+.modal__header img{
+    width: 277px;
+    height: 141px;
+}
+
+.close__my-modal{
+    float: left;
+}
+
+.modal__title{
+    display: flex;
+    gap: 10px;
+}
+
+.modal__body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    
+}
+
+.modal__inrease-desrease{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.modal__decreament{
+    background-color: #E0E0E0;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 32px;
+}
+
+.modal__increament {
+    background-color: #650585;
+    color: #FFFFFF;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 32px;
+}
+
+.subtotal_update{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.modal__xbody-left{
+    height: 268px;
+    width: 355px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 8px 24px rgba(20, 1, 27, 0.1);
+}
+
+
+.modal__background{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(200, 200, 200, 0.9);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal__container{
+    width: 800px;
+    height: 800px;
+    background-color: white;
+    
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    margin-bottom: 50px;
+}
+
+.modal__container h2{
+    margin-bottom: 20px;
+}
+
+.model__text h4{
+    font-family: "avenir-lt-45-book";
+    font-size: 20px;
+}
+
+.modal__header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+.modal__header img{
+    width: 277px;
+    height: 141px;
+}
+
+.close__my-modal{
+    float: left;
+}
+
+.modal__title{
+    display: flex;
+    gap: 10px;
+}
+
+.modal__body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    
+}
+
+.modal__inrease-desrease{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.modal__decreament{
+    background-color: #E0E0E0;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 32px;
+}
+
+.modal__increament {
+    background-color: #650585;
+    color: #FFFFFF;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 32px;
+}
+
+.subtotal_update{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.modal__xbody-left{
+    height: 268px;
+    width: 355px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 8px 24px rgba(20, 1, 27, 0.1);
+}
+
+
+
+
+
+.modal__payment-sumary{
+    background-color: #F2F2F2;
+    width: 317px;
+    height: 100px;
+    padding: 16px;
+    margin-top: 16px;
+    margin-bottom: 18px;
+}
+
+.modal_subtotal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.modal__total{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.total__madal-price{
+    color: #14011B;
+}
+
+.modal__footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+.modal__footer button{
+    height: 50px;
+    width: 464px;
+    background-color: #650585;
+    color: #F2F2F2;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.modal__input {
+    width: 100%;
+    height: 35px;
+    padding: 7px;
+    outline: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(220, 220, 220);
+
+}
+
+.label {
+    margin-top: 1rem;
+    font-family: 'avenir-lt-45-book';
+    margin-bottom: 4px;
+}
+
+
+.host-modal__background {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(200, 200, 200, 0.9);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.host-modal__container {
+    width: 1000px;
+    height: auto;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    margin-bottom: 50px;
+}
+
+.host-modal__container h2 {
+    margin-bottom: 20px;
+}
+
+
+.host-modal__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    margin-top: 60px;
+}
+
+.host__modal__body-left{
+    width: 329px;
+    height: 240px;
+    border: 1px solid #C42AF7;
+    border-radius: 15px;
+    padding: 50px 30px 50px 30px;
+    margin-bottom: 60px;
+}
+
+.host__modal__body-left img{
+    height: 43.33px;
+    width: 43.33px;
+    margin-bottom: 18px;
+}
+
+.host__modal__body-left h4{
+    font-family: 'avenir-lt-85-heavy';
+    margin-bottom: 14px;
+}
+
+.modal__login-area{
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    margin-bottom: 60px;
+}
+
+.host__event-wrappers{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.modal__login-area span{
+    color: #C42AF7;
+}
+
+.host__event-body{
+    border: 1px solid #C42AF7;
+    border-radius: 15px;
+    height: 240px;
+    width: 329px;
+    padding: 50px 30px 50px 30px;
+}
+
+.host__event-body img{
+    width: 43.33px;
+    height: 43.33px;
+    margin-bottom: 18px;
+}
+
+.host__event-body h4{
+    font-family: 'avenir-lt-85-heavy';
+    margin-bottom: 14px;
+}
+
+.host-modal__container h2{
+    margin-top: 60px;
+    text-align: center;
+}
+
+.host-modal__container-back button{
+    background: none;
+    display: flex;
+    align-items: center;
+}

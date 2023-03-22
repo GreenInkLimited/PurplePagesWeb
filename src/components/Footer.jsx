@@ -3,8 +3,8 @@ import Logo from '../assets/pplogo.png'
 import Facebook from '../assets/facebook.png';
 import Twitter from '../assets/twitter.png';
 import Instagram from '../assets/instagram.png';
-import Contact from '../assets/contact.png';
-import Email from '../assets/email.png';
+import {AiOutlineMail} from 'react-icons/ai'
+import {BsTelephone} from 'react-icons/bs'
 import Appstore from '../assets/Appstore.png'
 import Playstore from '../assets/Playstore.png'
 import { Link } from 'react-router-dom';
@@ -18,39 +18,27 @@ const Footer = () => {
                     <img src={Logo} alt="Footer Logo" />
                 </Link>
                 <p>
-                    Your one -stop digital marketing solution
+                    Your one-stop digital marketing solution
                 </p>
-                <div className="footer__socials">
-                    
-                    <a href='#' target="_blank" rel='noreferrer noopener'>
-                        <img src={Facebook} alt="facebook" />
-                    </a>
-                    <a href='#' target="_blank" rel='noreferrer noopener'>
-                        <img src={Twitter} alt="twitter" />
-                    </a> 
-                    <a href='#' target="_blank" rel='noreferrer noopener'>
-                        <img src={Instagram} alt="instagram" />
-                    </a>
-                </div>
+                
             </article>
             <article>
                 <h4>Useful Links</h4>
                 <Link to="/">Home</Link>
                 <Link to="/about">About Us</Link>
                 <Link to="/contact">Contact</Link>
-                <Link to="/">Terms & Conditions</Link>
             </article>
             <article>
                 <h4>Help & Support</h4>
-                <Link to="/">How it works</Link>
-                <Link to="/about">FAQs</Link>
+                <Link to="/faq">FAQs</Link>
                 <Link to="/contact">Privacy Policy</Link>
+                <Link to="/terms">Terms & Conditions</Link>
                 
             </article>
             <article>
                 <h4>Contact Us</h4>
-                <Link to="/">hello@usepurplepages.com</Link>
-                <Link to="/about">+234 800 0000 000</Link>
+                <Link to="/"><AiOutlineMail className='contact__icon'/>hello@usepurplepages.com</Link>
+                <Link to="/about"><BsTelephone  className='contact__icon'/>+234 800 0000 000</Link>
             </article>
             <article>
                 <h4>Install App</h4>
@@ -62,8 +50,25 @@ const Footer = () => {
                     </a>
             </article>
         </div>
-        <div className="footer__copyright">
-            Copyrights © 2021 Green INK Limited. All rights reserved
+        <div className="footer__copyright container">
+            <div >
+                    <h4>Follow Us</h4>
+                    <div className="footer__socials">
+                    <a href='#' target="_blank" rel='noreferrer noopener'>
+                        <img src={Facebook} alt="facebook" />
+                    </a>
+                    <a href='#' target="_blank" rel='noreferrer noopener'>
+                        <img src={Twitter} alt="twitter" />
+                    </a> 
+                    <a href='#' target="_blank" rel='noreferrer noopener'>
+                        <img src={Instagram} alt="instagram" />
+                    </a>
+                </div>
+                </div>
+                <div className='copyright'>
+                    Copyrights © 2021 Green INK Limited. All rights reserved
+                </div>
+                <p></p>
         </div>
     </footer>
   )

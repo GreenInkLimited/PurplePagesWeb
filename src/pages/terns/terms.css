@@ -1,0 +1,16 @@
+.terms{
+    margin-top: 7rem;
+}
+
+.agreement h4{
+    margin-top: 60px;
+    margin-bottom: 24px;
+    font-family: 'avenir-lt-85-heavy';
+    text-transform: uppercase;
+}
+
+li{
+    display: flex;
+    flex-direction: row;
+    font-family: 'avenir-lt-45-book';
+}

@@ -1,0 +1,258 @@
+/*====================tabs========================================*/
+.wishlist-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 150px;
+}
+
+.wishlist__bloc-tabs {
+    width: 10%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.wishlist__content-tabs {
+    width: 80%;
+}
+
+.wishlist__tabs {
+    padding: 10px;
+    padding-left: 20px;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+    outline: none;
+}
+
+
+
+.active-wishlist__tabs {
+    background: transparent;
+    border-left: 1px solid transparent;
+    border-left: 3px solid #C42AF7;
+}
+
+.active-wishlist__tabs::before {
+    content: "";
+    display: block;
+    position: absolute;
+    color: #C42AF7;
+    transform: translateX(-50%);
+    height: 5px;
+}
+
+
+.tabs__wishlist-information {
+    display: grid;
+}
+
+.tabs__wishlist-information small {
+    display: flex;
+    align-items: center;
+    font-family: "avenir-lt-45-book";
+    margin-bottom: 12px;
+}
+
+.tabs__wishlist-information .icon {
+    color: var(--color-secondary);
+    margin-right: 18px;
+}
+
+.tabs__wishlist-information .location {
+    display: flex;
+}
+
+.tabs__wishlist-information .location small {
+    width: 250px;
+}
+
+button {
+    border: none;
+    font-family: "avenir-lt-45-book";
+    font-size: 14px;
+
+}
+
+/*===============================tabs=============*/
+
+.wishlist__content {
+    display: none;
+}
+
+.wishlist__contentx {
+    display: none;
+}
+
+.wishlist__content h4 {
+    color: var(--color-secondary);
+    font-family: "avenir-lt-45-book";
+    margin-bottom: 15px;
+}
+
+.wishlist__content hr {
+    width: 100%;
+    height: 0.5px;
+    background: #BDBDBD;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.wishlist__content p {
+    width: 100%;
+
+}
+
+.active-wishlist__content {
+    display: block;
+}
+
+.tabs__wishlist-marketplace {
+    color: #C7005C;
+    display: grid;
+    font-family: "avenir-lt-45-book";
+}
+
+.wishlist__bloc-tabs h4 {
+    font-family: "avenir-lt-85-heavy";
+    margin-bottom: 40px;
+}
+
+.first__wishlist-content h3{
+    font-family: "avenir-lt-85-heavy";
+    font-size: 30px;
+    margin-bottom: 32px;
+}
+
+.first__wishlist-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*=========================product wishlist==========================*/
+
+.productwishlist__value{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid rgba(199, 0, 92, 0.2);;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.blogpost__bottom img{
+    display: flex;
+    width: 30px;
+    height: 30px;
+}
+
+.blogpost__body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.blogpost__bottom{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.productwishlist__left p{
+    line-height: 20px;
+}
+
+.productwishlist__left{
+    display: flex;
+    flex-direction: row;
+    height: 130px;
+    justify-content: space-between;
+}
+
+.blogpostswishlist__value{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.blog__postwishlist-detail p{
+    color: #C7005C;
+    font-size: 12px;
+}
+
+.blog__postwishlist-detail small{
+    font-size: 12px;
+}
+
+.blog__postwishlist-details{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.blog__post-delete{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.blog__post-delete img{
+    width: 16px;
+    height: 16px;
+}
+
+.blog__postwishlist-detail{
+    margin-left: 10px;
+}
+.productwishlist__right img{
+    width: 250px;
+    height: 150px;
+}
+
+.productwishlist__right{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.first__wishlist-share{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background-color: #E0E0E0;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.first__wishlist-share .icon{
+    color: #C7005C;
+}
+
+.productwishlist__frame{
+    display: flex;
+    width: 18px;
+    height: 18px;
+}
+
+.productwishlist__left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.blogpost-title{
+    font-family: "avenir-lt-85-heavy";
+}
+
