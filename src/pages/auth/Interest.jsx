@@ -3,11 +3,13 @@ import Logo from '../../assets/pplogo.png'
 import {interest} from '../../data'
 import {AiOutlinePlus} from 'react-icons/ai'
 import './auth.css'
+import Footer from '../../components/Footer';
 
 
 const Interest = () => {
     const form = useRef();
   return (
+    <>
     <div className='container interest__wrapper'>
     <div className="container signup_wrapper">
         <div className="signup__content">
@@ -34,6 +36,11 @@ const Interest = () => {
     </div>
     <button className='submit'>Go Home</button>
     </div>
+
+    <div className='the__footer__signup'>
+        <Footer />
+        </div>
+    </>
     
   )
 }

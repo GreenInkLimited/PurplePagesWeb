@@ -1,7 +1,6 @@
 .faqs {
     margin-top: 7rem;
-    margin-bottom: 1000px;
-    
+    margin-bottom: 1000px;   
 }
 
 .faqs h2{
@@ -13,7 +12,6 @@
     margin-bottom: 24px;
     font-family: 'avenir-lt-85-heavy';
     text-transform: uppercase;
-    
 }
 
 .accordion {
@@ -43,4 +41,13 @@
     max-height: 999px;
     transition: all 0.5s cubic-bezier(1,0,1,0);
 }
- 
+
+
+/*=============== media queries (small screens)================*/
+@media screen and (max-width:600px) {
+    .accordion {
+            width: 100%;
+            margin-bottom: 30px;
+            margin-top: 36px;
+        }
+}

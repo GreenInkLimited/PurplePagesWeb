@@ -94,6 +94,10 @@
 
 }
 
+.notification__mobile h4 {
+    display: none;
+}
+
 /*===============================settings tabs=============*/
 
 .user__content {
@@ -162,6 +166,13 @@
     justify-content: space-between;
 }
 
+.account__settings--right p{
+    background-color: #650585;
+    padding: 6px 8px 6px 8px;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
 .business__account-header h4{
     font-family: 'avenir-lt-85-heavy';
 }
@@ -173,11 +184,11 @@
     flex-direction: row;
 }
 
-.account__settings-left p{
+.account__settings--left p{
     margin-bottom: 25px;
 }
 
-.account__settings-right p{
+.account__settings--right p{
     margin-bottom: 25px;
 }
 
@@ -263,6 +274,8 @@
     color: #C42AF7;
 }
 
+
+
 /*=========================subscription tabs==============*/
 
 .subscription__user-content{
@@ -307,7 +320,7 @@
 
 .userprofile__container{
     align-items: center;
-    position: relative;
+    
 }
 
 .userprofile__info-img {
@@ -333,6 +346,7 @@
 .userprofile__infor-wrapper .subscribe {
     display: flex;
     margin-right: 150px;
+    
 }
 
 
@@ -386,6 +400,25 @@
     height: 5px;
 }
 
+.xfirst__personal-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.xfirst__personal-content h3{
+    font-family: "ClashDisplay-Bold";
+    font-size: 36px;
+}
+
+.xfirst__personal-content  .first__content-button{
+    padding: 12px 32px 12px 32px;
+    background-color: #650585;
+    color: #FFFFFF;
+    border-radius: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
 
 .user__utabs__information {
     display: grid;
@@ -524,6 +557,10 @@
     width: 44px;
 }
 
+.business__account__addadmin-mobile{
+    display: none;
+}
+
 /*==========================ads history=======================*/
 
 .adshistory__wrapper{
@@ -555,6 +592,13 @@
 
 .adshistory__header h4{
     font-family: 'avenir-lt-85-heavy';
+}
+
+.adshistory__header p {
+    background-color: #650585;
+    color: #ffffff;
+    padding: 12px 32px 12px 32px;
+    border-radius: 5px;
 }
 
 /*==========================email marketing=======================*/
@@ -750,6 +794,7 @@
 
 .fexplore__value p{
     margin-top: 12px;
+    font-weight: 700;
 }
 
 .your__event-container{
@@ -797,4 +842,243 @@
 .your__event-sold img{
     width: 20px;
     height: 18px;
+}
+
+/*=============== media queries (small screens)================*/
+@media screen and (max-width:600px) { 
+    .user__bloc-tabs {
+        display: none;
+    }
+    .user__content-tabs {
+        width: 100%;
+    }
+
+    .user__tabs {
+        display: none;
+    }
+
+    .first__user-content h3 {
+        display: none;
+    }
+
+    .user__header__container {
+        width: 100%;
+        height: 100%;
+        margin-top: -65px;
+        
+    }
+
+    .userprofile__infor-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 40px;
+    }
+    .userprofile__info-left {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+        justify-content: center;
+    }
+.userprofile__info-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-right: 0;
+}
+
+.userprofile__info_body-mobile{
+    display: flex;
+    flex-direction: row;
+}
+.userprofile__info_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.userprofile__infor-wrapper .subscribe {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    margin-top: 20px;
+    
+}
+
+.bloc-user__utabs {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #BDBDBD;
+    flex-direction: row;
+    
+}
+
+.user__utabs {
+    padding: 15px;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5rem;
+    background: transparent;
+    outline: none;
+}
+
+.first__user__utab__content {
+    margin-top: 20px;
+    margin: 10px;
+}
+
+.user__productandservice__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem 1rem;
+    font-family: "avenir-lt-45-book";
+}
+.user__productandservice__container {
+
+    flex-direction: row;
+    margin-top: 40px;
+    width: 100%;
+    padding: 20px;
+}
+
+.user__utab__contentx{
+    flex-direction: row;
+        margin-top: 40px;
+        width: 100%;
+        padding: 20px;
+}
+
+.business__account-header {
+    margin-bottom: 20px;
+    flex-direction: row;
+}
+
+.account__settings__tab__content {
+    width: 100%;
+    padding-left: 20px;
+        padding-right: 20px;
+}
+
+.business__settings-content {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    
+}
+
+.notification__preferences h4{
+    font-size: 14px;
+    color: transparent;
+}
+
+.pust__email-notification {
+    display: flex;
+    gap: 3rem;
+}
+
+.notification__mobile h4{
+    display: block;
+    font-family: "ClashDisplay-Bold";
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 14px;
+    line-height: 30px;
+}
+
+.business__account-header h4{
+    display: block;
+    font-family: "ClashDisplay-Bold";
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 32px;
+    line-height: 30px;
+}
+
+.business__account__addadmin h4{
+    display: none;
+}
+
+.business__account__addadmin-mobile-left {
+    background-color: #650585;
+    padding: 6px 8px 6px 8px;
+    color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 97px;
+}
+
+.business__account__addadmin-mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ftrending__events__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.4rem 3rem;
+    font-family: "avenir-lt-45-book";
+}
+
+.fexplore__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 0.4rem;
+    font-family: "avenir-lt-45-book";
+}
+.your__event-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.your__event-sold img {
+    width: 20px;
+    height: 18px;
+}
+
+.event__details h2 {
+    font-family: 'avenir-lt-85-heavy';
+    font-size: 20px;
+}
+
+.your__event-container {
+    display: grid;
+    
+    gap: 0;
+    margin-bottom: 100px;
+}
+
+.your__event-sold {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 18px;
+    height: 100px;
+    margin-top: auto;
+}
+
+.your__event-container .event__details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.xfirst__personal-content h3 {
+    font-family: "ClashDisplay-Bold";
+    font-size: 25px;
+}
+
 }

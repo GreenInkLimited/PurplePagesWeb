@@ -173,15 +173,19 @@ button {
 .productwishlist__left{
     display: flex;
     flex-direction: row;
-    height: 130px;
     justify-content: space-between;
 }
 
 .blogpostswishlist__value{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    
+}
+
+.blogpostswishlist__value img{
+    width: 250px;
+    height: 150px;
+    margin-right: 10px;
 }
 
 .blog__postwishlist-detail p{
@@ -220,6 +224,10 @@ button {
     height: 150px;
 }
 
+.blog-productwishlist__right{
+    width: 100%;
+}
+
 .productwishlist__right{
     display: flex;
     flex-direction: row;
@@ -254,5 +262,76 @@ button {
 
 .blogpost-title{
     font-family: "avenir-lt-85-heavy";
+}
+
+.blogpost__bottom img{
+    width: 30px;
+}
+
+.blogpost__bottom-mobile{
+    display: none;
+}
+
+/*=============== media queries (small screens)================*/
+@media screen and (max-width:600px) { 
+    .wishlist__bloc-tabs{
+        display: none;
+    }
+
+    .productwishlist__right img {
+        width: 100px;
+        height: 80px;
+    }
+    
+    .productwishlist__right {
+        display: flex;
+        flex-direction: row;  
+    }
+    .wishlist__content-tabs {
+        width: 100%;
+    }
+
+    .productwishlist__value{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .blogpostswishlist__value {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+    }
+
+    .blogpostswishlist__value img{
+        width: 100px;
+        height: 80px;
+        padding-right: 10px;
+    }
+
+    .product-wishlist__name{
+        font-size: 14px;
+        font-family: 'avenir-lt-85-heavy';
+        margin-bottom: 8px;
+    }
+
+    .productwishlist__left{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .blogpost__bottom-mobile{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .blogpost__bottom{
+        display: none;
+    }
+    .blogpost__bottom-mobile img{
+        width: 24px;
+
+    }
 }
 

@@ -5,6 +5,7 @@ import Sold from '../../assets/soldEvent.png'
 const YourEvents = () => {
   return (
     <div>
+      
     {yourevents.map(({ id, icon, title, start, ends, sold}) => {
               
               
@@ -20,7 +21,8 @@ const YourEvents = () => {
             </div>
         <div className='your__event-sold'>
             <img src={Sold} />
-            {sold}</div>  
+            {sold}
+          </div>  
         </div>
       </div>
       

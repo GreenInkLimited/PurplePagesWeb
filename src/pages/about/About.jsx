@@ -90,7 +90,7 @@ Purple Pages is, to put it simply, a one-stop shop for SMEs' digital marketing 
                 </div>
             </div>
        
-      <div className="core__values__right">
+      <div className="core__values__right ">
                 <h3>Our Core Values</h3>
                 <div className='core__values__wrapper'>
                     <h4>Trust</h4>

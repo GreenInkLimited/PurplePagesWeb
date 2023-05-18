@@ -14,11 +14,11 @@ const SuggestedProducts = () => {
   return (
     <div className="productandservice__container">
         <h3>YOU MIGHT LIKE</h3>
-      <div className='productandservice__wrapper'>
+      <div className='productandservice__wrapper x'>
         {randomProducts.map(({ id, icon, price, name, frame }) => {
           return (
-            <div className="productandservice__value" key={id}>
-              <img src={icon} alt="icon" />
+            <div className="productandservice__value x" key={id}>
+              <img className='framex' src={icon} alt="icon" />
               <Link to={`/singleproduct/${id}`}>
                 <small>{name}</small>
               </Link>

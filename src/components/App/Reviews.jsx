@@ -1,17 +1,73 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { review } from '../../data';
 import { ImStarEmpty, ImStarFull, ImStarHalf } from 'react-icons/im'
 import Progress from './Progress';
 
 const Reviews = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(4);
+
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const handleClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(review.length / productsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    let startPage, endPage;
+    if (currentPage <= 2) {
+      startPage = 1;
+      endPage = 3;
+    } else if (currentPage >= pageNumbers.length - 1) {
+      startPage = pageNumbers.length - 2;
+      endPage = pageNumbers.length;
+    } else {
+      startPage = currentPage - 1;
+      endPage = currentPage + 1;
+    }
+
+    return (
+      <div className="pagination">
+        <button disabled={currentPage === 1} onClick={handlePrevPage} className={currentPage === 1 ? 'disabled' : null}>Prev</button>
+        {startPage > 1 && <button onClick={() => handleClick(1)}>1</button>}
+        {startPage > 2 && <span className="ellipsis">...</span>}
+        {pageNumbers.slice(startPage - 1, endPage).map(number => (
+          <button
+            key={number}
+            onClick={() => handleClick(number)}
+            className={currentPage === number ? 'active' : null}
+          >
+            {number}
+          </button>
+        ))}
+        {endPage < pageNumbers.length - 1 && <span className="ellipsis">...</span>}
+        {endPage < pageNumbers.length && (
+          <button onClick={() => handleClick(pageNumbers.length)}>{pageNumbers.length}</button>
+        )}
+        <button disabled={currentPage === pageNumbers.length} onClick={handleNextPage} className={currentPage === pageNumbers.length ? 'disabled' : null}>Next</button>
+      </div>
+    );
+  };
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = review.slice(indexOfFirstProduct, indexOfLastProduct);
   return (
-    
-     
         <div className="review__container">
             <div className="review__value">
             <div className="review__top__right">
-                <h3>3.5<span>/3</span></h3>
-               
+                <h3>3.5<span>/5</span></h3>
                 <div className="rating">
                     <ImStarFull />
                     <ImStarFull />
@@ -25,11 +81,8 @@ const Reviews = () => {
                 <div className="review__top__left">
             <div className="progress_content">
                 <div className='on_the_left'>
-                    <small>5</small>  
-                
-                     
+                  <small>5</small>  
                     <ImStarFull className="rating"/>
-                    
                 </div>
                 <Progress done="60"/>
                 <div className='on_the_right'><small>45</small></div>
@@ -37,12 +90,8 @@ const Reviews = () => {
             <div className="progress_content">
                 <div className='on_the_left'>
                     <small>4</small>  
-                
-                     
                     <ImStarFull className="rating"/>
-                    
                 </div>
-                
                 <Progress done="16"/>
                 <div className='on_the_right'><small>12</small></div>
                 </div>
@@ -83,7 +132,7 @@ const Reviews = () => {
             </div>
           <div className='review__wrapper'>
             
-            {review.map(({ id, rating, name, date, title, review}) => {
+            {currentProducts.map(({ id, rating, name, date, title, review}) => {
               // Calculate the number of full stars to display
               const fullStars = Math.floor(rating);
               // Calculate the number of half stars to display
@@ -94,7 +143,7 @@ const Reviews = () => {
               return (
                 <section>
                 
-                <div className="review__value" key={id}>
+                <div className="my-review__value" key={id}>
                     
                   <div className="review_left">
                         <div className="rating">
@@ -118,6 +167,7 @@ const Reviews = () => {
               );
             })}
           </div>
+          {renderPageNumbers()}
         </div>
         
       

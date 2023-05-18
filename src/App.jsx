@@ -1,9 +1,8 @@
-import { BrowserRouter, Routes, Route  } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import React from 'react'
 import About from './pages/about/About'
 import Home from './pages/home/Home'
 import Notfound from './pages/notfound/Notfound'
-import Trainers from './pages/trainers/Trainers'
 import Events from './pages/events/Events'
 import EventDetails from './pages/events/EventDetails'
 import AppHome from './pages/apphome/AppHome'
@@ -26,12 +25,21 @@ import Interest from './pages/auth/Interest'
 import PersonalAccount from './pages/personalAccount/PersonalAccount'
 import UserEvents from './pages/user/UserEvents'
 import CheckOut from './pages/events/CheckOut'
+import WriteBlog from './components/Blog/WriteBlog'
+import Verify from './components/Modals/Verification'
+import StepperForm from './components/Modals/StepperForm'
+import {QueryClient, QueryClientProvider} from 'react-query';
+
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
+    <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       
       <Routes>
+        
         <Route index element={<Home />} />
         <Route path='about' element={<About />} />
         <Route path='/events/:id' element={<EventDetails />} />
@@ -57,8 +65,14 @@ const App = () => {
         <Route path='interest' element={<Interest/>} />
         <Route path='/personal/:id' element={<PersonalAccount/>} />
         <Route path='/checkout' element={<CheckOut/>} />
+        <Route path='/writeblog' element={<WriteBlog/>} />
+        <Route path='/verification' element={<Verify/>} />
+        <Route path='/stepper' element={<StepperForm/>} />
+        
       </Routes>
+      
     </BrowserRouter>
+    </QueryClientProvider>
   )
 }
 

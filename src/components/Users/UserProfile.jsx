@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { ImStarEmpty, ImStarFull, ImStarHalf } from 'react-icons/im'
 import { products } from '../../data';
-import Header from '../../components/Header'
+
 
 
 const UserProfile = () => {
@@ -30,10 +30,13 @@ const UserProfile = () => {
         <div className='userprofile__info-left'>
             <img className='userprofile__info-img' src={product.profile} />
             <div className="userprofile__info_body">
+              
                 <h3>{product.name}</h3>
+              <div className="userprofile__info_body-mobile">
                 <p className='userprofile__category'>{product.category}</p>
                 <p>1.24k subscribers</p>
                 <p>{product.location}</p>
+              </div>
                <div className="rating">
                     {[...Array(fullStars)].map((_, index) => (
                       <ImStarFull key={index} />
@@ -45,9 +48,10 @@ const UserProfile = () => {
                   </div>
             </div>
         </div>
+        <div className=''>
              <Link className='subscribe' to="">Subscribe</Link>
         </div>
-         
+         </div>
       </div>
       
     </>

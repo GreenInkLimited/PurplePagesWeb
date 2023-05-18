@@ -39,11 +39,10 @@ const StyledContactForm = styled.div`
     }
     }
     textarea {
-        max-width: 100%;
-        min-width: 100%;
+        padding: 7px;
         width: 100%;
         height: 260px;
-        padding: 7px;
+        padding: px;
         outline: none;
         font-family: 'avenir-lt-45-book';
         border-radius: 5px;
@@ -66,5 +65,22 @@ const StyledContactForm = styled.div`
         font-family: 'avenir-lt-45-book';
         font-size: 12px,
     }
-}
+    /* Media query for smaller screens */
+  @media (max-width: 600px) {
+    width: 100%;
+    padding:20px;
+    form {
+      align-items: start;
+      input {
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+      textarea{
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+    }
+  }
+
+
 `;

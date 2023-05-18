@@ -3,9 +3,6 @@ import Footer from '../../components/Footer'
 import { Link, useParams } from 'react-router-dom';
 import { trendingevents } from '../../data';
 import Header from '../../components/Header'
-import { MdOutlineDateRange } from 'react-icons/md'
-import { CiLocationOn } from 'react-icons/ci'
-import { BiTime } from 'react-icons/bi'
 import './events.css'
 import { category } from '../../data';
 import Navbar from '../../components/Navbar';

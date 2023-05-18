@@ -1,6 +1,7 @@
 import React from 'react'
 import {BsCircle, BsCheckCircleFill} from 'react-icons/bs'
 import {RiDeleteBin6Line} from 'react-icons/ri'
+import {AiOutlinePlus} from 'react-icons/ai'
 import User from '../../assets/comment.png'
 
 const BusinessAccountSetting = () => {
@@ -14,12 +15,12 @@ const BusinessAccountSetting = () => {
       
     </div>
       <div className="business__settings-content">
-        <div className="account__settings-left">
+        <div className="account__settings--left">
           <p>Connect Facebook</p>
           <p>Connect to Instagram</p>
           <p>Connect to Twitter</p>
         </div>
-        <div className="account__settings-right">
+        <div className="account__settings--right">
           <p>Connect</p>
           <p>Connect</p>
           <p>Connect</p>
@@ -27,11 +28,14 @@ const BusinessAccountSetting = () => {
         </div>
       </div>
       <div className="notifications">
+        <div className="notification__mobile">
+        <h4>Notification Preferences</h4>
+        </div>
       <div className="notification__preferences">
         <h4>Notification Preferences</h4>
         <div className='pust__email-notification'>
         <p>Push</p>
-        <p>Email</p>
+        <p>Emails</p>
         </div>
       </div>
       <div className="notification__preferences-body">
@@ -90,6 +94,14 @@ const BusinessAccountSetting = () => {
             <p>Purple peaches</p>
         </div>
             <RiDeleteBin6Line className='delete__admin' />
+      </div>
+      <div className='business__account__addadmin-mobile'>
+        <div>
+
+        </div>
+      <div className="business__account__addadmin-mobile-left">
+          <AiOutlinePlus /> Admin
+      </div>
       </div>
     </>
   )

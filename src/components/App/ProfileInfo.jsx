@@ -23,9 +23,11 @@ const ProfileInfo = () => {
             <img className='profile__info-img' src={product.profile} />
             <div className="profile__info_body">
                 <h3>{product.name}</h3>
+              <div className="profile__info_body-detail">
                 <p className='profile__category'>{product.category}</p>
                 <p>1.24k subscribers</p>
                 <p>{product.location}</p>
+                </div>
                <div className="rating">
                     {[...Array(fullStars)].map((_, index) => (
                       <ImStarFull key={index} />
@@ -35,6 +37,7 @@ const ProfileInfo = () => {
                       <ImStarEmpty key={index} />
                     ))}
                   </div>
+            
             </div>
         </div>
              <Link className='subscribe' to="">Subscribe</Link>

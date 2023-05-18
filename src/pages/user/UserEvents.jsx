@@ -2,9 +2,6 @@ import React, { useState } from 'react'
 import Footer from '../../components/Footer';
 import AppNavbar from '../../components/AppNavBar';
 import Profile from '../../assets/Evnt.png'
-import AccountSetting from '../../components/Users/AccountSetting';
-import Subscriptions from '../../components/Users/Subscriptions';
-import LetsTalk from '../../components/Users/LetsTalk';
 import FeaturedEvents from '../../components/Users/FeaturedEvents';
 import UpcomingEvents from '../../components/Users/UpcomingEvents';
 import YourEvents from '../../components/Users/YourEvents';
@@ -74,9 +71,9 @@ const UserEvents = () => {
           className={toggleState === 3 ? "personal__contentx  active-personal__content" : "personal__contentx"}
         >
 
-          <div className="first__personal-content">
+          <div className="xfirst__personal-content">
           <h3>Your Events</h3>
-              
+            <button className='first__content-button'>Host Event</button>
 
        
         </div>

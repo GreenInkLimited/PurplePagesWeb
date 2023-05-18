@@ -1,15 +1,10 @@
 import React, { useState } from 'react'
-import BlogPostWishList from '../../components/Wishlist/BlogPostWishList';
 import Footer from '../../components/Footer';
 import AppNavbar from '../../components/AppNavBar';
-import {RiShareForwardLine} from 'react-icons/ri'
 import Profile from '../../assets/Autor1.png'
 import './user.css'
-import AccountSetting from '../../components/Users/AccountSetting';
 import Subscriptions from '../../components/Users/Subscriptions';
 import LetsTalk from '../../components/Users/LetsTalk';
-import ProfileInfo from '../../components/App/ProfileInfo';
-import Tabs from '../../components/App/Tabs';
 import UserProfile from '../../components/Users/UserProfile';
 import UserTabs from '../../components/Users/UserTabs';
 import BusinessAccountSetting from '../../components/Business/BusinessAccountSettings';

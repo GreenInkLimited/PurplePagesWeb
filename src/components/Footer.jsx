@@ -41,13 +41,16 @@ const Footer = () => {
                 <Link to="/about"><BsTelephone  className='contact__icon'/>+234 800 0000 000</Link>
             </article>
             <article>
+                
                 <h4>Install App</h4>
+                <div className='footer__install__app'>
                 <a href='#' target="_blank" rel='noreferre noopener'>
                         <img src={Appstore} alt="facebook" />
                     </a>
                 <a href='#' target="_blank" rel='noreferre noopener'>
                         <img src={Playstore} alt="facebook" />
                     </a>
+                </div>
             </article>
         </div>
         <div className="footer__copyright container">

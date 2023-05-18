@@ -9,7 +9,9 @@
     margin-top: 5rem;
 }
 
-
+.recent__post-header-mobile {
+    display: none;
+}
 .ads__wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -127,6 +129,13 @@
 
 }
 
+.ads__comment-body-mobile {
+    display: none;
+    flex-direction: row;
+    margin-bottom: 30px;
+
+}
+
 .ads__comment-body img {
     width: 30px;
     height: 30px;
@@ -200,4 +209,51 @@
 .ads__info-reply small{
     color: #C7005C;
     margin-left: 30px;
+}
+
+/*=============== media queries (small screens)================*/
+@media screen and (max-width:600px) {
+    .ads__wrapper {
+        display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem 2rem;
+            font-family: "avenir-lt-45-book";
+    }
+    .ads__body {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .ads__comment-body {
+        display: none;
+    }
+
+    .recent__post-header {
+        display: none;
+    }
+
+    
+
+    .ads__comment-body-mobile {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 30px;
+    }
+
+    .ads__comment-body-mobile img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
+    .recent__post-header-mobile {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        font-family: "avenir-lt-45-book";
+        margin-bottom: 20px;
+    }
 }

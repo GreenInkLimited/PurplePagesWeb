@@ -1,5 +1,4 @@
 import React from 'react'
-import Background from "../../assets/bg.png"
 
 const Community = () => {
   return (

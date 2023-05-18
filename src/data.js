@@ -182,7 +182,7 @@ export const blog = [
         autor: require("./assets/Autor1.png"),
         bg: require("./assets/blogbg.png"),
         title: "The art of matching",
-        content: "Fashion is all about creativity and expression, and one of the best ways to showcase your personal style is by mastering the art of mixing and matching.",
+        content: "Fashion is all about creativity and expression,..",
         name: "Purple Closet",
         date: "December 21, 2022"
     },
@@ -624,7 +624,7 @@ export const review = [
         id: 1,
         rating: 4,
         name: "Purple T",
-        date: "Dec 19, 2022",
+        date: "Dec 19, 2023",
         title: "Review Title",
         review: "Lorem ipsum dolor sit amet consectetur. Tristique nullam ullamcorper interdum urna varius faucibus faucibus. Nullam cras mauris sit eget ipsum."
     },
@@ -648,6 +648,25 @@ export const review = [
     },
     {
         id: 4,
+        rating: 4,
+        name: "Purple T",
+        date: "Dec 19, 2022",
+        title: "Review Title",
+        review: "Lorem ipsum dolor sit amet consectetur. Tristique nullam ullamcorper interdum urna varius faucibus faucibus. Nullam cras mauris sit eget ipsum."
+
+    },
+
+    {
+        id: 5,
+        rating: 4,
+        name: "Purple T",
+        date: "Dec 19, 2022",
+        title: "Review Title",
+        review: "Lorem ipsum dolor sit amet consectetur. Tristique nullam ullamcorper interdum urna varius faucibus faucibus. Nullam cras mauris sit eget ipsum."
+
+    },
+    {
+        id: 6,
         rating: 4,
         name: "Purple T",
         date: "Dec 19, 2022",
@@ -1233,6 +1252,22 @@ export const faq = [
     {
         question: "How can I create my business profile/account?",
         answer: "Distinctio nihil blanditiis accusantium atque, quo maxime inventore eum! Cum dolorem quibusdam amet et qui. Eos, omnis beatae? Quas, est at! Molestiae quidem ab soluta exercitationem culpa nostrum iusto illum qui non a harum deserunt atque commodi at velit."
+    },
+
+]
+
+export const check = [
+    {
+        question: "a",
+        answer: "b"
+    },
+
+]
+
+export const checkb = [
+    {
+        question: "c",
+        answer: "d"
     },
 
 ]

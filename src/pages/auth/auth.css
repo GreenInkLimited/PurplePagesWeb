@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 3rem;
+    margin-bottom: 40px;
 }
 
 .signup__content img{
@@ -74,7 +75,6 @@
     font-family: 'avenir-lt-85-heavy';
     font-size: 32px;
     text-align: center;
-    
 }
 
 .signup_paragraph{
@@ -124,7 +124,7 @@ label {
     margin-bottom: 8px;
 }
 
-input[type="submit"] {
+button.input {
     font-family: 'avenir-lt-45-book';
     margin-top: 2rem;
     cursor: pointer;
@@ -186,4 +186,53 @@ textarea::placeholder {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.the__footer__signup {
+    display: none;
+}
+
+/*=============== media queries (small screens)================*/
+@media screen and (max-width:600px) { 
+    .signup__body{
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0);
+        padding: 0;
+        border-radius: 24px;
+        margin-top: 20px;
+
+    }
+        .the__footer__signup {
+            display: block;
+        }
+
+    .signup__body h1{
+        margin-bottom: 10px;
+    }
+    .signup_paragraph{
+        display: flex;
+        text-align: center;
+    }
+    .all__interests {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .submit {
+        width: 100%;
+    }
+    .signup__content h1{
+        font-family: 'avenir-lt-85-heavy';
+        font-size: 24px;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 8px;
+    }
 }

@@ -9,5 +9,4 @@ const SectionHead = ({  title, paragraph, className  }) => {
   )
 }
 
-export default SectionHead
- 
+export default SectionHead;

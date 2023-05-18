@@ -183,6 +183,111 @@ const { id } = useParams();
         <h4>Sugar glazed donut with sprinkles</h4>
             <small>Charlie’s Bagel Garden</small>
         </div>
+        <div className="recent__post-header-mobile">
+          <h4>MOST RECENT</h4>
+          <RiArrowDropDownLine />
+          </div>
+          <div className="ads__comment-body-mobile">
+          <img src={Comment} />
+          <div>
+            <h4>Purplepages01</h4>
+            <div className="ads__comment">
+            <p>Love this piece, so informative. Keep it up purple closet👏</p>
+            <div className="ads__info">
+                <AiOutlineLike />
+                <small>32</small>
+            <div className="ads__info-reply">
+              <small>Reply</small>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div className="ads__comment-body-mobile">
+          <img src={Comment} />
+          <div>
+            <h4>Purplepages01</h4>
+            <div className="ads__comment">
+            <p>Lorem ipsum dolor sit amet consectetur. Egestas in feugiat leo phasellus faucibus ullamcorper eget. Lorem ipsum dolor sit amet consectetur. Egestas in feugiat leo phasellus faucibus ullamcorper eget.</p>
+            
+              <div className="ads__info">
+                <AiOutlineLike />
+                <small>32</small>
+            <div className="ads__info-reply">
+              <small>Reply</small>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div className="ads__comment-body-mobile">
+          <img src={Comment} />
+          <div>
+            <h4>Purplepages01</h4>
+            <div className="ads__comment">
+            <p>Lorem ipsum dolor sit amet consectetur. Egestas in feugiat leo phasellus faucibus ullamcorper eget. Lorem ipsum dolor sit amet consectetur. Egestas in feugiat leo phasellus faucibus ullamcorper eget.</p>
+            
+              <div className="ads__info">
+                <AiOutlineLike />
+                <small>32</small>
+            <div className="ads__info-reply">
+              <small>Reply</small>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div className="ads__comment-body-mobile">
+          <img src={Comment} />
+          <div>
+            <h4>Purplepages01</h4>
+            <div className="ads__comment">
+            <p>Lorem ipsum dolor sit amet consectetur. Egestas in feugiat leo phasellus faucibus Lorem ipsum dolor sit amet consectetur. Egestas in feugiat leo phasellus faucibus ullamcorper eget. eget. Lorem ipsum dolor sit amet consectetur. Egestas in feugiat leo phasellus faucibus ullamcorper eget. </p>
+            
+             <div className="ads__info">
+                <AiOutlineLike />
+                <small>32</small>
+            <div className="ads__info-reply">
+              <small>Reply</small>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div className="ads__comment-body-mobile">
+          <img src={Comment} />
+          <div>
+            <h4>Purplepages01</h4>
+            <div className="ads__comment">
+            <p>Lorem ipsum dolor sit amet consectetur. Egestas in feugiat leo phasellus faucibus Lorem ipsum dolor sit amet consectetur. Egestas in feugiat leo phasellus faucibus ullamcorper eget. eget. Lorem ipsum dolor sit amet consectetur. Egestas in feugiat leo phasellus faucibus ullamcorper eget. </p>
+            
+              <div className="ads__info">
+                <AiOutlineLike />
+                <small>32</small>
+            <div className="ads__info-reply">
+              <small>Reply</small>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div className="ads__comment-body-mobile">
+          <img src={Comment} />
+          <div>
+            <h4>Purplepages01</h4>
+            <div className="ads__comment">
+            <p>Lorem ipsum dolor sit amet consectetur. Egestas in feugiat leo phasellus faucibus ullamcorper eget. Lorem ipsum dolor sit amet consectetur. Egestas in feugiat leo phasellus faucibus ullamcorper eget.</p>
+            
+              <div className="ads__info">
+                <AiOutlineLike />
+                <small>32</small>
+            <div className="ads__info-reply">
+              <small>Reply</small>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>

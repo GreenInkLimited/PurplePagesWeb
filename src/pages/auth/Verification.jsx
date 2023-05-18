@@ -1,10 +1,12 @@
 import React, {useRef} from 'react'
 import Logo from '../../assets/pplogo.png'
 import './auth.css'
+import Footer from '../../components/Footer';
 
 const Verification = () => {
     const form = useRef();
   return (
+    <>
     <div className="container signup_wrapper">
         <div className="signup__content">
             <img src={Logo} alt="logo" />
@@ -22,6 +24,10 @@ const Verification = () => {
     </div>
         </div>
     </div>
+    <div className='the__footer__signup'>
+        <Footer />
+        </div>
+    </>
   )
 }
 

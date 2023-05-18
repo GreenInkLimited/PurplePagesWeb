@@ -329,6 +329,7 @@ button {
 }
 
 
+
 .personal__productandservice__wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -349,4 +350,47 @@ button {
 .frame {
     height: 12px;
     width: 44px;
+}
+/*=============== media queries (small screens)================*/
+@media screen and (max-width:600px) {
+.personal__bloc-profile{
+    display: none;
+}
+.personal__tabs{
+    display: none;
+}
+
+.personal-container {
+    display: block;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 150px;
+}
+
+.account__settings-content {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.personal__content-tabs {
+    width: 100%;
+}
+
+.account__settings-right {
+
+    margin-left: 0;
+}
+
+
+.tabs__personal-information .icon {
+    color: var(--color-secondary);
+    margin-right: 0;
+}
+
+
+
 }
