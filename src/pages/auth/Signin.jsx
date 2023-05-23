@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../assets/pplogo.png';
 import Google from '../../assets/Google.png';
@@ -6,24 +6,46 @@ import FacebookLogin from '../../assets/FacebookLogin.png';
 import Line from '../../assets/Line.png';
 import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import { useMutation } from 'react-query';
 import { loginUser } from '../../apis';
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
 const Signin = () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
-  const { isLoading, error, isError, mutateAsync, data } = useMutation(
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
+
+  const {  mutateAsync } = useMutation(
     'signin',
     loginUser,
     {
       onSuccess: (data) => {
         console.log(data);
+        localStorage.setItem('auth_code', data.auth_code);
         // Redirect to home page after successful form submission
         navigate('/apphome');
       },
     }
   );
+
+  const validationSchema = Yup.object({
+    username: Yup.string().required('Username is required'),
+    password: Yup.string()
+      .required('Password is required')
+      .min(8, 'Password must be at least 8 characters')
+      .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
+      .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
+      .matches(/[0-9]/, 'Password must contain at least one number')
+      .matches(
+        /[!@#$%^&*]/,
+        'Password must contain at least one special character (!@#$%^&*)'
+      ),
+  });
 
   return (
     <>
@@ -51,7 +73,7 @@ const Signin = () => {
             username:values.username, 
             password:values.password,
           });
-
+          validationSchema={validationSchema}
           console.log(values);
         }}
       >
@@ -64,13 +86,22 @@ const Signin = () => {
           name="username"
           placeholder="Preferably your social media one"
         />
+        <ErrorMessage name="username" component="small" className="error-message" />
         <label>Password</label>
+        <div className='input__div'>
         <Field
-          className="input"
-          type="password"
+          className="inputxyz"
+          type={showPassword ? 'text' : 'password'}
           name="password"
           placeholder="*******"
         />
+        <button
+          type="button"
+          className="password-toggle-button"
+          onClick={togglePasswordVisibility}
+        >{showPassword ? <AiOutlineEyeInvisible/> : <AiOutlineEye/>}</button>
+        </div>
+        <ErrorMessage name="password" component="small" className="error-message" />
       <button className='input' type="submit" >Proceed</button>
         </Form>
       </Formik>

@@ -29,6 +29,7 @@ import WriteBlog from './components/Blog/WriteBlog'
 import Verify from './components/Modals/Verification'
 import StepperForm from './components/Modals/StepperForm'
 import {QueryClient, QueryClientProvider} from 'react-query';
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const queryClient = new QueryClient();
@@ -63,7 +64,7 @@ const App = () => {
         <Route path='verify' element={<Verification />} />
         <Route path='signin' element={<Signin/>} />
         <Route path='interest' element={<Interest/>} />
-        <Route path='/personal/:id' element={<PersonalAccount/>} />
+        <Route path='/personal' element={<PersonalAccount/>} />
         <Route path='/checkout' element={<CheckOut/>} />
         <Route path='/writeblog' element={<WriteBlog/>} />
         <Route path='/verification' element={<Verify/>} />

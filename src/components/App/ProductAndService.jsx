@@ -1,87 +1,52 @@
-import React, { useState } from 'react';
-import { productsandservice } from '../../data';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { getBusinessById } from '../../apis/BusinessApi';
+import  Logo from '../../assets/pplogo.png'
 
 const ProductAndService = () => {
+   const { id } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
+  const [loading, setLoading] = useState(true); 
 
-  const handleNextPage = () => {
-    setCurrentPage(currentPage + 1);
-  };
 
-  const handlePrevPage = () => {
-    setCurrentPage(currentPage - 1);
-  };
+  const [business, setBusiness] = useState(null);
 
-  const handleClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  useEffect(() => {
+    const fetchBusiness = async () => {
+      try {
+        const businessData = await getBusinessById({ id });
+        setBusiness(businessData);
+         setLoading(false);
+      } catch (error) {
+        console.error('Error fetching business:', error);
+      }
+    };
 
-  const renderPageNumbers = () => {
-    const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(productsandservice.length / productsPerPage); i++) {
-      pageNumbers.push(i);
-    }
+    fetchBusiness();
+  }, [id]);
 
-    let startPage, endPage;
-    if (currentPage <= 2) {
-      startPage = 1;
-      endPage = 3;
-    } else if (currentPage >= pageNumbers.length - 1) {
-      startPage = pageNumbers.length - 2;
-      endPage = pageNumbers.length;
-    } else {
-      startPage = currentPage - 1;
-      endPage = currentPage + 1;
-    }
-
-    return (
-      <div className="paginationx">
-        <button disabled={currentPage === 1} onClick={handlePrevPage} className={currentPage === 1 ? 'disabled' : null}>Prev</button>
-        {startPage > 1 && <button onClick={() => handleClick(1)}>1</button>}
-        {startPage > 2 && <span className="ellipsis">...</span>}
-        {pageNumbers.slice(startPage - 1, endPage).map(number => (
-          <button
-            key={number}
-            onClick={() => handleClick(number)}
-            className={currentPage === number ? 'active' : null}
-          >
-            {number}
-          </button>
-        ))}
-        {endPage < pageNumbers.length - 1 && <span className="ellipsis">...</span>}
-        {endPage < pageNumbers.length && (
-          <button onClick={() => handleClick(pageNumbers.length)}>{pageNumbers.length}</button>
-        )}
-        <button disabled={currentPage === pageNumbers.length} onClick={handleNextPage} className={currentPage === pageNumbers.length ? 'disabled' : null}>Next</button>
-      </div>
-    );
-  };
-
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = productsandservice.slice(indexOfFirstProduct, indexOfLastProduct);
+  if (loading) {
+    return <div className='spinner_container'>
+      <img src={Logo} />
+    </div>;
+  }
 
   return (
-    <div className="productandservice__container">
-      <div className="productandservice__wrapper">
-        {currentProducts.map(({ id, icon, price, name, frame }) => {
-          return (
-            <div className="productandservice__value" key={id}>
-              <img src={icon} alt="icon" />
-              <Link to={`/singleproduct/${id}`}>
-                <small>{name}</small>
-              </Link>
-              <p>₦{price}.00</p>
-              <img className="frame" src={frame} alt="" />
-            </div>
-          );
-        })}
-      </div>
-      {renderPageNumbers()}
+  <div className="productandservice__container">
+    <div className="productandservice__wrapper">
+      {business.products.map((product, index) => (
+        <div className="productandservice__value" key={index}>
+          <img src={`https://api.usepurplepages.com/${product.image}`} alt="Product Icon" />
+          <Link to={`/singleproduct/${product.id}`}>
+            <small>{product.caption}</small>
+          </Link>
+          <p>₦{product.price}.00</p>
+        </div>
+      ))}
     </div>
-  );
+  </div>
+);
 };
 
 export default ProductAndService;

@@ -163,6 +163,13 @@
     font-family: "ClashDisplay-Bold";
     color: #BDBDBD;
     font-size: 54px;
+    background: transparent;
+    margin-bottom: 40px;
+}
+
+.write-blog__title__label::placeholder{
+    font-family: "ClashDisplay-Bold";
+    color: #BDBDBD;
 }
 /*==================blog detail======================*/
 .blog__detail{

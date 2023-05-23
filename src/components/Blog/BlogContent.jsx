@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getBlogs } from '../../apis/BlogApis';
 import Write from '../../assets/write.png';
+import  Logo from '../../assets/pplogo.png';
 
 
 const MAX_DETAIL_LENGTH = 150; 
@@ -15,6 +16,7 @@ const truncateText = (text) => {
 
 const BlogContent = () => {
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -22,6 +24,7 @@ const BlogContent = () => {
         const response = await getBlogs({ pageParam: 0 });
         const { blogs } = response;
         setBlogs(blogs);
+        setLoading(false);
       } catch (error) {
         console.log('Error fetching blogs:', error);
       }
@@ -29,6 +32,12 @@ const BlogContent = () => {
 
     fetchBlogs();
   }, []);
+
+  if (loading) {
+    return <div className='spinner_container'>
+      <img src={Logo} />
+    </div>;
+  }
 
   return (
     <div className="blog container">
@@ -52,7 +61,7 @@ const BlogContent = () => {
                 </Link>
                 <small>{truncateText(detail)}</small>
                 <div className="blog__bottom">
-                  <img src={owner.image} alt="author" />
+                  <img src={`https://api.usepurplepages.com/${owner.image}`} alt="author" />
                   <div className="blog__bottom-detail">
                     <p>{owner.name}</p>
                     {/* Add the appropriate date property from the blog object */}

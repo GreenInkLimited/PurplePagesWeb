@@ -62,6 +62,47 @@
     height: 5px;
 }
 
+.inputing {
+    width: 100%;
+    height: 25px;
+    padding: 7px;
+    outline: none;
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+    border-radius: 5px;
+    align-items: flex-end;
+    border: 1px solid rgb(220, 220, 220);
+}
+
+.inputingxyz {
+    width: 100%;
+    height: 25px;
+    outline: none;
+    border-right: 1px solid rgb(220, 220, 220);
+    border: 1px solid rgb(220, 220, 220);
+    border-left: none;
+    margin-right: 10px;
+}
+
+.password__setmodal_button{
+    background: transparent;
+}
+
+.input__divx {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 25px;
+    padding: 7px;
+    outline: none;
+    margin-bottom: 16px;
+    border-radius: 5px;
+    border: 1px solid rgb(220, 220, 220);
+}
+
 
 .tabs__user-information {
     display: grid;
@@ -77,6 +118,27 @@
 .tabs__user-information .icon {
     color: var(--color-secondary);
     margin-right: 18px;
+}
+
+.account__settings-save {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.account__settings-save .cancel{
+    background-color: transparent;
+    border: 1px solid #BDBDBD;
+    padding: 8px 12px 8px 12px;
+    border-radius: 8px;
+}
+
+.account__settings-save .edit_icon{
+    background-color: #650585;
+    border: 1px solid #650585;
+    padding: 8px 12px 8px 12px;
+    border-radius: 8px;
+    color: #FFFFFF;
 }
 
 .tabs__user-information .location {
@@ -164,6 +226,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 50px;
 }
 
 .account__settings--right p{
@@ -179,7 +242,7 @@
 
 
 .business__account-header{
-   
+   width: 100%;
     margin-bottom: 20px;
     flex-direction: row;
 }
@@ -346,7 +409,6 @@
 .userprofile__infor-wrapper .subscribe {
     display: flex;
     margin-right: 150px;
-    
 }
 
 
@@ -452,7 +514,6 @@
 /*===============================tabs=============*/
 
 .user__utab__content {
-    
     width: 100%;
     display: none;
 }
@@ -478,7 +539,6 @@
 
 .user__utab__content p {
     width: 80%;
-
 }
 
 .active-user__utab__content {
@@ -528,7 +588,6 @@
 
 
 .user__productandservice__container {
-
     flex-direction: row;
     margin-top: 40px;
     width: 90%;

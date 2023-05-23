@@ -17,8 +17,8 @@ const Profile = () => {
             return (
             <div className='profile__body'>
         
-                <Link to={`/personal/${id}`}>
-            <div className='profile__content-new' key={id}>
+                <Link to={`/personal/`}>
+            <div className='profile__content-new'>
                 
                 <img className='user' src={User} alt="icon" />                
                 <div className='profile__content-left'>

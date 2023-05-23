@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AiOutlineLike, AiOutlineShareAlt } from 'react-icons/ai';
 import { BsBookmark } from 'react-icons/bs';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import Comment from '../../assets/comment.png';
 import { getBlogById, getBlogs } from '../../apis/BlogApis';
-import Blog from '../../assets/BlogHeader1.png';
-import Autor from '../../assets/Autor3.png';
-import { Link } from 'react-router-dom';
+import  Logo from '../../assets/pplogo.png';
 
 const MAX_DETAIL_LENGTH = 150; 
 
@@ -23,12 +20,14 @@ const BlogDetail = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlog = async () => {
       try {
         const blogData = await getBlogById(id);
         setBlog(blogData);
+         setLoading(false);
       } catch (error) {
         console.error('Error fetching blog:', error);
       }
@@ -51,8 +50,10 @@ const BlogDetail = () => {
     fetchBlogs();
   }, []);
 
-  if (!blog) {
-    return <div>Loading...</div>;
+  if (loading) {
+    return <div className='spinner_container'>
+      <img src={Logo} />
+    </div>;
   }
 
   const formattedDate = new Date(blog.date).toLocaleDateString('en-US', {
@@ -69,7 +70,7 @@ const BlogDetail = () => {
       <div className="blog__detail-header">
         <h2>{blog.title}</h2>
         <div className='blog__bottom'>
-                    <img src={blog.owner.image} alt="autor" />
+                    <img src={`https://api.usepurplepages.com/${blog.owner.image}`} alt="autor" />
                     <div className="blog__bottom-detail">
                         <p>{blog.owner.name}</p>
                         <small>{formattedDate}</small>

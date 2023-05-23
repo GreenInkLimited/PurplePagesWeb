@@ -32,6 +32,13 @@
     display: none;
 }
 
+.my__nav__links .active {
+    background-color: #650585;
+    color: #ffffff;
+    padding: 4px 12px 4px 12px;
+    border-radius: 16px;
+}
+
 .nav__containers {
     height: 100%;
         display: flex;

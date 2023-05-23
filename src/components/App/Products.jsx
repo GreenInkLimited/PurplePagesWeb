@@ -2,28 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { getBusiness } from '../../apis/BusinessApi';
 import { ImStarEmpty, ImStarFull, ImStarHalf } from 'react-icons/im';
 import { Link } from 'react-router-dom';
-
+import  Logo from '../../assets/pplogo.png'
 
 const Products = () => {
   const [business, setBusiness] = useState([]);
-  const [showCount, setShowCount] = useState(8); // initialize state with 12 products to show
+  const [showCount, setShowCount] = useState(8); 
+  const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
-  const fetchBusiness = async () => {
-    try {
-      const response = await getBusiness({ pageParam: 0 });
-      setBusiness(response); // Set the business state with the fetched data
-    } catch (error) {
-      console.log('Error fetching business:', error);
-    }
-  };
-
-  fetchBusiness();
-}, []);
+    const fetchBusiness = async () => {
+      try {
+        const response = await getBusiness({ pageParam: 0 });
+        setBusiness(response);
+        setLoading(false);
+      } catch (error) {
+        console.log('Error fetching business:', error);
+      }
+    };
+    fetchBusiness();
+  }, []);
 
   const handleLoadMore = () => {
-    setShowCount(prevCount => prevCount + 8); // update the state to show 12 more products
+    setShowCount(prevCount => prevCount + 8);
   };
+
+  if (loading) {
+    return <div className='spinner_container'>
+      <img src={Logo} />
+    </div>;
+  }
 
   return (
     <section className='product'>
@@ -40,7 +48,7 @@ const Products = () => {
 
               return (
                 <div className='product__value' key={id}>
-                  <img src={image} alt='icon' />
+                  <img src={`https://api.usepurplepages.com/${image}`} alt='icon' />
                   <Link to={`/business/${id}`}>
                     <h4>{name}</h4>
                   </Link>
@@ -59,13 +67,12 @@ const Products = () => {
               );
             })}
           </div>
-          
         </div>
         {showCount < business.length && (
-            <div className='product__load-more'>
-              <button onClick={handleLoadMore}>Load More....</button>
-            </div>
-          )}
+          <div className='product__load-more'>
+            <button onClick={handleLoadMore}>Load More....</button>
+          </div>
+        )}
       </div>
     </section>
   );

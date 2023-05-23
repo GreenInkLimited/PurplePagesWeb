@@ -1,5 +1,5 @@
-import React from 'react';
-import { productsandservice } from '../../data';
+import React, {useState, useEffect} from 'react';
+import { getProductById } from '../../apis/BusinessApi';
 import { Link, useParams } from 'react-router-dom';
 import Frame from '../../assets/Frame.png';
 import ExternalLinkLine from '../../assets/ExternalLinkLine.png';
@@ -8,35 +8,57 @@ import Share from '../../assets/Share.png';
 import bookmark from '../../assets/bookmark.png';
 import MoreProducts from './MoreProducts';
 import SuggestedProducts from './SuggestedProducts';
+import  Logo from '../../assets/pplogo.png'
 
 const SingleProduct = () => {
     const { id } = useParams();
-    const event = productsandservice.find(event => event.id === parseInt(id));
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const productData = await getProductById(id);
+        setProduct(productData);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+
+  if (loading) {
+    return <div className='spinner_container'>
+      <img src={Logo} />
+    </div>;
+  }
   return (
     <div className='container singleproduct__detail'>
      
         
         <div className='singleproduct-content'>
           <div className='singleproduct-left'>
-            <img src={event.icon} />
+            <img src={product.image} alt="product"/>
           </div>
           <div className='singleproduct-right'>
             <div className='singleproduct__right-header'>
-            <h3>{event.name}</h3>
+            <h3>{product.caption}</h3>
             <img src={ExternalLinkLine} />
             </div>
-            <h4 className='singleproduct'>₦{event.price}.00</h4>
-            <img className='frame' src={Frame} alt="" />
+            <h4 className='singleproduct'>₦{product.price}.00</h4>
+            <img className='frame' src={Frame} alt="frame" />
             <div className="product__desc">
                 <h5 className='product__desc__header'>Product Details</h5>
-                <p>Lorem ipsum dolor sit amet consectetur. Convallis facilisis pellentesque aliquam integer massa non lectus. Facilisis odio diam sed nibh vivamus sed. Placerat risus viverra adipiscing.</p>
+                <p>{product.detail}</p>
             </div>
 
             <div className="singlepotter__bottom">
                 <div className="singlepotter__bottom_left">
                     <img src={SingleProfile} />
                     <div>
-                    <h5>Purple Closet</h5>
+                    <h5>{product.owner.name}</h5>
                     <small>1.24k subscribers</small>
                     </div>
                 </div>
