@@ -38,7 +38,7 @@ const AdsContent = () => {
               return (
                 <div key={id}>
                 <div className="ads__value" >
-                  <img src={`https://api.usepurplepages.com/${image}`} alt="icon" />
+                  <img className="ads__value-img" src={`https://api.usepurplepages.com/${image}`} alt="icon" />
                   <div className='ads__bottom'>
                     <img src={`https://api.usepurplepages.com/${owner.image}`} alt="autor" />
                     <div className="ads__bottom-detail">

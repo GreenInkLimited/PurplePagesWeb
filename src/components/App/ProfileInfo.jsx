@@ -39,7 +39,7 @@ const ProfileInfo = () => {
 
   return (
     <div>
-      <Header title="" image={`https://api.usepurplepages.com/${business.image}`} />
+      <Header title="" image={`https://api.usepurplepages.com/${business.image}`} style={{ width: '292px', height: '402px', objectFit: 'cover' }}/>
       <div className='container profile__container'>
         <div className='profile__infor-wrapper'>
           <div className='profile__info-left'>

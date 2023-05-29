@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { AiOutlineLike, AiOutlineShareAlt } from 'react-icons/ai';
-import { BsBookmark } from 'react-icons/bs';
+import { AiOutlineLike, AiOutlineShareAlt, AiFillLike } from 'react-icons/ai';
+import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import Comment from '../../assets/comment.png';
-import { getBlogById, getBlogs } from '../../apis/BlogApis';
-import  Logo from '../../assets/pplogo.png';
+import { getBlogById, getBlogs, AddBlogComment, AddBlogLike, getBlogLikes } from '../../apis/BlogApis';
+import { AddBlogWishlist } from '../../apis/WishlistApis';
+import Logo from '../../assets/pplogo.png';
 
-const MAX_DETAIL_LENGTH = 150; 
+const MAX_DETAIL_LENGTH = 150;
 
 const truncateText = (text) => {
   if (text.length <= MAX_DETAIL_LENGTH) {
@@ -21,13 +22,18 @@ const BlogDetail = () => {
   const [blog, setBlog] = useState(null);
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [commentText, setCommentText] = useState('');
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     const fetchBlog = async () => {
       try {
         const blogData = await getBlogById(id);
         setBlog(blogData);
-         setLoading(false);
+        const likedStatus = JSON.parse(localStorage.getItem('likedStatus'));
+        setIsLiked(likedStatus || blogData.isLiked); // Update the isLiked state
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching blog:', error);
       }
@@ -51,9 +57,11 @@ const BlogDetail = () => {
   }, []);
 
   if (loading) {
-    return <div className='spinner_container'>
-      <img src={Logo} />
-    </div>;
+    return (
+      <div className='spinner_container'>
+        <img src={Logo} alt="Logo" />
+      </div>
+    );
   }
 
   const formattedDate = new Date(blog.date).toLocaleDateString('en-US', {
@@ -62,103 +70,143 @@ const BlogDetail = () => {
     year: 'numeric',
   });
 
-  
+  const handleAddToWishlist = async () => {
+    try {
+      await AddBlogWishlist({ blog_id: id });
+      setIsBookmarked(true);
+    } catch (error) {
+      console.error('Error adding blog to wishlist:', error);
+    }
+  };
 
-  
+  const handleCommentChange = (e) => {
+    setCommentText(e.target.value);
+  };
+
+  const handlePostComment = async () => {
+    try {
+      await AddBlogComment({ blog_id: id, comment: commentText });
+      // Optionally, you can fetch the updated blog data to refresh the comments section
+      const blogData = await getBlogById(id);
+      setBlog(blogData);
+      setCommentText(''); // Clear the comment textarea
+    } catch (error) {
+      console.error('Error posting comment:', error);
+    }
+  };
+
+  const handleLikeBlog = async () => {
+    try {
+      await AddBlogLike({ blog_id: id });
+      const updatedLikedStatus = !isLiked; // Calculate the updated liked status
+
+      // Update the isLiked state
+      setIsLiked(updatedLikedStatus);
+
+      // Store the liked status in localStorage
+      localStorage.setItem('likedStatus', JSON.stringify(updatedLikedStatus));
+
+      // Optionally, you can fetch the updated blog data to refresh the like count
+      const updatedBlogData = await getBlogById(id);
+      setBlog(updatedBlogData);
+    } catch (error) {
+      console.error('Error liking blog:', error);
+    }
+  };
+
   return (
     <div className='container blog__detail'>
       <div className="blog__detail-header">
         <h2>{blog.title}</h2>
         <div className='blog__bottom'>
-                    <img src={`https://api.usepurplepages.com/${blog.owner.image}`} alt="autor" />
-                    <div className="blog__bottom-detail">
-                        <p>{blog.owner.name}</p>
-                        <small>{formattedDate}</small>
-                    </div>
-                </div>
+          <img src={`https://api.usepurplepages.com/${blog.owner.image}`} alt="autor" />
+          <div className="blog__bottom-detail">
+            <p>{blog.owner.name}</p>
+            <small>{formattedDate}</small>
+          </div>
+        </div>
       </div>
       <div className='blog__detail-content'>
-        <img src={blog.image} />
+        <img src={blog.image} alt="Blog" />
       </div>
       <div className='blog__body'>
         <div className="blog__body_left">
-        <p>{blog.detail}</p>
-        <div className='blog__tags'>
-          {blog.tags.split(',').map((tag, index) => (
+          <p>{blog.detail}</p>
+          <div className='blog__tags'>
+            {blog.tags.split(',').map((tag, index) => (
               <p key={index}>{tag.trim()}</p>
             ))}
-        </div>
-        <div className='blog__actions'>
-          <div className="blog__actions-left">
-            <AiOutlineLike />
-            <p>12</p>
           </div>
-          <div className="blog__actions-right">
-            <BsBookmark />
-            <AiOutlineShareAlt />
-          </div>
-        </div>
-        <div className='comment__flexbox'>
-
-          <textarea placeholder='leave a comment' className='input-box'/>
-          <button className='post'>Post</button>
-        </div>
-        <div className="blog__recent-post">
-          <div className="recent__postx-header">
-          <h4>MOST RECENT</h4>
-          <RiArrowDropDownLine />
-          </div>
-          <div className="blog__comment-body">
-          <img src={Comment} />
-          <div>
-            <p>Purplepages01</p>
-            <div className="reply__comment">
-            <small>Love this piece, so informative. Keep it up purple closet👏</small>
-            
-              <p>Reply</p>
+          <div className='blog__actions'>
+            <div className="blog__actions-left" onClick={handleLikeBlog}>
+              {isLiked ? <AiFillLike /> : <AiOutlineLike />}
+              <p>12</p>
+            </div>
+            <div className="blog__actions-right">
+              <div onClick={handleAddToWishlist}>
+                {isBookmarked ? ( // Render filled bookmark icon if isBookmarked is true
+                  <BsBookmarkFill />
+                ) : (
+                  <BsBookmark /> // Otherwise, render regular bookmark icon
+                )}
+              </div>
+              <AiOutlineShareAlt />
             </div>
           </div>
-        </div>
-        <div className="blog__comment-body">
-          <img src={Comment} />
-          <div>
-            <p>Purplepages01</p>
-            <div className="reply__comment">
-            <small>Love this piece, so informative. Keep it up purple closet👏</small>
-            
-              <p>Reply</p>
+          <div className='comment__flexbox'>
+            <textarea
+              placeholder='Leave a comment'
+              className='input-box'
+              value={commentText}
+              onChange={handleCommentChange}
+            />
+            <button className='post' onClick={handlePostComment}>Post</button>
+          </div>
+          <div className="blog__recent-post">
+            <div className="recent__postx-header">
+              <h4>MOST RECENT</h4>
+              <RiArrowDropDownLine />
+            </div>
+            {blog.comments.map((comment, index) => (
+          <div className="blog__comment-body" key={index}>
+            <img src={`https://api.usepurplepages.com/${comment.image}`} alt="Comment" />
+            <div>
+              <p>{comment.name}</p>
+              <div className="reply__comment">
+                <small>{comment.comment}</small>
+                <p>Reply</p>
+              </div>
             </div>
           </div>
-        </div>
-        </div>
+        ))}
+          </div>
         </div>
         <div>
-        {blogs.map(({ id, image, detail, title, owner, date}) => {
+          {blogs.map(({ id, image, detail, title, owner, date }) => {
             const createdDate = new Date(date);
             const options = { month: 'long', day: 'numeric', year: 'numeric' };
             const formattedDate = createdDate.toLocaleDateString('en-US', options);
-          return (
-        <div className="blog__body__right" key={id}>
-          
-          <img src={image}  alt="image"/>
-          <Link to={`/appblog/${id}`}>
-          <h4>{title}</h4>
-          </Link>
-          <p>{truncateText(detail)}</p>
-          <div className='blog__body__autor'>
-            <img  src={owner.image} alt="author" />
-            <div>
-            <p>{owner.name}</p>
-            <small>{formattedDate}</small>
-            </div>
-          </div>
-        </div>
-        );
+            return (
+              <div className="blog__body__right" key={id}>
+                <img src={image} alt="image" />
+                <Link to={`/appblog/${id}`}>
+                  <h4>{title}</h4>
+                </Link>
+                <p>{truncateText(detail)}</p>
+                <div className='blog__body__autor'>
+                  <img src={`https://api.usepurplepages.com/${owner.image}`} alt="author" />
+                  <div>
+                    <p>{owner.name}</p>
+                    <small>{formattedDate}</small>
+                  </div>
+                </div>
+              </div>
+            );
           })}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BlogDetail
+export default BlogDetail;

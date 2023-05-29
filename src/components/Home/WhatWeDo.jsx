@@ -7,8 +7,10 @@ import SectionHead from '../SectionHead';
 const WhatWeDo = () => {
   return (
     <div className='values container'> 
-        
-            <SectionHead title="What we do at Purple Pages" paragraph="We offer SMEs a stack of digital marketing services they need to optimize business growth and productivity."/>
+            <h2 className="values__header">What we do at Purple Pages</h2>
+            <div className="values__paragraph-container">
+            <p className="values__paragraph">We offer SMEs a stack of digital marketing services they need to optimize business growth and productivity.</p>
+            </div>
            <div className="values__container">
             <div className="values__left">
                 <div className="values__image">

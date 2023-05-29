@@ -19,6 +19,8 @@
         url("./fonts/avenir-lt-85-heavy.ttf") format("truetype");
 }
 
+@import url('https://fonts.cdnfonts.com/css/clash-display');
+
 *, *::before, *::after{
     margin: 0;
     padding: 0;
@@ -84,7 +86,7 @@ small {
 
 h2 {
     font-size: 2rem;
-    font-family: 'ClashDisplay-Bold', sans-serif;
+    font-family: 'Clash Display', sans-serif;
 }
 
 a {
@@ -285,6 +287,9 @@ position: relative;
 
 .header__content h2 {
     color: var(--color-white);
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    font-size: 56px;
 }
 
 .community__size-container {
@@ -373,7 +378,9 @@ position: relative;
             padding-bottom: 5rem;
         }
         .header__container .header__container-bg img{
-            height: 1500px;
+            height: 114px;
+            width: 100%;
+            object-fit: cover;
         }
     
         .community__size-container {

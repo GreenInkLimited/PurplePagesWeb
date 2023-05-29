@@ -6,7 +6,7 @@ const Explore = () => {
     return (
     <section className='explore'> 
         <div className="container">
-            <h2>Explore by Category</h2>
+            <h2 className='trending__categories'>Explore by Category</h2>
             <div className="explore__container">
                 <div className='explore__wrapper'>
                     {

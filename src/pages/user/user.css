@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/clash-display');
 /*====================tabs========================================*/
 .user-container {
     display: flex;
@@ -902,6 +903,84 @@
     width: 20px;
     height: 18px;
 }
+
+/*===============create business===============================*/
+
+.create__business-container {
+    position: fixed;
+    width: 600px;
+    top: 5.5rem;
+    right: 5rem;
+    max-height: calc(100vh - 6.5rem);
+    overflow-y: auto;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 6px 12px rgba(41, 41, 41, 0.08);
+    padding: 40px;
+}
+
+.create__business__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.create__business__row input {
+    display: flex;
+    width: 240px;
+}
+
+.create__business-header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
+.create__business-detail{
+    text-align: center;
+    display: flex;
+    width: 100%;
+    justify-self: center;
+    justify-content: center;
+}
+
+.upload__file-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #848484;
+    height: 90px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.upload__cac-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #848484;
+    height: 70px;
+    width: 70px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+.uploaded-image{
+    width: 60px;
+    height: 60px;
+}
+
+
+.create__business-detail h4{
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+
 
 /*=============== media queries (small screens)================*/
 @media screen and (max-width:600px) { 

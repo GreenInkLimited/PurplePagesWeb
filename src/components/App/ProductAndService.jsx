@@ -37,7 +37,9 @@ const ProductAndService = () => {
     <div className="productandservice__wrapper">
       {business.products.map((product, index) => (
         <div className="productandservice__value" key={index}>
-          <img src={`https://api.usepurplepages.com/${product.image}`} alt="Product Icon" />
+          <img 
+          
+          className="productandservice__value-img" src={`https://api.usepurplepages.com/${product.image}`} alt="Product Icon" />
           <Link to={`/singleproduct/${product.id}`}>
             <small>{product.caption}</small>
           </Link>

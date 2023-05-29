@@ -3,7 +3,6 @@ import AppNavbar from '../../components/AppNavBar'
 import SingleProduct from '../../components/App/SingleProduct'
 import './apphome.css'
 import Footer from '../../components/Footer'
-import Filter from '../../components/App/Filter'
 
 const Home = () => {
   return (

@@ -8,7 +8,7 @@ const TrendingEvents = () => {
   return (
     <section className='trending__events'> 
         <div className="container">
-           <h2>Trending Events</h2>
+           <h2 className='trending__categories'>Trending Events</h2>
            <div className="trending__events__container">
             
            

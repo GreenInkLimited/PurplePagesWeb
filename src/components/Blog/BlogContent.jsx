@@ -5,7 +5,7 @@ import Write from '../../assets/write.png';
 import  Logo from '../../assets/pplogo.png';
 
 
-const MAX_DETAIL_LENGTH = 150; 
+const MAX_DETAIL_LENGTH = 50; 
 
 const truncateText = (text) => {
   if (text.length <= MAX_DETAIL_LENGTH) {
@@ -35,7 +35,7 @@ const BlogContent = () => {
 
   if (loading) {
     return <div className='spinner_container'>
-      <img src={Logo} />
+      <img src={Logo} alt="logo"/>
     </div>;
   }
 
@@ -55,17 +55,19 @@ const BlogContent = () => {
             const formattedDate = createdDate.toLocaleDateString('en-US', options);
             return (
               <div className="blog__value" key={id}>
-                <img src={image} alt="icon" />
+                <img className="blog__value-img" src={image} alt="icon" />
+                <div className="blog__value___bodies">
                 <Link to={`/appblog/${id}`}>
                   <h2>{title}</h2>
                 </Link>
-                <small>{truncateText(detail)}</small>
+                <small className='small'>{truncateText(detail)}</small>
                 <div className="blog__bottom">
-                  <img src={`https://api.usepurplepages.com/${owner.image}`} alt="author" />
+                  <img className="blog__value___bodies-img" src={`https://api.usepurplepages.com/${owner.image}`} alt="author" />
                   <div className="blog__bottom-detail">
                     <p>{owner.name}</p>
                     {/* Add the appropriate date property from the blog object */}
                     <small>{formattedDate}</small>
+                  </div>
                   </div>
                 </div>
               </div>

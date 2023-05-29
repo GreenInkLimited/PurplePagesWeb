@@ -137,6 +137,10 @@ button {
 }
 
 /*=========================product wishlist==========================*/
+.productwishlist__container{
+    margin-bottom: 120px;
+}
+
 
 .productwishlist__value{
     display: flex;
@@ -148,11 +152,31 @@ button {
     margin-bottom: 20px;
 }
 
-.blogpost__bottom img{
+
+.empity-productwishlist__container{
     display: flex;
-    width: 30px;
-    height: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
 }
+
+.empity-productwishlist__container h4{
+    font-family: "avenir-lt-85-heavy";
+    font-weight: 700;
+    font-size: 28px;
+    color: #430359;
+}
+
+.empty__wishlist{
+    background-color: #430359;
+    color: #ffffff;
+    padding: 8px 12px 8px 12px;
+    border-radius: 8px;
+    font-family: "avenir-lt-45-book";
+    margin-top: 40px;
+}
+
 
 .blogpost__body{
     display: flex;
@@ -164,6 +188,7 @@ button {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 44px;
 }
 
 .productwishlist__left p{
@@ -182,15 +207,20 @@ button {
     
 }
 
-.blogpostswishlist__value img{
+
+
+.blogpostswishlist__value-img{
     width: 250px;
-    height: 150px;
+    height: 188px;
+    border-radius: 8px;
     margin-right: 10px;
+    object-fit: cover;
 }
 
 .blog__postwishlist-detail p{
     color: #C7005C;
-    font-size: 12px;
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
 .blog__postwishlist-detail small{
@@ -222,6 +252,8 @@ button {
 .productwishlist__right img{
     width: 250px;
     height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .blog-productwishlist__right{
@@ -260,13 +292,22 @@ button {
     justify-content: space-between;
 }
 
-.blogpost-title{
-    font-family: "avenir-lt-85-heavy";
+.blogpost__bottom-img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50px;
 }
 
-.blogpost__bottom img{
-    width: 30px;
+.blogpost-title{
+    font-family: "avenir-lt-85-heavy";
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    
 }
+
+
 
 .blogpost__bottom-mobile{
     display: none;

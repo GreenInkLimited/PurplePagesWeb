@@ -48,7 +48,7 @@ const Products = () => {
 
               return (
                 <div className='product__value' key={id}>
-                  <img src={`https://api.usepurplepages.com/${image}`} alt='icon' />
+                  <img className='product__value-img' src={`https://api.usepurplepages.com/${image}`} alt='icon' />
                   <Link to={`/business/${id}`}>
                     <h4>{name}</h4>
                   </Link>

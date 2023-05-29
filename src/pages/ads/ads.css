@@ -7,6 +7,7 @@
     display: grid;
     gap: 5%;
     margin-top: 5rem;
+    margin-bottom: 233px;
 }
 
 .recent__post-header-mobile {
@@ -22,6 +23,13 @@
 .ads__value {
     align-items: center;
     border-radius: 10px;
+}
+
+.ads__value-img{
+    width: 292px;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 15px;
 }
 
 .ads__wrapper p {

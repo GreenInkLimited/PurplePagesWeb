@@ -6,14 +6,12 @@ import Footer from '../../components/Footer';
 import Categories from '../../components/Events/Categories';
 import TrendingEvents from '../../components/Events/TrendingEvents';
 import Explore from '../../components/Events/Explore';
-import HostEvent from '../../components/Events/HostEvent';
 import search from '../../assets/search.png'
 import Navbar from '../../components/Navbar';
 import { Link } from 'react-router-dom';
-import Modal from '../../components/Modals/Modal';
 import HostEventModal from '../../components/Modals/HostEventModal';
 
-const Events = () => {
+const Events = () => { 
   const [openModal, setOpenModal] = useState(false)
   return (
     <>
@@ -21,10 +19,10 @@ const Events = () => {
           <HostEventModal closeModal={setOpenModal}/>
           }
     <Navbar />
-    <Header  title="Find your next event" image={HeaderImage}>
+    <Header  title="FIND YOUR NEXT EVENT" image={HeaderImage}>
         <div className="event__searchContainer">
             <div className="event__search">
-                <input className='inputing' placeholder='Artist, event, location, category, speaker'/>
+                <input className='inputingxxx' placeholder='Artist, event, location, category, speaker'/>
                 <div className="event__search__bg">
                 <img src={search}  className="event__search__icon"/>
                 </div>
