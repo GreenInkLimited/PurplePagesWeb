@@ -14,7 +14,7 @@
 .product__wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1rem 1rem;
+    gap: 24px 24px;
     font-family: "avenir-lt-45-book";
 }
 
@@ -25,7 +25,7 @@
 }
 
 .product__value img{
-    width: 292px;
+   
     height: 190px;
     object-fit: cover;
     border-radius: 15px;
@@ -100,7 +100,8 @@
 .profile__info-img{
     height: 150px;
     width: 150px;
-    border-radius: 150px;
+    border-radius: 150%;
+    object-fit: cover;
 }
 
 .profile__category {
@@ -137,7 +138,7 @@
 
     padding: 15px;
     text-align: center;
-    width: 10%;
+    width: 12%;
     cursor: pointer;
     outline: none;
     display: flex;
@@ -168,7 +169,7 @@
     top: -5px;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(100% + 2px);
+    width: calc(100% + 5px);
     height: 5px;
 }
 
@@ -330,7 +331,7 @@ button {
 .productandservice__wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1rem 1rem;
+    gap: 24px 24px;
     font-family: "avenir-lt-45-book";
 }
 
@@ -352,7 +353,7 @@ button {
 
 .productandservice__value-img{
     height: 190px;
-    width: 292px;
+    
     object-fit: cover;
     border-radius: 15px;
     margin-bottom: 12px;
@@ -444,6 +445,45 @@ button {
     margin-bottom: 10px;
 }
 
+.review__header-sub{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.review__header-sub p{
+    font-size: 16px;
+}
+
+.review__business-container {
+    position: fixed;
+    width: 415px;
+    height: 441px;
+    top: 5.5rem;
+    right: 5rem;
+    overflow-y: auto;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 6px 12px rgba(41, 41, 41, 0.08);
+    padding: 40px;
+}
+
+.review__header-sub-icon{
+    cursor: pointer;
+}
+
+.star-icon-selected{
+    color: #FFBF00;
+}
+
+.review__body-rating-sub{
+    margin-top: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
 
 /*==============================progress=====================*/
 
@@ -501,6 +541,10 @@ button {
     transition: 1s ease 0.3s;
 }
 
+.show__dot-mobile{
+    display: none;
+}
+
 /*==================single product======================*/
 .singleproduct__detail {
     margin-top: 7rem;
@@ -516,21 +560,40 @@ button {
 
 
 .singleproduct-content {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    justify-content: space-between;
+    display: flex;
+    gap: 60px;
+    width: 100%;
+    
+
 }
 
+
+.singleproduct__right-header img{
+    display: flex;
+    
+    align-self: flex-end;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+}
 .singleproduct-right {
     align-items: center;
+    width: 100%;
 }
-
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    /* Adjust the margin as needed */
+}
 .singleproduct-right h4 {
     font-family: "avenir-lt-45-book";
     font-size: 16px;
     margin-top: 4px;
     margin-bottom: 4px;
 }
+
+
 
 .singleproduct__right-header{
     display: flex;
@@ -541,6 +604,7 @@ button {
 .singleproduct__right-header img{
     width: 24px;
     height: 24px;
+    object-fit: cover;
 }
 
 .singleproduct-right h3 {
@@ -581,6 +645,8 @@ button {
     width: 40px;
     height: 40px;
     margin-right: 10px;
+    border-radius: 40px;
+    object-fit: cover;
 }
 
 .singlepotter__bottom_left h5{
@@ -606,6 +672,8 @@ button {
         height: 24px;
 }
 
+
+
 /*======================more products===============*/
 
 .productandservice__container h3{
@@ -615,7 +683,7 @@ button {
 }
 
 .framex{
-    width: 292px;
+    
     height: 190px;
     object-fit: cover;
     border-radius: 15px;
@@ -749,7 +817,7 @@ button {
     flex-direction: row;
     
     justify-content: space-between;
-    gap: 10px;
+    gap: 4px;
 }
 
 .profile__info_body .rating{
@@ -771,12 +839,17 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.review__container {
+    margin-top: 20px;
 }
 
 .reviews__tab h4{
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .reviews__tab .subscribe{
@@ -875,6 +948,10 @@ button {
 .productandservice__value.x .framex {
     width: 200px;
     height: 160px;
+}
+
+.show__dot-mobile {
+    display: block;
 }
 
 }

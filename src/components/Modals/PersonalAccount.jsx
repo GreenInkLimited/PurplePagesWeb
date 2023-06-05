@@ -83,7 +83,12 @@ const PersonalAccount = () => {
               placeholder='Placeholder text'
             />
 
-            <button type="submit">Next</button>
+             <button className='personal__input button'>
+            Create account
+        </button>
+        <div className="persornal__account__fotter-back">
+            <MdArrowBack /><p>go back</p>
+        </div>
             
           </form>
         </div>

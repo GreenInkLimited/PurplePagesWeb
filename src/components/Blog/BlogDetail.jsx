@@ -4,7 +4,7 @@ import { AiOutlineLike, AiOutlineShareAlt, AiFillLike } from 'react-icons/ai';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import Comment from '../../assets/comment.png';
-import { getBlogById, getBlogs, AddBlogComment, AddBlogLike, getBlogLikes } from '../../apis/BlogApis';
+import { getBlogById, getBlogs, AddBlogComment, AddBlogLike } from '../../apis/BlogApis';
 import { AddBlogWishlist } from '../../apis/WishlistApis';
 import Logo from '../../assets/pplogo.png';
 
@@ -27,20 +27,22 @@ const BlogDetail = () => {
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const blogData = await getBlogById(id);
-        setBlog(blogData);
-        const likedStatus = JSON.parse(localStorage.getItem('likedStatus'));
-        setIsLiked(likedStatus || blogData.isLiked); // Update the isLiked state
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching blog:', error);
-      }
-    };
+  const fetchBlog = async () => {
+    try {
+      const blogData = await getBlogById(id);
+      setBlog(blogData);
+      setLoading(false);
 
-    fetchBlog();
-  }, [id]);
+      const auth_code = localStorage.getItem('auth_code');
+      const likedStatus = JSON.parse(localStorage.getItem(`likedStatus_${id}_${auth_code}`));
+      setIsLiked(likedStatus || blogData.isLiked); // Update the isLiked state
+    } catch (error) {
+      console.error('Error fetching blog:', error);
+    }
+  };
+
+  fetchBlog();
+}, [id]);
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -55,6 +57,8 @@ const BlogDetail = () => {
 
     fetchBlogs();
   }, []);
+
+  
 
   if (loading) {
     return (
@@ -96,23 +100,31 @@ const BlogDetail = () => {
   };
 
   const handleLikeBlog = async () => {
-    try {
-      await AddBlogLike({ blog_id: id });
-      const updatedLikedStatus = !isLiked; // Calculate the updated liked status
+  try {
+    const auth_code = localStorage.getItem('auth_code');
+    const likedStatus = JSON.parse(localStorage.getItem(`likedStatus_${id}_${auth_code}`));
 
-      // Update the isLiked state
-      setIsLiked(updatedLikedStatus);
-
-      // Store the liked status in localStorage
-      localStorage.setItem('likedStatus', JSON.stringify(updatedLikedStatus));
-
-      // Optionally, you can fetch the updated blog data to refresh the like count
-      const updatedBlogData = await getBlogById(id);
-      setBlog(updatedBlogData);
-    } catch (error) {
-      console.error('Error liking blog:', error);
+    if (likedStatus) {
+      // User has already liked the blog, so unlike logic
+      // Call the appropriate function to unlike the blog
+      // Update the liked status in the local storage and state
+      localStorage.setItem(`likedStatus_${id}_${auth_code}`, JSON.stringify(false));
+      setIsLiked(false);
+    } else {
+      // User has not liked the blog, so like logic
+      await AddBlogLike({ blog_id: id, auth_code });
+      // Update the liked status in the local storage and state
+      localStorage.setItem(`likedStatus_${id}_${auth_code}`, JSON.stringify(true));
+      setIsLiked(true);
     }
-  };
+
+    // Optionally, you can fetch the updated blog data to refresh the like count
+    const updatedBlogData = await getBlogById(id);
+    setBlog(updatedBlogData);
+  } catch (error) {
+    console.error('Error liking blog:', error);
+  }
+};
 
   return (
     <div className='container blog__detail'>
@@ -139,8 +151,8 @@ const BlogDetail = () => {
           </div>
           <div className='blog__actions'>
             <div className="blog__actions-left" onClick={handleLikeBlog}>
-              {isLiked ? <AiFillLike /> : <AiOutlineLike />}
-              <p>12</p>
+            {isLiked ? <AiFillLike /> : <AiOutlineLike />}
+              <p>{blog.likes.length}</p> {/* Display the total number of likes */}
             </div>
             <div className="blog__actions-right">
               <div onClick={handleAddToWishlist}>
@@ -188,7 +200,7 @@ const BlogDetail = () => {
             const formattedDate = createdDate.toLocaleDateString('en-US', options);
             return (
               <div className="blog__body__right" key={id}>
-                <img src={image} alt="image" />
+                <img className="blog__body__right-img" src={image} alt="image" />
                 <Link to={`/appblog/${id}`}>
                   <h4>{title}</h4>
                 </Link>

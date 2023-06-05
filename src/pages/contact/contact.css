@@ -65,7 +65,7 @@ label {
 
 input[type="submit"] {
     font-family: 'avenir-lt-45-book';
-    margin-top: 2rem;
+    margin-top: 24px;
     cursor: pointer;
     background: #650585;
     color: white;

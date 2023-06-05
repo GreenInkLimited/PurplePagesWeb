@@ -49,7 +49,7 @@ const AdsContent = () => {
                     </div>
                 </div>
                 </div>
-                <p className='category'>{ ads_type }</p>
+                <p className='ads_category'>{ ads_type }</p>
                 </div>
               );
             })}

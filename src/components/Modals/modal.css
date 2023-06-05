@@ -13,9 +13,10 @@
 
 .modal__container{
     width: 800px;
-    height: 800px;
+    max-height: calc(100vh - 6.5rem);
     background-color: white;
-    
+    overflow-y: auto;
+    position: fixed;
     display: flex;
     flex-direction: column;
     padding: 25px;
@@ -350,7 +351,9 @@
     margin-top: -10px;
     background-color: #FFFFFF;
     width: 1440px;
-    height: auto;
+    max-height: calc(100vh - 9.5rem);
+    overflow-y: auto;
+    margin-bottom: 40px;
 }
 
 .host__event-wrappers-icons{
@@ -487,9 +490,9 @@
 
 .checkout__container {
     width: 1113px;
-    height: 771px;
+    max-height: calc(100vh - 6.5rem);
     background-color: white;
-
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     padding: 25px;
@@ -580,13 +583,20 @@
 /*================personal account==============*/
 .personal__account__form-container{
     display: flex;
+    position: fixed;
+    top: 5.5rem;
     width: 1240px;
-    height: auto;
+    height: calc(100vh - 8.5rem);
     background-color: #F5F5F7;
     padding-top: 60px;
     padding-left: 100px;
     padding-right: 100px;
+    overflow-y: auto;
+    
+
 }
+
+
 
 .persornal__account__form-wrapper{
     display: flex;

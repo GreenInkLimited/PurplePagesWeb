@@ -159,7 +159,7 @@ const Signup = () => {
                 </Link>
               </div>
               <button className="input" type="submit">
-                Proceed
+                {isLoading ? 'Submitting...' : 'Submit'}
               </button>
             </Form>
           </Formik>

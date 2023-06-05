@@ -38,7 +38,7 @@ const Products = () => {
       <div className='container'>
         <div className='product__container'>
           <div className='product__wrapper'>
-            {business.map(({ id, image, name, category, location, rating }) => {
+            {business.map(({ id, image, name, category, location, rating, lga }) => {
               // Calculate the number of full stars to display
               const fullStars = Math.floor(rating);
               // Calculate the number of half stars to display
@@ -53,7 +53,7 @@ const Products = () => {
                     <h4>{name}</h4>
                   </Link>
                   <p>{category}</p>
-                  <small>{location}</small>
+                  <small>{location}, {lga}</small>
                   <div className='rating'>
                     {[...Array(fullStars)].map((_, index) => (
                       <ImStarFull key={index} />

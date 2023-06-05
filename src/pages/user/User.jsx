@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../../components/Footer';
 import AppNavbar from '../../components/AppNavBar';
-import Profile from '../../assets/Autor1.png'
 import './user.css'
 import Subscriptions from '../../components/Users/Subscriptions';
 import LetsTalk from '../../components/Users/LetsTalk';
@@ -11,13 +10,32 @@ import BusinessAccountSetting from '../../components/Business/BusinessAccountSet
 import AdsHistory from '../../components/Business/AdsHistory';
 import PromotionHistory from '../../components/Business/PromotionHistory';
 import EmailMarketing from '../../components/Users/EmailMarketing';
+import { getMyBusinessById } from '../../apis/BusinessApi';
+import { useParams } from 'react-router-dom';
 
 const User = () => {
+  const { id } = useParams();
+  const [business, setBusiness] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
+  useEffect(() => {
+    const fetchBusiness = async () => {
+      try {
+        const businessData = await getMyBusinessById({ id });
+        setBusiness(businessData);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching business:', error);
+      }
+    };
+
+    fetchBusiness();
+  }, [id]);
 
   return (
     <>
@@ -25,8 +43,8 @@ const User = () => {
     <div className="user-container ">
       <div className="user__bloc-tabs">
         <div className="user__bloc-profile">
-        <img src={Profile} />
-        <h4>Purple Closet</h4>
+        <img src={`https://api.usepurplepages.com/${business?.image}`}  alt="profile"/>
+        <h4>{business?.name}</h4>
         </div>
         <button
           className={toggleState === 1 ? "user__tabs active-user__tabs" : "user__tabs"}

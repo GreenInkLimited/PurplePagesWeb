@@ -1,11 +1,16 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { review } from '../../data';
 import { ImStarEmpty, ImStarFull, ImStarHalf } from 'react-icons/im'
 import Progress from './Progress';
+import { getBusinessById } from '../../apis/BusinessApi';
+import { useParams } from 'react-router-dom';
 
 const Reviews = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(4);
+  const { id } = useParams();
+  const [business, setBusiness] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -18,6 +23,20 @@ const Reviews = () => {
   const handleClick = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  useEffect(() => {
+    const fetchBusiness = async () => {
+      try {
+        const businessData = await getBusinessById({ id });
+        setBusiness(businessData);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching bio:', error);
+      }
+    };
+
+    fetchBusiness();
+  }, [id]);
 
   const renderPageNumbers = () => {
     const pageNumbers = [];

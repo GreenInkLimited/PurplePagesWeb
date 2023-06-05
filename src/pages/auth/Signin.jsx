@@ -20,7 +20,7 @@ const Signin = () => {
     setShowPassword((prevState) => !prevState);
   };
 
-  const {  mutateAsync } = useMutation(
+  const {  isLoading, error, isError, mutateAsync, data } = useMutation(
     'signin',
     loginUser,
     {
@@ -102,7 +102,7 @@ const Signin = () => {
         >{showPassword ? <AiOutlineEyeInvisible/> : <AiOutlineEye/>}</button>
         </div>
         <ErrorMessage name="password" component="small" className="error-message" />
-      <button className='input' type="submit" >Proceed</button>
+      <button className='input' type="submit" >{isLoading ? 'Submitting...' : 'Submit'}</button>
         </Form>
       </Formik>
       

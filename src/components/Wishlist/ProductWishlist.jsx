@@ -24,11 +24,11 @@ const ProductWishlist = () => {
     fetchWishlist();
   }, []);
 
-  const handleDelete = async (wishlistId) => {
+  const handleDelete = async (productId) => {
     try {
-      await DeleteWishlist({ wishlist_id: wishlistId });
+      await DeleteWishlist({ product_id: productId });
       setWishlist((prevWishlist) =>
-        prevWishlist.filter((item) => item.id !== wishlistId)
+        prevWishlist.filter((item) => item.id !== productId)
       );
     } catch (error) {
       console.log('Error deleting item:', error);
@@ -48,7 +48,7 @@ const ProductWishlist = () => {
       <div className='productwishlist__wrapper'>
         {wishlist.length === 0 ? (
           <div className='empity-productwishlist__container'>
-            <h4>You have not product in your wishlist</h4>
+            <h4>You have no product(s) in your wishlist</h4>
           <p>explore the products and services by diverse businesses.</p>
           <Link to="/apphome/" className='empty__wishlist'>Go Home</Link>
           </div>

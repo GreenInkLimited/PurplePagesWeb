@@ -1,4 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/clash-display');
+@import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
 /*====================tabs========================================*/
 .user-container {
     display: flex;
@@ -20,10 +21,17 @@
 }
 
 .user__bloc-profile img{
-    width: 20px;
-    height: 20px;
-    margin-top: 2px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+   
     margin-right: 10px;
+}
+
+.user__bloc-profile h4{
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .user__content-tabs {
@@ -64,7 +72,7 @@
 }
 
 .inputing {
-    width: 100%;
+    width: 464px;
     height: 25px;
     padding: 7px;
     outline: none;
@@ -189,6 +197,15 @@
     margin-top: 20px;
 }
 
+.user__header__container-bg img{
+    height: 402px;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
 .user__content p {
     width: 100%;
 
@@ -269,6 +286,14 @@
     justify-content: space-between;
 }
 
+.add_admin-button{
+    background: none;
+    color: #C42AF7;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 20px;
+}
+
 .admin__lists{
     display: flex;
     flex-direction: row;
@@ -279,13 +304,16 @@
 .admin__list__username{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .admin__list__username img{
     object-fit: contain;
-    max-width: 20px;
-    max-height: 20px;
+    max-width: 40px;
+    max-height: 40px;
     margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .delete__admin{
@@ -338,6 +366,53 @@
     color: #C42AF7;
 }
 
+.add__admin-container {
+    position: fixed;
+    width: 600px;
+    top: 5.5rem;
+    right: 5rem;
+    max-height: calc(100vh - 6.5rem);
+    overflow-y: auto;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 6px 12px rgba(41, 41, 41, 0.08);
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.give__access-container{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.add__adminmodal-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px  25px 60px;
+}
+
+.with__admin-access{
+    margin-top: 16px;
+}
+
+.with__admin-access h4{
+    font-family: 'avenir-lt-85-heavy';
+    font-weight: 700;
+    font-size: 20px;
+    color: #14011B;
+}
+.add-admin__body{
+    padding: 40px 60px 25px 60px;
+}
+
+
+.add__adminmodal-wrapper h3{
+    font-family: 'Segoe UI';
+    font-weight: 400;
+}
 
 
 /*=========================subscription tabs==============*/
@@ -389,9 +464,10 @@
 
 .userprofile__info-img {
     
-    height: 150px;
-    width: 150px;
-    border-radius: 150px;
+    height: 120px;
+    width: 120px;
+    border-radius: 120px;
+    object-fit: cover;
 }
 
 .userprofile__category {
@@ -412,7 +488,9 @@
     margin-right: 150px;
 }
 
-
+.subscribe{
+    padding: 12px 24px 12px 24px;
+}
 
 .user__header__container {
     width: 100%;
@@ -420,7 +498,49 @@
     position: relative;
 }
 
+.empty-productandservice__container{
+    
+    margin-left: 250px;
+    
+    
+    justify-content: flex-start;
+    margin-top: 120px;
 
+}
+
+.empty-productandservice__container h4{
+    color: #430359;
+    font-size: 28px;
+    margin-bottom: 24px;
+    font-weight: 700;
+    width: 493px;
+
+}
+
+.empty__wishlist{
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 21px;
+    cursor: pointer;
+    background-color: #650585;
+}
+
+.not-empty__wishlist {
+    color: #FFFFFF;
+    
+    bottom: 400px;
+    right: 150px;
+    height: 64px;
+    width: 64px;
+    border-radius: 64px;
+    justify-content: flex-end;
+    position: fixed;
+    align-items: center;
+    gap: 21px;
+    cursor: pointer;
+    background-color: #C42AF7;
+}
 
 /*====================user tabs========================================*/
 .bloc-user__utabs {
@@ -435,7 +555,7 @@
     outline: none;
     display: flex;
     flex-direction: row;
-    margin-top: 5rem;
+    margin-top: 40px;
     background: transparent;
     outline: none;
 }
@@ -544,7 +664,7 @@
 
 .active-user__utab__content {
     display: block;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .user__utabs__marketplace {
@@ -598,7 +718,7 @@
 .user__productandservice__wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem 1rem;
+    gap: 24px 24px;
     font-family: "avenir-lt-45-book";
 }
 
@@ -610,6 +730,13 @@
 .user__productandservice__wrapper p {
     color: #4F4F4F;
     font-size: 14px;
+}
+
+.user__productandservice__value-img{
+    
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .frame {
@@ -904,6 +1031,208 @@
     height: 18px;
 }
 
+/*================promote modal================================*/
+
+.promote__modal-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    width: 1113px;
+    max-height: calc(100vh - 6.5rem);
+    overflow-y: auto;
+    top: 5.5rem;
+    position: fixed;
+    background-color: #FFFFFF;
+}
+
+.promote__modal-wrapper h2{
+    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 80px;
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+}
+
+.promote__modal-types .active{
+    height: 40px;
+    border-radius: 43px;
+    background-color: #650585;
+    color: #F5F5F7;
+    overflow: hidden;
+}
+
+.promote__modal-types button{
+    padding: 12px 32px 12px 32px;
+    background-color: transparent;
+}
+
+.promote__modal-wrapper p {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.promote__modal-types{
+    margin-bottom: 48px;
+    background-color: #E0E0E0;
+    border-radius: 43px;
+}
+
+.promote__modal-body{
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    margin-bottom: 91px;
+}
+
+.promote__modal-content {
+    width: 396px;
+    height: 480px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #650585;
+}
+
+.promote__modal-content.right{
+    background-color: #650585;
+    color: #FFFFFF;
+    display: flex;
+}
+
+.promote__content-container p{
+    font-family: 'Clash Display', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.promote__modal-content.left {
+    
+    color: #650585;
+    display: flex;
+}
+
+.promote__modal-content.left h2{
+    color: #14011B;
+}
+
+.promote__modal-content.right button{
+    padding: 12px 32px 12px 32px;
+    background-color: #F5F5F7;
+    border-radius: 8px;
+    color: #650585;
+    cursor: pointer;
+}
+
+.promote__modal-content.left button {
+    padding: 12px 32px 12px 32px;
+    background-color: transparent;
+    border-radius: 8px;
+    color: #650585;
+    border: 1px solid #650585;
+    cursor: pointer;
+}
+
+.promote__modal-clear {
+    position: absolute;
+    top: 30px;
+    right: 46px;
+    cursor: pointer;
+}
+
+.right .promote__duration{
+    color: #F2F2F2;
+}
+
+.promote__modal-content p{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.promote__button-container {
+    /* Styles for the button container */
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    /* Adjust the margin as needed */
+}
+
+.promote__plan-packs{
+    display: flex;
+    flex-direction: column;
+}
+
+.promote__plan-packs small{
+    margin-bottom: 36px;
+    font-size: 14px;
+}
+
+.promote__modal-content h2{
+    margin-bottom: 33px;
+    text-align: center;
+}
+
+/*==================promote modal detail=======================*/
+
+.plan-details-modal-container{
+        display: flex;
+        flex-direction: column;
+        
+        width: 600px;
+        height: 516px;
+        overflow-y: auto;
+        top: 20%;
+        left: 50%;
+        position: fixed;
+        background-color: #FFFFFF;
+        padding-left: 44px;
+        padding-right: 96px;
+        border-radius: 15px;
+        box-shadow: rgba(41 41 41 0.08);
+}
+
+.plan-details-modal-close{
+    font-size: 20px;
+    color: #14011B;
+}
+
+.plan-details-modal-header {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    align-items: center;
+    gap: 131px;
+    margin-bottom: 40px;
+}
+
+.plan-details-modal-header h2{
+    color: #4F4F4F;
+}
+
+.plan-details-modal-wrapper p{
+    margin-bottom: 6px;
+}
+
+.plan-details-modal-wrapper span{
+    color: #C7005C;
+    font-weight: 600;
+    font-family: 'avenir-lt-45-book';
+}
+
+.user_user__button{
+    padding: 12px 32px 12px 32px;
+    background-color: #650585;
+    border-radius: 8px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
 /*===============create business===============================*/
 
 .create__business-container {
@@ -923,11 +1252,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
+
 }
 
 .create__business__row input {
     display: flex;
     width: 240px;
+    margin-top: 8px;
 }
 
 .create__business-header{
@@ -943,6 +1274,7 @@
     width: 100%;
     justify-self: center;
     justify-content: center;
+    
 }
 
 .upload__file-container{
@@ -968,16 +1300,196 @@
     margin-bottom: 8px;
 }
 
+.textareax {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    height: 62px;
+    padding: 7px;
+    outline: none;
+    font-family: 'avenir-lt-45-book';
+    border-radius: 5px;
+    border: 1px solid rgb(220, 220, 220);
+    margin-bottom: 24px;
+}
+
+
 .uploaded-image{
     width: 60px;
     height: 60px;
 }
 
+.send__mail-gist{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
 
 .create__business-detail h4{
     font-family: 'Clash Display', sans-serif;
     font-weight: 600;
     font-size: 24px;
+}
+
+
+
+.dropdown{
+    width: 240px;
+    user-select: none;
+    font-family: 'avenir-lt-45-book';
+    position: relative;
+    margin-top: 8px;
+}
+
+.dropdownx {
+    width: 100%;
+    user-select: none;
+    font-family: 'avenir-lt-45-book';
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.dropdownx .dropdown-btn {
+    padding: 10px;
+    background: transparent;
+    border: 1px solid rgb(220, 220, 220);
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown .dropdown-btn{
+    padding: 10px;
+    background: transparent;
+    border: 1px solid rgb(220, 220, 220);
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown-icons {
+    border-left: 1px solid #E0E0E0;
+    height: 35px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    /* Adjust the margin value as needed */
+}
+
+.dropdown-icon{
+    margin-left: 10px;
+}
+
+.dropdown .dropdown-content{
+    position: absolute;
+    z-index: 1000;
+    top: 110%;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+}
+
+.dropdownx .dropdown-content {
+    position: absolute;
+    z-index: 1000;
+    top: 110%;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+}
+
+.dropdown .dropdown-content .dropdown-item{
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dropdownx .dropdown-content .dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dropdown .dropdown-content .dropdown-item:hover {
+    background-color: #F2F2F2;
+}
+
+.dropdownx .dropdown-content .dropdown-item:hover {
+    background-color: #F2F2F2;
+}
+
+/*==========================subcriptions=======================*/
+.subcription__sub {
+    margin-top: 26px;
+    margin-bottom: 200px;
+}
+
+.subscription__container-sub {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.subscription__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    gap: 25px 25px;
+}
+
+
+
+.sub_for-blogs p{
+    display: flex;
+    width: 100%;
+}
+
+.sub_for-blogs h2 {
+    width: 100%;
+    display: flex;
+}
+
+.subscription__value-sub {
+    align-items: center;
+    border-radius: 10px;
+}
+
+.subscription__value-sub h2 {
+    font-family: "avenir-lt-45-book";
+    font-size: 24px;
+}
+
+.subscription__value-img-sub {
+    margin-bottom: 10px;
+    height: 254px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+
+
+.subscription__type-sub{
+    color: #C7005C;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.subscription__value-img-sub p{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.subscribed_business-mobile{
+    display: none;
 }
 
 
@@ -1006,17 +1518,69 @@
         
     }
 
+        .subscription__row {
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-content: space-between;
+            gap: 25px 25px;
+        }
+
+        .subscribed_business-mobile{
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            margin-bottom: 60px;
+            gap: 12px;
+            margin-top: -25px;
+            align-items: center;
+        }
+
+        .RiArrowRightSLine{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+
+
+        }
+
+
+        .bsdot{
+            color: #C7005C;
+        }
+
+        .subscribed_business-mobile-notification{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .subscription__value-img-sub {
+            margin-bottom: 25px;
+            height: 210px;
+            min-width: 340px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .subscription__value-img-subx {
+            
+            height: 210px;
+            min-width: 340px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
     .userprofile__infor-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        margin-top: 40px;
+        margin-top: 12px;
     }
     .userprofile__info-left {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 8px;
         align-items: center;
         justify-content: center;
     }
@@ -1025,11 +1589,14 @@
     width: 50px;
     border-radius: 50px;
     margin-right: 0;
+    object-fit: cover;
 }
 
 .userprofile__info_body-mobile{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 .userprofile__info_body {
     display: flex;
@@ -1038,14 +1605,21 @@
     justify-content: center;
 }
 
+
+
 .userprofile__infor-wrapper .subscribe {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
     height: 40px;
-    margin-top: 20px;
+    margin-top: 25px;
     
+}
+
+.containerx {
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .bloc-user__utabs {
@@ -1057,14 +1631,19 @@
 }
 
 .user__utabs {
-    padding: 15px;
+    padding: 12px;
     cursor: pointer;
     outline: none;
     display: flex;
     flex-direction: row;
-    margin-top: 5rem;
+    margin-top: 40px;
     background: transparent;
     outline: none;
+    font-size: 10px;
+}
+
+.bloc-user__utabs button{
+    font-size: 10px;
 }
 
 .first__user__utab__content {
@@ -1074,16 +1653,32 @@
 
 .user__productandservice__wrapper {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px 4px;
     font-family: "avenir-lt-45-book";
+    
 }
 .user__productandservice__container {
 
     flex-direction: row;
-    margin-top: 40px;
+    margin-top: -25px;
     width: 100%;
-    padding: 20px;
+    
+}
+
+.user__productandservice__value-img{
+    
+    height: 90px;
+    object-fit: cover;
+    display: block;
+}
+
+.user__productandservice__value p, small{
+    display: none;
+}
+
+.frame.mobile{
+    display: none;
 }
 
 .user__utab__contentx{
@@ -1217,6 +1812,116 @@
 .xfirst__personal-content h3 {
     font-family: "ClashDisplay-Bold";
     font-size: 25px;
+}
+
+.subcription__wrapper-sub {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px 4px;
+    font-family: "avenir-lt-45-book";
+}
+
+.subcription__wrapper-sub img{
+    width: 106px;
+    height: 90px;
+    object-fit: cover;
+}
+
+.subcription__wrapper-sub h2{
+    font-size: 16px;
+}
+
+.subcription__wrapper-sub-paragraph{
+    display: none;
+}
+
+.user__header__container-bg img{
+    height: 114px;
+    width: 100%;
+    border-radius: 0;
+    object-fit: cover;
+}
+
+.subscription__container-sub {
+    margin-top: -25px;
+}
+
+.subcription__sub {
+    margin-top: 0;
+    margin-bottom: 200px;
+    width: 100%;
+}
+
+.not-empty__wishlist {
+    color: #FFFFFF;
+
+    bottom: 400px;
+    right: 20px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    justify-content: flex-end;
+    position: fixed;
+    align-items: center;
+    gap: 21px;
+    cursor: pointer;
+    background-color: #C42AF7;
+}
+
+.empty-productandservice__container {
+    margin-left: 20px;
+    justify-content: flex-start;
+    margin-top: 120px;
+}
+
+.empty-productandservice__container.blog h4{
+    text-align: center;
+}
+
+.empty-productandservice__container.blog p {
+    text-align: center;
+}
+
+.empty-productandservice__container.blog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+    
+}
+
+
+
+.empty-productandservice__container h4 {
+    color: #430359;
+    font-size: 16px;
+    margin-bottom: 24px;
+    font-weight: 700;
+    width: 327px;
+}
+
+.empty__wishlist.blog{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.empty__wishlist img{
+    width: 18px;
+    height: 19.97px;
+}
+
+.subscription__sub {
+    width: 100%;
+    /* Adjust the width as per your requirements */
+    margin-bottom: 20px;
+}
+
+.subscription__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 }

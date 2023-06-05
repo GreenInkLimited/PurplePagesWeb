@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getBlogs } from '../../apis/BlogApis';
-import Write from '../../assets/write.png';
 import  Logo from '../../assets/pplogo.png';
 
 
@@ -41,12 +40,7 @@ const BlogContent = () => {
 
   return (
     <div className="blog container">
-      <div className="blog_filtering">
-        <Link className="blog_filtering" to="/writeblog/">
-          <img src={Write} alt="write" />
-          <p>Write</p>
-        </Link>
-      </div>
+      
       <div className="blog__container">
         <div className="blog__wrapper">
           {blogs.map(({ id, image, detail, title, owner, date}) => {

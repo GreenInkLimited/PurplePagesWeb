@@ -168,6 +168,10 @@ button.input {
     border: none;
 }
 
+.interesting img{
+    margin-bottom: 32px;
+}
+
 input::placeholder,
 textarea::placeholder {
     color: #E0E0E0;
@@ -187,6 +191,7 @@ textarea::placeholder {
     gap: 40px;
     align-items: center;
     justify-content: center;
+    margin-bottom: 80px;
 }
 
 
@@ -202,7 +207,7 @@ textarea::placeholder {
     gap: 13px;
 }
 
-.submit{
+.submit_disabled{
     font-family: 'avenir-lt-45-book';
     margin-top: 2rem;
     cursor: pointer;
@@ -216,6 +221,20 @@ textarea::placeholder {
     background-color: rgba(101, 5, 133, 0.4);
 }
 
+.submit {
+    font-family: 'avenir-lt-45-book';
+    margin-top: 2rem;
+    cursor: pointer;
+    background: #650585;
+    color: white;
+    border: none;
+    width: 464px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    border-radius: 8px;
+    background-color: rgba(101, 5, 133, 1);
+}
+
 .interest__wrapper{
     display: flex;
     flex-direction: column;
@@ -223,6 +242,11 @@ textarea::placeholder {
     justify-content: center;
 }
 
+.isselected {
+    background-color: transparent;
+    color: #C42AF7;
+    border: 1px solid #C42AF7;
+}
 .the__footer__signup {
     display: none;
 }

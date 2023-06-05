@@ -49,6 +49,23 @@ export const otpVerification = async ({ otp_code }) => {
   return response.data;
 };
 
+export const AddInterest = async ({ interest }) => {
+  console.log('called verify api');
+  console.log('interest', interest);
+
+  // Retrieve the auth_code from local storage
+  const auth_code = localStorage.getItem('auth_code');
+  console.log('auth_code', auth_code);
+
+  const response = await axios.post(`${API.host}/app/add-interest/`, {
+    interest,
+    auth_code,
+  });
+
+  console.log(response.data);
+  return response.data;
+};
+
 
 export const ContactUsInput = async ({name, email, message}) => {
   console.log('called contact api');

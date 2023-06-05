@@ -1,26 +1,35 @@
 import { useState, useEffect } from "react";
-import {AiOutlineGlobal, AiOutlineMail, } from "react-icons/ai";
-import {BsTelephone} from "react-icons/bs";
-import {CiLocationOn} from "react-icons/ci";
+import { AiOutlineGlobal, AiOutlineMail } from "react-icons/ai";
+import { BsTelephone } from "react-icons/bs";
+import { CiLocationOn } from "react-icons/ci";
 import ProductAndService from "./ProductAndService";
 import { Link, useParams } from "react-router-dom";
 import Reviews from "./Reviews";
 import Marketplace1 from "../../assets/Marketplace1.png";
 import Marketplace2 from "../../assets/Marketplace2.png";
 import Marketplace3 from "../../assets/Marketplace3.png";
-import { getBusinessById } from '../../apis/BusinessApi';
-import  Logo from '../../assets/pplogo.png';
+import { getBusinessById } from "../../apis/BusinessApi";
+import Logo from "../../assets/pplogo.png";
+import ReviewModal from "./ReviewModal";
 
 function Tabs() {
   const { id } = useParams();
   const [toggleState, setToggleState] = useState(1);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
+  const [business, setBusiness] = useState(null);
+  const [showModal, setShowModal] = useState(false); // Add the state variable
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
 
-  const [business, setBusiness] = useState(null);
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   useEffect(() => {
     const fetchBusiness = async () => {
@@ -29,7 +38,7 @@ function Tabs() {
         setBusiness(businessData);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching business:', error);
+        console.error("Error fetching business:", error);
       }
     };
 
@@ -37,12 +46,14 @@ function Tabs() {
   }, [id]);
 
   if (loading) {
-    return <div className='spinner_container'>
-      <img src={Logo} />
-    </div>;
+    return (
+      <div className="spinner_container">
+        <img src={Logo} />
+      </div>
+    );
   }
 
-  return(
+  return (
     <div>
       <div className="bloc-tabs">
         <button
@@ -67,43 +78,48 @@ function Tabs() {
 
       <div className="content-tabs container">
         <div className="first-content-container">
-        <div
-          className={toggleState === 1 ? "content  active-content" : "content"}
-        >
+          <div
+            className={toggleState === 1 ? "content  active-content" : "content"}
+          >
             <div className="first__content">
-          <h4>Description</h4>
-          
-          <p>
-            {business.description}
-          </p>
-           <hr />
+              <h4>Description</h4>
 
-          <h4>Contact Information</h4>
-          
-          <div className="tabs__information">
-            <small><AiOutlineGlobal className="icon"/>{business.website}</small>
-            <small><AiOutlineMail  className="icon"/>{business.email}</small>
-            <small><BsTelephone   className="icon"/>{business.phone}</small>
-           
-            <div className="location">
-                <CiLocationOn   className="icon"/>
-            <small>{business.address}</small>
+              <p>{business.description}</p>
+              <hr />
+
+              <h4>Contact Information</h4>
+
+              <div className="tabs__information">
+                <small>
+                  <AiOutlineGlobal className="icon" />
+                  {business.website}
+                </small>
+                <small>
+                  <AiOutlineMail className="icon" />
+                  {business.email}
+                </small>
+                <small>
+                  <BsTelephone className="icon" />
+                  {business.phone}
+                </small>
+
+                <div className="location">
+                  <CiLocationOn className="icon" />
+                  <small>{business.address}</small>
+                </div>
+              </div>
+              <hr />
+
+              <h4>Marketplace</h4>
+              <p>Click on any marketplace below to shop with us</p>
+              <br />
+              <div className="user__utabs__marketplace">
+                <img src={Marketplace1} />
+                <img src={Marketplace2} />
+                <img className="jumia__marketplace" src={Marketplace3} />
+              </div>
             </div>
           </div>
-        <hr />
-
-         <h4>Marketplace</h4>
-         <p>
-            Click on any marketplace below to shop with us
-          </p>
-          <br/>
-          <div className="user__utabs__marketplace">
-            <img src={Marketplace1} />
-             <img src={Marketplace2} />
-              <img className="jumia__marketplace" src={Marketplace3} />
-          </div>
-        </div>
-        </div>
         </div>
 
         <div
@@ -111,18 +127,27 @@ function Tabs() {
         >
           <ProductAndService />
         </div>
-         
+
         <div
           className={toggleState === 3 ? "contentx  active-content" : "contentx"}
         >
-         <div className="reviews__tab">
-          <h4>Purple user reviews & ratings</h4>
-          
-           <Link className='subscribe' to="">Leave a review</Link>
+          <div className="reviews__tab">
+            <h4>Purple user reviews & ratings</h4>
+
+            <button className="subscribe" onClick={openModal} businessId={id}>
+              Leave a review
+            </button>
           </div>
           <Reviews />
         </div>
       </div>
+
+      {/* Render the modal when showModal is true */}
+      {showModal && (
+        <div className="modal">
+          <ReviewModal closeModal={closeModal} businessId={id}/>
+        </div>
+      )}
     </div>
   );
 }

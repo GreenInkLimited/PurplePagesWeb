@@ -113,11 +113,23 @@ img {
 .subscribe {
     color: var(--color-white);
     width: fit-content;
-    padding: 0.3rem 1.5rem;
+    padding: 12px 24px 12px 24px;
     background: var(--color-secondary);
     border-radius: 0.5rem;
     transition: var(--transition);
     font-family: "avenir-lt-45-book";
+    cursor: pointer;
+}
+
+.subscribed {
+    color: #333333;
+    width: fit-content;
+    padding: 12px 24px 12px 24px;
+    background: #BDBDBD;
+    border-radius: 0.5rem;
+    transition: var(--transition);
+    font-family: "avenir-lt-45-book";
+    cursor: pointer;
 }
 
 .post {

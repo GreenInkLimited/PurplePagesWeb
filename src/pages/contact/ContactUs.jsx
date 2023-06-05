@@ -67,7 +67,7 @@ const ContactUs = () => {
                   <Field className="input" type="email" name="email" placeholder="Enter your email" />
                   <ErrorMessage name="email" component="small" className="error-message" />
                   <label>Message</label>
-                  <Field className="textarea" name="message" placeholder="What seems to be the problem?" />
+                  <Field as="textarea" className="textarea" name="message" placeholder="What seems to be the problem?" />
                   <ErrorMessage name="message" component="small" className="error-message" />
                   <button className="input" type='submit'>
                    Proceed

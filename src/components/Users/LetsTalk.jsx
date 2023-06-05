@@ -1,19 +1,67 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import styled from "styled-components";
+import { ContactUsInput } from '../../apis';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const LetsTalk = () => {
-    const form = useRef();
+    const navigate = useNavigate();
+  const [contactError, setContactError] = useState('');
+
+  const { isLoading, error, isError, mutateAsync, data } = useMutation(
+    'contact',
+    ContactUsInput,
+    {
+      onSuccess: (data) => {
+        console.log(data)
+        if (data && data.status_lean) {
+          // Verification successful
+          navigate('/');
+        } else {
+           // Verification unsuccessful
+          setContactError('Password or Username Invalid');
+          // You can perform any additional actions here, such as showing an error message
+        }
+      },
+    }
+  );
+
+  const validationSchema = Yup.object({
+    name: Yup.string().required('name is required'),
+    email: Yup.string().email('Invalid email address').required('Email is required'),
+    message: Yup.string().required('Message number is required'),
+    
+  });
   return (
     <StyledContactForm>
-      <form ref={form}>
+      <Formik
+              initialValues={{name: "", email: "", message: ""}}
+              validationSchema={validationSchema}
+              onSubmit={async (values)=> {
+                await mutateAsync({
+                  name:values.name, 
+                  email:values.email,
+                  message: values.message,
+                });
+                console.log(values);
+              }}
+            >
+                <Form>
         <label>Name</label>
-        <input type="text" name="user_name" placeholder='placeholder text'/>
+        <Field className="input" type="text" name="name" placeholder='placeholder text'/>
         <label>Email</label>
-        <input type="email" name="user_email" placeholder='placeholder text'/>
+        <Field  className="input" type="email" name="email" placeholder='placeholder text'/>
         <label>Message</label>
-        <textarea name="message" placeholder='What seems to be the problem?'/>
-        <input type="submit" value="Send" />
-      </form>
+        <Field as="textarea" className="textarea" name="message" placeholder='What seems to be the problem?'/>
+        <button className="input" type='submit'>
+                   Proceed
+                  </button>
+      </Form>
+      </Formik>
     </StyledContactForm>
   )
 }
@@ -28,7 +76,7 @@ const StyledContactForm = styled.div`
     flex-direction: column;
     width: 100%;
     font-size: 16px;
-    input {
+    .input {
     width: 100%;
     height: 35px;
     padding: 7px;
@@ -38,7 +86,7 @@ const StyledContactForm = styled.div`
     
     }
     }
-    textarea {
+    .textarea {
         padding: 7px;
         width: 100%;
         height: 260px;
@@ -49,10 +97,11 @@ const StyledContactForm = styled.div`
         border: 1px solid rgb(220, 220, 220);
     }
     label {
-        margin-top: 1rem;
+        margin-top: 25px;
         font-family: 'avenir-lt-45-book';
+        margin-bottom: 8px;
     }
-    input[type="submit"] {
+    .input[type="submit"] {
         font-family: 'avenir-lt-45-book';
         margin-top: 2rem;
         cursor: pointer;
@@ -60,7 +109,7 @@ const StyledContactForm = styled.div`
         color: white;
         border: none;
     }
-    input::placeholder, textarea::placeholder {
+    .input::placeholder, textarea::placeholder {
         color: #E0E0E0;
         font-family: 'avenir-lt-45-book';
         font-size: 12px,
@@ -71,11 +120,11 @@ const StyledContactForm = styled.div`
     padding:20px;
     form {
       align-items: start;
-      input {
+      .input {
         width: 100%;
         margin: 0.5rem 0;
       }
-      textarea{
+      .textarea{
         width: 100%;
         margin: 0.5rem 0;
       }

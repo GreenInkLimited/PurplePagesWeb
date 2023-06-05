@@ -54,14 +54,29 @@ export const AddBlogWishlist = async ({ blog_id }) => {
   return response.data;
 };
 
-export const DeleteWishlist = async ({ wishlist_id }) => {
+export const DeleteWishlist = async ({ product_id }) => {
   console.log('called delete wishlist api');
   const auth_code = localStorage.getItem('auth_code');
   console.log('auth_code', auth_code);
-  const response = await axios.delete(
-    `${API.host}/wishlist/delete/`,
+  const response = await axios.post(
+    `${API.host}/wishlist/delete/product/`,
     {
-      wishlist_id,
+      product_id,
+      auth_code, // Include the auth_code in the request payload
+    }
+  );
+  console.log(response.data);
+  return response.data;
+};
+
+export const DeleteBlogWishlist = async ({ blog_id }) => {
+  console.log('called delete wishlist api');
+  const auth_code = localStorage.getItem('auth_code');
+  console.log('auth_code', auth_code);
+  const response = await axios.post(
+    `${API.host}/wishlist/delete/blog/`,
+    {
+      blog_id,
       auth_code, // Include the auth_code in the request payload
     }
   );

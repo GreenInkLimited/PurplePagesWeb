@@ -2,32 +2,66 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ImStarEmpty, ImStarFull, ImStarHalf } from 'react-icons/im';
 import Header from '../../components/Header';
-import { getBusinessById } from '../../apis/BusinessApi';
-import  Logo from '../../assets/pplogo.png'
+import { getBusinessById, SubscribeToBusiness } from '../../apis/BusinessApi';
+import Logo from '../../assets/pplogo.png';
+import {RxDotFilled} from 'react-icons/rx'
 
 const ProfileInfo = () => {
   const { id } = useParams();
   const [business, setBusiness] = useState(null);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
+  const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
-    const fetchBusiness = async () => {
-      try {
-        const businessData = await getBusinessById({ id });
-        setBusiness(businessData);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching business:', error);
-      }
-    };
+  const fetchBusiness = async () => {
+    try {
+      const businessData = await getBusinessById({ id });
+      setBusiness(businessData);
+      setLoading(false);
+      
+      const auth_code = localStorage.getItem('auth_code');
+      const isSubscribed = localStorage.getItem(`subscribed_${id}_${auth_code}`);
+      setSubscribed(isSubscribed === 'true');
+    } catch (error) {
+      console.error('Error fetching business:', error);
+    }
+  };
 
-    fetchBusiness();
-  }, [id]);
+  fetchBusiness();
+}, [id]);
+
+ 
+  const handleSubscribe = async () => {
+  try {
+    const auth_code = localStorage.getItem('auth_code');
+    const isSubscribed = localStorage.getItem(`subscribed_${id}_${auth_code}`);
+    
+    if (isSubscribed === 'true') {
+      // User is already subscribed, so unsubscribe logic
+      // Call the appropriate function to unsubscribe from the business
+      // Update the subscribed state accordingly
+      localStorage.setItem(`subscribed_${id}_${auth_code}`, 'false');
+      setSubscribed(false);
+    } else {
+      // User is not subscribed, so subscribe logic
+      const response = await SubscribeToBusiness({ business_id: id });
+      console.log(response);
+      // Update the subscribed state to indicate successful subscription
+      localStorage.setItem(`subscribed_${id}_${auth_code}`, 'true');
+      setSubscribed(true);
+    }
+  } catch (error) {
+    console.error('Error subscribing to business:', error);
+    // Handle error or display an error message to the user
+  }
+};
 
   if (loading) {
-    return <div className='spinner_container'>
-      <img src={Logo} />
-    </div>;
+    return (
+      <div className='spinner_container'>
+        <img src={Logo} alt='Loading' />
+      </div>
+    );
   }
 
   // Calculate the number of full stars to display
@@ -39,17 +73,25 @@ const ProfileInfo = () => {
 
   return (
     <div>
-      <Header title="" image={`https://api.usepurplepages.com/${business.image}`} style={{ width: '292px', height: '402px', objectFit: 'cover' }}/>
+      <Header
+        title=''
+        image={`https://api.usepurplepages.com/${business.image}`}
+        style={{ width: '292px', height: '402px', objectFit: 'cover' }}
+      />
       <div className='container profile__container'>
         <div className='profile__infor-wrapper'>
           <div className='profile__info-left'>
-            <img className='profile__info-img' src={`https://api.usepurplepages.com/${business.image}`} alt={business.name} />
+            <img
+              className='profile__info-img'
+              src={`https://api.usepurplepages.com/${business.image}`}
+              alt={business.name}
+            />
             <div className='profile__info_body'>
               <h3>{business.name}</h3>
               <div className='profile__info_body-detail'>
                 <p className='profile__category'>{business.category}</p>
-                <p>1.24k subscribers</p>
-                <p>{business.location}</p>
+                <RxDotFilled className='show__dot-mobile'/><p>{business.subscriptions.length} subscribers</p>
+                <RxDotFilled className='show__dot-mobile'/><p>{business.location}, {business.lga}</p>
               </div>
               <div className='rating'>
                 {[...Array(fullStars)].map((_, index) => (
@@ -62,9 +104,9 @@ const ProfileInfo = () => {
               </div>
             </div>
           </div>
-          <Link className='subscribe' to=''>
-            Subscribe
-          </Link>
+          <button className={`subscribe ${subscribed ? 'subscribed' : ''}`} onClick={handleSubscribe} disabled={subscribed}>
+    {subscribed ? 'Subscribed' : 'Subscribe'}
+  </button>
         </div>
       </div>
     </div>

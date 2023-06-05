@@ -168,10 +168,16 @@ button {
     flex-direction: row;
     align-items: center;
     background-color: #E0E0E0;
-    gap: 10px;
-    padding: 3px 10px;
+    gap: 15px;
+    padding: 8px 12px 8px 12px;
     border-radius: 5px;
     margin-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.account__settings-edit button{
+    background: transparent;
 }
 
 .account__settings-edit .edit_icon {
@@ -192,9 +198,16 @@ button {
     margin-bottom: 25px;
 }
 
-.account__settings-right {
+.account__settings-left{
+    width: 100%;
+}
 
-    margin-left: 400px;
+.save_profile-button{
+    background: #650585;
+    cursor: pointer;
+    padding: 8px 12px 8px 12px;
+    color: #ffffff;
+    border-radius: 8px;
 }
 
 .notification__preferences {
@@ -316,6 +329,10 @@ button {
 }
 
 
+.account__settings-right label {
+    display: none;
+}
+
 
 
 /*==================product and service======================*/
@@ -360,6 +377,11 @@ button {
     display: none;
 }
 
+.subscription__section {
+    margin-bottom: 32px;
+    display: none;
+}
+
 .personal-container {
     display: block;
     width: 100%;
@@ -380,9 +402,22 @@ button {
     width: 100%;
 }
 
+.account__settings-left{
+    display: none;
+}
+
 .account__settings-right {
 
     margin-left: 0;
+}
+
+.inputing{
+    width: 327px;
+}
+
+.account__settings-right label{
+    margin-bottom: 8px;
+    display: block;
 }
 
 

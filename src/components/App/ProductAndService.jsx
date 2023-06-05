@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getBusinessById } from '../../apis/BusinessApi';
-import  Logo from '../../assets/pplogo.png'
+import Logo from '../../assets/pplogo.png';
 
 const ProductAndService = () => {
-   const { id } = useParams();
+  const { id } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
-  const [loading, setLoading] = useState(true); 
-
-
+  const [loading, setLoading] = useState(true);
   const [business, setBusiness] = useState(null);
 
   useEffect(() => {
@@ -17,7 +15,7 @@ const ProductAndService = () => {
       try {
         const businessData = await getBusinessById({ id });
         setBusiness(businessData);
-         setLoading(false);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching business:', error);
       }
@@ -26,29 +24,72 @@ const ProductAndService = () => {
     fetchBusiness();
   }, [id]);
 
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
   if (loading) {
-    return <div className='spinner_container'>
-      <img src={Logo} />
-    </div>;
+    return (
+      <div className='spinner_container'>
+        <img src={Logo} alt='Loading Spinner' />
+      </div>
+    );
   }
 
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = business.products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  const renderPageNumbers = () => {
+    const pageNumbers = Math.ceil(business.products.length / productsPerPage);
+
+    return (
+      <div className='pagination pagination--center'>
+        <button disabled={currentPage === 1} onClick={handlePrevPage} className={currentPage === 1 ? 'disabled' : null}>
+          Prev
+        </button>
+        {Array.from({ length: pageNumbers }, (_, index) => index + 1).map((number) => (
+          <button
+            key={number}
+            onClick={() => setCurrentPage(number)}
+            className={currentPage === number ? 'active' : null}
+          >
+            {number}
+          </button>
+        ))}
+        <button
+          disabled={currentPage === pageNumbers}
+          onClick={handleNextPage}
+          className={currentPage === pageNumbers ? 'disabled' : null}
+        >
+          Next
+        </button>
+      </div>
+    );
+  };
+
   return (
-  <div className="productandservice__container">
-    <div className="productandservice__wrapper">
-      {business.products.map((product, index) => (
-        <div className="productandservice__value" key={index}>
-          <img 
-          
-          className="productandservice__value-img" src={`https://api.usepurplepages.com/${product.image}`} alt="Product Icon" />
-          <Link to={`/singleproduct/${product.id}`}>
-            <small>{product.caption}</small>
-          </Link>
-          <p>₦{product.price}.00</p>
-        </div>
-      ))}
+    <div className='productandservice__container'>
+      <div className='productandservice__wrapper'>
+        {currentProducts.map((product, index) => (
+          <div className='productandservice__value' key={index}>
+            <img className='productandservice__value-img' src={`https://api.usepurplepages.com/${product.image}`} alt='Product Icon' />
+            <Link to={`/singleproduct/${product.id}`}>
+              <small>{product.caption}</small>
+            </Link>
+            <p>₦{product.price}.00</p>
+          </div>
+        ))}
+      </div>
+      <div className='pagination-container'>
+        {renderPageNumbers()}
+      </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default ProductAndService;

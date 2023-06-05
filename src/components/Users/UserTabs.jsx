@@ -1,24 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {AiOutlineGlobal, AiOutlineMail, } from "react-icons/ai"
 import {BsTelephone} from "react-icons/bs"
 import {CiLocationOn} from "react-icons/ci"
-import { Link } from "react-router-dom";
-import ProductAndService from "../App/ProductAndService";
+import { useParams } from "react-router-dom";
 import Reviews from "../App/Reviews";
 import Marketplace1 from "../../assets/Marketplace1.png"
 import Marketplace2 from "../../assets/Marketplace2.png"
 import Marketplace3 from "../../assets/Marketplace3.png"
 import Edit from "../../assets/write.png"
 import UserProductAndService from "./UserProductAndServices";
-import Subscriptions from "./Subscriptions";
-
+import { getMyBusinessById } from '../../apis/BusinessApi';
+import Logo from '../../assets/pplogo.png';
+import UserBlog from "./UserBlog";
 
 function UserTabs() {
   const [toggleState, setToggleState] = useState(1);
+  const { id } = useParams();
+  const [business, setBusiness] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
+  useEffect(() => {
+    const fetchBusiness = async () => {
+      try {
+        const businessData = await getMyBusinessById({ id });
+        setBusiness(businessData);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching bio:', error);
+      }
+    };
+
+    fetchBusiness();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className='spinner_container'>
+        <img src={Logo} alt='Loading' />
+      </div>
+    );
+  }
 
   return(
     <div>
@@ -39,7 +64,7 @@ function UserTabs() {
           className={toggleState === 3 ? "user__utabs active-user__utabs" : "user__utabs"}
           onClick={() => toggleTab(3)}
         >
-          BlOG
+          BLOG
         </button>
         <button
           className={toggleState === 4 ? "user__utabs active-user__utabs" : "user__utabs"}
@@ -60,20 +85,20 @@ function UserTabs() {
            <img src={Edit} alt="edit"/>
         </div>  
           <p>
-            Lorem ipsum dolor sit amet consectetur. Ligula gravida bibendum et a mi orci. Et adipiscing eget lorem aliquet maecenas. Dui sit est scelerisque erat odio accumsan congue praesent. Felis porttitor eget.
+            {business?.description}
           </p>
         <div className="user__submenu__content">
           <h4>Contact Information</h4>
           <img src={Edit} alt="edit"/>
         </div>  
           <div className="user__utabs__information">
-            <small><AiOutlineGlobal className="icon"/>www.charlies-bagel.com</small>
-            <small><AiOutlineMail  className="icon"/>info@charlies.bagel.com</small>
-            <small><BsTelephone   className="icon"/>+ 234 812 345 6789</small>
+            <small><AiOutlineGlobal className="icon"/>{business?.website}</small>
+            <small><AiOutlineMail  className="icon"/>{business?.email}</small>
+            <small><BsTelephone   className="icon"/>{business?.phone}</small>
            
             <div className="user__utabs__location">
                 <CiLocationOn   className="icon"/>
-            <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut</small>
+            <small>{business?.address}</small>
             </div>
           </div>
         
@@ -101,7 +126,7 @@ function UserTabs() {
           className={toggleState === 3 ? "user__utab__contentx  active-user__utab__content" : "user__utab__contentx"}
         >
          <div className="reviews__utab">
-          <Subscriptions />
+          <UserBlog />
           </div>
           
         </div>

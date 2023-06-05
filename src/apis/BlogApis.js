@@ -15,28 +15,6 @@ export const getBlogById = async (id) => {
 };
 
 
-
-
-
-export const writeBlog = async ({  title, detail, image, tag }) => {
-  console.log('called write blog api');
-
-  // Retrieve the auth_code from local storage
-  const auth_code = localStorage.getItem('auth_code');
-  console.log('auth_code', auth_code);
-
-  const response = await axios.post(`${API.host}/blog/add/`, {
-    title,
-    detail,
-    image,
-    tag,
-    auth_code,
-  });
-
-  console.log(response.data);
-  return response.data;
-};
-
 export const AddBlogComment = async ({ blog_id, comment }) => {
   console.log('called add blog comment api');
   const auth_code = localStorage.getItem('auth_code');

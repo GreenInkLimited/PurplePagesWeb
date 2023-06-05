@@ -25,7 +25,7 @@ const Verification = () => {
       onSuccess: (data) => {
         if (data && data.status_lean) {
           // Verification successful
-          navigate('/apphome');
+          navigate('/interest');
         } else {
           // Verification unsuccessful
           setVerificationError('Invalid verification code. Please try again.');
@@ -67,7 +67,7 @@ const Verification = () => {
                 />
                 {verificationError && <p className="error">{verificationError}</p>}
                 <button className="input" type="submit">
-                  Proceed
+                  {isLoading ? 'Verifying...' : 'Proceed' }
                 </button>
               </Form>
             </Formik>

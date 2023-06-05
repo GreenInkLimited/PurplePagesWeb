@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/clash-display');
 /*====================tabs========================================*/
 .wishlist-container {
     display: flex;
@@ -124,9 +125,10 @@ button {
 }
 
 .first__wishlist-content h3{
-    font-family: "avenir-lt-85-heavy";
+    font-family: "Clash Display";
     font-size: 30px;
     margin-bottom: 32px;
+    font-weight: 600;
 }
 
 .first__wishlist-content{
@@ -319,9 +321,20 @@ button {
         display: none;
     }
 
+        .wishlist-container {
+            display: flex;
+            position: relative;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 101px;
+        }
+
     .productwishlist__right img {
         width: 100px;
         height: 80px;
+        object-fit: cover;
+        margin-bottom: 20px;
     }
     
     .productwishlist__right {
@@ -344,12 +357,14 @@ button {
         
     }
 
-    .blogpostswishlist__value img{
-        width: 100px;
-        height: 80px;
-        padding-right: 10px;
-    }
-
+.blogpostswishlist__value-img{
+    width: 100px;
+    height: 80px;
+    border-radius: 4px;
+    margin-right: 10px;
+    object-fit: cover;
+    margin-bottom: 16px;
+}
     .product-wishlist__name{
         font-size: 14px;
         font-family: 'avenir-lt-85-heavy';
@@ -370,9 +385,33 @@ button {
     .blogpost__bottom{
         display: none;
     }
-    .blogpost__bottom-mobile img{
+    .blogpost__bottom-mobile-img{
         width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        object-fit: cover;
+        
 
     }
+        .first__wishlist-content h3 {
+            font-family: "Clash Display";
+            font-size: 20px;
+            font-weight: 600;
+            
+        }
+
+.blog-productwishlist__right h4{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.blog__postwishlist-detail p{
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+.blog__postwishlist-detail small{
+    font-size: 10px;
+}
 }
 

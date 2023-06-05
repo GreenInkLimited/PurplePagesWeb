@@ -16,7 +16,7 @@
 .ads__wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1rem 1rem;
+    gap: 24px 24px;
     font-family: "avenir-lt-45-book";
 }
 
@@ -26,26 +26,25 @@
 }
 
 .ads__value-img{
-    width: 292px;
+    
     height: 210px;
     object-fit: cover;
     border-radius: 15px;
 }
 
-.ads__wrapper p {
-    color: #C7005C;
-    font-size: 14px;
-}
+
 
 .ads__wrapper h4 {
     width: 230px;
     line-height: 1.2;
     font-size: 20px;
+    font-weight: 600;
 }
 
 .ads__bottom-detail p {
     color: #C7005C;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 350;
 }
 
 
@@ -58,9 +57,18 @@
 }
 
 .ads__bottom img {
-    width: 40px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
     margin-right: 10px;
     display: flex;
+}
+
+.ads_category{
+    color: #C42AF7;
+    text-transform: capitalize;
+    font-weight: 600;
 }
 
 /*=========================ads details========================*/

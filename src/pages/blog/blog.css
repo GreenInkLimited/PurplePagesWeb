@@ -49,17 +49,18 @@
 }
 
 .blog__value___bodies{
-    width: 316px;
+    width: 100%;
 }
 
 .blog__value___bodies .small{
     font-size: 20px;
     font-weight: 300;
+    font-family: "avenir-lt-45-book";
 }
 
 .blog__value-img{
     margin-bottom: 10px;
-    width: 380px;
+    
     height: 254px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -207,20 +208,35 @@
 
 .blog__detail-content img{
     margin-bottom: 40px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .blog__bottom{
     margin-bottom: 25px;
+    display: flex;
+    align-items: center;
 }
 
 .blog__bottom p {
     color: #C7005C;
-    font-size: 14px;
+    font-size: 16px;
+    margin-bottom: 4px;
+    font-weight: 400;
+    
     
 }
 
 .blog__bottom small{
     font-family: "avenir-lt-45-book";
+}
+
+.blog__bottom img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    object-fit: cover;
 }
 
 .blog__body{
@@ -239,6 +255,13 @@
     margin-top: 24px;
 }
 
+.blog__body__right-img{
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
 .blog__body__right{
     margin-bottom: 20px;
 }
@@ -251,18 +274,21 @@
 }
 
 .blog__body__autor img{
-    height: 25px;
-    width: 25px;
+    height: 50px;
+    width: 50px;
     margin-right: 5px;
+    object-fit: cover;
+    border-radius: 50px;
 }
 
 .blog__body__autor p {
-    font-size: 12px;
+    font-size: 16px;
     color: #C7005C;
+    margin-bottom: 6px;
 }
 
 .blog__body__autor small {
-    font-size: 10px;
+    font-size: 14px;
     font-family: "avenir-lt-45-book";
 }
 
@@ -341,7 +367,8 @@
 }
 
 .blog__comment-body p{
-    font-size: 12px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .reply__comment{
@@ -352,6 +379,8 @@
 
 .reply__comment p{
     color: #C7005C;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 /*=============== media queries (small screens)================*/
@@ -370,6 +399,27 @@
         justify-content: space-between;
         gap: 5px;
     }
+
+.blog__value-img {
+    margin-bottom: 10px;
+
+    height: 190px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    object-fit: cover;
+}
+
+.blog__value___bodies .small {
+    font-size: 16px;
+    font-weight: 300;
+    font-family: "avenir-lt-45-book";
+}
+
+.blog__value h2 {
+    font-family: "avenir-lt-45-book";
+    font-size: 20px;
+    font-weight: 700;
+}
 
         .write-blog__wrapper .textarea {
             max-width: 100%;
@@ -414,4 +464,16 @@
     cursor: pointer;
     margin-bottom: 30px;
 }
+.blog__detail-content img {
+    margin-bottom: 40px;
+    height: 258px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.blog__detail-header h2 {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+}
+
 }

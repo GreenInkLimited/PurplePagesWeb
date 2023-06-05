@@ -57,8 +57,6 @@ const AccountSetting = () => {
     setEditedUser(user); // Store a copy of the user data for editing
   };
 
-  
-
   const handleCancelClick = () => {
     setIsEditing(false);
   };
@@ -73,9 +71,7 @@ const AccountSetting = () => {
 
   return (
     <>
-    { openModal &&
-          <ChangePassword closeModal={setOpenModal}/>
-          }
+      {openModal && <ChangePassword closeModal={setOpenModal} />}
       <div className='account__settings-header'>
         <h4>Profile</h4>
 
@@ -83,14 +79,12 @@ const AccountSetting = () => {
           <div className='account__settings-save'>
             <>
               <button className='cancel' onClick={handleCancelClick}>Cancel</button>
-              
             </>
           </div>
         ) : (
           <div className='account__settings-edit'>
             <>
-              <p>Edit</p>
-              <AiOutlineEdit className='edit_icon' onClick={handleEditClick} />
+              <button onClick={handleEditClick}> Edit  <AiOutlineEdit /></button>
             </>
           </div>
         )}
@@ -105,24 +99,26 @@ const AccountSetting = () => {
           <p>Phone Number</p>
           <p>Password</p>
         </div>
-        <Formik 
+        <Formik
           initialValues={{ first_name: "", last_name: "", phone: "" }}
           onSubmit={async (values) => {
             await mutateAsync({
-              first_name: values.first_name, 
+              first_name: values.first_name,
               last_name: values.last_name,
               phone: values.phone,
             });
             console.log(values);
-            validationSchema={validationSchema};
           }}
+          validationSchema={validationSchema}
         >
-          {() => (
+          {({ isSubmitting }) => (
             <Form>
               {user && (
                 <div className="account__settings-right">
                   <p>
+                    <label htmlFor="username">Username</label>
                     {isEditing ? (
+
                       <input
                         className='inputing'
                         type="text"
@@ -135,7 +131,9 @@ const AccountSetting = () => {
                     )}
                   </p>
                   <p>
+                     <label htmlFor="username">First Name</label>
                     {isEditing ? (
+                      
                       <Field
                         className="inputing"
                         type="text"
@@ -143,13 +141,13 @@ const AccountSetting = () => {
                         placeholder={editedUser.first_name}
                         required="true"
                       />
-                      
                     ) : (
                       user.first_name || 'first name'
                     )}
                     <ErrorMessage name="first_name" component="small" className="error-message" />
                   </p>
                   <p>
+                    <label htmlFor="username">Last Name</label>
                     {isEditing ? (
                       <Field
                         className="inputing"
@@ -164,6 +162,7 @@ const AccountSetting = () => {
                     <ErrorMessage name="last_name" component="small" className="error-message" />
                   </p>
                   <p>
+                    <label htmlFor="username">Email</label>
                     {isEditing ? (
                       <input
                         className='inputing'
@@ -171,13 +170,13 @@ const AccountSetting = () => {
                         name="email"
                         value={editedUser.email}
                         onChange={handleInputChange}
-                        
                       />
                     ) : (
                       user.email
                     )}
                   </p>
                   <p>
+                    <label htmlFor="username">Phone Number</label>
                     {isEditing ? (
                       <Field
                         className="inputing"
@@ -189,36 +188,32 @@ const AccountSetting = () => {
                     ) : (
                       user.phone
                     )}
-                    
                   </p>
                   <p>
-                    
+                    <label htmlFor="username">Password</label>
                     {isEditing ? (
                       <div className='input__divx'>
-                      <input
-                        className='inputingxyz'
-                        type={showPassword ? 'text' : 'password'}
-                        name="password"
-                        placeholder="********"
-                        onChange={handleInputChange}
-                      />
-                      <button
-                        type="button"
-                        className="password-toggle-button"
-                        onClick={togglePasswordVisibility}
-                      >{showPassword ? <AiOutlineEyeInvisible/> : <AiOutlineEye/>}
-                      </button>
+                        <input
+                          className='inputingxyz'
+                          type={showPassword ? 'text' : 'password'}
+                          name="password"
+                          placeholder="********"
+                          onChange={handleInputChange}
+                        />
+                        <button
+                          type="button"
+                          className="password-toggle-button"
+                          onClick={togglePasswordVisibility}
+                        >{showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                        </button>
                       </div>
                     ) : (
-                      <p className='password__setmodal_button' onClick={() => { setOpenModal(true)}}>*******</p>
+                      <p className='password__setmodal_button' onClick={() => { setOpenModal(true) }}>*******</p>
                     )}
-
-
-                    
                   </p>
                 </div>
               )}
-              <button className='save_profile-button' type="submit">Save</button>
+              {isEditing && <button className='save_profile-button' type="submit" disabled={isSubmitting}>Save</button>}
             </Form>
           )}
         </Formik>

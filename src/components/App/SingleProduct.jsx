@@ -63,12 +63,12 @@ const SingleProduct = () => {
           <img className='frame' src={Frame} alt="frame" />
           <div className="product__desc">
             <h5 className='product__desc__header'>Product Details</h5>
-            <p>{product.detail}</p>
+            <p dangerouslySetInnerHTML={{__html:product.detail}} />
           </div>
 
           <div className="singlepotter__bottom">
             <div className="singlepotter__bottom_left">
-              <img src={SingleProfile} alt="SingleProfile" />
+              <img src={`https://api.usepurplepages.com/${product.owner.image}`} alt="SingleProfile" />
               <div>
                 <h5>{product.owner.name}</h5>
                 <small>1.24k subscribers</small>
