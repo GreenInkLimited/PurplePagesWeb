@@ -4,30 +4,26 @@ import { MdClear } from 'react-icons/md';
 import { RiImageAddLine } from 'react-icons/ri';
 import { WriteBlog } from '../../apis/BusinessApi';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 
 const AddBlog = ({ onCancel, businessId }) => {
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState('No File Selected');
   const [verificationError, setVerificationError] = useState('');
   const [previewURL, setPreviewURL] = useState(null);
+  const queryClient = useQueryClient();
 
   const handleCancel = () => {
     onCancel(); // Invoke the onCancel function passed from the parent component
   };
 
-  const navigate = useNavigate();
-
-  const { isLoading, error, isError, mutateAsync, data } = useMutation('add product', WriteBlog, {
-    onSuccess: (data) => {
-      if (data && data.status_lean) {
-        // Verification successful
-        navigate('/personal');
-      } else {
-        // Verification unsuccessful
-        setVerificationError('Something is wrong');
-        // You can perform any additional actions here, such as showing an error message
-      }
+  const { mutateAsync, isLoading } = useMutation('add blog', WriteBlog, {
+    onSuccess: () => {
+      handleCancel();
+      queryClient.invalidateQueries('business'); // Refresh the business data to update the product list
+    },
+    onError: (error) => {
+      console.error('Failed to add blog:', error);
     },
   });
 
@@ -97,9 +93,10 @@ const AddBlog = ({ onCancel, businessId }) => {
 
               <label>Tags</label>
               <Field className="input" type="text" name="tags" placeholder="Enter product title" />
-              <div className='create__binex-button'>
-              <button className='user_user__button' type="submit">Submit</button>
-              </div>
+              
+               <button className="user_user__button" type="submit">
+                  {isLoading ? 'Submitting...' : 'Submit'}
+                </button>
             </Form>
           </Formik>
         </div>

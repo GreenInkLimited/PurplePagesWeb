@@ -5,6 +5,7 @@ import { getMyBusinessById } from '../../apis/BusinessApi';
 import Pen from '../../assets/Pen.png';
 import AddBlog from './AddBlog';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { useQuery } from 'react-query';
 
 const MAX_DETAIL_LENGTH = 50;
 
@@ -17,36 +18,31 @@ const truncateText = (text) => {
 
 const UserBlog = () => {
   const { id } = useParams();
-  const [business, setBusiness] = useState(null);
-  const [loading, setLoading] = useState(true);
+  
+ 
   const [showAddProductModal, setShowAddProductModal] = useState(false);
   const [showWishlistButton, setShowWishlistButton] = useState(true);
 
-  useEffect(() => {
-    const fetchBusiness = async () => {
-      try {
-        const businessData = await getMyBusinessById({ id });
-        setBusiness(businessData);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching bio:', error);
-      }
-    };
-
-    fetchBusiness();
-  }, [id]);
+  const { data: business, isLoading } = useQuery('business', () => getMyBusinessById({ id }));
 
   const openAddProductModal = () => {
     setShowAddProductModal(true);
+    setShowWishlistButton(false);
   };
 
   const closeAddProductModal = () => {
     setShowAddProductModal(false);
+    setShowWishlistButton(true);
   };
 
   const handleScroll = () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     setShowWishlistButton(scrollTop > 500);
+  };
+
+  const handleAddProduct = () => {
+    setShowAddProductModal(false);
+    setShowWishlistButton(true);
   };
 
   useEffect(() => {
@@ -56,7 +52,7 @@ const UserBlog = () => {
     };
   }, []);
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className='spinner_container'>
         <img src={Logo} alt='Loading' />
@@ -87,9 +83,9 @@ const UserBlog = () => {
           ) : (
             <div className='empty-productandservice__container blog'>
               <h4>Write your first blog</h4>
-              <p>
+              <small>
                Have any thoughts, ideas or stories you’ll love to share?
-              </p>
+              </small>
               <button className='empty__wishlist blog' onClick={openAddProductModal}>
                 <img src={Pen} alt="pen"/> write
               </button>
@@ -98,10 +94,10 @@ const UserBlog = () => {
         </div>
         {showAddProductModal && (
           <div className='add-product-modal'>
-            <AddBlog onCancel={closeAddProductModal} businessId={id} />
+            <AddBlog onCancel={closeAddProductModal} businessId={id} setProducts={handleAddProduct}/>
           </div>
         )}
-        {showWishlistButton && (
+{showWishlistButton && business?.blogs.length > 0 && (
           <button className='not-empty__wishlist' onClick={openAddProductModal}>
             <AiOutlinePlus className='add__product-icon' />
           </button>
