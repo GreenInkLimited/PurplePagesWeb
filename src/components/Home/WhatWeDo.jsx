@@ -24,7 +24,7 @@ const WhatWeDo = () => {
                             return <Card className="values__value" key={id}>
                                 <img src={icon} alt="icon"/>
                                 <h4>{title}</h4>
-                                <small>{desc}</small>
+                                <p>{desc}</p>
                             </Card>
                         })
                     }

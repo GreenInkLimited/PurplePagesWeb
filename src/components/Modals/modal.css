@@ -865,10 +865,13 @@ textarea::placeholder {
     padding-right: 68px;
 }
 
-.change__password-button{
+.change__password-buttonx{
     display: flex;
+    flex-direction: row;
+    width: 100%;
     gap: 40px;
     justify-content: flex-end;
+    
     margin-top: 40px;
 
 }
@@ -878,7 +881,7 @@ textarea::placeholder {
     font-weight: 600;
 }
 
-.change__password-button .cancel{
+.change__password-buttonx .cancel{
     background-color: transparent;
     padding: 12px 32px 12px 32px;
     border-radius: 8px;
@@ -886,9 +889,77 @@ textarea::placeholder {
     color: #650585;
 }
 
-.change__password-button .change_password{
+.change__password-buttonx .change_password{
     padding: 12px 32px 12px 32px;
     background-color: #650585;
     border-radius: 8px;
     color: #FFFFFF;
+}
+
+/*=============== media queries (small screens)================*/
+@media screen and (max-width:600px) {
+    .change__password-wrapper {
+        
+            background: #FFFFFF;
+            height: 422px;
+            width: 90%;
+            border-radius: 15px;
+            box-shadow: 1rem 2rem 5rem rgba(0, 0, 0, 0.1);
+        }
+
+.change__password-wrapper hr {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    display: flex;
+    width: 100%;
+}
+.change__password-container {
+    background: transparent;
+    display: flex;
+    width: 95%;
+    height: 90%;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+}
+
+
+.change__password-buttonx {
+    display: flex;
+    
+    gap: 10px;
+    justify-content: flex-end;
+    
+    margin-top: 40px;
+
+}
+
+.change__password-buttonx .cancel {
+    background-color: transparent;
+    padding: 6px 16px 6px 16px;
+    border-radius: 8px;
+    border: 1px solid #650585;
+    color: #650585;
+}
+
+.change__password-buttonx .change_password {
+    padding: 6px 16px 6px 16px;
+    background-color: #650585;
+    font-size: 12px;
+    border-radius: 8px;
+    color: #FFFFFF;
+}
+.change__password-body {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.change__password-wrapper p {
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 18px;
+    font-size: 16px;
+    font-weight: 700;
+}
 }

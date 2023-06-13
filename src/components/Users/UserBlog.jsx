@@ -65,9 +65,11 @@ const UserBlog = () => {
   }
 
   return (
-    <div className='subcription__sub'>
-      <div className='subscription__container-sub'>
-        <div className='subcription__wrapper-sub'>
+    <div className="blog">
+      
+      <div className="">
+        <div className="blog__wrapper">
+        
           {business?.blogs.length > 0 ? (
             business?.blogs.map((blog) => (
               <div className='subscription__value-sub' key={id}>
@@ -106,6 +108,7 @@ const UserBlog = () => {
         )}
       </div>
     </div>
+    
   );
 };
 

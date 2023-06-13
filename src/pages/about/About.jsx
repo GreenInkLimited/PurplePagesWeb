@@ -6,7 +6,8 @@ import CoreValues from '../../assets/coreValues.png';
 import Bulb from '../../assets/bulb.png';
 import Appstore from '../../assets/Appstore1.png'
 import Playstore from '../../assets/Appstore1.png'
-import iPhone from '../../assets/iPhone.png'
+import Afford from '../../assets/Afford.png'
+import Settings from '../../assets/Settings.png'
 import './about.css'
 import Footer from '../../components/Footer';
 
@@ -65,14 +66,14 @@ Purple Pages is, to put it simply, a one-stop shop for SMEs' digital marketing 
               </div>
              <div>
              <div className="pillars__icon">
-                <img src={Bulb} alt="pillars" /> 
+                <img src={Afford} alt="pillars" /> 
               </div>
               <h4>Affordability</h4>
               <p>We are committed to offering SMEs superior marketing solutions at an affordable price because we understand the growing pains of establishing enterprises.</p>
             </div>
              <div>
              <div className="pillars__icon">
-                <img src={Bulb} alt="pillars" /> 
+                <img src={Settings} alt="pillars" /> 
               </div>
               <h4>Technology</h4>
               <p>We leverage on the benefits of cutting-edge technology to provide solutions that are readily available and perform at their best.</p>

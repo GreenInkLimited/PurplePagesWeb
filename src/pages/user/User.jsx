@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Footer from '../../components/Footer';
 import AppNavbar from '../../components/AppNavBar';
 import './user.css'
-import Subscriptions from '../../components/Users/Subscriptions';
 import LetsTalk from '../../components/Users/LetsTalk';
 import UserProfile from '../../components/Users/UserProfile';
 import UserTabs from '../../components/Users/UserTabs';
@@ -12,6 +11,7 @@ import PromotionHistory from '../../components/Business/PromotionHistory';
 import EmailMarketing from '../../components/Users/EmailMarketing';
 import { getMyBusinessById } from '../../apis/BusinessApi';
 import { useParams } from 'react-router-dom';
+import Insights from '../../components/Users/Insights';
 
 const User = () => {
   const { id } = useParams();
@@ -134,9 +134,9 @@ const User = () => {
           <h3>Insights</h3>
               
         </div>
-        <p>Today</p>
+       <Insights />
         </div>
-         <Subscriptions />
+         
         </div>
 
         <div

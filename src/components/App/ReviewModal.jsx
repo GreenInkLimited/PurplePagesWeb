@@ -105,11 +105,11 @@ const ReviewModal = ({ closeModal, businessId }) => {
                 onChange={handleLogoUpload}
               />
               {previewURL ? (
-                <img src={previewURL} alt={fileName} className="logo-preview" />
+                <img src={previewURL} alt={fileName} className="uploaded-image" />
               ) : (
                 <div className="logo-placeholder">
-                  <RiImageAddLine className="logo-placeholder-icon" />
-                  <p>Click to upload</p>
+                  <RiImageAddLine color="#EBB8FC" className="logo-placeholder-icon" />
+                  
                 </div>
               )}
             </div>

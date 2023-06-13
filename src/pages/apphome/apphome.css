@@ -67,7 +67,15 @@
 .filter__container{
     margin-top: 7rem;
     display: flex;
-    gap: 3rem;
+    flex-direction: row;
+    gap: 50px;
+    align-items: center;
+}
+
+.filter__container-row {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
     align-items: center;
 }
 
@@ -81,6 +89,69 @@
     align-items: center;
     padding: 10px;
 }
+
+
+.dropdown__filter {
+    width: 240px;
+    user-select: none;
+    font-family: 'avenir-lt-45-book';
+    position: relative;
+    margin-top: 8px;
+}
+
+
+
+
+.dropdown__filter .dropdown__filter-btn {
+    padding: 10px;
+    background: #FFFFFF;
+    
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown__filter-icons {
+    
+    height: 35px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Adjust the margin value as needed */
+}
+
+.dropdown__filter-icon {
+    margin-left: 10px;
+}
+
+.dropdown__filter .dropdown__filter-content {
+    position: absolute;
+    z-index: 1;
+    top: 110%;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+}
+
+
+
+.dropdown__filter .dropdown__filter-content .dropdown__filter-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+
+.dropdown__filter .dropdown__filter-content .dropdown__filter-item:hover {
+    background-color: #F2F2F2;
+}
+
 
 /*=========================business profile================*/
 .profile__infor-wrapper{
@@ -284,6 +355,11 @@ button {
         height: 32px;
         width: 32px;
         border-radius: 8px;
+}
+
+.empty-productandservice__container.product h4{
+    font-family: "avenir-lt-85-heavy";
+    font-weight: 700;
 }
 
 .paginationx button {
@@ -952,6 +1028,49 @@ button {
 
 .show__dot-mobile {
     display: block;
+}
+
+.filter__container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter__container-row p{
+    display: none;
+}
+
+.dropdown__filter {
+    width: 100%;
+    user-select: none;
+    font-family: 'avenir-lt-45-book';
+    position: relative;
+    margin-top: 8px;
+}
+
+.dropdown__filter-btn{
+    font-size: 11px;
+}
+
+.filter__container {
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter__container-row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.dropdown__filter-content{
+    font-size: 12px;
 }
 
 }

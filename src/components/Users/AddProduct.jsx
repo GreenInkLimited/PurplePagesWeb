@@ -117,10 +117,11 @@ const AddProduct = ({ onCancel, businessId }) => {
                     <Field className="input" type="text" name="color" placeholder="Enter colors" />
                   </div>
                 </div>
-
+                <div className='create__binex-button'>
                 <button className="user_user__button" type="submit">
                   {isLoading ? 'Submitting...' : 'Submit'}
                 </button>
+                </div>
               </Form>
             </Formik>
           </div>

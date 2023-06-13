@@ -65,8 +65,8 @@ const UserProfile = () => {
               <h3>{business?.name}</h3>
               <div className="userprofile__info_body-mobile">
                 <p className='userprofile__category'> {business?.category}</p>
-                <RxDotFilled/><p> {business?.subscriptions.length} subscribers</p>
-                <RxDotFilled/><p> {business?.location}, {business?.lga}</p>
+                <RxDotFilled  className='dot_filled'/><p> {business?.subscriptions.length} subscribers</p>
+                <RxDotFilled  className='dot_filled'/><p> {business?.location}, {business?.lga}</p>
               </div>
               <div className="rating">
                 {[...Array(fullStars)].map((_, index) => (

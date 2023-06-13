@@ -77,7 +77,7 @@ const ChangePassword = ({ closeModal }) => {
            
           <Field name='password1' className='input' type="text" placeholder='placeholder text' />
            <ErrorMessage name="password1" component="small" className="error-message" />
-          <div className='change__password-button'>
+          <div className='change__password-buttonx'>
             <button className='cancel' onClick={handleCancelClick}>Cancel</button>
             <button type='submit' className='change_password'>Change password</button>
           </div>

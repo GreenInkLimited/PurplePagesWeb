@@ -97,7 +97,9 @@ const AddBlog = ({ onCancel, businessId }) => {
 
               <label>Tags</label>
               <Field className="input" type="text" name="tags" placeholder="Enter product title" />
+              <div className='create__binex-button'>
               <button className='user_user__button' type="submit">Submit</button>
+              </div>
             </Form>
           </Formik>
         </div>

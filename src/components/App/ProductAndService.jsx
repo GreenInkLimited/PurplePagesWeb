@@ -40,6 +40,19 @@ const ProductAndService = () => {
     );
   }
 
+  if (!business || business.products.length === 0) {
+    return <div className='empty-productandservice__container product'>
+              <h4>Business has no product/service</h4>
+              <p>
+               Subscribe to this business to be the first to get notification when they make a post
+              </p>
+              <br/><br/>
+              <Link className='subscribe' to="/apphome">
+                 Go Home
+              </Link>
+            </div>;
+  }
+
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = business.products.slice(indexOfFirstProduct, indexOfLastProduct);

@@ -58,8 +58,8 @@ const LetsTalk = () => {
         <label>Message</label>
         <Field as="textarea" className="textarea" name="message" placeholder='What seems to be the problem?'/>
         <button className="input" type='submit'>
-                   Proceed
-                  </button>
+          Proceed
+        </button>
       </Form>
       </Formik>
     </StyledContactForm>

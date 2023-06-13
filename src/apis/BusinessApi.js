@@ -82,6 +82,7 @@ export const getAdmin = async (id) => {
 
 export const RevokeAccess = async ({ business_id, username }) => {
   console.log('called delete admin api');
+  console.log('AddNewProduct - id:', business_id);
   const auth_code = localStorage.getItem('auth_code');
   console.log('auth_code', auth_code);
   const response = await axios.post(
@@ -326,6 +327,53 @@ export const SendMail = async ({ subject, mail, file, price, bundle, business_id
 
   try {
     const response = await axios.post(`${API.host}/add/mail/`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    console.log(response);
+    console.log(Object.keys(response));
+
+    // Include the business_id in the returned object
+    return {
+      data: response.data,
+      business_id: business_id,
+    };
+  } catch (error) {
+    console.error(error); // Log the entire error object
+    throw new Error('Error sending mail');
+  }
+};
+
+export const getMails = async ({id}) => {
+  console.log('called get my mails api');
+  const response = await axios.get(`${API.host}/get/mail/${id}/`);
+  return response.data;
+};
+
+
+export const UpdateMailSettings = async ({ email_host, email_host_user, email_host_password, email_port, business_id }) => {
+  console.log('called send mail api');
+  console.log('email_host:', email_host);
+  console.log('email_host_user:', email_host_user);
+  console.log('email_host_password:', email_host_password);
+  console.log('email_port:', email_port);
+  console.log('business_id:', business_id);
+
+  const formData = new FormData();
+  formData.append('email_host', email_host);
+  formData.append('email_host_user', email_host_user);
+  formData.append('email_host_password', email_host_password);
+  formData.append('email_port', email_port);
+  formData.append('business_id', business_id); // Include the business_id in the request payload
+
+  const auth_code = localStorage.getItem('auth_code');
+  console.log('auth_code:', auth_code);
+  formData.append('auth_code', auth_code);
+
+  try {
+    const response = await axios.post(`${API.host}/business/update/mail-setting/`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

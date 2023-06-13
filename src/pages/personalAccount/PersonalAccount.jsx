@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../../components/Footer';
 import AppNavbar from '../../components/AppNavBar';
 import Profile from '../../assets/Autor1.png'
@@ -6,23 +6,39 @@ import './personalAccount.css'
 import AccountSetting from '../../components/Users/AccountSetting';
 import Subscriptions from '../../components/Users/Subscriptions';
 import LetsTalk from '../../components/Users/LetsTalk';
+import { getUser } from '../../apis'
 
 const PersonalAccount = () => {
   const [toggleState, setToggleState] = useState(1);
+  const [userInfo, setUserInfo] = useState(null);
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await getUser({ pageParam: 0 });
+        setUserInfo(response);
+      } catch (error) {
+        console.log('Error fetching User:', error);
+      }
+    };
+    fetchUser();
+  }, []);
 
   return (
     <>
     <AppNavbar />
     <div className="personal-container container">
       <div className="personal__bloc-tabs">
+        {userInfo && (
         <div className="personal__bloc-profile">
-        <img src={Profile} />
-        <h4>Purple Closet</h4>
+        <img src={userInfo.image} />
+        <h4>{userInfo.username}</h4>
         </div>
+         )}
         
         <button
           className={toggleState === 1 ? "personal__tabs active-personal__tabs" : "personal__tabs"}

@@ -6,6 +6,13 @@ import { AddBusiness } from '../../apis/BusinessApi';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
+import Marketplace1 from '../../assets/Jiji.png'
+import Marketplace2 from '../../assets/Marketplace3.png'
+import Marketplace3 from '../../assets/Bumpa.png'
+import Marketplace4 from '../../assets/Marketplace1.png'
+import Marketplace5 from '../../assets/Marketplace2.png'
+import Marketplace6 from '../../assets/Flutter.png'
+import Marketplace7 from '../../assets/Others.png'
 
 const CreateBusiness = ({ closeModal }) => {
   const [image, setImage] = useState(null);
@@ -24,12 +31,22 @@ const CreateBusiness = ({ closeModal }) => {
   const [selectedLga, setSelectedLga] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedMarket, setSelectedMarket] = useState("");
+
+  
   
   const options = ['registered', 'not registered']
   const locations = ['Lagos', 'Oyo', 'Ekiti', 'FCT', 'Ibadan', 'Kwara', 'Sokoto', 'Jos', 'PortHaecourt']
   const lgas = ['apapa', 'mainland', 'wuse 2', 'Asokoro']
   const categories = ["Education", "Food & drinks", "Fashion", "Technology", "Logistics", "Entertainment", "Agriculture", "Finance", "Construction", "Pharmaceuticals", "Branding & Marketing", "Others"]
-  const markets = ["Jiji", "Jumia", "Bumpa", "Pocket", "Shopify", "Flutterwave", "Others"]
+  const markets = [
+  { name: "Jiji", image: Marketplace1 },
+  { name: "Jumia", image: Marketplace2 },
+  { name: "Bumpa", image: Marketplace3 },
+  { name: "Pocket", image: Marketplace4 },
+  { name: "Shopify", image: Marketplace5 },
+  { name: "Flutterwave", image: Marketplace6 },
+  { name: "Others", image: Marketplace7 }
+];
   const navigate = useNavigate();
 
   const { isLoading, error, isError, mutateAsync, data } = useMutation('create business', AddBusiness, {
@@ -199,7 +216,7 @@ const CreateBusiness = ({ closeModal }) => {
         className="dropdown-btn"
         onClick={() => setIsActiveLocation(!isActiveLocation)}
       >
-        {selectedLocation || field.value || "Select Location"} {/* Add the placeholder text */}
+        {selectedLocation || field.value || "Select"} {/* Add the placeholder text */}
         <div className="dropdown-icons">
         {isActiveLocation ? <RiArrowUpSLine className="dropdown-icon"/> : <RiArrowDownSLine className="dropdown-icon"/>}
         </div>
@@ -227,7 +244,7 @@ const CreateBusiness = ({ closeModal }) => {
 </Field>
                 </div>
                 <div>
-                  <label>Business Location (LGA)</label>
+                  <label>LGA</label>
                   <Field name="lga">
   {({ field }) => (
     <div className="dropdown">
@@ -235,7 +252,7 @@ const CreateBusiness = ({ closeModal }) => {
         className="dropdown-btn"
         onClick={() => setIsActiveLga(!isActiveLga)}
       >
-        {selectedLga || field.value || "Select Location (Lga)"} {/* Add the placeholder text */}
+        {selectedLga || field.value || "Select"} {/* Add the placeholder text */}
         <div className="dropdown-icons">
         {isActiveLga ? <RiArrowUpSLine className="dropdown-icon"/> : <RiArrowDownSLine className="dropdown-icon"/>}
         </div>
@@ -329,13 +346,14 @@ const CreateBusiness = ({ closeModal }) => {
             <div
               key={option}
               onClick={() => {
-                setSelectedMarket(option);
+                setSelectedMarket(option.name);
                 setIsActiveMarket(false);
-                field.onChange({ target: { value: option } });
+                field.onChange({ target: { value: option.name } });
               }}
-              className="dropdown-item"
+              className="dropdown-itemx"
             >
-              {option}
+              <p>{option.name}</p>
+              <img src={option.image} alt={option.name} />
             </div>
           ))}
         </div>
@@ -365,10 +383,11 @@ const CreateBusiness = ({ closeModal }) => {
               
 
               
-
+              <div className='create__binex-button'>
               <button className='subscribe' type="submit">
                 {isLoading ? 'Submitting...' : 'Submit'}
               </button>
+              </div>
             </Form>
           </Formik>
         </div>

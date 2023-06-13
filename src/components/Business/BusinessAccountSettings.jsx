@@ -8,9 +8,10 @@ import { useParams } from 'react-router-dom';
 
 const BusinessAccountSetting = () => {
   const { id } = useParams();
-  const [business, setBusiness] = useState(null);
+  const [business, setBusiness] = useState([]);
   const [isAddingAdmin, setIsAddingAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [admins, setAdmins] = useState([]);
 
   const handleAddAdminClick = () => {
     setIsAddingAdmin(true);
@@ -23,26 +24,40 @@ const BusinessAccountSetting = () => {
   useEffect(() => {
     const fetchBusiness = async () => {
   try {
-    const businessData = await getAdmin(id.toString()); // Convert id to a string if it's an object
-    setBusiness(businessData);
+    const adminsData = await getAdmin(id.toString());
+    setAdmins(adminsData);
     setLoading(false);
   } catch (error) {
-    console.error('Error fetching bio:', error);
+    console.error('Error fetching admins:', error);
   }
 };
 
     fetchBusiness();
   }, [id]);
 
+const handleAdminAdded = async (admin) => {
+  try {
+    const adminsData = await getAdmin(id.toString());
+    setAdmins(adminsData);
+  } catch (error) {
+    console.error('Error fetching admins:', error);
+    // Handle the error, show an error message, etc.
+  }
+};
+
   const handleDeleteAdmin = async (businessId, username) => {
   try {
     await RevokeAccess({ business_id: businessId, username });
-    // Update the state or perform any additional actions after successful deletion
+    setAdmins(prevAdmins => prevAdmins.filter(admin => admin.username !== username));
   } catch (error) {
     console.error('Error deleting admin:', error);
     // Handle the error, show an error message, etc.
   }
 };
+
+
+
+
 
   return (
     <>
@@ -111,15 +126,15 @@ const BusinessAccountSetting = () => {
           <button className='add_admin-button' onClick={handleAddAdminClick}>Add Admin</button>
         </div>
       </div>
-      {business?.map(({ id, username, image }) => (
-        <div className="admin__lists" key={id}>
-          <div className="admin__list__username">
-            <img src={`https://api.usepurplepages.com/${image}`} alt={username} />
-            <p>{username}</p>
-          </div>
-          <RiDeleteBin6Line className='delete__admin' onClick={() => handleDeleteAdmin(id, username)}/>
-        </div>
-      ))}
+      {admins.map(({ id, username, image, business_id }) => (
+  <div className="admin__lists" key={id}>
+    <div className="admin__list__username">
+      <img src={`https://api.usepurplepages.com/${image}`} alt={username} />
+      <p>{username}</p>
+    </div>
+    <RiDeleteBin6Line businessId={id} className='delete__admin' onClick={() => handleDeleteAdmin(business_id, username)} />
+  </div>
+))}
       <div className='business__account__addadmin-mobile'>
         <div></div>
         <div className="business__account__addadmin-mobile-left">
@@ -127,8 +142,8 @@ const BusinessAccountSetting = () => {
         </div>
       </div>
       {isAddingAdmin && (
-        <AddAdminModal isOpen={isAddingAdmin} onClose={handleCloseModal} businessId={id}/>
-      )}
+  <AddAdminModal isOpen={isAddingAdmin} onClose={handleCloseModal} businessId={id} onAdminAdded={handleAdminAdded} />
+)}
     </>
   );
 };

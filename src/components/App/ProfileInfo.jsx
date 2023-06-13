@@ -64,13 +64,19 @@ const ProfileInfo = () => {
     );
   }
 
-  // Calculate the number of full stars to display
-  const fullStars = Math.floor(business.rating ?? 0);
-  // Calculate the number of half stars to display
-  const hasHalfStar = business.rating % 1 !== 0;
-  // Calculate the number of empty stars to display
-  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+  // Calculate the average reviews rating
+const reviews = business?.reviews ?? [];
+const totalReviews = reviews.length;
+const sumRatings = reviews.reduce((sum, review) => sum + Number(review.rating), 0);
+const averageRating = totalReviews > 0 ? sumRatings / totalReviews : 0;
 
+// Calculate the number of full stars to display
+const fullStars = Math.floor(averageRating);
+// Calculate the number of half stars to display
+const hasHalfStar = averageRating % 1 !== 0;
+// Calculate the number of empty stars to display
+const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+  
   return (
     <div>
       <Header
