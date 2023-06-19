@@ -4,10 +4,10 @@ import Corporate from "../../assets/Corporate.png";
 import CorporateSelected from "../../assets/CorporateSelected.png";
 import PersonalSelected from "../../assets/PersonalSelected.png";
 import Logo from "../../assets/pplogo.png";
-import {MdArrowBack} from 'react-icons/md'
+import {AiOutlineClose} from 'react-icons/ai'
 
 
-function HostYourEvent({ onProceed }) {
+function HostYourEvent({ onProceed, closeModal }) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedImage, setSelectedImage] = useState(Personal);
 
@@ -23,8 +23,9 @@ function HostYourEvent({ onProceed }) {
   return (
     <div className="host__event-wrappers">
       <div className="host__event-wrappers-icons">
-          <MdArrowBack />
+          <AiOutlineClose onClick={() => closeModal(false)}/>
           <img src={Logo} />
+          <p></p>
       </div>
       <div className="host__event-wrappers-header">
         
@@ -60,6 +61,7 @@ function HostYourEvent({ onProceed }) {
         </button>
       </div>
       {selectedOption && (
+        
         <button className="select" onClick={handleProceedClick}>Proceed with {selectedOption}</button>
       )}
       <p className="host__event-footer">Or <a href="/auth/">login</a> if you already have an existing account</p>

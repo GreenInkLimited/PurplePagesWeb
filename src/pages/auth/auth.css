@@ -123,7 +123,22 @@ form {
     border: 1px solid rgb(220, 220, 220);
 }
 
+.error__background{
+    background-color: #eee9f1;
+    color: #C7005C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    gap: 10px;
+}
 
+.error__background p{
+    font-weight: 800;
+    align-items: center;
+}
 
 .inputxyz {
     width: 100%;
@@ -205,6 +220,7 @@ textarea::placeholder {
     padding: 4px 8px 4px 8px;
     border-radius: 12px;
     gap: 13px;
+    cursor: pointer;
 }
 
 .submit_disabled{
@@ -242,7 +258,7 @@ textarea::placeholder {
     justify-content: center;
 }
 
-.isselected {
+.interest__content.isselected {
     background-color: transparent;
     color: #C42AF7;
     border: 1px solid #C42AF7;

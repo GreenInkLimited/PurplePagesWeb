@@ -7,6 +7,7 @@ import { getUser, UpdateProfile } from '../../apis';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
+import {RiLockLine} from 'react-icons/ri'
 import ChangePassword from '../Modals/ChangePassword';
 
 const AccountSetting = () => {
@@ -92,12 +93,27 @@ const AccountSetting = () => {
       </div>
       <div className="account__settings-content">
         <div className="account__settings-left">
+         
+          {isEditing ? (
+            <div className='should__not-show__mobile'>
+            <p>Username</p>
+          <p>First Name</p>
+          <p>Last Name</p>
+          <p>Email</p>
+          <p>Phone Number</p>
+          <p>Password</p>
+          </div>
+            ) : (
+               <>
           <p>Username</p>
           <p>First Name</p>
           <p>Last Name</p>
           <p>Email</p>
           <p>Phone Number</p>
           <p>Password</p>
+          </>
+           )}
+           
         </div>
         <Formik
           initialValues={{ first_name: "", last_name: "", phone: "" }}
@@ -116,24 +132,36 @@ const AccountSetting = () => {
               {user && (
                 <div className="account__settings-right">
                   <p>
-                    <label htmlFor="username">Username</label>
+                    
                     {isEditing ? (
-
-                      <input
-                        className='inputing'
-                        type="text"
-                        name="username"
-                        value={editedUser.username}
-                        onChange={handleInputChange}
-                      />
+                      <>
+                      <label htmlFor="username">Username</label>
+                      <div className='input__divx'>
+                        <input
+                          className='inputingxyz'
+                          type="text"
+                          name="username"
+                          value={editedUser.username}
+                          onChange={handleInputChange}
+                          readOnly
+                        />
+                        <button
+                          type="button"
+                          className="password-toggle-button"
+                          
+                        ><RiLockLine />
+                        </button>
+                      </div>
+                      </>
                     ) : (
                       user.username
                     )}
                   </p>
                   <p>
-                     <label htmlFor="username">First Name</label>
+                    
                     {isEditing ? (
-                      
+                      <>
+                       <label htmlFor="username">First Name</label>
                       <Field
                         className="inputing"
                         type="text"
@@ -141,14 +169,17 @@ const AccountSetting = () => {
                         placeholder={editedUser.first_name}
                         required="true"
                       />
+                      </>
                     ) : (
                       user.first_name || 'first name'
                     )}
                     <ErrorMessage name="first_name" component="small" className="error-message" />
                   </p>
                   <p>
-                    <label htmlFor="username">Last Name</label>
+                    
                     {isEditing ? (
+                      <>
+                      <label htmlFor="username">Last Name</label>
                       <Field
                         className="inputing"
                         type="text"
@@ -156,28 +187,42 @@ const AccountSetting = () => {
                         placeholder={editedUser.last_name}
                         required="true"
                       />
+                      </>
                     ) : (
                       user.last_name || 'last name'
                     )}
                     <ErrorMessage name="last_name" component="small" className="error-message" />
                   </p>
                   <p>
-                    <label htmlFor="username">Email</label>
                     {isEditing ? (
-                      <input
-                        className='inputing'
-                        type="email"
-                        name="email"
-                        value={editedUser.email}
-                        onChange={handleInputChange}
-                      />
+                      <>
+                      <label htmlFor="username">Email</label>
+                      <div className='input__divx'>
+                        <input
+                          className='inputingxyz'
+                          type="email"
+                          name="email"
+                          value={editedUser.email}
+                          onChange={handleInputChange}
+                          readOnly
+                        />
+                        <button
+                          type="button"
+                          className="password-toggle-button"
+                          
+                        ><RiLockLine />
+                        </button>
+                      </div>
+                      </>
                     ) : (
                       user.email
                     )}
                   </p>
                   <p>
-                    <label htmlFor="username">Phone Number</label>
+                    
                     {isEditing ? (
+                      <>
+                      <label htmlFor="username">Phone Number</label>
                       <Field
                         className="inputing"
                         type="tel"
@@ -185,13 +230,16 @@ const AccountSetting = () => {
                         placeholder={editedUser.phone}
                         required="true"
                       />
+                      </>
                     ) : (
                       user.phone
                     )}
                   </p>
                   <p>
-                    <label htmlFor="username">Password</label>
+                    
                     {isEditing ? (
+                      <>
+                      <label htmlFor="username">Password</label>
                       <div className='input__divx'>
                         <input
                           className='inputingxyz'
@@ -207,6 +255,7 @@ const AccountSetting = () => {
                         >{showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                         </button>
                       </div>
+                      </>
                     ) : (
                       <p className='password__setmodal_button' onClick={() => { setOpenModal(true) }}>*******</p>
                     )}

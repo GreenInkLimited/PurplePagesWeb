@@ -12,6 +12,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import Notification from './Notification';
 import Profile from './Profile';
 import { getUser } from '../apis';
+import { Filter } from '../apis/FilterApis';
 
 const AppNavbar = () => {
   const [isNavShowing, setIsNavShowing] = useState(false);
@@ -19,6 +20,7 @@ const AppNavbar = () => {
   const [openNotification, setOpenNotification] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
   const [user, setUser] = useState(null); // Initialize with null instead of an empty array
+  
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -36,7 +38,7 @@ const AppNavbar = () => {
     <>
       <nav className="my__nav">
         <div className="container nav__containers">
-          <Link to="/" className="logo" onClick={() => setIsNavShowing(false)}>
+          <Link to="/apphome" className="logo" onClick={() => setIsNavShowing(false)}>
             <img src={Logo} alt="Nav Logo" />
           </Link>
           <ul

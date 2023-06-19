@@ -55,7 +55,7 @@ Purple Pages is, to put it simply, a one-stop shop for SMEs' digital marketing 
         <div className="container pillars">
           
           <div className="pillars__values__container">
-            <h2>What We Do</h2>
+            <h2>Our Operating Pillars</h2>
             <div className='pillars__values__wrapper'>
               <div>
                 <div className="pillars__icon">

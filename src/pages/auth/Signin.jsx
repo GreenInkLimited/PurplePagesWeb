@@ -4,6 +4,7 @@ import Logo from '../../assets/pplogo.png';
 import Google from '../../assets/Google.png';
 import FacebookLogin from '../../assets/FacebookLogin.png';
 import Line from '../../assets/Line.png';
+import {BiError} from 'react-icons/bi'
 import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -15,6 +16,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 const Signin = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [verificationError, setVerificationError] = useState('');
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
@@ -25,11 +27,18 @@ const Signin = () => {
     loginUser,
     {
       onSuccess: (data) => {
+        if (data && data.status_lean) {
         console.log(data);
         localStorage.setItem('auth_code', data.auth_code);
         // Redirect to home page after successful form submission
         navigate('/apphome');
-      },
+      }
+       else {
+          // Verification unsuccessful
+          setVerificationError('Username/Email or Password not correct.');
+          // You can perform any additional actions here, such as showing an error message
+        }
+      }
     }
   );
 
@@ -51,8 +60,15 @@ const Signin = () => {
     <>
     <div className="container signup_wrapper">
         <div className="signup__content">
-            <img src={Logo} alt="logo" />
+            <Link to="/" >
+              <img src={Logo} alt="logo" />
+            </Link>
+            
             <div className='signup__body'>
+              {verificationError && <div className="error__background">
+                <BiError/>
+              <p> {verificationError}</p>
+            </div>}
                 <h1>Sign in</h1>
                 <div className="signup_paragraph">
         <p>Don’t have an account?</p><Link to="/auth/"><span>Create an account</span></Link>
@@ -79,12 +95,12 @@ const Signin = () => {
       >
         <Form>
         
-        <label>Email</label>
+        <label>Email or Username</label>
         <Field
           className="input"
           type="text"
           name="username"
-          placeholder="Preferably your social media one"
+          placeholder="purplepage@gmail.com or purplepages"
         />
         <ErrorMessage name="username" component="small" className="error-message" />
         <label>Password</label>

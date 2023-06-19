@@ -54,7 +54,7 @@ const UserProductAndService = () => {
         ) : (
           <div className='empty-productandservice__container'>
             <h4>Add your first product/service</h4>
-            {/* Rest of the component code */}
+            <p>Products and services are what you offer to your customers, ranging from physical goods to digital services. In other words, these are the items that you are selling to your customers.</p>
           </div>
         )}
       </div>

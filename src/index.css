@@ -104,7 +104,7 @@ img {
     font-family: "avenir-lt-45-book";
     width: fit-content;
     margin: 0 auto;
-    padding: 0.9rem 2rem;
+    padding: 12px 32px 12px 32px;
     background: var(--color-secondary);
     border-radius: 0.5rem;
     transition: var(--transition);
@@ -146,10 +146,10 @@ img {
     color: var(--color-white);
     width: 100%;
     margin: 0 auto;
-    padding: 0.4rem 2rem;
     background: var(--color-secondary);
     border-radius: 0.5rem;
     transition: var(--transition);
+    height: 50px;
 }
 
 .btn:hover{
@@ -364,9 +364,7 @@ position: relative;
         font-size: 1.2rem;
         line-height: 1rem;
     }
-    .testimonials {
-        display: none;
-    }
+    
     
         .header {
             margin-top: 1.5rem;

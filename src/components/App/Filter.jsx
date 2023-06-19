@@ -6,7 +6,6 @@ import { useMutation } from 'react-query';
 import { TiArrowUnsorted } from 'react-icons/ti'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useQuery } from 'react-query';
-import { filterByCategory } from '../../apis/FilterApis';
 
 const Filter = () => {
   const [categoryVal, setCategoryVal] = useState('');
@@ -32,10 +31,7 @@ const Filter = () => {
   const uniqueLocations = Array.from(new Set(products.map(product => product.location)));
   const uniqueRatings = Array.from(new Set(products.map(product => product.rating)));
 
-  const { data: filteredBusiness, isLoading } = useQuery('business', filterByCategory);
-  const handleCategoryChange = (e) => {
-    setCategoryVal(e.target.value);
-  };
+  
 
   const handleLocationChange = (e) => {
     setLocationVal(e.target.value);

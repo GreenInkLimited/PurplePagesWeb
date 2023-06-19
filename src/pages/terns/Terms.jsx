@@ -46,7 +46,7 @@ const Terms = () => {
                     <h4>PROHIBITED ACTIVITIES</h4>
                    <p>You may not access or use the Site for any purpose other than that for which we make the Site available. The Site may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us.</p>
                     <br/>
-                    As a user of the Site, you agree not to:
+                    <p>As a user of the Site, you agree not to:</p>
                     <ul>
                         <li>1.<p>Systematically retrieve data or other content from the Site to create or compile, directly or indirectly, a collection, compilation, database, or directory without written permission from us.</p></li>
                         <li>2.<p>Trick, defraud, or mislead us and other users, especially in any attempt to learn sensitive account information such as user passwords.</p></li>
@@ -77,7 +77,7 @@ const Terms = () => {
                     <h4>USER GENERATED CONTRIBUTIONS</h4>
                     <p>The Site does not offer users to submit or post content. We may provide you with the opportunity to create, submit, post, display, transmit, perform, publish, distribute, or broadcast content and materials to us or on the Site, including but not limited to text, writings, video, audio, photographs, graphics, comments, suggestions, or personal information or other material (collectively, "Contributions"). Contributions may be viewable by other users of the Site and through third-party websites. As such, any Contributions you transmit may be treated in accordance with the Site Privacy Policy. When you create or make available any Contributions, you thereby represent and warrant that:</p>
                     <br/>
-                    As a user of the Site, you agree not to:
+                    <p>As a user of the Site, you agree not to:</p>
                     <ul>
                         <li>1.<p>The creation, distribution, transmission, public display, or performance, and the accessing, downloading, or copying of your Contributions do not and will not infringe the proprietary rights, including but not limited to the copyright, patent, trademark, trade secret, or moral rights of any third party.</p></li>
                         <li>2.<p>You are the creator and owner of or have the necessary licenses, rights, consents, releases, and permissions to use and to authorize us, the Site, and other users of the Site to use your Contributions in any manner contemplated by the Site and these Terms of Use.</p></li>
@@ -93,7 +93,7 @@ const Terms = () => {
                         <li>12.<p>Your Contributions do not violate any applicable law concerning child pornography, or otherwise intended to protect the health or well-being of minors.</p></li>
                         <li>13.<p>Your Contributions do not include any offensive comments that are connected to race, national origin, gender, sexual preference, or physical handicap.</p></li>
                         <li>14.<p>Your Contributions do not otherwise violate, or link to material that violates any provision of these Terms of Use, or any applicable law or regulation.</p></li>
-                        <li>15.<p>Any use of the Site in violation of the foregoing violates these Terms of Use and may result in, among other things, termination or suspension of your rights to use the Site.</p></li>
+                        <p>Any use of the Site in violation of the foregoing violates these Terms of Use and may result in, among other things, termination or suspension of your rights to use the Site.</p>
                     </ul>
                 </div>
 

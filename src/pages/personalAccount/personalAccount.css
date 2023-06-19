@@ -392,10 +392,8 @@ button {
 
 .account__settings-content {
     display: flex;
+    margin-bottom: 20px;
     flex-direction: row;
-    gap: 4rem;
-    justify-content: space-between;
-    margin-bottom: 40px;
 }
 
 .personal__content-tabs {
@@ -403,7 +401,7 @@ button {
 }
 
 .account__settings-left{
-    display: none;
+    width: 100%;
 }
 
 .account__settings-right {
@@ -424,6 +422,10 @@ button {
 .tabs__personal-information .icon {
     color: var(--color-secondary);
     margin-right: 0;
+}
+
+.should__not-show__mobile{
+    display: none;
 }
 
 

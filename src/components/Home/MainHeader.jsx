@@ -11,7 +11,7 @@ const MainHeader = () => {
             Your <span>One-Stop</span> Digital Marketing Solution
             </h1>
             <p>Purple Pages supports SMEs in effortlessly and creatively reaching a larger audience, which ultimately leads to business growth.</p>
-            <Link to="/plans" className='btn'>Get Started</Link>
+            <Link to="/auth" className='btn'>Get Started</Link>
         </div>
         <div className="main__header-right">
           <div className="main__header-image">

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { blog } from '../../data';
 import Delete from '../../assets/Delete.png';
 import { getBlogWishlist, DeleteBlogWishlist } from '../../apis/WishlistApis';
 import Logo from '../../assets/pplogo.png';

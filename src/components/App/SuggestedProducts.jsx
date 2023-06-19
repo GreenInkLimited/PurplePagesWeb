@@ -28,7 +28,7 @@ const SuggestedProducts = () => {
     return shuffled;
   };
 
-  const shuffledProducts = shuffleArray(products);
+  const shuffledProducts = shuffleArray(products).slice(0, 4); // Limit to four products
 
   return (
     <div className="productandservice__container">

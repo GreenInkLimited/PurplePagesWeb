@@ -7,7 +7,7 @@ import AddBlog from './AddBlog';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { useQuery } from 'react-query';
 
-const MAX_DETAIL_LENGTH = 50;
+const MAX_DETAIL_LENGTH = 80;
 
 const truncateText = (text) => {
   if (text.length <= MAX_DETAIL_LENGTH) {
@@ -77,7 +77,7 @@ const UserBlog = () => {
                 <Link to={`/appblog/${blog.id}`}>
                   <h2>{blog.title}</h2>
                 </Link>
-                <p className='subcription__wrapper-sub-paragraph'>{truncateText(blog.detail)}</p>
+                <small className='subcription__wrapper-sub-paragraph'>{truncateText(blog.detail)}</small>
               </div>
             ))
           ) : (

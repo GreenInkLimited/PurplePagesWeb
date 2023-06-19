@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import { AiOutlineLike, AiOutlineShareAlt, AiFillLike } from 'react-icons/ai';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import { RiArrowDropDownLine } from 'react-icons/ri';
-import Comment from '../../assets/comment.png';
 import { getBlogById, getBlogs, AddBlogComment, AddBlogLike } from '../../apis/BlogApis';
 import { AddBlogWishlist } from '../../apis/WishlistApis';
 import Logo from '../../assets/pplogo.png';
@@ -17,7 +16,7 @@ const truncateText = (text) => {
   return text.slice(0, MAX_DETAIL_LENGTH) + '...';
 };
 
-const BlogDetail = () => {
+const HomeBlogDetail = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [blogs, setBlogs] = useState([]);
@@ -27,22 +26,22 @@ const BlogDetail = () => {
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-  const fetchBlog = async () => {
-    try {
-      const blogData = await getBlogById(id);
-      setBlog(blogData);
-      setLoading(false);
+    const fetchBlog = async () => {
+      try {
+        const blogData = await getBlogById(id);
+        setBlog(blogData);
+        setLoading(false);
 
-      const auth_code = localStorage.getItem('auth_code');
-      const likedStatus = JSON.parse(localStorage.getItem(`likedStatus_${id}_${auth_code}`));
-      setIsLiked(likedStatus || blogData.isLiked); // Update the isLiked state
-    } catch (error) {
-      console.error('Error fetching blog:', error);
-    }
-  };
+        const auth_code = localStorage.getItem('auth_code');
+        const likedStatus = JSON.parse(localStorage.getItem(`likedStatus_${id}_${auth_code}`));
+        setIsLiked(likedStatus || blogData.isLiked); // Update the isLiked state
+      } catch (error) {
+        console.error('Error fetching blog:', error);
+      }
+    };
 
-  fetchBlog();
-}, [id]);
+    fetchBlog();
+  }, [id]);
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -57,8 +56,6 @@ const BlogDetail = () => {
 
     fetchBlogs();
   }, []);
-
-  
 
   if (loading) {
     return (
@@ -100,36 +97,36 @@ const BlogDetail = () => {
   };
 
   const handleLikeBlog = async () => {
-  try {
-    const auth_code = localStorage.getItem('auth_code');
-    const likedStatus = JSON.parse(localStorage.getItem(`likedStatus_${id}_${auth_code}`));
+    try {
+      const auth_code = localStorage.getItem('auth_code');
+      const likedStatus = JSON.parse(localStorage.getItem(`likedStatus_${id}_${auth_code}`));
 
-    if (likedStatus) {
-      // User has already liked the blog, so unlike logic
-      // Call the appropriate function to unlike the blog
-      // Update the liked status in the local storage and state
-      localStorage.setItem(`likedStatus_${id}_${auth_code}`, JSON.stringify(false));
-      setIsLiked(false);
-    } else {
-      // User has not liked the blog, so like logic
-      await AddBlogLike({ blog_id: id, auth_code });
-      // Update the liked status in the local storage and state
-      localStorage.setItem(`likedStatus_${id}_${auth_code}`, JSON.stringify(true));
-      setIsLiked(true);
+      if (likedStatus) {
+        // User has already liked the blog, so unlike logic
+        // Call the appropriate function to unlike the blog
+        // Update the liked status in the local storage and state
+        localStorage.setItem(`likedStatus_${id}_${auth_code}`, JSON.stringify(false));
+        setIsLiked(false);
+      } else {
+        // User has not liked the blog, so like logic
+        await AddBlogLike({ blog_id: id, auth_code });
+        // Update the liked status in the local storage and state
+        localStorage.setItem(`likedStatus_${id}_${auth_code}`, JSON.stringify(true));
+        setIsLiked(true);
+      }
+
+      // Optionally, you can fetch the updated blog data to refresh the like count
+      const updatedBlogData = await getBlogById(id);
+      setBlog(updatedBlogData);
+    } catch (error) {
+      console.error('Error liking blog:', error);
     }
+  };
 
-    // Optionally, you can fetch the updated blog data to refresh the like count
-    const updatedBlogData = await getBlogById(id);
-    setBlog(updatedBlogData);
-  } catch (error) {
-    console.error('Error liking blog:', error);
-  }
-};
-
-// Shuffle the blogs array randomly
+  // Shuffle the blogs array randomly
   const shuffledBlogs = [...blogs].sort(() => Math.random() - 0.5);
   // Take the first two blogs from the shuffled array
-  const randomBlogs = shuffledBlogs.slice(0, 3);
+  const randomBlogs = shuffledBlogs.slice(0, 2);
 
   return (
     <div className='container blog__detail'>
@@ -139,7 +136,7 @@ const BlogDetail = () => {
           <img src={`https://api.usepurplepages.com/${blog.owner.image}`} alt="autor" />
           <div className="blog__bottom-detail">
             <p>{blog.owner.name}</p>
-            <small>{formattedDate}</small>
+            <p className='smallx'>{formattedDate}</p>
           </div>
         </div>
       </div>
@@ -154,49 +151,6 @@ const BlogDetail = () => {
               <p key={index}>{tag.trim()}</p>
             ))}
           </div>
-          <div className='blog__actions'>
-            <div className="blog__actions-left" onClick={handleLikeBlog}>
-            {isLiked ? <AiFillLike /> : <AiOutlineLike />}
-              <p>{blog.likes.length}</p> {/* Display the total number of likes */}
-            </div>
-            <div className="blog__actions-right">
-              <div onClick={handleAddToWishlist}>
-                {isBookmarked ? ( // Render filled bookmark icon if isBookmarked is true
-                  <BsBookmarkFill />
-                ) : (
-                  <BsBookmark /> // Otherwise, render regular bookmark icon
-                )}
-              </div>
-              <AiOutlineShareAlt />
-            </div>
-          </div>
-          <div className='comment__flexbox'>
-            <textarea
-              placeholder='Leave a comment'
-              className='input-box'
-              value={commentText}
-              onChange={handleCommentChange}
-            />
-            <button className='post' onClick={handlePostComment}>Post</button>
-          </div>
-          <div className="blog__recent-post">
-            <div className="recent__postx-header">
-              <h4>MOST RECENT</h4>
-              <RiArrowDropDownLine />
-            </div>
-            {blog.comments.map((comment, index) => (
-          <div className="blog__comment-body" key={index}>
-            <img src={`https://api.usepurplepages.com/${comment.image}`} alt="Comment" />
-            <div>
-              <p>{comment.name}</p>
-              <div className="reply__comment">
-                <small>{comment.comment}</small>
-                <p>Reply</p>
-              </div>
-            </div>
-          </div>
-        ))}
-          </div>
         </div>
         <div>
           {randomBlogs.map(({ id, image, detail, title, owner, date }) => {
@@ -205,9 +159,9 @@ const BlogDetail = () => {
             const formattedDate = createdDate.toLocaleDateString('en-US', options);
             return (
               <div className="blog__body__right" key={id}>
-                <Link to={`/appblog/${id}`}>
+                 <Link to={`/appblog/${id}`}>
                 <img className="blog__body__right-img" src={image} alt="image" />
-                
+               
                   <h4>{title}</h4>
                 
                 <p>{truncateText(detail)}</p>
@@ -228,4 +182,4 @@ const BlogDetail = () => {
   );
 };
 
-export default BlogDetail;
+export default HomeBlogDetail;

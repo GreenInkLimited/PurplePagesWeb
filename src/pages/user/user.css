@@ -110,10 +110,14 @@
     padding: 7px;
     outline: none;
     margin-bottom: 16px;
+    background-color: white;
     border-radius: 5px;
     border: 1px solid rgb(220, 220, 220);
 }
 
+.use__to_upload-img{
+    position: absolute;
+}
 
 .tabs__user-information {
     display: grid;
@@ -1247,6 +1251,8 @@
 
 .plan-details-modal-header h2{
     color: #4F4F4F;
+    font-family: 'Clash Display';
+    font-weight: 600;
 }
 
 .plan-details-modal-wrapper p{
@@ -1352,7 +1358,10 @@
     margin-bottom: 24px;
 }
 
-
+.clip__icon{
+    width: 137.5px;
+    height: 125px;
+}
 .uploaded-image{
     width: 60px;
     height: 60px;
@@ -1866,7 +1875,11 @@
     display: block;
 }
 
-.user__productandservice__value p, small{
+.user__productandservice__value p{
+    display: none;
+}
+
+.user__productandservice__value small{
     display: none;
 }
 
@@ -2251,5 +2264,71 @@
     font-weight: 500;
     font-size: 20px;
 }
+.promote__modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 91px;
+}
 
+.promote__modal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-height: calc(100vh - 6.5rem);
+    overflow-y: auto;
+    top: 5.5rem;
+    position: fixed;
+    background-color: #FFFFFF;
+}
+
+.promote__modal-content {
+    width: 100%;
+    height: 480px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #650585;
+}
+
+.promote__content-container {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.plan-details-modal-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 516px;
+    overflow-y: auto;
+    top: 20%;
+    left: 0%;
+    position: fixed;
+    background-color: #FFFFFF;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    box-shadow: rgba(41 41 41 0.08);
+}
+
+.plan-details-modal-header h2 {
+    color: #4F4F4F;
+    font-size: 20px;
+    font-family: 'Clash Display';
+    font-weight: 600;
+}
+
+.plan-details-modal-header {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
 }

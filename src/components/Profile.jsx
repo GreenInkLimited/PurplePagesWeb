@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './profile.css';
-import User from '../assets/Autor1.png';
 import AddBusiness from '../assets/add-line.png';
 import Event from '../assets/event.png';
 import { Link } from 'react-router-dom';
-import { user as userData } from '../data';
 import { getUser } from '../apis';
 import { getMyBusiness } from '../apis/BusinessApi';
 import CreateBusiness from './Users/CreateBusiness';

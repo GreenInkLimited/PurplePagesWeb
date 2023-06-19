@@ -40,8 +40,8 @@ const ContactUs = () => {
   return (
     <>
       <Navbar />
-      <div className="container">
-        <div className="contact__title">
+      <div className="">
+        <div className="container contact__title">
           <h2>Contact Us</h2>
         </div>
         <div className="contact__container">

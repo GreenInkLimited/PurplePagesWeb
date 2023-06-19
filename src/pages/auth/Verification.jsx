@@ -6,12 +6,15 @@ import Footer from '../../components/Footer';
 import { otpVerification } from '../../apis';  
 import { Formik, Form, Field } from 'formik';
 import { useMutation } from 'react-query';
+import {BiError} from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 const Verification = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const email = queryParams.get('email');
   const phone = queryParams.get('phone');
+
 
   const form = useRef();
   const [verificationCode, setVerificationCode] = useState('');
@@ -39,8 +42,14 @@ const Verification = () => {
     <>
       <div className="container signup_wrapper">
         <div className="signup__content">
-          <img src={Logo} alt="logo" />
+          <Link to="/" >
+            <img src={Logo} alt="logo" />
+          </Link>
           <div className="signup__body">
+            {verificationError && <div className="error__background">
+              <BiError/>
+              <p>{verificationError}</p>
+            </div>}
             <h1>Verification</h1>
             <div className="signup_paragraph">
               <p>
@@ -65,7 +74,7 @@ const Verification = () => {
                   name="otp_code"
                   placeholder="Enter verification code"
                 />
-                {verificationError && <p className="error">{verificationError}</p>}
+                
                 <button className="input" type="submit">
                   {isLoading ? 'Verifying...' : 'Proceed' }
                 </button>

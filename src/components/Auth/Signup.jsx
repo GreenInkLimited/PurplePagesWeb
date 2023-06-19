@@ -82,7 +82,9 @@ const Signup = () => {
   return (
     <div className="container signup_wrapper">
       <div className="signup__content">
+        <Link to="/" >
         <img src={Logo} alt="logo" />
+        </Link>
         <div className="signup__body">
           <h1>Create an account</h1>
           <div className="signup_paragraph">
@@ -106,12 +108,12 @@ const Signup = () => {
             onSubmit={handleSubmit}
           >
             <Form>
-              <label htmlFor="username">Name</label>
+              <label htmlFor="username">Username</label>
               <Field
                 className="input"
                 type="text"
                 name="username"
-                placeholder="Preferably your social media one"
+                placeholder="purplepages"
               />
               <ErrorMessage name="username" component="small" className="error-message" />
 
@@ -120,7 +122,7 @@ const Signup = () => {
                 className="input"
                 type="email"
                 name="email"
-                placeholder="Preferably your social media one"
+                placeholder="purplepage@gmail.com"
               />
               <ErrorMessage name="email" component="small" className="error-message" />
 
@@ -129,26 +131,25 @@ const Signup = () => {
                 className="input"
                 type="tel"
                 name="phone"
-                placeholder="Preferably your social media one"
+                placeholder="+234 111 222 4444"
               />
               <ErrorMessage name="phone" component="small" className="error-message" />
 
               <label htmlFor="password">Password</label>
               <div className='input__div'>
                 <Field
-  className="inputxyz"
-  type={showPassword ? 'text' : 'password'}
-  name="password"
-  placeholder="********"
-  
-/>
-<button
-  type="button"
-  className="password-toggle-button"
-  onClick={togglePasswordVisibility}
->{showPassword ? <AiOutlineEyeInvisible/> : <AiOutlineEye/>}
-</button>
-  </div>            
+                  className="inputxyz"
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="********"
+                />
+              <button
+                type="button"
+                className="password-toggle-button"
+                onClick={togglePasswordVisibility}
+              >{showPassword ? <AiOutlineEyeInvisible/> : <AiOutlineEye/>}
+              </button>
+              </div>            
               <ErrorMessage name="password" component="small" className="error-message" />
 
               <div className="agree__to__terms">

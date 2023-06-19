@@ -5,9 +5,12 @@ import { CiLocationOn } from "react-icons/ci";
 import ProductAndService from "./ProductAndService";
 import { Link, useParams } from "react-router-dom";
 import Reviews from "./Reviews";
-import Marketplace1 from "../../assets/Marketplace1.png";
+import Marketplace0 from "../../assets/Marketplace1.png";
+import Marketplace1 from "../../assets/Jiji.png";
 import Marketplace2 from "../../assets/Marketplace2.png";
 import Marketplace3 from "../../assets/Marketplace3.png";
+import Marketplace4 from "../../assets/Bumpa.png";
+import Marketplace5 from "../../assets/Flutter.png";
 import { getBusinessById } from "../../apis/BusinessApi";
 import Logo from "../../assets/pplogo.png";
 import ReviewModal from "./ReviewModal";
@@ -114,9 +117,24 @@ function Tabs() {
               <p>Click on any marketplace below to shop with us</p>
               <br />
               <div className="user__utabs__marketplace">
-                <img src={Marketplace1} />
-                <img src={Marketplace2} />
-                <img className="jumia__marketplace" src={Marketplace3} />
+                <a href={business.marketplace_link}>
+                {business.marketplace === 'Jiji' && <img src={Marketplace1} alt="jiji"/>}
+                </a>
+                <a href={business.marketplace_link}>
+                {business.marketplace === 'Jumia' && <img src={Marketplace3} alt="jiji" className="jumia__marketplace"/>}
+                </a>
+                <a href={business.marketplace_link}>
+                {business.marketplace === 'Bumpa' && <img src={Marketplace4} alt="jiji" className="jumia__marketplace"/>}
+                </a>
+                <a href={business.marketplace_link}>
+                {business.marketplace === 'Pocket' && <img src={Marketplace0} alt="jiji" />}
+                </a>
+                <a href={business.marketplace_link}>
+                {business.marketplace === 'Shopify' && <img src={Marketplace2} alt="jiji" />}
+                </a>
+                <a href={business.marketplace_link}>
+                {business.marketplace === 'Flutter' && <img src={Marketplace5} alt="jiji" />}
+                </a>
               </div>
             </div>
           </div>

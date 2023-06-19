@@ -10,6 +10,7 @@ import Business from './pages/apphome/Business'
 import SingleProduct from './pages/apphome/SingleProduct'
 import Blog from './pages/blog/Blog'
 import BlogDetails from './pages/blog/BlogDetails'
+import HomeBlogDetails from './pages/blog/HomeBlogDetails'
 import Ads from './pages/ads/Ads'
 import AdsDetails from './pages/ads/AdsDetails'
 import Wishlist from './pages/wishlist/Wishlist'
@@ -30,6 +31,7 @@ import Verify from './components/Modals/Verification'
 import StepperForm from './components/Modals/StepperForm'
 import {QueryClient, QueryClientProvider} from 'react-query';
 import 'react-loading-skeleton/dist/skeleton.css'
+import HomeBlog from './pages/home/HomeBlog'
 
 
 const queryClient = new QueryClient();
@@ -50,6 +52,7 @@ const App = () => {
         <Route path='userevents' element={<UserEvents />} />
         <Route path='appblog' element={<Blog />} />
         <Route path='/appblog/:id' element={<BlogDetails />} />
+        <Route path='/blog/:id' element={<HomeBlogDetails />} />
         <Route path='apphome' element={<AppHome />} />
         <Route path='appads' element={<Ads />} />
         <Route path='features' element={<Features />} />
@@ -69,6 +72,7 @@ const App = () => {
         <Route path='/writeblog' element={<WriteBlog/>} />
         <Route path='/verification' element={<Verify/>} />
         <Route path='/stepper' element={<StepperForm/>} />
+        <Route path='/blog' element={<HomeBlog/>} />
         
       </Routes>
       
