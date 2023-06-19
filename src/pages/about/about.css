@@ -71,7 +71,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 67px;
+    gap: 80px;
     margin-top: 2rem;
 }
 
@@ -80,7 +80,16 @@
     filter: saturate(1);
     transition: var(--transition);
     width: 489px;
-    height: 575px;
+    height: 375px;
+    object-fit: cover;
+}
+
+.about__values__image img{
+    filter: saturate(1);
+    transition: var(--transition);
+    width: 489px;
+    height: 390px;
+    border-radius: 20px;
     object-fit: cover;
 }
 
@@ -98,7 +107,7 @@
 }
 
 .about__values__wrapper p {
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .about__values__value {
@@ -161,7 +170,7 @@
 }
 
 .pillars__values__wrapper p{
-    font-size: 24px;
+    font-size: 20px;
 }
 
 /*==================core values======================*/

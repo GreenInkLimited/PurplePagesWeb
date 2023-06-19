@@ -1319,37 +1319,145 @@ export const testimonials = [
 export const countries = [
     {
         id: 1,
-        name: "Lagos",
+        name: "Abia",
     },
     {
         id: 2,
-        name: "PortHarcourt",
+        name: "Adamawa",
     },
     {
         id: 3,
-        name: "Ogun",
+        name: "Akwa Ibom",
     },
     {
         id: 4,
-        name: "Ibadan",
+        name: "Anambra",
     },
     {
         id: 5,
-        name: "Abuja",
+        name: "Bauchi",
     },
 
     {
         id: 6,
-        name: "Kano",
+        name: "Bayelsa",
     },
     {
         id: 7,
-        name: "Jos",
+        name: "Benue",
     },
     {
         id: 8,
-        name: "Illorin",
+        name: "Borno",
     },
+    {
+        id: 9,
+        name: "Cross River",
+    },
+    {
+        id: 10,
+        name: "Delta",
+    },
+    {
+        id: 11,
+        name: "Ebonyi",
+    },
+    {
+        id: 12,
+        name: "Edo",
+    },
+    {
+        id: 13,
+        name: "Ekiti",
+    },
+    {
+        id: 14,
+        name: "Gombe",
+    },
+    {
+        id: 15,
+        name: "Imo",
+    },
+    {
+        id: 16,
+        name: "Jigawa",
+    },
+    {
+        id: 17,
+        name: "Kaduna",
+    },
+    {
+        id: 18,
+        name: "Kano",
+    },
+    {
+        id: 19,
+        name: "Katsina",
+    },
+    {
+        id: 20,
+        name: "Kebbi",
+    },
+    {
+        id: 21,
+        name: "Kwara",
+    },
+    {
+        id: 22,
+        name: "Lagos",
+    },
+    {
+        id: 23,
+        name: "Nasarawa",
+    },
+    {
+        id: 24,
+        name: "Niger",
+    },
+    {
+        id: 25,
+        name: "Ogun",
+    },
+    {
+        id: 26,
+        name: "Ondo",
+    },
+    {
+        id: 27,
+        name: "Osun",
+    },
+    {
+        id: 28,
+        name: "Oyo",
+    },
+    {
+        id: 29,
+        name: "Plateau",
+    },
+    {
+        id: 30,
+        name: "Rivers",
+    },
+    {
+        id: 31,
+        name: "Sokoto",
+    },
+    {
+        id: 32,
+        name: "Taraba",
+    },
+    {
+        id: 33,
+        name: "Yobe",
+    },
+    {
+        id: 34,
+        name: "Zamfara",
+    },
+    {
+        id: 35,
+        name: "FCT Abuja",
+    }
 ]
 
 

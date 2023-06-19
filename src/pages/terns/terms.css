@@ -23,12 +23,12 @@
     display: flex;
     flex-direction: row;
     font-family: 'avenir-lt-45-book';
-    font-size: 24px;
+    font-size: 18px;
     line-height: 36px;
 }
 
 .agreement p{
-    font-size: 24px;
+    font-size: 18px;
     line-height: 36px;
     font-family: 'avenir-lt-45-book';
 }
@@ -59,12 +59,12 @@
         display: flex;
         flex-direction: row;
         font-family: 'avenir-lt-45-book';
-        font-size: 18px;
+        font-size: 16px;
         line-height: 26px;
     }
 
     .agreement p {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 26px;
         font-family: 'avenir-lt-45-book';
     }

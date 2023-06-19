@@ -29,7 +29,7 @@ const About = () => {
     </header>
     <div className="container aboutus">
       <h2>What We Do</h2>
-    <div className=" about__values__container">
+    <div className="about__values__container">
        
       <div className="about__values__right">
        

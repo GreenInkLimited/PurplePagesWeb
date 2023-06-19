@@ -17,11 +17,11 @@ const Community = () => {
                     <p>Number of users</p>
                 </div>
                 <div className='community___size-container'>
-                    <h2>100</h2>
+                    <h2>000</h2>
                     <p>SMEs</p>
                 </div>
                 <div className='community___size-container'>
-                    <h2>100</h2>
+                    <h2>700</h2>
                     <p>Social following</p>
                 </div>
             </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import Logo from '../assets/pplogo.png'
-import Facebook from '../assets/facebook.png';
 import Twitter from '../assets/twitter.png';
 import Instagram from '../assets/instagram.png';
 import {AiOutlineMail} from 'react-icons/ai'
@@ -31,14 +30,14 @@ const Footer = () => {
             <article>
                 <h4>Help & Support</h4>
                 <Link to="/faq">FAQs</Link>
-                <Link to="/contact">Privacy Policy</Link>
+                <Link to="/terms">Privacy Policy</Link>
                 <Link to="/terms">Terms & Conditions</Link>
                 
             </article>
             <article>
                 <h4>Contact Us</h4>
-                <Link to="/"><AiOutlineMail className='contact__icon'/>hello@usepurplepages.com</Link>
-                <Link to="/about"><BsTelephone  className='contact__icon'/>+234 800 0000 000</Link>
+                <a href='mailto:hello@usepurplepages.com' rel='noreferre noopener'><AiOutlineMail className='contact__icon'/>hello@usepurplepages.com</a>
+                <a href='tel:+234 703 092 6668' rel='noreferre noopener'><BsTelephone  className='contact__icon'/>+234 703 092 6668</a>
             </article>
             <article>
                 
@@ -57,13 +56,11 @@ const Footer = () => {
             <div >
                     <h4>Follow Us</h4>
                     <div className="footer__socials">
-                    <a href='#' target="_blank" rel='noreferrer noopener'>
-                        <img src={Facebook} alt="facebook" />
-                    </a>
-                    <a href='#' target="_blank" rel='noreferrer noopener'>
+                    
+                    <a href='https://twitter.com/use_purplepages?s=11&t=qt_Byk6GrAFcmhRyH8jdHQ' target="_blank" rel='noreferrer noopener'>
                         <img src={Twitter} alt="twitter" />
                     </a> 
-                    <a href='#' target="_blank" rel='noreferrer noopener'>
+                    <a href='https://www.instagram.com/use_purplepages/?igshid=YmMyMTA2M2Y%3D' target="_blank" rel='noreferrer noopener'>
                         <img src={Instagram} alt="instagram" />
                     </a>
                 </div>
