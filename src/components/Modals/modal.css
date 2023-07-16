@@ -107,6 +107,11 @@
     box-shadow: 0px 8px 24px rgba(20, 1, 27, 0.1);
 }
 
+.modal__xbody-left h4{
+    font-family: 'avenir-lt-45-book';
+    margin-bottom: 6px;
+}
+
 
 .modal__background{
     width: 100vw;
@@ -119,6 +124,19 @@
     z-index: 9999;
 }
 
+.modal__background-signout {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(200, 200, 200, 0.9);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    left: 0;
+    right: 0;
+    top: 0;
+}
 .modal__container{
     width: 800px;
     height: 800px;
@@ -399,6 +417,7 @@
 
 .host__event-body__container button{
     background-color: transparent;
+    color: #828282;
     display: flex;
     text-align: start;
     align-items: flex-start;
@@ -1194,6 +1213,7 @@ textarea::placeholder {
     margin-top: 40px;
 }
 
+
 .host__event-wrappers-header h2 {
     font-weight: 600;
     font-family: 'Clash Display';
@@ -1378,6 +1398,7 @@ textarea::placeholder {
 
 .personal__account__form-containerx-img {
     display: block;
+    height: 40px;
 }
 
 .personal__inputx.button {

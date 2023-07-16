@@ -5,6 +5,7 @@ import Profile from '../../assets/Evnt.png'
 import FeaturedEvents from '../../components/Users/FeaturedEvents';
 import UpcomingEvents from '../../components/Users/UpcomingEvents';
 import YourEvents from '../../components/Users/YourEvents';
+import {RiTicket2Line} from 'react-icons/ri'
 
 
 const UserEvents = () => {
@@ -20,8 +21,8 @@ const UserEvents = () => {
     <div className="personal-container container">
       <div className="personal__bloc-tabs">
         <div className="personal__bloc-profile">
-        <img src={Profile} />
-        <h4>Events</h4>
+        <RiTicket2Line className='ticket__event-iconic'/>
+        <h3> Events</h3>
         </div>
         
         <button

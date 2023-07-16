@@ -10,7 +10,7 @@ const MainHeader = () => {
             <h1>
             Your <span>One-Stop</span> Digital Marketing Solution
             </h1>
-            <p>Purple Pages supports SMEs in effortlessly and creatively reaching a larger audience, which ultimately leads to business growth.</p>
+            <p>Purple Pages supports SMEs in effortlessly and creatively reaching a larger audience with our digital marketing solutions, which ultimately purpose of business growth.</p>
             <Link to="/auth" className='btn'>Get Started</Link>
         </div>
         <div className="main__header-right">

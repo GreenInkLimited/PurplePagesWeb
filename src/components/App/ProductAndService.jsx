@@ -91,9 +91,9 @@ const ProductAndService = () => {
         {currentProducts.map((product, index) => (
           <Link to={`/singleproduct/${product.id}`}>
           <div className='productandservice__value' key={index}>
-            <img className='productandservice__value-img' src={`https://api.usepurplepages.com/${product.image}`} alt='Product Icon' />
+            <img className='productandservice__value-img' src={`https://api2.greeninkltd.com/${product.image}`} alt='Product Icon' />
               <small>{product.caption}</small>
-            <p>₦{product.price}.00</p>
+            <p><span className='naira_font'>₦</span>{product.price}.00</p>
           </div>
           </Link>
         ))}

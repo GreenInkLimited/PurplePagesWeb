@@ -133,7 +133,7 @@ const HomeBlogDetail = () => {
       <div className="blog__detail-header">
         <h2>{blog.title}</h2>
         <div className='blog__bottom'>
-          <img src={`https://api.usepurplepages.com/${blog.owner.image}`} alt="autor" />
+          <img src={`https://api2.greeninkltd.com/${blog.owner.image}`} alt="autor" />
           <div className="blog__bottom-detail">
             <p>{blog.owner.name}</p>
             <p className='smallx'>{formattedDate}</p>
@@ -159,14 +159,14 @@ const HomeBlogDetail = () => {
             const formattedDate = createdDate.toLocaleDateString('en-US', options);
             return (
               <div className="blog__body__right" key={id}>
-                 <Link to={`/appblog/${id}`}>
+                 <Link to={`/blog/${id}`}>
                 <img className="blog__body__right-img" src={image} alt="image" />
                
                   <h4>{title}</h4>
                 
                 <p>{truncateText(detail)}</p>
                 <div className='blog__body__autor'>
-                  <img src={`https://api.usepurplepages.com/${owner.image}`} alt="author" />
+                  <img src={owner.image} alt="author" />
                   <div>
                     <p>{owner.name}</p>
                     <small>{formattedDate}</small>

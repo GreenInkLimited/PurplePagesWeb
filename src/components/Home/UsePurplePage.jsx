@@ -1,6 +1,6 @@
 import React from 'react'
 import Appstore from '../../assets/Appstore1.png'
-import Playstore from '../../assets/Appstore1.png'
+import Playstore from '../../assets/Playstore1.png'
 import iPhone from '../../assets/iPhone.png'
 
 const UsePurplePage = () => {

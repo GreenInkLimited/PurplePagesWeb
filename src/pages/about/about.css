@@ -89,7 +89,7 @@
     transition: var(--transition);
     width: 489px;
     height: 390px;
-    border-radius: 20px;
+    /*==border-radius: 20px;==*/
     object-fit: cover;
 }
 
@@ -143,7 +143,7 @@
 }
 
 .pillars__values__wrapper h4{
-    font-size: 28px;
+    font-size: 22px;
     color: var(--color-secondary);
     font-family: "avenir-lt-85-heavy";
     margin-bottom: 28px;
@@ -170,7 +170,7 @@
 }
 
 .pillars__values__wrapper p{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 /*==================core values======================*/
@@ -218,17 +218,17 @@
 
 
 .core__values__wrapper p {
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 24px;
 }
 
 .core__values__wrapper h4{
-    font-size: 36px;
+    font-size: 22px;
     color: #410E52;
 }
 
 .core__values__right h3{
-    font-size: 48px;
+    font-size: 2rem;
     color: #410E52;
     font-family: 'Clash Display';
     font-weight: 600;
@@ -327,6 +327,14 @@
         height: 100%;
     }
 
+    .about__values__image img{
+        filter: saturate(1);
+        transition: var(--transition);
+        width: 100%;
+        height: 390px;
+        /*==border-radius: 20px;==*/
+        object-fit: cover;
+    }
     .core__values__image {
         filter: saturate(1);
         transition: var(--transition);
@@ -380,7 +388,7 @@
 }
 
 .about__values__wrapper p{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .pillars__values__container {

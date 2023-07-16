@@ -32,6 +32,9 @@ import StepperForm from './components/Modals/StepperForm'
 import {QueryClient, QueryClientProvider} from 'react-query';
 import 'react-loading-skeleton/dist/skeleton.css'
 import HomeBlog from './pages/home/HomeBlog'
+import PrivacyPolicy from './pages/terns/PrivacyPolicy'
+import RequestReset from './pages/auth/RequestReset'
+import ForgotPassword from './pages/auth/ForgotPassword'
 
 
 const queryClient = new QueryClient();
@@ -61,6 +64,7 @@ const App = () => {
         <Route path='/ads/:id' element={<AdsDetails />} />
         <Route path='/userprofile/:id' element={<User />} />
         <Route path='terms' element={<Terms />} />
+        <Route path='privacy-policy' element={<PrivacyPolicy />} />
         <Route path='faq' element={<Faqs />} />
         <Route path='contact' element={<ContactUs />} />
         <Route path='auth' element={<Auth />} />
@@ -73,6 +77,8 @@ const App = () => {
         <Route path='/verification' element={<Verify/>} />
         <Route path='/stepper' element={<StepperForm/>} />
         <Route path='/blog' element={<HomeBlog/>} />
+        <Route path='/request-reset' element={<RequestReset/>} />
+        <Route path='/reset-password' element={<ForgotPassword/>} />
         
       </Routes>
       

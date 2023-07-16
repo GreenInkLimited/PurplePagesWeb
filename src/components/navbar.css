@@ -47,6 +47,11 @@ nav {
     display: block;
 }
 
+.logo_image_nav{
+    height: 38px;
+    width: 80px;
+}
+
 .nav__links {
     display: flex;
     gap: 3.5rem;

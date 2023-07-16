@@ -4,13 +4,16 @@ import { ImStarEmpty, ImStarFull, ImStarHalf } from 'react-icons/im'
 import Progress from './Progress';
 import { getBusinessById } from '../../apis/BusinessApi';
 import { useParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
 
 const Reviews = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(4);
   const { id } = useParams();
-  const [business, setBusiness] = useState(null);
+  //const [business, setBusiness] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const { data: business, isLoading } = useQuery('business', () => getBusinessById({ id }));
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -24,19 +27,9 @@ const Reviews = () => {
     setCurrentPage(pageNumber);
   };
 
-  useEffect(() => {
-    const fetchBusiness = async () => {
-      try {
-        const businessData = await getBusinessById({ id });
-        setBusiness(businessData);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching bio:', error);
-      }
-    };
+  
 
-    fetchBusiness();
-  }, [id]);
+  
 
 
   const renderPageNumbers = () => {

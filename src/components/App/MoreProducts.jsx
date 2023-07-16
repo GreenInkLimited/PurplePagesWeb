@@ -22,7 +22,7 @@ const MoreProducts = () => {
               <Link to={`/singleproduct/${id}`}>
                 <small>{name}</small>
               </Link>
-              <p>₦{price}.00</p>
+              <p><span className='naira_font'>₦</span>{price}.00</p>
               <img className='frame' src={frame} alt="" />
             </div>
           );

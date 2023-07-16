@@ -1,47 +1,65 @@
-import React, { useEffect, useState } from 'react'
-import AppNavbar from '../../components/AppNavBar'
-import { Link, NavLink } from 'react-router-dom';
-import Products from '../../components/App/Products'
-import './apphome.css'
-import Footer from '../../components/Footer'
-import Filter from '../../components/App/Filter'
-import { FilterBusiness } from '../../apis/FilterApis'
-import { getUser } from '../../apis'
-import Profile from '../../components/Profile'
-import Notification from '../../components/Notification'
+import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate, NavLink, Link } from 'react-router-dom';
+import Products from '../../components/App/Products';
+import './apphome.css';
+import Footer from '../../components/Footer';
+import Filter from '../../components/App/Filter';
+import { FilterBusiness } from '../../apis/FilterApis';
+import { getUser } from '../../apis';
+import Profile from '../../components/Profile';
+import Notification from '../../components/Notification';
 import { GoThreeBars } from 'react-icons/go';
 import { MdOutlineClose } from 'react-icons/md';
 import { FiSearch } from 'react-icons/fi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import Logo from '../../assets/pplogo.png'
+import Logo from '../../assets/pplogo.png';
 import Notify from '../../assets/notify.png';
 import { applinks } from '../../data';
 
 const Home = () => {
+  const navigate = useNavigate();
   const [isNavShowing, setIsNavShowing] = useState(false);
-  const [onClick, setOnClick] = useState(false);
   const [openNotification, setOpenNotification] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
-  const [user, setUser] = useState(null);
-  const [searchQuery, setSearchQuery] = useState(''); // Add searchQuery state to store the search input value
-  const [searchResults, setSearchResults] = useState([]); // Add searchResults state to store the search results
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const modalRef = useRef(null); // Reference to the modal container
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const storedUser = localStorage.getItem('user');
+  const [user, setUser] = useState(storedUser ? JSON.parse(storedUser) : null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await getUser({ pageParam: 0 });
         setUser(response);
+        localStorage.setItem('user', JSON.stringify(response));
       } catch (error) {
         console.log('Error fetching User:', error);
       }
     };
-    fetchUser();
+    if (!storedUser) {
+      fetchUser();
+    }
   }, []);
-  
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setOpenNotification(false);
+        setOpenProfile(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const handleSearch = async () => {
-  if (searchQuery.trim() === '') {
+    if (searchQuery.trim() === '') {
       setSearchQuery('');
-      // Clear the search results and show the original list of events
       setSearchResults([]);
       return;
     }
@@ -53,12 +71,36 @@ const Home = () => {
       console.error('Error searching events:', error);
     }
   };
+
+  const openNotificationModal = () => {
+    setOpenNotification(true);
+    setOpenProfile(false);
+  };
+
+  const openProfileModal = () => {
+    setOpenNotification(false);
+    setOpenProfile(true);
+  };
+
+  const closeModals = () => {
+    setOpenNotification(false);
+    setOpenProfile(false);
+  };
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/signin');
+    }
+  }, [user, navigate]);
   return (
     <>
       <nav className="my__nav">
         <div className="container nav__containers">
-          <Link to="/" className="logo" onClick={() => setIsNavShowing(false)}>
-            <img src={Logo} alt="Nav Logo" />
+          <button className="nav__toggle-btn" onClick={() => setIsNavShowing((prev) => !prev)}>
+            {isNavShowing ? <MdOutlineClose /> : <GoThreeBars />}
+          </button>
+          <Link to="/apphome" className="logo" onClick={() => setIsNavShowing(false)}>
+            <img  className="logo_image_nav" src={Logo} alt="Nav Logo" />
           </Link>
           <ul
             className={`my__nav__links ${isNavShowing ? 'show__nav' : 'hide__nav'}`}
@@ -94,33 +136,36 @@ const Home = () => {
           </ul>
 
           <ul>
-            <li>
-              {user && (
-                <div className="nav__right">
-                  <img
-                    onClick={() => setOpenNotification((prev) => !prev)}
-                    src={Notify}
-                    alt="Nav Logo"
-                  />
-
-                  <div className="nav__profile">
-                    <img src={user.image} alt="Nav Logo" />
-                    <p>{user.username}</p>
-                    <MdKeyboardArrowDown onClick={() => setOpenProfile((prev) => !prev)} />
-                  </div>
-                </div>
-              )}
-            </li>
+            <ul>
+        <li>
+          {user && (
+            <div className="nav__right">
+              <img onClick={openNotificationModal} src={Notify} alt="Nav Logo" />
+              <div className="nav__profile" onClick={openProfileModal}>
+                <img src={user.image} alt="Nav Logo" />
+                <p>{user.username}</p>
+                <MdKeyboardArrowDown onClick={openProfileModal} />
+              </div>
+            </div>
+          )}
+        </li>
+      </ul>
           </ul>
-          <button className="nav__toggle-btn" onClick={() => setIsNavShowing((prev) => !prev)}>
-            {isNavShowing ? <MdOutlineClose /> : <GoThreeBars />}
-          </button>
+          
         </div>
       </nav>
-      {openNotification && <Notification />}
-      {openProfile && <Profile />}
-      <Filter />
-      <Products searchQuery={searchQuery} searchResults={searchResults}/>
+      {openNotification && (
+        <div ref={modalRef}>
+          <Notification onClose={closeModals} />
+        </div>
+      )}
+      {openProfile && (
+        <div ref={modalRef}>
+          <Profile onClose={closeModals} />
+        </div>
+      )}
+      <Filter setFilteredProducts={setFilteredProducts}/>
+      <Products searchQuery={searchQuery} searchResults={searchResults} filteredResults={filteredProducts}/>
       <Footer />
     </>
   )

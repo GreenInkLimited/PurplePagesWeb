@@ -111,11 +111,11 @@ const CheckingOut = () => {
               <div className='modal__payment-info'>
                 <div className='modal_subtotal'>
                   <p>Sub-total</p>
-                  <p>₦8000</p>
+                  <p><span className='naira_font'>₦</span>8000</p>
                 </div>
                 <div className='modal_subtotal'>
                   <p>Service charge</p>
-                  <p>₦40</p>
+                  <p><span className='naira_font'>₦</span>40</p>
                 </div>
               </div>
             </div>
@@ -123,7 +123,7 @@ const CheckingOut = () => {
             <div className='modal__total'>
               <p>Total</p>
               <p className='total__madal-price'>
-                <b>₦8040</b>
+                <b><span className='naira_font'>₦</span>8040</b>
               </p>
             </div>
           </div>

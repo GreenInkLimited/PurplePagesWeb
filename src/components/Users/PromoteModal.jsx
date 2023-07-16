@@ -7,11 +7,11 @@ import { useParams } from 'react-router-dom';
 
 const PromoteModal = ({ onCloseModal }) => {
     const { id } = useParams();
-      const [loading, setLoading] = useState(true);
-  const [selectedPlan, setSelectedPlan] = useState('daily');
-  const [showPlanDetailsModal, setShowPlanDetailsModal] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [selectedPlan, setSelectedPlan] = useState('daily');
+    const [showPlanDetailsModal, setShowPlanDetailsModal] = useState(false);
     const [business, setBusiness] = useState(null);
-  const handlePlanSelection = (planType) => {
+    const handlePlanSelection = (planType) => {
     setSelectedPlan(planType);
   };
 
@@ -74,7 +74,7 @@ const PromoteModal = ({ onCloseModal }) => {
                 <div className='promote__modal-content right'>
                   <div className='promote__content-container'>
                     <p>Basic Plan</p>
-                    <h2 className='promote__duration'>₦400 / <small >Daily</small></h2>
+                    <h2 className='promote__duration'><span className='naira_font'>₦</span>400 / <small >Daily</small></h2>
                     <div className='promote__plan-packs'>
                       <small><BsCheck2Circle /> Your product/blog/brand gets visibility</small>
                       <small><BsCheck2Circle /> Can select more than a day</small>
@@ -88,7 +88,7 @@ const PromoteModal = ({ onCloseModal }) => {
                 <div className='promote__modal-content left'>
                   <div className='promote__content-container'>
                     <p>Premium Plan</p>
-                    <h2>₦700 / <small>Daily</small></h2>
+                    <h2><span className='naira_font'>₦</span>700 / <small>Daily</small></h2>
                     <div className='promote__plan-packs'>
                       <small><BsCheck2Circle /> You get way more visibility</small>
                       <small><BsCheck2Circle /> Featured in various locations</small>
@@ -106,7 +106,7 @@ const PromoteModal = ({ onCloseModal }) => {
                 <div className='promote__modal-content right'>
                   <div className='promote__content-container'>
                     <p>Basic Plan</p>
-                    <h2 className='promote__duration'>₦2500 / <small >Weekly</small></h2>
+                    <h2 className='promote__duration'><span className='naira_font'>₦</span>2500 / <small >Weekly</small></h2>
                     <div className='promote__plan-packs'>
                       <small><BsCheck2Circle /> Your product/blog/brand gets visibility</small>
                       <small><BsCheck2Circle /> Can select more than a day</small>
@@ -120,7 +120,7 @@ const PromoteModal = ({ onCloseModal }) => {
                 <div className='promote__modal-content left'>
                   <div className='promote__content-container'>
                     <p>Premium Plan</p>
-                    <h2>₦4000 / <small>Weekly</small></h2>
+                    <h2><span className='naira_font'>₦</span>4000 / <small>Weekly</small></h2>
                     <div className='promote__plan-packs'>
                       <small><BsCheck2Circle /> You get way more visibility</small>
                       <small><BsCheck2Circle /> Featured in various locations</small>
@@ -138,7 +138,7 @@ const PromoteModal = ({ onCloseModal }) => {
                 <div className='promote__modal-content right'>
                   <div className='promote__content-container'>
                     <p>Basic Plan</p>
-                    <h2 className='promote__duration'>₦8000 / <small >Monthly</small></h2>
+                    <h2 className='promote__duration'><span className='naira_font'>₦</span>8000 / <small >Monthly</small></h2>
                     <div className='promote__plan-packs'>
                       <small><BsCheck2Circle /> Your product/blog/brand gets visibility</small>
                       <small><BsCheck2Circle /> Can select more than a day</small>
@@ -152,7 +152,7 @@ const PromoteModal = ({ onCloseModal }) => {
                 <div className='promote__modal-content left'>
                   <div className='promote__content-container'>
                     <p>Premium Plan</p>
-                    <h2>₦14000 / <small>Monthly</small></h2>
+                    <h2><span className='naira_font'>₦</span>14000 / <small>Monthly</small></h2>
                     <div className='promote__plan-packs'>
                       <small><BsCheck2Circle /> You get way more visibility</small>
                       <small><BsCheck2Circle /> Featured in various locations</small>

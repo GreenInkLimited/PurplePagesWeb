@@ -45,7 +45,7 @@ const UserProductAndService = () => {
               <div className='user__productandservice__value'>
                 <img
                   className='user__productandservice__value-img'
-                  src={`https://api.usepurplepages.com/${product.image}`}
+                  src={`https://api2.greeninkltd.com/${product.image}`}
                   alt='icon'
                 />
               </div>

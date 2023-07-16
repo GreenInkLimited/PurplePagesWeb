@@ -25,7 +25,7 @@ const Navbar = () => {
           {isNavShowing ? <MdOutlineClose /> : <GoThreeBars />}
         </button>
         <Link to="/" className='logo' onClick={closeNav}>
-          <img src={Logo} alt="Nav Logo" />
+          <img  className='logo_image_nav' src={Logo} alt="Nav Logo" />
         </Link>
         <ul className={`nav__links ${isNavShowing ? 'show__nav' : 'hide__nav'}`}>
           <div className="nav__links-formobile">

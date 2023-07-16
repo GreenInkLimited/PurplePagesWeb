@@ -58,11 +58,13 @@ const TrendingEvents = ({ searchQuery, searchResults }) => {
             {
               event.map(({ id, event_location, event_name, days, event_flier, event_category, start_time, event_description, from_date, end_time }) => {
                 return <div className="trending__events__value" key={id}>
-                  <img src={`https://api.usepurplepages.com/${event_flier}`} alt="icon" />
+                  <Link to={`/events/${id}`}>
+                  <img src={`https://api2.greeninkltd.com/${event_flier}`} alt="icon" />
                   <p className='category'>{event_category}</p>
                   <h4 className='title'><b>{event_name}</b></h4>
                   <p className='date'><MdOutlineDateRange />  {days}, {from_date} at {start_time} - {end_time}</p>
                   <p>{event_description}</p>
+                  </Link>
                   <div className='link'>
                     <Link className='btn' to={`/events/${id}`}>View Detail</Link>
                   </div>

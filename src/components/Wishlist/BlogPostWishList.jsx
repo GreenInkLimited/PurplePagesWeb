@@ -3,6 +3,7 @@ import Delete from '../../assets/Delete.png';
 import { getBlogWishlist, DeleteBlogWishlist } from '../../apis/WishlistApis';
 import Logo from '../../assets/pplogo.png';
 import { Link } from 'react-router-dom';
+import { MdClear } from 'react-icons/md';
 
 const MAX_DETAIL_LENGTH = 50;
 
@@ -16,15 +17,11 @@ const truncateText = (text) => {
 const BlogPostWishList = () => {
   const [wishlist, setWishlist] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const handleDelete = async (blogId) => {
-    try {
-      await DeleteBlogWishlist({ blog_id: blogId });
-      // Remove the deleted blog from the wishlist state
-      setWishlist((prevWishlist) => prevWishlist.filter((blog) => blog.id !== blogId));
-    } catch (error) {
-      console.log('Error deleting blog:', error);
-    }
+  const [itemToDelete, setItemToDelete] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const handleDelete = (blogId) => {
+    setItemToDelete(blogId);
+    setShowModal(true);
   };
 
   useEffect(() => {
@@ -40,6 +37,18 @@ const BlogPostWishList = () => {
     fetchWishlist();
   }, []);
 
+  const confirmDelete = async () => {
+    try {
+      await DeleteBlogWishlist({ blog_id: itemToDelete });
+      setWishlist((prevWishlist) =>
+        prevWishlist.filter((item) => item.id !== itemToDelete)
+      );
+      setShowModal(false); // Hide the modal after successful delete
+    } catch (error) {
+      console.log('Error deleting item:', error);
+    }
+  };
+
   if (loading) {
     return (
       <div className='spinner_container'>
@@ -52,7 +61,7 @@ const BlogPostWishList = () => {
     return <div className='empity-productwishlist__container'>
             <h4>You have no blog(s) in your wishlist</h4>
           <p>explore the blog posts by diverse businesses.</p>
-          <Link to="/appblogs/" className='empty__wishlist'>Go To Blogs</Link>
+          <Link to="/appblog/" className='empty__wishlist'>Go To Blogs</Link>
           </div>;
   }
 
@@ -66,12 +75,12 @@ const BlogPostWishList = () => {
           return (
             <>
               <div className="blogpostswishlist__value" key={id}>
-                <img className="blogpostswishlist__value-img" src={`https://api.usepurplepages.com/${image}`} alt="icon" />
+                <img className="blogpostswishlist__value-img" src={`https://api2.greeninkltd.com/${image}`} alt="icon" />
                 <div className='blog-productwishlist__right'>
                   <h4 className='blogpost-title'>{title}</h4>
                   <p>{truncateText(detail)}</p>
                   <div className='blogpost__bottom'>
-                    <img className='blogpost__bottom-img' src={`https://api.usepurplepages.com/${business_logo}`} alt="autor" />
+                    <img className='blogpost__bottom-img' src={`https://api2.greeninkltd.com/${business_logo}`} alt="autor" />
                     <div className="blog__postwishlist-details">
                       <div className="blog__postwishlist-detail">
                         <p>{business_name}</p>
@@ -86,14 +95,14 @@ const BlogPostWishList = () => {
                 </div>
               </div>
               <div className='blogpost__bottom-mobile'>
-                <img className='blogpost__bottom-mobile-img' src={`https://api.usepurplepages.com/${business_logo}`} alt="autor" />
+                <img className='blogpost__bottom-mobile-img' src={`https://api2.greeninkltd.com/${business_logo}`} alt="autor" />
                 <div className="blog__postwishlist-details">
                   <div className="blog__postwishlist-detail">
                     <p>{business_name}</p>
                     <small>{formattedDate}</small>
                   </div>
                   <div className="blog__post-delete">
-                    <img src={Delete} />
+                    <img src={Delete} onClick={() => handleDelete(id)}/>
                   </div>
                 </div>
               </div>
@@ -101,6 +110,26 @@ const BlogPostWishList = () => {
           );
         })}
       </div>
+      {showModal && (
+        <div className="delete__product__modal-container">
+          <div className="delete__product__modal-wrapper">
+            <div className="create__business-header">
+          <span >
+            <MdClear onClick={() => setShowModal(false)}/>
+          </span>
+          <div className="create__business-detail">
+            <h4>Remove Blog from Wishlist</h4>
+          </div>
+        </div>
+        <p>This will remove this product from your wishlist</p>
+            <div className="promote__button-containerxx">
+              
+              <button className="user_user__button__cancel" onClick={() => setShowModal(false)}>Cancel</button>
+              <button className="user_user__button__signout" onClick={confirmDelete}>Delete</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

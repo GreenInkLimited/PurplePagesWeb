@@ -3,13 +3,13 @@ import { getProductById } from '../../apis/BusinessApi';
 import { Link, useParams } from 'react-router-dom';
 import Frame from '../../assets/Frame.png';
 import ExternalLinkLine from '../../assets/ExternalLinkLine.png';
-import SingleProfile from '../../assets/SingleProfile.png';
 import Share from '../../assets/Share.png';
-import bookmark from '../../assets/bookmark.png';
 import MoreProducts from './MoreProducts';
 import SuggestedProducts from './SuggestedProducts';
 import Logo from '../../assets/pplogo.png';
-import { AddProductWishlist } from '../../apis/WishlistApis';
+import { AddProductWishlist, DeleteWishlist } from '../../apis/WishlistApis';
+import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
+
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -31,12 +31,47 @@ const SingleProduct = () => {
     fetchProduct();
   }, [id]);
 
+  useEffect(() => {
+    const storedIsBookmarked = localStorage.getItem('isBookmarked');
+    if (storedIsBookmarked) {
+      setIsBookmarked(JSON.parse(storedIsBookmarked));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('isBookmarked', JSON.stringify(isBookmarked));
+  }, [isBookmarked]);
+
   const handleAddToWishlist = async () => {
     try {
       await AddProductWishlist({ product_id: id });
       setIsBookmarked(true);
     } catch (error) {
       console.error('Error adding product to wishlist:', error);
+    }
+  };
+
+  const handleRemoveFromWishlist = async () => {
+    try {
+      await DeleteWishlist({ product_id: id });
+      setIsBookmarked(false);
+    } catch (error) {
+      console.error('Error removing product from wishlist:', error);
+    }
+  };
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: product.caption,
+          text: 'Check out this amazing product!',
+          url: window.location.href, // Share the current page URL
+        })
+        .then(() => console.log('Shared successfully!'))
+        .catch((error) => console.error('Error sharing:', error));
+    } else {
+      console.log('Sharing is not supported in this browser.');
     }
   };
 
@@ -59,26 +94,30 @@ const SingleProduct = () => {
             <h3>{product.caption}</h3>
             <img src={ExternalLinkLine} alt="ExternalLinkLine" />
           </div>
-          <h4 className='singleproduct'>₦{product.price}.00</h4>
+          <h4 className='singleproduct'><span className='naira_font'>₦</span>{product.price}.00</h4>
           <img className='frame' src={Frame} alt="frame" />
           <div className="product__desc">
             <h5 className='product__desc__header'>Product Details</h5>
-            <p dangerouslySetInnerHTML={{__html:product.detail}} />
+            <p dangerouslySetInnerHTML={{ __html: product.detail }} />
           </div>
 
           <div className="singlepotter__bottom">
             <div className="singlepotter__bottom_left">
-              <img src={`https://api.usepurplepages.com/${product.owner.image}`} alt="SingleProfile" />
+              <img src={`https://api2.greeninkltd.com/${product.owner.image}`} alt="SingleProfile" />
               <div>
                 <h5>{product.owner.name}</h5>
                 <small>1.24k subscribers</small>
               </div>
             </div>
             <div className="singlepotter__bottom_right">
-              <div className='bookmark' onClick={handleAddToWishlist}>
-                <img src={bookmark} alt="bookmark" />
+              <div className='bookmark' onClick={isBookmarked ? handleRemoveFromWishlist : handleAddToWishlist}>
+                {isBookmarked ?
+                  <BsBookmarkFill style={{ cursor: 'pointer', fontSize: '24px', color: '#C42AF7' }} />
+                  :
+                  <BsBookmark style={{ cursor: 'pointer', fontSize: '24px', color: '#C42AF7' }} />
+                }
               </div>
-              <img src={Share} alt="Share" />
+              <img src={Share} alt="Share" onClick={handleShare} style={{ cursor: 'pointer' }} />
             </div>
           </div>
         </div>

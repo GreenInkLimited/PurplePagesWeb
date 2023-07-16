@@ -51,3 +51,24 @@ export const getBlogLikes = async (blog_id) => {
   const response = await axios.get(`${API.host}/blog/get-likes/${blog_id}/`);
   return response.data;
 };
+
+export const addCommentReply = async ({ comment_id, reply }) => {
+  console.log('called add comment reply API');
+  const auth_code = localStorage.getItem('auth_code');
+  console.log('auth_code', auth_code);
+  const response = await axios.post(
+    `${API.host}/blog/reply-comment/${comment_id}/`,
+    {
+      reply,
+      auth_code, // Include the auth_code in the request payload
+    }
+  );
+  console.log(response.data);
+  return response.data;
+};
+
+export const getCommentReplies = async (comment_id) => {
+  console.log('called get comment replies API');
+  const response = await axios.get(`${API.host}/blog/get-comment-reply/${comment_id}/`);
+  return response.data;
+};

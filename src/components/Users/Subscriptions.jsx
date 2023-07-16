@@ -46,7 +46,7 @@ const Subscriptions = () => {
          
         {businesses.map((business) => (
          <div className='subscribed_business-mobile-notification'>
-        <img className="blog__value___bodies-img" src={`https://api.usepurplepages.com/${business.image}`} alt="author" />
+        <img className="blog__value___bodies-img" src={`https://api2.greeninkltd.com/${business.image}`} alt="author" />
         <BsDot className='bsdot'/>
         </div>
           ))}
@@ -66,13 +66,13 @@ const Subscriptions = () => {
               <div className="subscription__container-sub" key={blog.id}>
                 <div className='subscription__wrapper-sub sub_for-blogs'>
                   <div className="subscription__value-sub">
-                    <img className='subscription__value-img-sub' src={`https://api.usepurplepages.com/${blog.image}`} alt="icon" />
+                    <img className='subscription__value-img-sub' src={`https://api2.greeninkltd.com/${blog.image}`} alt="icon" />
                     <Link to={`/appblog/${blog.id}`}>
                       <h2>{blog.title}</h2>
                     </Link>
                     <p>{truncateText(blog.detail)}</p>
                     <div className="blog__bottom">
-                      <img className="blog__value___bodies-img" src={`https://api.usepurplepages.com/${business.image}`} alt="author" />
+                      <img className="blog__value___bodies-img" src={`https://api2.greeninkltd.com/${business.image}`} alt="author" />
                       <div className="blog__bottom-detail">
                         <p>{business.name}</p>
                         <small>{formattedDate}</small>
@@ -91,7 +91,7 @@ const Subscriptions = () => {
         <div className="subscription__container-sub" key={id}>
           <div className='subscription__wrapper-sub sub_for-blogs'>
             <div className="subscription__value-sub">
-              <img className='subscription__value-img-sub' src={`https://api.usepurplepages.com/${image}`} alt="icon" />
+              <img className='subscription__value-img-sub' src={`https://api2.greeninkltd.com/${image}`} alt="icon" />
               <Link to={`/appblog/${id}`}>
                 <small>{caption}</small>
               </Link>

@@ -42,6 +42,10 @@ const Signin = () => {
     }
   );
 
+  const handleReset = () => {
+    navigate('/request-reset');
+  }
+
   const validationSchema = Yup.object({
     username: Yup.string().required('Username is required'),
     password: Yup.string()
@@ -111,15 +115,19 @@ const Signin = () => {
           name="password"
           placeholder="*******"
         />
+        
         <button
           type="button"
           className="password-toggle-button"
           onClick={togglePasswordVisibility}
         >{showPassword ? <AiOutlineEyeInvisible/> : <AiOutlineEye/>}</button>
         </div>
+
+        <p className="password-forgot" onClick={handleReset}>Forgot Password?</p>
         <ErrorMessage name="password" component="small" className="error-message" />
       <button className='input' type="submit" >{isLoading ? 'Submitting...' : 'Submit'}</button>
         </Form>
+
       </Formik>
       
     </div>

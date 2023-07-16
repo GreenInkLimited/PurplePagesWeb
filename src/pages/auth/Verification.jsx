@@ -11,16 +11,14 @@ import { Link } from 'react-router-dom';
 
 const Verification = () => {
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const email = queryParams.get('email');
-  const phone = queryParams.get('phone');
+  const navigate = useNavigate();
+  const { email, phone } = location.state;
 
 
   const form = useRef();
   const [verificationCode, setVerificationCode] = useState('');
   const [verificationError, setVerificationError] = useState('');
 
-  const navigate = useNavigate();
   const { isLoading, error, isError, mutateAsync, data } = useMutation(
     'verification',
     otpVerification,

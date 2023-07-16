@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './profile.css';
 import AddBusiness from '../assets/add-line.png';
-import Event from '../assets/event.png';
 import { Link } from 'react-router-dom';
 import { getUser } from '../apis';
 import { getMyBusiness } from '../apis/BusinessApi';
 import CreateBusiness from './Users/CreateBusiness';
-import Logo from '../assets/pplogo.png';
+import { BiLogOut } from "react-icons/bi"
+import { logoutUser } from '../apis';
+import { useNavigate } from 'react-router-dom';
+import SignOut from './Users/SignOut';
 
-const Profile = () => {
+const Profile = ({ onClose }) => {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [showSignoutModal, setShowSignoutModal] = useState(false);
   const [myBusiness, setMyBusiness] = useState([]);
   const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -18,8 +22,13 @@ const Profile = () => {
     setShowModal(true);
   };
 
+  const openSignoutModal = () => {
+    setShowSignoutModal(true);
+  };
+
   const closeModal = () => {
     setShowModal(false);
+    onClose(); // Call the onClose function from the parent component to close the modals
   };
 
   useEffect(() => {
@@ -35,6 +44,8 @@ const Profile = () => {
     fetchMyBusiness();
   }, []);
 
+  
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -47,13 +58,7 @@ const Profile = () => {
     fetchUser();
   }, []);
 
-  if (loading) {
-    return (
-      <div className='spinner_container'>
-        <img src={Logo} alt='Loading' />
-      </div>
-    );
-  }
+  
 
   return (
     <div className='profile'>
@@ -65,7 +70,7 @@ const Profile = () => {
               <div className='profile__content-new'>
                 <img className='user' src={userInfo.image} alt='icon' />
                 <div className='profile__content-left'>
-                  <p>{userInfo.username}</p>
+                  <p>My Account</p>
                 </div>
               </div>
             </Link>
@@ -77,7 +82,7 @@ const Profile = () => {
                   <div className='profile__content-new'>
                     <img
                       className='user'
-                      src={`https://api.usepurplepages.com/${image}`}
+                      src={`https://api2.greeninkltd.com/${image}`}
                       alt='icon'
                     />
                     <div className='profile__content-left'>
@@ -94,14 +99,14 @@ const Profile = () => {
             <p>Add Business</p>
           </div>
         </div>
-        <Link to='/userevents/'>
-          <div className='profile__content-new'>
-            <img className='event' src={Event} alt='icon' />
-            <div className='profile__content-left'>
-              <p>Events</p>
-            </div>
+
+        <div className='profile__content-new sign_out' onClick={openSignoutModal}>
+          <BiLogOut className='user'/>
+          <div className='profile__content-left'>
+            <p>Sign Out</p>
           </div>
-        </Link>
+        </div>
+        
           </div>
         
 
@@ -117,6 +122,17 @@ const Profile = () => {
               &times;
             </span>
             <CreateBusiness closeModal={closeModal} />
+          </div>
+        </div>
+      )}
+
+      {showSignoutModal && (
+        <div className='modal'>
+          <div className='modal-content'>
+            <span className='close' onClick={closeModal}>
+              &times;
+            </span>
+            <SignOut closeModal={closeModal} />
           </div>
         </div>
       )}

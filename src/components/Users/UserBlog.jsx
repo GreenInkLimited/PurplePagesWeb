@@ -71,7 +71,7 @@ const UserBlog = () => {
               <div className='subscription__value-sub' key={id}>
                 <img
                   className='subscription__value-img-sub'
-                  src={`https://api.usepurplepages.com/${blog.image}`}
+                  src={`https://api2.greeninkltd.com/${blog.image}`}
                   alt='icon'
                 />
                 <Link to={`/appblog/${blog.id}`}>

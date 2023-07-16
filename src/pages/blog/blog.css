@@ -31,7 +31,7 @@
 
 .blog__wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 2rem 2rem;
     font-family: "avenir-lt-45-book";
 }
@@ -43,7 +43,7 @@
 
 .blog__value h2{
     font-family: "avenir-lt-45-book";
-    font-size: 24px;
+    font-size: 22px;
 }
 
 .blog__value___bodies{
@@ -51,8 +51,8 @@
 }
 
 .blog__value___bodies .small{
-    font-size: 20px;
-    font-weight: 300;
+    width: 90%;
+    font-weight: 400;
     font-family: "avenir-lt-45-book";
     color: #333333;
 }
@@ -67,7 +67,7 @@
 .blog__value-img{
     margin-bottom: 10px;
     
-    height: 254px;
+    height: 190px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     object-fit: cover;
@@ -213,7 +213,7 @@
 .blog__detail-header h2{
     font-family: 'Clash Display', sans-serif;
     font-weight: 600;
-    font-size: 54px;
+    font-size: 34px;
 }
 
 .blog__detail-content img{
@@ -238,6 +238,36 @@
     
 }
 
+.reply__buttons{
+    display: flex;
+    gap: 8px;
+}
+
+.view-replies{
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 14px;
+    font-family: 'avenir-lt-45-book';
+    cursor: pointer;
+    color: #14011B;
+}
+
+.post-reply{
+    padding: 4px 8px 4px 8px;
+    background-color: #650585;
+    color: #FFFFFF;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cancel-reply{
+    padding: 4px 8px 4px 8px;
+    background-color: #333333;
+    color: #FFFFFF;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .blog__bottom small{
     font-family: "avenir-lt-45-book";
 }
@@ -259,7 +289,7 @@
 
 .blog__body__right h4{
     font-family: "avenir-lt-45-book";
-    font-size: 32px;
+    font-size: 20px;
     font-weight: 700;
     color: #14011B;
     margin-top: 24px;
@@ -339,6 +369,18 @@
     padding: 20px;
 }
 
+.input-box-reply {
+    max-width: 350px;
+    width: 350px;
+    max-height: 102px;
+    border: 1px solid #BDBDBD;
+    background-color: #FAEDFE66;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
 .blog__actions{
     display: flex;
     flex-direction: row;
@@ -352,6 +394,8 @@
     flex-direction: row;
     gap: 5px;
     align-items: center;
+    cursor: pointer;
+    color: var(--color-secondary);
 }
 
 .blog__actions-right {
@@ -359,6 +403,7 @@
     flex-direction: row;
     gap: 20px;
     color: var(--color-secondary);
+    cursor: pointer;
 }
 
 .recent__postx-header{
@@ -369,10 +414,23 @@
     margin-bottom: 20px;
 }
 
-.blog__comment-body{
+.blog__comment-reply{
     display: flex;
     flex-direction: row;
-    
+    max-width: 350px;
+}
+
+.blog__comment-reply h6 {
+    font-family: "avenir-lt-45-book";
+    font-size: 14px;
+    font-weight: 400;
+    color: rebeccapurple;
+}
+
+.blog__comment-body {
+    display: flex;
+    flex-direction: row;
+
 }
 
 .blog__comment-body img{
@@ -389,13 +447,14 @@
 .reply__comment{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
 }
 
 .reply__comment p{
     color: #C7005C;
     font-size: 14px;
     font-weight: 400;
+    text-align: end;
+    cursor: pointer;
 }
 
 /*=============== media queries (small screens)================*/

@@ -81,7 +81,7 @@ const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
     <div>
       <Header
         title=''
-        image={`https://api.usepurplepages.com/${business.image}`}
+        image={`https://api2.greeninkltd.com/${business.image}`}
         style={{ width: '292px', height: '402px', objectFit: 'cover' }}
       />
       <div className='container profile__container'>
@@ -89,7 +89,7 @@ const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
           <div className='profile__info-left'>
             <img
               className='profile__info-img'
-              src={`https://api.usepurplepages.com/${business.image}`}
+              src={`https://api2.greeninkltd.com/${business.image}`}
               alt={business.name}
             />
             <div className='profile__info_body'>
@@ -97,7 +97,7 @@ const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
               <div className='profile__info_body-detail'>
                 <p className='profile__category'>{business.category}</p>
                 <RxDotFilled className='show__dot-mobile'/><p>{business.subscriptions.length} subscribers</p>
-                <RxDotFilled className='show__dot-mobile'/><p>{business.location}, {business.lga}</p>
+                <RxDotFilled className='show__dot-mobile'/><p className='profile__location-lga'>{business.location}, {business.lga}</p>
               </div>
               <div className='rating'>
                 {[...Array(fullStars)].map((_, index) => (

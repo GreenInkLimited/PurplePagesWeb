@@ -1,6 +1,19 @@
 /*==================ads======================*/
+@import url('https://fonts.cdnfonts.com/css/clash-display');
 .ads {
     margin-top: 3rem;
+}
+
+.recent__post-header{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 44px;
+}
+
+.recent__post-header h4{
+    font-family: 'Clash Display';
+    color: #14011B;
 }
 
 .ads__container {
@@ -35,7 +48,7 @@
 
 
 .ads__wrapper h4 {
-    width: 230px;
+    
     line-height: 1.2;
     font-size: 20px;
     font-weight: 600;
@@ -45,6 +58,12 @@
     color: #C7005C;
     font-size: 16px;
     font-weight: 350;
+}
+
+.ads__bottom-detail-flex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 
@@ -65,10 +84,22 @@
     display: flex;
 }
 
+.ads__bottom button{
+    display: flex;
+    margin-left: 80px;
+}
+
 .ads_category{
-    color: #C42AF7;
+    color: #333333;
     text-transform: capitalize;
     font-weight: 600;
+    background-color: #E0E0E0;
+    font-size: 12px;
+    padding: 2px 8px 2px 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    height: 25px;
 }
 
 /*=========================ads details========================*/
@@ -116,7 +147,7 @@
     display: flex;
     flex-direction: row;
     margin-top: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 24px;
 }
 
 .ads__bottom img {
@@ -167,6 +198,10 @@
 
 .ads__comment-body h4{
     font-family: "avenir-lt-45-book";
+}
+
+.ads__comment-body p {
+    font-size: 16px;
 }
 
 

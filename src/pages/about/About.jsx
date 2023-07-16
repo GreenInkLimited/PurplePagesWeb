@@ -1,11 +1,11 @@
 import React from 'react'
 import Navbar from '../../components/Navbar'
 import HeaderImage from '../../assets/aboutus.png'
-import Image from '../../assets/clip.png';
+import Image from '../../assets/iPhone.png';
 import CoreValues from '../../assets/coreValues.png';
 import Bulb from '../../assets/bulb.png';
 import Appstore from '../../assets/Appstore1.png'
-import Playstore from '../../assets/Appstore1.png'
+import Playstore from '../../assets/Playstore1.png'
 import Afford from '../../assets/Afford.png'
 import Settings from '../../assets/Settings.png'
 import './about.css'
@@ -37,7 +37,7 @@ const About = () => {
                   
                     <p>Most SMEs cannot afford the cost of comprehensive marketing to increase brand awareness, audience, and sales due to the rising cost of doing business. Building and maintaining a website to assist with business operations is now either too expensive or not sustainable. Importantly, lacking a digital identity and presence is detrimental to conducting business in the modern day.<br/><br/>
 
-In order to provide comprehensive marketing solutions to SMEs for the aim of simply and artistically interacting with a larger audience, ultimately for business growth, the Purple Pages concept was established with a creative, problem-solving objective.<br/><br/>
+In order to provide comprehensive digital marketing solutions to SMEs for the aim of simply and artistically interacting with a larger audience, ultimately for business growth, the Purple Pages concept was established with a creative, problem-solving objective.<br/><br/>
 
 Purple Pages is, to put it simply, a one-stop shop for SMEs' digital marketing needs.</p>
                             
@@ -45,7 +45,7 @@ Purple Pages is, to put it simply, a one-stop shop for SMEs' digital marketing 
             </div>
             <div className="about__values__left">
                 <div className="about__values__image">
-                    <img src={Image} alt="what we do" /> 
+                  <img src={Image} alt="what we do" /> 
                 </div>
             </div>
             
@@ -121,7 +121,7 @@ Purple Pages is, to put it simply, a one-stop shop for SMEs' digital marketing 
         <div className="ready__left">
           
             <h2>Ready for business growth?</h2>
-            <p>Take advantage of purple pages services</p>
+            <p>Take advantage of Purple Pages services</p>
           <div className='ready__links'>
             <a href='#' target="_blank" rel='noreferrer noopener'>
               <img src={Appstore} alt="Appstore" />

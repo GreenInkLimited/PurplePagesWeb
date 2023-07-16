@@ -43,6 +43,10 @@ export const applinks = [
         name: "Wishlist",
         path: '/appwishlist'
     },
+    {
+        name: "Events",
+        path: '/userevents'
+    },
     
 ]
 
@@ -105,10 +109,6 @@ export const interest = [
     },
     {
         id: 15,
-        name: "Hospitality"
-    },
-    {
-        id: 16,
         name: "Electronics & Gadgets"
     },
     
@@ -1017,19 +1017,20 @@ export const why = [
 
 
 export const programs = [
+    
     {
         id: 1,
+        icon: require("./assets/brand2.png"),
+        title: "Business Profile ",
+        info: "Hosting your company profile on our platform is a clear and cost-effective alternative at N2,500 annually to developing a website. Showcase your products or services and let potential clients know about your marketplaces.",
+        path: "/programs/222"
+    },
+    {
+        id: 2,
         icon: require("./assets/brand1.png"),
         title: "Email Marketing",
         info: "Reach your audience in large numbers with direct email marketing. For email marketing objectives, you send your subscribers mass emails.",
         path: "/programs/111"
-    },
-    {
-        id: 2,
-        icon: require("./assets/brand2.png"),
-        title: "Business Profile ",
-        info: "Hosting your company profile on our platform is a clear and cost-effective alternative at N1,000 annually to developing a website. Showcase your products or services and let potential clients know about your marketplaces.",
-        path: "/programs/222"
     },
     {
         id: 3,
@@ -1051,14 +1052,14 @@ export const programs = [
         id: 5,
         icon: require("./assets/brand5.png"),
         title: "Adverts & Promotions",
-        info: "Boost your company's profile to reach more people across multiple locations. Use our social media ads aggregator to advertise your company, product, or sales campaign to reach your target demographic. You can post adverts at the same time on Purple Pages, Facebook, Twitter, and Instagram, all in one process flow.",
+        info: "Boost your company's profile to reach more people across multiple locations. Use our social media ads aggregator to advertise your company, product, or sales campaign to reach your target demographic. ",
         path: "/programs/333"
     },
     {
         id: 6,
         icon: require("./assets/brand6.png"),
         title: "Insights & Analytics",
-        info: "Get insights and analytics of your blogposts, email marketing, promotions and adverts run on all platforms (Purple Pages, Facebook, Twitter, and Instagram), to aid business decisions.",
+        info: "Get insights and analytics of your blogposts, email marketing, promotions and adverts run on the Purple Pages platform, to aid business decisions.",
         path: "/programs/333"
     },
 ]

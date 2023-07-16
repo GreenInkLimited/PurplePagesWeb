@@ -35,7 +35,7 @@ const PersonalAccount = () => {
       <div className="personal__bloc-tabs">
         {userInfo && (
         <div className="personal__bloc-profile">
-        <img src={userInfo.image} />
+        <img src={userInfo.image} alt='images'/>
         <h4>{userInfo.username}</h4>
         </div>
          )}

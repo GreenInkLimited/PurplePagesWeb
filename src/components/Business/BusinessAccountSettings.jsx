@@ -129,7 +129,7 @@ const handleAdminAdded = async (admin) => {
       {admins.map(({ id, username, image, business_id }) => (
   <div className="admin__lists" key={id}>
     <div className="admin__list__username">
-      <img src={`https://api.usepurplepages.com/${image}`} alt={username} />
+      <img src={`https://api2.greeninkltd.com/${image}`} alt={username} />
       <p>{username}</p>
     </div>
     <RiDeleteBin6Line businessId={id} className='delete__admin' onClick={() => handleDeleteAdmin(business_id, username)} />

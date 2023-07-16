@@ -115,13 +115,13 @@ const EmailMarketing = () => {
 
         {mails?.map(({ id, mail, file, subject, bundle, pub_date }) => (
           <div className="email__marketing-wrapper" key={id}>
-            <h5>{subject} </h5>
+            
             
             <div className="email__marketting-sender">
               <div className="email__marketing-senderleft">
-                <img src={`https://api.usepurplepages.com/${business?.image}`} alt="Sender" />
+                <img src={`https://api2.greeninkltd.com/${business?.image}`} alt="Sender" />
                 <div className="email__marketing-senderdetails">
-                  <p>{business?.name}</p>
+                  <p><b>{subject}</b></p>
                   <small>To {bundle}</small>
                 </div>
               </div>
@@ -136,10 +136,10 @@ const EmailMarketing = () => {
                   <p>{mail}</p>
                 </div>
                 <div className="email__marketing-clip">
-                  <img src={`https://api.usepurplepages.com/${file}`} alt="Clip" />
+                  <img src={`https://api2.greeninkltd.com/${file}`} alt="Clip" />
                 </div>
                 <div className="email__marketing-info">
-                  <img src={`https://api.usepurplepages.com/${business?.image}`} alt="Sender" />
+                  <img src={`https://api2.greeninkltd.com/${business?.image}`} alt="Sender" />
                   <div className="email__marketing-senderdetails">
                     <p>{business?.name}</p>
                     <p>{business?.category}</p>

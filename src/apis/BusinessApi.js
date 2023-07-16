@@ -271,6 +271,36 @@ export const PromoteBusiness = async ({ ads_type, price, plan, duration, locatio
   }
 };
 
+export const PromoteBusinessPay = async ({ business_ads_id }) => {
+  console.log('called promote business api');
+
+  const formData = new FormData();
+  formData.append('business_ads_id', business_ads_id); // Include the business_id in the request payload
+
+  const auth_code = localStorage.getItem('auth_code');
+  formData.append('auth_code', auth_code);
+
+  try {
+    const response = await axios.post(`${API.host}/business/promote/paid/`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    console.log(response);
+    console.log(Object.keys(response));
+
+    // Include the business_id in the returned object
+    return {
+      data: response.data,
+      business_ads_id: business_ads_id,
+    };
+  } catch (error) {
+    console.error(error);
+    throw new Error('Error promoting business');
+  }
+};
+
 export const ReviewBusiness = async ({ detail, rating, image, business_id }) => {
   console.log('called promote business api');
 
@@ -391,4 +421,14 @@ export const UpdateMailSettings = async ({ email_host, email_host_user, email_ho
     console.error(error); // Log the entire error object
     throw new Error('Error sending mail');
   }
+};
+
+export const getBusinessCount = async () => {
+  const response = await axios.get(`${API.host}/business/business-count/`);
+  return response.data;
+};
+
+export const getUserCount = async () => {
+  const response = await axios.get(`${API.host}/app/user-count/`);
+  return response.data;
 };

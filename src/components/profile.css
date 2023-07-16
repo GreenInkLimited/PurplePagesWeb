@@ -42,6 +42,10 @@
 
 }
 
+.profile__content-new.sign_out{
+    color: #C7005C;
+}
+
 
 .profile__content-new p {
     font-size: 14px;

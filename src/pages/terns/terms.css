@@ -6,7 +6,6 @@
 .terms h2{
     font-family: 'Clash Display';
     font-weight: 600;
-    font-size: 54px;
     color: #14011B;
 }
 
@@ -15,20 +14,20 @@
     margin-bottom: 24px;
     font-family: 'avenir-lt-85-heavy';
     text-transform: uppercase;
-    font-weight: 700;
-    font-size: 36px;
+    font-weight: 600;
+    font-size: 20px;
 }
 
 .agreement li{
     display: flex;
     flex-direction: row;
     font-family: 'avenir-lt-45-book';
-    font-size: 18px;
+    font-size: 16px;
     line-height: 36px;
 }
 
 .agreement p{
-    font-size: 18px;
+    font-size: 16px;
     line-height: 36px;
     font-family: 'avenir-lt-45-book';
 }
@@ -42,7 +41,6 @@
     .terms h2 {
         font-family: 'Clash Display';
         font-weight: 600;
-        font-size: 30px;
         color: #14011B;
     }
 

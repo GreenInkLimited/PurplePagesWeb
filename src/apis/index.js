@@ -32,6 +32,36 @@ export const loginUser = async ({username, password}) => {
   return response.data;
 };
 
+export const requestResetPassword = async ({ email }) => {
+  console.log('called request reset password api');
+  const response = await axios.post(`${API.host}/app/request-reset/`, {
+    email,
+  });
+  console.log(response.data);
+  const authCode = response.data.auth_code; // Access the auth_code value
+  localStorage.setItem('auth_code', authCode); // Store the auth_code value in localStorage
+  return response.data;
+};
+
+export const resetPassword  = async ({ otp_code, password1, password2 }) => {
+  console.log('called forgot password api');
+  console.log('otp_code', otp_code);
+
+  // Retrieve the auth_code from local storage
+  const auth_code = localStorage.getItem('auth_code');
+  console.log('auth_code', auth_code);
+
+  const response = await axios.post(`${API.host}/app/reset/`, {
+    otp_code,
+    password1,
+    password2,
+    auth_code,
+  });
+
+  console.log(response.data);
+  return response.data;
+};
+
 export const otpVerification = async ({ otp_code }) => {
   console.log('called verify api');
   console.log('otp_code', otp_code);
@@ -127,3 +157,20 @@ export const getUser = async () => {
   const response = await axios.get(`${API.host}/app/get-profile/${auth_code}/`);
   return response.data;
 };
+
+export const logoutUser = async () => {
+  console.log('called logout api');
+
+  // Retrieve the auth_code from local storage
+  const auth_code = localStorage.getItem('auth_code');
+  console.log('auth_code', auth_code);
+
+  const response = await axios.post(`${API.host}/app/api/signout/`, {
+    auth_code,
+  });
+
+  console.log(response.data);
+  return response.data;
+};
+
+

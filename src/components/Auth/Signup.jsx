@@ -10,20 +10,28 @@ import { IoIosCheckboxOutline } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { submitSignUp } from '../../apis';
 import { useMutation } from 'react-query';
+import {BiError} from 'react-icons/bi'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
 const Signup = () => {
+  const [verificationError, setVerificationError] = useState('');
   const navigate = useNavigate();
   const { isLoading, error, isError, mutateAsync, data } = useMutation(
     'signup',
     submitSignUp,
     {
-      onSuccess: (data) => {
-        console.log(data);
-        localStorage.setItem('auth_code', data.auth_code);
-        // Redirect to the verification page after successful form submission
-        navigate(`/verify?email=${data.email}&phone=${data.phone}`);
-      },
+      onSuccess: (data, values) => {
+        if (data && data.status_lean) {
+          console.log(data);
+          localStorage.setItem('auth_code', data.auth_code);
+          // Redirect to the verification page after successful form submission
+          navigate('/verify', { state: { email: values.email, phone: values.phone } });
+        } else {
+          // Verification unsuccessful
+          setVerificationError('Username/Email Already Exist.');
+          // You can perform any additional actions here, such as showing an error message
+        }
+      }
     }
   );
 
@@ -52,26 +60,7 @@ const Signup = () => {
       ),
   });
 
-  const handleSubmit = async (values) => {
-    try {
-      const response = await mutateAsync({
-        email: values.email,
-        password: values.password,
-        phone: values.phone,
-        username: values.username,
-      });
-
-      // Handle any errors if needed
-
-      // Redirect to the verification page if signup is successful
-      if (response) {
-        navigate(`/verify?email=${values.email}&phone=${values.phone}`);
-      }
-    } catch (error) {
-      // Handle error during form submission
-      console.log(error);
-    }
-  };
+  
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -86,6 +75,10 @@ const Signup = () => {
         <img src={Logo} alt="logo" />
         </Link>
         <div className="signup__body">
+           {verificationError && <div className="error__background">
+                <BiError/>
+              <p> {verificationError}</p>
+            </div>}
           <h1>Create an account</h1>
           <div className="signup_paragraph">
             <p>Already have an account?</p>
@@ -105,7 +98,16 @@ const Signup = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={handleSubmit}
+            onSubmit={async (values)=> {
+          await mutateAsync({
+            email: values.email,
+        password: values.password,
+        phone: values.phone,
+        username: values.username,
+          });
+          validationSchema={validationSchema}
+          console.log(values);
+        }}
           >
             <Form>
               <label htmlFor="username">Username</label>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from '../assets/pplogo.png';
 import { applinks } from '../data';
@@ -19,27 +19,64 @@ const AppNavbar = () => {
   const [onClick, setOnClick] = useState(false);
   const [openNotification, setOpenNotification] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
-  const [user, setUser] = useState(null); // Initialize with null instead of an empty array
+  const modalRef = useRef(null); // Reference to the modal container
+  const storedUser = localStorage.getItem('user');
+  const [user, setUser] = useState(storedUser ? JSON.parse(storedUser) : null);
   
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await getUser({ pageParam: 0 });
-        setUser(response); // Set the user state with the response data directly
+        setUser(response);
+        localStorage.setItem('user', JSON.stringify(response));
       } catch (error) {
         console.log('Error fetching User:', error);
       }
     };
-    fetchUser();
+    if (!storedUser) {
+      fetchUser();
+    }
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setOpenNotification(false);
+        setOpenProfile(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const openNotificationModal = () => {
+    setOpenNotification(true);
+    setOpenProfile(false);
+  };
+
+  const openProfileModal = () => {
+    setOpenNotification(false);
+    setOpenProfile(true);
+  };
+
+  const closeModals = () => {
+    setOpenNotification(false);
+    setOpenProfile(false);
+  };
 
   return (
     <>
       <nav className="my__nav">
         <div className="container nav__containers">
+           <button className="nav__toggle-btn" onClick={() => setIsNavShowing((prev) => !prev)}>
+            {isNavShowing ? <MdOutlineClose /> : <GoThreeBars />}
+          </button>
           <Link to="/apphome" className="logo" onClick={() => setIsNavShowing(false)}>
-            <img src={Logo} alt="Nav Logo" />
+            <img  className="logo_image_nav" src={Logo} alt="Nav Logo" />
           </Link>
           <ul
             className={`my__nav__links ${isNavShowing ? 'show__nav' : 'hide__nav'}`}
@@ -65,30 +102,31 @@ const AppNavbar = () => {
 
           <ul>
             <li>
-              {user && ( // Check if user is not null before accessing its properties
-                <div className="nav__right">
-                  <img
-                    onClick={() => setOpenNotification((prev) => !prev)}
-                    src={Notify}
-                    alt="Nav Logo"
-                  />
-
-                  <div className="nav__profile">
-                    <img src={user.image} alt="Nav Logo" />
-                    <p>{user.username}</p>
-                    <MdKeyboardArrowDown onClick={() => setOpenProfile((prev) => !prev)} />
-                  </div>
-                </div>
-              )}
-            </li>
+          {user && (
+            <div className="nav__right">
+              <img onClick={openNotificationModal} src={Notify} alt="Nav Logo" />
+              <div className="nav__profile" onClick={openProfileModal}>
+                <img src={user.image} alt="Nav Logo" />
+                <p>{user.username}</p>
+                <MdKeyboardArrowDown onClick={openProfileModal} />
+              </div>
+            </div>
+          )}
+        </li>
           </ul>
-          <button className="nav__toggle-btn" onClick={() => setIsNavShowing((prev) => !prev)}>
-            {isNavShowing ? <MdOutlineClose /> : <GoThreeBars />}
-          </button>
+         
         </div>
       </nav>
-      {openNotification && <Notification />}
-      {openProfile && <Profile />}
+      {openNotification && (
+        <div ref={modalRef}>
+          <Notification onClose={closeModals} />
+        </div>
+      )}
+      {openProfile && (
+        <div ref={modalRef}>
+          <Profile onClose={closeModals} />
+        </div>
+      )}
     </>
   );
 };

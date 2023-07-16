@@ -3,7 +3,7 @@ import { MdClear } from 'react-icons/md';
 import { BsStarFill} from 'react-icons/bs';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { RiImageAddLine } from 'react-icons/ri';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { ReviewBusiness } from '../../apis/BusinessApi';
 
 const ReviewModal = ({ closeModal, businessId }) => {
@@ -12,6 +12,7 @@ const ReviewModal = ({ closeModal, businessId }) => {
   const [fileName, setFileName] = useState('No File Selected');
   const [verificationError, setVerificationError] = useState('');
   const [previewURL, setPreviewURL] = useState(null);
+  const queryClient = useQueryClient();
 
   const handleStarClick = (selectedRating) => {
     setRating(selectedRating);
@@ -35,6 +36,7 @@ const ReviewModal = ({ closeModal, businessId }) => {
         // Handle the successful response from the API
         // For example, close the modal or perform any additional actions
         closeModal();
+        queryClient.invalidateQueries('business'); 
       },
       onError: (error) => {
         // Handle any errors

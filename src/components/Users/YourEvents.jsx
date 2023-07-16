@@ -11,7 +11,7 @@ const YourEvents = () => {
               
               return (
     <div className='your__event-container' key={id}>
-      <img src={icon} />
+      <img className='your__event-container-img' src={icon} alt='logo'/>
       
       <div className="event__details">
             <div className="event__details-top">
@@ -21,7 +21,7 @@ const YourEvents = () => {
             </div>
         <div className='your__event-sold'>
             <img src={Sold} />
-            {sold}
+            <p>{sold}</p>
           </div>  
         </div>
       </div>

@@ -43,7 +43,7 @@ const User = () => {
     <div className="user-container ">
       <div className="user__bloc-tabs">
         <div className="user__bloc-profile">
-        <img src={`https://api.usepurplepages.com/${business?.image}`}  alt="profile"/>
+        <img src={`https://api2.greeninkltd.com/${business?.image}`}  alt="profile"/>
         <h4>{business?.name}</h4>
         </div>
         <button
@@ -129,8 +129,8 @@ const User = () => {
         <div
           className={toggleState === 5 ? "user__contentx  active-user__content" : "user__contentx"}
         >
-          <div className='subscription__section'>
-          <div className="first__user-content subscription__user-content">
+          <div className='subscription__sectionx'>
+          <div className="first__user-contentx subscription__user-content">
           <h3>Insights</h3>
               
         </div>
@@ -145,9 +145,6 @@ const User = () => {
 
           <div className="first__user-content subscription__user-content">
           <h3>Let's Talk</h3>
-              
-
-       
         </div>
          <LetsTalk />
         </div>

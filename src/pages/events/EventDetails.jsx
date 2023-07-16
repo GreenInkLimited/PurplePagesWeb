@@ -67,7 +67,7 @@ const EventDetails = () => {
       <header className='myevent__header'>
         <div className="myevent__header__container">
           <div className="myevent__header__container-bg">
-            <img src={`https://api.usepurplepages.com/${events.event_flier}`} alt="header bg" />
+            <img src={`https://api2.greeninkltd.com/${events.event_flier}`} alt="header bg" />
           </div>
         </div>
     </header>
@@ -112,7 +112,7 @@ const EventDetails = () => {
             <div className="event__detail-right">
               {events && (
                 <>
-                  <h3 className="detail">₦{events.ticket_price}</h3>
+                  <h3 className="detail"><span className='naira_font'>₦</span>{events.ticket_price}</h3>
                   <Link
                     onClick={() => {
                       setOpenModal(true);

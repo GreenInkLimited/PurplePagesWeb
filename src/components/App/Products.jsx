@@ -4,7 +4,7 @@ import { ImStarEmpty, ImStarFull, ImStarHalf } from 'react-icons/im';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/pplogo.png';
 
-const Products = ({ searchQuery, searchResults }) => {
+const Products = ({ searchQuery, searchResults, filteredResults }) => {
   const [business, setBusiness] = useState([]);
   const [showCount, setShowCount] = useState(8);
   const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ const Products = ({ searchQuery, searchResults }) => {
   }, []);
 
   const handleLoadMore = () => {
-    setShowCount(prevCount => prevCount + 8);
+    setShowCount((prevCount) => prevCount + 8);
   };
 
   if (loading) {
@@ -34,13 +34,27 @@ const Products = ({ searchQuery, searchResults }) => {
     );
   }
 
+  
+
+
+
+
+const productsToDisplay = searchQuery ? searchResults : filteredResults.filter((product) => {
+      return (
+        product.category === filteredResults[0].category ||
+        product.location === filteredResults[0].location
+      );
+    });
+
+
+
   return (
     <section className='product'>
       <div className='container'>
         <div className='product__container'>
           <div className='product__wrapper'>
-            {searchResults.length > 0 ? (
-              searchResults.map(({ id, image, name, category, location, lga, reviews }) => {
+            {productsToDisplay.length > 0 ? (
+              productsToDisplay.slice(0, showCount).map(({ id, image, name, category, location, lga, reviews }) => {
                 const totalReviews = reviews.length;
                 const sumRatings = reviews.reduce((sum, review) => sum + Number(review.rating), 0);
                 const averageRating = totalReviews > 0 ? sumRatings / totalReviews : 0;
@@ -51,10 +65,10 @@ const Products = ({ searchQuery, searchResults }) => {
                 return (
                   <div className='product__value' key={id}>
                     <Link to={`/business/${id}`}>
-                      <img className='product__value-img' src={`https://api.usepurplepages.com/${image}`} alt='icon' />
+                      <img className='product__value-img' src={`https://api2.greeninkltd.com/${image}`} alt='icon' />
                       <h4>{name}</h4>
                       <p>{category}</p>
-                      <small>{location}, {lga}</small>
+                      <small>{lga}, {location}</small>
                       <div className='rating'>
                         {[...Array(fullStars)].map((_, index) => (
                           <ImStarFull key={index} />
@@ -80,7 +94,7 @@ const Products = ({ searchQuery, searchResults }) => {
                 return (
                   <div className='product__value' key={id}>
                     <Link to={`/business/${id}`}>
-                      <img className='product__value-img' src={`https://api.usepurplepages.com/${image}`} alt='icon' />
+                      <img className='product__value-img' src={`https://api2.greeninkltd.com/${image}`} alt='icon' />
                       <h4>{name}</h4>
                       <p>{category}</p>
                       <small>{location}, {lga}</small>

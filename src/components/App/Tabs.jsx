@@ -5,12 +5,12 @@ import { CiLocationOn } from "react-icons/ci";
 import ProductAndService from "./ProductAndService";
 import { Link, useParams } from "react-router-dom";
 import Reviews from "./Reviews";
-import Marketplace0 from "../../assets/Marketplace1.png";
-import Marketplace1 from "../../assets/Jiji.png";
-import Marketplace2 from "../../assets/Marketplace2.png";
-import Marketplace3 from "../../assets/Marketplace3.png";
-import Marketplace4 from "../../assets/Bumpa.png";
-import Marketplace5 from "../../assets/Flutter.png";
+import Marketplace0 from "../../assets/pocketnew.png";
+import Marketplace1 from "../../assets/jijinew.png";
+import Marketplace2 from "../../assets/shopifynew.png";
+import Marketplace3 from "../../assets/jumianew.png";
+import Marketplace4 from "../../assets/bumpanew.png";
+import Marketplace5 from "../../assets/flutterwavenew.png";
 import { getBusinessById } from "../../apis/BusinessApi";
 import Logo from "../../assets/pplogo.png";
 import ReviewModal from "./ReviewModal";
@@ -150,7 +150,7 @@ function Tabs() {
           className={toggleState === 3 ? "contentx  active-content" : "contentx"}
         >
           <div className="reviews__tab">
-            <h4>Purple user reviews & ratings</h4>
+            <h4>Purple Pages User Reviews & Ratings</h4>
 
             <button className="subscribe" onClick={openModal} businessId={id}>
               Leave a review

@@ -5,6 +5,39 @@ import Sub from '../../assets/Subscribers.png'
 import Export from '../../assets/export.png'
 import Calendar from '../../assets/Calendar.png'
 import {RiCalendar2Line } from 'react-icons/ri'
+import { Bar } from 'react-chartjs-2'
+import { Chart, LinearScale, CategoryScale, BarElement} from 'chart.js';
+Chart.register(
+    LinearScale,
+    CategoryScale, 
+    BarElement
+)
+
+const labels = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
+const data = {
+    labels,
+    datasets : [
+        {
+            label: 'Likes',
+            data: ['300', '300', '300', '300', '300', '300', '300'],
+            backgroundColor: '#650585',
+            borderRadius: 50,
+        },
+        {
+            label: 'Subscribers',
+            data: ['400', '400', '400', '400', '400', '400', '400'],
+            backgroundColor: '#BDBDBD',
+            borderRadius: 50,
+        },
+        {
+            label: 'Saved Posts',
+            data: ['500', '500', '500', '500', '500', '500', '500'],
+            backgroundColor: '#C42AF7',
+            borderRadius: 50,
+        }
+        
+    ]
+}
 
 const Insights = () => {
   return (
@@ -13,7 +46,7 @@ const Insights = () => {
             <div className="insights__wrapper-body">
                 <div className="insights__wrapper-body-subs">
                 <p>Subscribers</p>
-                <div>
+                <div className='insights__image-container'>
                 <img src={Sub} alt="sub" />
                 </div>
                 </div>
@@ -24,7 +57,7 @@ const Insights = () => {
             <div className="insights__wrapper-body">
                  <div className="insights__wrapper-body-subs">
                 <p>Posts</p>
-                <div>
+                <div className='insights__posts-container'>
                 <img src={Posts} alt="sub" />
                 </div>
                 </div>
@@ -35,7 +68,7 @@ const Insights = () => {
             <div className="insights__wrapper-body">
                 <div className="insights__wrapper-body-subs">
                 <p>Users reached</p>
-                <div>
+                <div  className='insights__users-container'>
                 <img src={Users} alt="sub" />
                 </div>
                 </div>
@@ -46,15 +79,29 @@ const Insights = () => {
       </div>
       <div className="insights__wrapper-bottom">
         <div className="insights__wrapper__bottom-header">
-            <p>Account Activity</p>
+            <h2>Account Activity</h2>
             <div className='insights__wrapper__bottom-buttons'>
                 <button className='last__week'><img src={Calendar} alt="sub" /> Last week</button>
                 <button className='export'><img src={Export} alt="sub" /> Export</button>
             </div>
         </div>
         <div className="insights__wrapper__bottom-content">
-            <div className="insights__wrapper__bottom-content-sub">
-
+            <div className="insights__wrapper__bottom-content-suba">
+                <div className="insights__labels">
+                    <div className="insightd__label-wrapper">
+                        <div className='dot'></div>
+                        <small>Likes</small>
+                    </div>
+                <div className="insightd__label-wrapper">
+                    <div className='saved__posts'></div>
+                    <small>Saved Posts</small>
+                </div>
+                <div className="insightd__label-wrapper">
+                    <div className='subscribers'></div>
+                    <small>Subscribers</small>
+                </div>
+                </div>
+                <Bar data={data}/>
             </div>
             <div className="insights__wrapper__bottom-content-sub">
                 <p>Overview</p>
@@ -107,15 +154,29 @@ const Insights = () => {
       </div>
       <div className="insights__wrapper-bottom">
         <div className="insights__wrapper__bottom-header">
-            <p>Facebook</p>
+            <h2>Facebook</h2>
             <div className='insights__wrapper__bottom-buttons'>
                 <button className='last__week'><img src={Calendar} alt="sub" /> Last week</button>
                 <button className='export'><img src={Export} alt="sub" /> Export</button>
             </div>
         </div>
         <div className="insights__wrapper__bottom-content">
-            <div className="insights__wrapper__bottom-content-sub">
-
+            <div className="insights__wrapper__bottom-content-suba">
+                <div className="insights__labels">
+                    <div className="insightd__label-wrapper">
+                        <div className='dot'></div>
+                        <small>Likes</small>
+                    </div>
+                <div className="insightd__label-wrapper">
+                    <div className='saved__posts'></div>
+                    <small>Saved Posts</small>
+                </div>
+                <div className="insightd__label-wrapper">
+                    <div className='subscribers'></div>
+                    <small>Subscribers</small>
+                </div>
+                </div>
+                <Bar data={data}/>
             </div>
             <div className="insights__wrapper__bottom-content-sub">
                 <p>Overview</p>

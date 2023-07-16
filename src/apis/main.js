@@ -1,3 +1,3 @@
 export const API = {
-  host: 'https://api.usepurplepages.com',
+  host: 'https://api2.greeninkltd.com',
 };

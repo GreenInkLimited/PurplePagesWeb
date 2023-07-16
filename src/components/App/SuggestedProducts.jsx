@@ -37,11 +37,11 @@ const SuggestedProducts = () => {
         {shuffledProducts.length > 0 ? (
           shuffledProducts.map(({ id, image, price, caption }) => (
             <div className="productandservice__value x" key={id}>
-              <img className="framex" src={`https://api.usepurplepages.com${image}`} alt="icon" />
+              <img className="framex" src={`https://api2.greeninkltd.com/${image}`} alt="icon" />
               <Link to={`/singleproduct/${id}`}>
                 <small>{caption}</small>
               </Link>
-              <p>₦{price}.00</p>
+              <p><span className='naira_font'>₦</span>{price}.00</p>
               <img className="frame" src={Frame} alt="" />
             </div>
           ))

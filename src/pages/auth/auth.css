@@ -166,12 +166,23 @@ form {
 
 .password-toggle-button{
     background: transparent;
+    color: #BDBDBD;
 }
 
 label {
     margin-top: 1rem;
     font-family: 'avenir-lt-45-book';
     margin-bottom: 8px;
+}
+
+.password-forgot{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    color: #14011B;
+    width: 100%;
+    cursor: pointer;
+    font-weight: 600;
 }
 
 button.input {
@@ -310,4 +321,19 @@ textarea::placeholder {
         margin-top: 50px;
         margin-bottom: 8px;
     }
+
+.input__div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 35px;
+    padding: 7px;
+    outline: none;
+    margin-bottom: 16px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid rgb(220, 220, 220);
+}
 }
