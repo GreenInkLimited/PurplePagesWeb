@@ -3,11 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import { AiOutlineLike, AiOutlineShareAlt, AiFillLike } from 'react-icons/ai';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import { RiArrowDropDownLine } from 'react-icons/ri';
-import Comment from '../../assets/comment.png';
 import { getBlogById, getBlogs, AddBlogComment, AddBlogLike, addCommentReply } from '../../apis/BlogApis';
 import { AddBlogWishlist } from '../../apis/WishlistApis';
 import Logo from '../../assets/pplogo.png';
-import { GoComment } from 'react-icons/go';
 
 const MAX_DETAIL_LENGTH = 150;
 const DETAIL_LENGTH = 350;

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllAds } from '../../apis/AdsApis';
-import  Logo from '../../assets/pplogo.png'
+import Logo from '../../assets/pplogo.png';
 
 const AdsContent = ({ searchQuery, searchResults, filteredResults }) => {
   const [adverts, setAdverts] = useState([]);
@@ -25,83 +25,69 @@ const AdsContent = ({ searchQuery, searchResults, filteredResults }) => {
     setShowCount((prevCount) => prevCount + 8);
   };
 
-  const adsToDisplay = searchQuery ? searchResults : filteredResults.length > 0 ? filteredResults : adverts;
+  const adsToDisplay = searchQuery
+    ? searchResults
+    : filteredResults.length > 0
+    ? filteredResults
+    : adverts;
 
   if (loading) {
-    return <div className='spinner_container'>
-      <img src={Logo} alt="logo"/>
-    </div>;
+    return (
+      <div className="spinner_container">
+        <img src={Logo} alt="logo" />
+      </div>
+    );
   }
+
   return (
-  <div className="ads container">
+    <div className="ads container">
       <div className="ads__container">
-        <div className='ads__wrapper'>
-          {adsToDisplay.length > 0 ? (
-              adsToDisplay.slice(0, showCount).map(({ id, title, image, owner, ads_type }) => {
+        <div className="ads__wrapper">
+          {adsToDisplay.slice(0, showCount).map(({ id, title, image, owner, ads_type }) => {
+            const adType = ads_type;
 
-                return (
-            <div key={id}>
-              <div className="ads__value">
-                <img className="ads__value-img" src={`https://api2.greeninkltd.com/${image}`} alt="icon" />
-                <div className='ads__bottom'>
-                  {owner && owner.image && (
-                    <img src={`https://api2.greeninkltd.com/${owner.image}`} alt="autor" />
-                  )}
-                  <div className="ads__bottom-detail-flex">
-                  <div className="ads__bottom-detail">
-                    <Link to={`/ads/${id}`}>
-                      <h4>{title}</h4>
-                    </Link>
-                    {owner && owner.name && (
-                      <p>{owner.name}</p>
-                    )}
-                  </div>
-                  <p className='ads_category'>{ads_type}</p>
+            let adLink = '';
+            if (adType === 'blog') {
+              adLink = `/appblog/${id}`;
+            } else if (adType === 'business') {
+              adLink = `/business/${id}`;
+            } else if (adType === 'brand') {
+              adLink = `/ads/${id}`;
+            } else if (adType === 'product') {
+              adLink = `/singleproduct/${id}`;
+            }
+
+            
+
+            return (
+              <div key={id}>
+                <div className="ads__value">
+                  <img className="ads__value-img" src={`https://api2.greeninkltd.com/${image}`} alt="icon" />
+                  <div className="ads__bottom">
+                    {owner && owner.image && <img src={`https://api2.greeninkltd.com/${owner.image}`} alt="autor" />}
+                    <div className="ads__bottom-detail-flex">
+                      <div className="ads__bottom-detail">
+                        <Link to={adLink}>
+                          <h4>{title}</h4>
+                        </Link>
+                        {owner && owner.name && <p>{owner.name}</p>}
+                      </div>
+                      <p className="ads_category">{ads_type}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              
-            </div>
-          );
-          })
-            ) : (
-              adsToDisplay.slice(0, showCount).map(({ id, title, image, owner, ads_type }) => {
-
-                return (
-            <div key={id}>
-              <div className="ads__value">
-                <img className="ads__value-img" src={`https://api2.greeninkltd.com/${image}`} alt="icon" />
-                <div className='ads__bottom'>
-                  {owner && owner.image && (
-                    <img src={`https://api2.greeninkltd.com/${owner.image}`} alt="autor" />
-                  )}
-                  <div className="ads__bottom-detail-flex">
-                  <div className="ads__bottom-detail">
-                    <Link to={`/ads/${id}`}>
-                      <h4>{title}</h4>
-                    </Link>
-                    {owner && owner.name && (
-                      <p>{owner.name}</p>
-                    )}
-                  </div>
-                  <p className='ads_category'>{ads_type}</p>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
             );
-              })
-            )}
+          })}
         </div>
       </div>
       {showCount < adverts.length && (
-          <div className='product__load-more'>
-            <button onClick={handleLoadMore}>Load More....</button>
-          </div>
-        )}
+        <div className="product__load-more">
+          <button onClick={handleLoadMore}>Load More....</button>
+        </div>
+      )}
     </div>
   );
-}
+};
 
-export default AdsContent
+export default AdsContent;

@@ -117,18 +117,26 @@ export const ContactUsInput = async ({name, email, message}) => {
 };
 
 
-export const UpdateProfile = async ({first_name, last_name, phone}) => {
+
+
+export const UpdateProfile = async({first_name, last_name, phone, image}) => {
   console.log('called update profile api');
   const auth_code = localStorage.getItem('auth_code');
-  console.log('auth_code', auth_code);
-  const response = await axios.post(`${API.host}/app/edit-profile/`, {
-    first_name,
-    last_name,
-    phone,
-    auth_code,
+  //console.log('auth_code', auth_code);
+
+  const formData = new FormData();
+  formData.append('image', image);
+  formData.append('first_name', first_name);
+  formData.append('last_name', last_name);
+  formData.append('phone', phone);
+  formData.append('auth_code', auth_code);
+
+  const response = await axios.post(`${API.host}/app/edit-profile/`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
   });
-  // console.log(response);
-  // console.log(Object.keys(response));
+
   return response.data;
 };
 

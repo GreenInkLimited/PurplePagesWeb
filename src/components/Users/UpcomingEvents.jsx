@@ -29,7 +29,7 @@ const UpcomingEvents = () => {
         <section className='trending__events'>
     <h3>Upcoming</h3>
     <div className="trending__events__container">
-      <div className='trending__events__wrapperx'>
+      <div className='ftrending__events__wrapper'>
         {
           event.map(({ id, event_location, event_name, days, event_flier, event_category, start_time, event_description, to_date, from_date, end_time }) => {
             // Get the current date
@@ -69,7 +69,7 @@ const UpcomingEvents = () => {
            <section className='trending__events'>
     <h3>Upcoming</h3>
     <div className="trending__events__container">
-      <div className='trending__events__wrapperx'>
+      <div className='ftrending__events__wrapper'>
         {
           event.map(({ id, event_location, event_name, days, event_flier, event_category, start_time, event_description, to_date, from_date, end_time }) => {
             // Get the current date

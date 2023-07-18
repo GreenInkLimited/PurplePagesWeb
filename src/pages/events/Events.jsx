@@ -16,6 +16,7 @@ const Events = () => {
   const [openModal, setOpenModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const handleSearch = async () => {
     if (searchQuery.trim() === '') {
@@ -30,6 +31,10 @@ const Events = () => {
     } catch (error) {
       console.error('Error searching events:', error);
     }
+  };
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
   };
 
   return (
@@ -62,8 +67,8 @@ const Events = () => {
         </div>
       </header>
 
-      <Categories />
-      <TrendingEvents searchQuery={searchQuery} searchResults={searchResults} />
+      <Categories onCategoryClick={handleCategoryClick}/>
+      <TrendingEvents searchQuery={searchQuery} searchResults={searchResults} selectedCategory={selectedCategory}/>
       <Explore />
       <div className='container host__event__container'>
         <h2>Ready to host your event?</h2>

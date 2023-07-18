@@ -519,7 +519,7 @@ export const ads = [
         category: "Product"
     },
     {
-        id: 12,
+        id: 28,
         icon: require("./assets/ads4.png"),
         profile: require("./assets/Autor3.png"),
         background: require("./assets/blogbg.png"),

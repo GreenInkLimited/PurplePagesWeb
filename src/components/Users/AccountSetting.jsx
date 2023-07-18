@@ -1,26 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { BsCircle, BsCheckCircleFill } from 'react-icons/bs';
-import { AiOutlineEdit } from 'react-icons/ai';
+import { AiOutlineEdit, AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { getUser, UpdateProfile } from '../../apis';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
-import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
-import {RiLockLine} from 'react-icons/ri'
+import { RiLockLine, RiImageAddLine } from 'react-icons/ri';
 import ChangePassword from '../Modals/ChangePassword';
 
 const AccountSetting = () => {
+  const [image, setImage] = useState(null);
   const [user, setUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editedUser, setEditedUser] = useState(null);
+  const [fileName, setFileName] = useState('No File Selected');
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
+  const [previewURL, setPreviewURL] = useState(null);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
+
+  const handleLogoUpload = (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    setFileName(file.name);
+    setImage(file);
+    const previewURL = URL.createObjectURL(file);
+    setPreviewURL(previewURL);
+  }
+};
 
   const validationSchema = Yup.object({
     last_name: Yup.string().required('Field is required'),
@@ -32,7 +44,7 @@ const AccountSetting = () => {
     const fetchUser = async () => {
       try {
         const response = await getUser({ pageParam: 0 });
-        setUser(response); // Set the user state with the response data directly
+        setUser(response);
       } catch (error) {
         console.log('Error fetching User:', error);
       }
@@ -46,16 +58,15 @@ const AccountSetting = () => {
     {
       onSuccess: (data) => {
         console.log(data);
-        //localStorage.setItem('auth_code', data.auth_code);
-        // Redirect to home page after successful form submission
         navigate('/personal');
+        window.location.reload();
       },
     }
   );
 
   const handleEditClick = () => {
     setIsEditing(true);
-    setEditedUser(user); // Store a copy of the user data for editing
+    setEditedUser(user);
   };
 
   const handleCancelClick = () => {
@@ -93,35 +104,39 @@ const AccountSetting = () => {
       </div>
       <div className="account__settings-content">
         <div className="account__settings-left">
-         
           {isEditing ? (
             <div className='should__not-show__mobile'>
-            <p>Username</p>
-          <p>First Name</p>
-          <p>Last Name</p>
-          <p>Email</p>
-          <p>Phone Number</p>
-          <p>Password</p>
-          </div>
-            ) : (
-               <>
-          <p>Username</p>
-          <p>First Name</p>
-          <p>Last Name</p>
-          <p>Email</p>
-          <p>Phone Number</p>
-          <p>Password</p>
-          </>
-           )}
-           
+              <p>Username</p>
+              <p>First Name</p>
+              <p>Last Name</p>
+              <p>Email</p>
+              <p>Phone Number</p>
+              
+            </div>
+          ) : (
+            <>
+              <p>Username</p>
+              <p>First Name</p>
+              <p>Last Name</p>
+              <p>Email</p>
+              <p>Phone Number</p>
+              <p>Password</p>
+            </>
+          )}
         </div>
         <Formik
-          initialValues={{ first_name: "", last_name: "", phone: "" }}
-          onSubmit={async (values) => {
-            await mutateAsync({
+          initialValues={{
+            first_name: user ? user.first_name || '' : '',
+            last_name: user ? user.last_name || '' : '',
+            phone: user ? user.phone || '' : '',
+            image: null,
+          }}
+            onSubmit={async (values) => {
+              await mutateAsync({
               first_name: values.first_name,
               last_name: values.last_name,
               phone: values.phone,
+              image: image,
             });
             console.log(values);
           }}
@@ -131,137 +146,140 @@ const AccountSetting = () => {
             <Form>
               {user && (
                 <div className="account__settings-right">
-                  <p>
-                    
-                    {isEditing ? (
-                      <>
-                      <label htmlFor="username">Username</label>
-                      <div className='input__divx'>
-                        <input
-                          className='inputingxyz'
-                          type="text"
-                          name="username"
-                          value={editedUser.username}
-                          onChange={handleInputChange}
-                          readOnly
-                        />
-                        <button
-                          type="button"
-                          className="password-toggle-button"
-                          
-                        ><RiLockLine />
-                        </button>
-                      </div>
-                      </>
-                    ) : (
-                      user.username
-                    )}
-                  </p>
-                  <p>
-                    
-                    {isEditing ? (
-                      <>
-                       <label htmlFor="username">First Name</label>
-                      <Field
-                        className="inputing"
-                        type="text"
-                        name="first_name"
-                        placeholder={editedUser.first_name}
-                        required="true"
-                      />
-                      </>
-                    ) : (
-                      user.first_name || 'first name'
-                    )}
-                    <ErrorMessage name="first_name" component="small" className="error-message" />
-                  </p>
-                  <p>
-                    
-                    {isEditing ? (
-                      <>
-                      <label htmlFor="username">Last Name</label>
-                      <Field
-                        className="inputing"
-                        type="text"
-                        name="last_name"
-                        placeholder={editedUser.last_name}
-                        required="true"
-                      />
-                      </>
-                    ) : (
-                      user.last_name || 'last name'
-                    )}
-                    <ErrorMessage name="last_name" component="small" className="error-message" />
-                  </p>
-                  <p>
-                    {isEditing ? (
-                      <>
-                      <label htmlFor="username">Email</label>
-                      <div className='input__divx'>
-                        <input
-                          className='inputingxyz'
-                          type="email"
-                          name="email"
-                          value={editedUser.email}
-                          onChange={handleInputChange}
-                          readOnly
-                        />
-                        <button
-                          type="button"
-                          className="password-toggle-button"
-                          
-                        ><RiLockLine />
-                        </button>
-                      </div>
-                      </>
-                    ) : (
-                      user.email
-                    )}
-                  </p>
-                  <p>
-                    
-                    {isEditing ? (
-                      <>
-                      <label htmlFor="username">Phone Number</label>
-                      <Field
-                        className="inputing"
-                        type="tel"
-                        name="phone"
-                        placeholder={editedUser.phone}
-                        required="true"
-                      />
-                      </>
-                    ) : (
-                      user.phone
-                    )}
-                  </p>
-                  <p>
-                    
-                    {isEditing ? (
-                      <>
-                      <label htmlFor="username">Password</label>
-                      <div className='input__divx'>
-                        <input
-                          className='inputingxyz'
-                          type={showPassword ? 'text' : 'password'}
-                          name="password"
-                          placeholder="********"
-                          onChange={handleInputChange}
-                        />
-                        <button
-                          type="button"
-                          className="password-toggle-button"
-                          onClick={togglePasswordVisibility}
-                        >{showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-                        </button>
-                      </div>
-                      </>
-                    ) : (
-                      <p className='password__setmodal_button' onClick={() => { setOpenModal(true) }}>*******</p>
-                    )}
-                  </p>
+                  <div className="" >
+                    <div onClick={() => document.querySelector('.logo-input').click()}>
+              <Field
+                className="input-field logo-input"
+                type="file"
+                accept="image/jpeg, image/png"
+                name="image"
+                hidden
+                onChange={handleLogoUpload}
+              />
+              {previewURL ? (
+                <img src={previewURL} alt={fileName} className="uploaded-image-profile" />
+              ) : (
+                <img src={user.image} alt={fileName} className="uploaded-image-profile" />
+              )}
+              {isEditing && (
+                <div className="camera-icon-container">
+                  <RiImageAddLine className="camera-icon" />
                 </div>
               )}
+            </div>
+                    <p>
+                      {isEditing ? (
+                        <>
+                          <label htmlFor="username">Username</label>
+                          <div className='input__divx'>
+                            <input
+                              className='inputingxyz'
+                              type="text"
+                              name="username"
+                              value={editedUser.username}
+                              onChange={handleInputChange}
+                              readOnly
+                            />
+                            <button
+                              type="button"
+                              className="password-toggle-button"
+                            >
+                              <RiLockLine />
+                            </button>
+                          </div>
+                        </>
+                      ) : (
+                        user.username
+                      )}
+                    </p>
+                    <p>
+                      {isEditing ? (
+                        <>
+                          <label htmlFor="username">First Name</label>
+                          <Field
+                            className="inputing"
+                            type="text"
+                            name="first_name"
+                            placeholder={editedUser.first_name}
+                            required="true"
+                          />
+                        </>
+                      ) : (
+                        user.first_name || 'first name'
+                      )}
+                      <ErrorMessage name="first_name" component="small" className="error-message" />
+                    </p>
+                    <p>
+                      {isEditing ? (
+                        <>
+                          <label htmlFor="username">Last Name</label>
+                          <Field
+                            className="inputing"
+                            type="text"
+                            name="last_name"
+                            placeholder={editedUser.last_name}
+                            required="true"
+                          />
+                        </>
+                      ) : (
+                        user.last_name || 'last name'
+                      )}
+                      <ErrorMessage name="last_name" component="small" className="error-message" />
+                    </p>
+                    <p>
+                      {isEditing ? (
+                        <>
+                          <label htmlFor="username">Email</label>
+                          <div className='input__divx'>
+                            <input
+                              className='inputingxyz'
+                              type="email"
+                              name="email"
+                              value={editedUser.email}
+                              onChange={handleInputChange}
+                              readOnly
+                            />
+                            <button
+                              type="button"
+                              className="password-toggle-button"
+                            >
+                              <RiLockLine />
+                            </button>
+                          </div>
+                        </>
+                      ) : (
+                        user.email
+                      )}
+                    </p>
+                    <p>
+                      {isEditing ? (
+                        <>
+                          <label htmlFor="username">Phone Number</label>
+                          <Field
+                            className="inputing"
+                            type="tel"
+                            name="phone"
+                            placeholder={editedUser.phone}
+                            required="true"
+                          />
+                        </>
+                      ) : (
+                        user.phone
+                      )}
+                    </p>
+                    <p>
+                      {isEditing ? (
+                        <>
+                          
+                        </>
+                      ) : (
+                        <p className='password__setmodal_button' onClick={() => setOpenModal(true)}>*******</p>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              )}
+             
               {isEditing && <button className='save_profile-button' type="submit" disabled={isSubmitting}>Save</button>}
             </Form>
           )}
@@ -283,9 +301,8 @@ const AccountSetting = () => {
           </div>
           <div className="subscriptions-detail">
             <BsCircle />
-            <BsCheckCircleFill className='check'/>
+            <BsCheckCircleFill className='check' />
           </div>
-
         </div>
         <div className="notification__preferences-body">
           <div>
@@ -293,10 +310,9 @@ const AccountSetting = () => {
             <small>To change notification preferences for each subscribed business.</small>
           </div>
           <div className="subscriptions-detail">
-            <BsCheckCircleFill className='check'/>
+            <BsCheckCircleFill className='check' />
             <BsCircle />
           </div>
-
         </div>
         <div className="notification__preferences-body">
           <div>
@@ -304,10 +320,9 @@ const AccountSetting = () => {
             <small>Notify me about replies to my comments</small>
           </div>
           <div className="subscriptions-detail">
-            <BsCheckCircleFill className='check'/>
+            <BsCheckCircleFill className='check' />
             <BsCircle />
           </div>
-
         </div>
       </div>
     </>

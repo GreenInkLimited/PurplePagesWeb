@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { getAllEvents } from '../../apis/EventsApis';
 import Logo from '../../assets/pplogo.png';
 
-const TrendingEvents = ({ searchQuery, searchResults }) => {
+const TrendingEvents = ({ searchQuery, searchResults, selectedCategory }) => {
   const [event, setEvent] = useState([]);
   const [initialEvents, setInitialEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -22,6 +23,17 @@ const TrendingEvents = ({ searchQuery, searchResults }) => {
     };
     fetchEvent();
   }, []);
+
+  useEffect(() => {
+    if (selectedCategory && initialEvents.length > 0) {
+      const filteredEvents = initialEvents.filter(
+        (event) => event.event_category.toLowerCase() === selectedCategory.toLowerCase()
+      );
+      setEvent(filteredEvents);
+    } else {
+      setEvent(initialEvents);
+    }
+  }, [selectedCategory, initialEvents]);
 
   // Filter events based on search query
   useEffect(() => {

@@ -36,6 +36,13 @@
     font-family: "avenir-lt-45-book";
 }
 
+.user-blog__wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem 2rem;
+    font-family: "avenir-lt-45-book";
+}
+
 .blog__value {
     align-items: center;
     border-radius: 10px;
@@ -359,6 +366,12 @@
     align-items: flex-end;
 }
 
+.comment__flexbox-ads {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
 .input-box {
     width: 100%;
     height: 152px;
@@ -437,6 +450,8 @@
     width: 30px;
     height: 30px;
     margin-right: 10px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .blog__comment-body p{
@@ -455,6 +470,10 @@
     font-weight: 400;
     text-align: end;
     cursor: pointer;
+}
+
+.comment__flexbox-mobile{
+    display: none;
 }
 
 /*=============== media queries (small screens)================*/
@@ -493,6 +512,12 @@
     font-family: "avenir-lt-45-book";
     font-size: 20px;
     font-weight: 700;
+}
+
+.comment__flexbox-ads {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
         .write-blog__wrapper .textarea {
@@ -553,5 +578,25 @@
 .blog__body__right {
     margin-top: 20px;
 }
+
+.comment__flexbox-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.input-box {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #BDBDBD;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.ads__comment-body-mobile h4{
+    font-family: 'avenir-lt-45-book';
+}
+
 
 }

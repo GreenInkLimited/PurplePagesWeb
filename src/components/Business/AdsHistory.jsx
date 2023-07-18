@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react'
-import {adshistory} from '../../data'
+import React, { useState, useRef, useEffect } from 'react';
 import PostAdsModal from './PostAdsModal';
 import { getMyBusinessById } from '../../apis/BusinessApi';
 import { useParams } from 'react-router-dom';
 import Logo from '../../assets/pplogo.png';
+import { getMyAds } from '../../apis/AdsApis';
 
 const AdsHistory = () => {
   const { id } = useParams();
@@ -11,6 +11,7 @@ const AdsHistory = () => {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const modalRef = useRef(null);
+  const [myAds, setMyAds] = useState([]);
 
   const handlePromotePage = () => {
     setShowModal(true);
@@ -34,7 +35,18 @@ const AdsHistory = () => {
     fetchBusiness();
   }, [id]);
 
-  
+  useEffect(() => {
+    const fetchMyAds = async () => {
+      try {
+        const response = await getMyAds({ pageParam: 0 });
+        setMyAds(response);
+        setLoading(false);
+      } catch (error) {
+        console.log('Error fetching Wishlists:', error);
+      }
+    };
+    fetchMyAds();
+  }, []);
 
   useEffect(() => {
     const handleClickOutsideModal = (event) => {
@@ -66,10 +78,10 @@ const AdsHistory = () => {
         </div>
       <div className=" adshistory__wrapper">
         {
-            adshistory.map(({id, icon, title}) => {
+            myAds.map(({ id, image, title }) => {
                 return (
-                    <div className="adshistory__content" key={id }>
-                      <img src={icon}/>
+                    <div className="adshistory__content" key={id}>
+                      <img src={`https://api2.greeninkltd.com/${image}`} alt={title} />
                         <p>{title}</p>
                     </div>
                 )
@@ -82,5 +94,4 @@ const AdsHistory = () => {
   )
 }
 
-
-export default AdsHistory
+export default AdsHistory;

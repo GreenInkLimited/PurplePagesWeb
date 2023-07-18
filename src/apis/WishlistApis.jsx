@@ -39,6 +39,21 @@ export const AddProductWishlist = async ({ product_id }) => {
   return response.data;
 };
 
+export const AddAdsWishlist = async ({ ads_id }) => {
+  console.log('called add ads wishlist api');
+  const auth_code = localStorage.getItem('auth_code');
+  console.log('auth_code', auth_code);
+  const response = await axios.post(
+    `${API.host}/wishlist/add/ads/`,
+    {
+      ads_id,
+      auth_code, // Include the auth_code in the request payload
+    }
+  );
+  console.log(response.data);
+  return response.data;
+};
+
 export const AddBlogWishlist = async ({ blog_id }) => {
   console.log('called add blog wishlist api');
   const auth_code = localStorage.getItem('auth_code');

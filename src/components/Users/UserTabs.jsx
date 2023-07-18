@@ -4,9 +4,12 @@ import {BsTelephone} from "react-icons/bs"
 import {CiLocationOn} from "react-icons/ci"
 import { useParams } from "react-router-dom";
 import Reviews from "../App/Reviews";
-import Marketplace1 from "../../assets/Marketplace1.png"
-import Marketplace2 from "../../assets/Marketplace2.png"
-import Marketplace3 from "../../assets/Marketplace3.png"
+import Marketplace0 from "../../assets/pocketnew.png";
+import Marketplace1 from "../../assets/jijinew.png";
+import Marketplace2 from "../../assets/shopifynew.png";
+import Marketplace3 from "../../assets/jumianew.png";
+import Marketplace4 from "../../assets/bumpanew.png";
+import Marketplace5 from "../../assets/flutterwavenew.png";
 import Edit from "../../assets/write.png"
 import UserProductAndService from "./UserProductAndServices";
 import { getMyBusinessById } from '../../apis/BusinessApi';
@@ -108,9 +111,24 @@ function UserTabs() {
         </div>
           
           <div className="user__utabs__marketplace">
-            <img src={Marketplace1} />
-             <img src={Marketplace2} />
-              <img className="jumia__marketplace" src={Marketplace3} />
+            <a href={business.marketplace_link}>
+                {business.marketplace === 'Jiji' && <img src={Marketplace1} alt="jiji"/>}
+                </a>
+                <a href={business.marketplace_link}>
+                {business.marketplace === 'Jumia' && <img src={Marketplace3} alt="jiji" className="jumia__marketplace"/>}
+                </a>
+                <a href={business.marketplace_link}>
+                {business.marketplace === 'Bumpa' && <img src={Marketplace4} alt="jiji" className="jumia__marketplace"/>}
+                </a>
+                <a href={business.marketplace_link}>
+                {business.marketplace === 'Pocket' && <img src={Marketplace0} alt="jiji" />}
+                </a>
+                <a href={business.marketplace_link}>
+                {business.marketplace === 'Shopify' && <img src={Marketplace2} alt="jiji" />}
+                </a>
+                <a href={business.marketplace_link}>
+                {business.marketplace === 'Flutter' && <img src={Marketplace5} alt="jiji" />}
+                </a>
           </div>
         </div>
         </div>

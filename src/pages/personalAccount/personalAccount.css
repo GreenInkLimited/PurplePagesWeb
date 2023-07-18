@@ -28,10 +28,12 @@
 }
 
 .personal__bloc-profile img{
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
     margin-top: -35px;
-    margin-right: 10px;
+    
 }
 
 
@@ -199,6 +201,7 @@ button {
 .account__settings-content {
     display: flex;
     margin-bottom: 20px;
+    margin-top: 100px;
     flex-direction: row;
 }
 

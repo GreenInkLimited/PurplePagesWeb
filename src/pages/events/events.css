@@ -71,6 +71,7 @@
     gap: 1rem 1rem;
     width: 100%;
     font-family: "avenir-lt-45-book";
+    cursor: pointer;
 }
 
 .events__wrapper p{

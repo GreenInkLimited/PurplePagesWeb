@@ -82,6 +82,7 @@
     width: 489px;
     height: 375px;
     object-fit: cover;
+    margin-bottom: -3rem;
 }
 
 .about__values__image img{
@@ -91,6 +92,7 @@
     height: 390px;
     /*==border-radius: 20px;==*/
     object-fit: cover;
+    
 }
 
 .about__values__image:hover {

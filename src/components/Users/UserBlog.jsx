@@ -64,7 +64,7 @@ const UserBlog = () => {
     <div className="blog">
       
       <div className="">
-        <div className="blog__wrapper">
+        <div className="user-blog__wrapper">
         
           {business?.blogs.length > 0 ? (
             business?.blogs.map((blog) => (
@@ -84,7 +84,7 @@ const UserBlog = () => {
             <div className='empty-productandservice__container blog'>
               <h4>Write your first blog</h4>
               <small>
-               Have any thoughts, ideas or stories you’ll love to share?
+              Have any thoughts, ideas or stories you’ll love to share?
               </small>
               <button className='empty__wishlist blog' onClick={openAddProductModal}>
                 <img src={Pen} alt="pen"/> write
@@ -97,7 +97,7 @@ const UserBlog = () => {
             <AddBlog onCancel={closeAddProductModal} businessId={id} setProducts={handleAddProduct}/>
           </div>
         )}
-{showWishlistButton && business?.blogs.length > 0 && (
+          {showWishlistButton && business?.blogs.length > 0 && (
           <button className='not-empty__wishlist' onClick={openAddProductModal}>
             <AiOutlinePlus className='add__product-icon' />
           </button>

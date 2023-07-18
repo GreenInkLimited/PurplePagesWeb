@@ -555,14 +555,14 @@
 .not-empty__wishlist {
     color: #FFFFFF;
     
-    bottom: 400px;
-    right: 150px;
+    bottom: 20px;
+    right: 20px;
     height: 64px;
     width: 64px;
     border-radius: 64px;
-    justify-content: flex-end;
+
     position: fixed;
-    align-items: center;
+
     gap: 21px;
     cursor: pointer;
     background-color: #C42AF7;
@@ -584,6 +584,9 @@
     margin-top: 40px;
     background: transparent;
     outline: none;
+    font-family: "Clash Display";
+    color: #BDBDBD;
+    font-weight: 500;
 }
 
 .first__user__utab__content{
@@ -592,9 +595,11 @@
 
 .active-user__utabs {
     background: transparent;
-    border-bottom: 1px solid transparent;
-    color: #C42AF7;
-    border-bottom: 2px solid #C42AF7;
+        border-bottom: 1px solid transparent;
+        color: #C42AF7;
+        font-weight: 600;
+        border-bottom: 2px solid #C42AF7;
+        font-family: 'Clash Display';
 }
 
 .active-user__utabs::before {
@@ -655,7 +660,6 @@
 
 .bloc-user__utabs button {
     border: none;
-    font-family: "avenir-lt-45-book";
     font-size: 12px;
 }
 
@@ -697,6 +701,7 @@
 .user__utabs__marketplace {
     color: #C7005C;
     display: flex;
+    
     flex-direction: row;
     font-family: "avenir-lt-45-book";
 }
@@ -704,6 +709,7 @@
 .user__utabs__marketplace img{
     max-height: 50px;
     max-width: 88px;
+    margin-right: 20px;
 }
 
 .user__submenu__content{
@@ -988,7 +994,6 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 30px 24px;
     font-family: "avenir-lt-45-book";
-
 }
 
 .ticket__event-iconic{
@@ -1005,7 +1010,14 @@
     width: 100%;
     border-radius: 5px;
     padding: 10px;
+    cursor: pointer;
 }
+
+.events__valuexxx {
+    font-weight: 600;
+    color: #14011B;
+}
+
 
 .events__valuexxx img {
     width: 1.2rem;
@@ -1502,6 +1514,52 @@
     
 }
 
+.upload__file-container-profile {
+    position: relative;
+    display: inline-block;
+}
+
+.uploaded-image-profile {
+    position: absolute;
+    top: -90px;
+    /* Adjust the top value as needed */
+    left: 0;
+    width: 80px;
+    /* Adjust the width as needed */
+    height: 80px;
+    /* Adjust the height as needed */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.camera-icon-container{
+    position: absolute;
+    top: -25px;
+    left: 60px;
+    z-index: 1000;
+    color: #650585;
+}
+
+.account__settings-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.account__settings-right p {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.account__settings-right p img {
+    margin-right: 10px;
+    /* Adjust the margin as needed */
+}
+
+
 
 .upload__file-container{
     display: flex;
@@ -1755,7 +1813,7 @@
 
 .subscription__value-img-sub {
     margin-bottom: 10px;
-    height: 254px;
+    height: 200px;
     border-radius: 8px;
     object-fit: cover;
 }
@@ -2250,10 +2308,29 @@
 }
 
 .ftrending__events__wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.4rem 3rem;
-    font-family: "avenir-lt-45-book";
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    gap: 0.4rem;
+}
+
+.ftrending__events__wrapper::-webkit-scrollbar {
+
+    background-color: transparent;
+}
+
+.ftrending__events__wrapper::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.ftrending__events__wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: transparent;
+}
+
+.ftrending__events__wrapper::-webkit-scrollbar-thumb:active {
+    background-color: transparent;
 }
 
 .fexplore__wrapper {
@@ -2694,6 +2771,19 @@
     margin-top: -48px;
     padding-left: 24px;
     padding: 24px;
+}
+
+.ftrending__events__wrapper-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 24px;
+    font-family: "avenir-lt-45-book";
+}
+
+.adshistory__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px 20px;
 }
 
 }

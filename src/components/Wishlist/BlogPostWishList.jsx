@@ -75,9 +75,12 @@ const BlogPostWishList = () => {
           return (
             <>
               <div className="blogpostswishlist__value" key={id}>
+                
                 <img className="blogpostswishlist__value-img" src={`https://api2.greeninkltd.com/${image}`} alt="icon" />
                 <div className='blog-productwishlist__right'>
+                  <Link to={`/appblog/${id}`}>
                   <h4 className='blogpost-title'>{title}</h4>
+                  </Link>
                   <p>{truncateText(detail)}</p>
                   <div className='blogpost__bottom'>
                     <img className='blogpost__bottom-img' src={`https://api2.greeninkltd.com/${business_logo}`} alt="autor" />

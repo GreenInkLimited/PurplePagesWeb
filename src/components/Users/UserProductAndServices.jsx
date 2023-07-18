@@ -10,6 +10,7 @@ const UserProductAndService = () => {
   const { id } = useParams();
   const [showAddProductModal, setShowAddProductModal] = useState(false);
   const [showWishlistButton, setShowWishlistButton] = useState(true);
+  const [isScrollingUp, setIsScrollingUp] = useState(false);
 
   const { data: business, isLoading } = useQuery('business', () => getMyBusinessById({ id }));
 
@@ -22,6 +23,18 @@ const UserProductAndService = () => {
     setShowAddProductModal(false);
     setShowWishlistButton(true);
   };
+
+  const handleScroll = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    setIsScrollingUp(scrollTop < 500); // Adjust the scroll threshold as needed
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   if (isLoading) {
     return (
@@ -63,7 +76,7 @@ const UserProductAndService = () => {
           <AddProduct onCancel={closeAddProductModal} businessId={id} setProducts={handleAddProduct} />
         </div>
       )}
-      {showWishlistButton && business?.products.length > 0 && (
+      {!isScrollingUp && showWishlistButton && business?.products.length > 0 && (
         <button className='not-empty__wishlist' onClick={openAddProductModal}>
           <AiOutlinePlus className='add__product-icon' />
         </button>
