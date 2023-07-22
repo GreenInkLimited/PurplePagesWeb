@@ -20,9 +20,25 @@ const AccountSetting = () => {
   const [openModal, setOpenModal] = useState(false);
   const [previewURL, setPreviewURL] = useState(null);
 
+  const [subscriptionsEnabled, setSubscriptionsEnabled] = useState(true);
+  const [businessSettingsEnabled, setBusinessSettingsEnabled] = useState(false);
+  const [repliesToCommentsEnabled, setRepliesToCommentsEnabled] = useState(true);
+  const [repliesToCommentsEnabledPush, setRepliesToCommentsEnabledPush] = useState(false);
+
+  const [pushNotificationEnabled, setPushNotificationEnabled] = useState(true);
+  const [emailNotificationEnabled, setEmailNotificationEnabled] = useState(false);
+
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
+
+  const handlePushNotificationChange = () => {
+  setPushNotificationEnabled(!pushNotificationEnabled);
+};
+
+const handleEmailNotificationChange = () => {
+  setEmailNotificationEnabled(!emailNotificationEnabled);
+};
 
   const handleLogoUpload = (event) => {
   const file = event.target.files[0];
@@ -88,16 +104,16 @@ const AccountSetting = () => {
         <h4>Profile</h4>
 
         {isEditing ? (
-          <div className='account__settings-save'>
-            <>
-              <button className='cancel' onClick={handleCancelClick}>Cancel</button>
-            </>
+          <div>
+            
+              <button className='account__settings-save cancel' onClick={handleCancelClick}>Cancel</button>
+            
           </div>
         ) : (
-          <div className='account__settings-edit'>
-            <>
-              <button onClick={handleEditClick}> Edit  <AiOutlineEdit /></button>
-            </>
+          <div >
+            
+              <button className='account__settings-edit' onClick={handleEditClick}> Edit  <AiOutlineEdit /></button>
+            
           </div>
         )}
 
@@ -287,43 +303,102 @@ const AccountSetting = () => {
       </div>
 
       <div className="notifications">
+        <div className="notification__mobile">
+          <h4>Notification Preferences</h4>
+        </div>
         <div className="notification__preferences">
           <h4>Notification Preferences</h4>
           <div className='pust__email-notification'>
             <p>Push</p>
-            <p>Email</p>
+            <p>Emails</p>
           </div>
         </div>
         <div className="notification__preferences-body">
-          <div>
-            <p>Subscriptions</p>
-            <small>Notify me about activity from the businesses I’m subscribed to</small>
-          </div>
-          <div className="subscriptions-detail">
-            <BsCircle />
-            <BsCheckCircleFill className='check' />
-          </div>
-        </div>
-        <div className="notification__preferences-body">
-          <div>
-            <p>Business settings</p>
-            <small>To change notification preferences for each subscribed business.</small>
-          </div>
-          <div className="subscriptions-detail">
-            <BsCheckCircleFill className='check' />
-            <BsCircle />
-          </div>
-        </div>
-        <div className="notification__preferences-body">
-          <div>
-            <p>Replies to my comments</p>
-            <small>Notify me about replies to my comments</small>
-          </div>
-          <div className="subscriptions-detail">
-            <BsCheckCircleFill className='check' />
-            <BsCircle />
-          </div>
-        </div>
+  <div>
+    <p>Subscriptions</p>
+    <small>Notify me about activity from the businesses I’m subscribed to</small>
+  </div>
+  <div className="subscriptions-detail">
+    {pushNotificationEnabled ? 
+    <BsCheckCircleFill
+      className="check"
+      onClick={handlePushNotificationChange}
+    />
+    : 
+    <BsCircle
+      onClick={handlePushNotificationChange}
+    />
+    }
+    {emailNotificationEnabled ?
+    <BsCheckCircleFill
+      className='check'
+      onClick={handleEmailNotificationChange}
+    />
+    :
+    <BsCircle
+      onClick={handleEmailNotificationChange}
+    />
+  }
+  </div>
+</div>
+
+<div className="notification__preferences-body">
+  <div>
+    <p>Business settings</p>
+    <small>To change notification preferences for each subscribed business.</small>
+  </div>
+  <div className="subscriptions-detail">
+  {businessSettingsEnabled ?
+    <BsCheckCircleFill
+      className='check'
+      onClick={() => setBusinessSettingsEnabled(!businessSettingsEnabled)}
+    />
+    :
+    <BsCircle
+      onClick={() => setBusinessSettingsEnabled(!businessSettingsEnabled)}
+    />
+  }
+  {subscriptionsEnabled ?
+    <BsCheckCircleFill
+      className= 'check'
+      onClick={() => setSubscriptionsEnabled(!subscriptionsEnabled)}
+    />
+  :
+  <BsCircle
+      onClick={() => setSubscriptionsEnabled(!subscriptionsEnabled)}
+    />
+  } 
+  </div>
+</div>
+
+<div className="notification__preferences-body">
+  <div>
+    <p>Replies to my comments</p>
+    <small>Notify me about replies to my comments</small>
+  </div>
+  <div className="subscriptions-detail">
+    {repliesToCommentsEnabled ?
+    <BsCheckCircleFill
+      className='check'
+      onClick={() => setRepliesToCommentsEnabled(!repliesToCommentsEnabled)}
+    />
+    :
+    <BsCircle
+      onClick={() => setRepliesToCommentsEnabled(!repliesToCommentsEnabled)}
+    />
+}
+{repliesToCommentsEnabledPush ?
+    <BsCheckCircleFill
+      className= 'check'
+      onClick={() => setRepliesToCommentsEnabledPush(!repliesToCommentsEnabledPush)}
+    />
+  :
+  <BsCircle
+      onClick={() => setRepliesToCommentsEnabledPush(!repliesToCommentsEnabledPush)}
+    />
+}
+  </div>
+</div>
       </div>
     </>
   );

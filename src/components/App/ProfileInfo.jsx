@@ -4,13 +4,16 @@ import { ImStarEmpty, ImStarFull, ImStarHalf } from 'react-icons/im';
 import Header from '../../components/Header';
 import { getBusinessById, SubscribeToBusiness } from '../../apis/BusinessApi';
 import Logo from '../../assets/pplogo.png';
-import {RxDotFilled} from 'react-icons/rx'
+import {RxDotFilled} from 'react-icons/rx';
+import ImageModal from './ImageModal';
+
 
 const ProfileInfo = () => {
   const { id } = useParams();
   const [business, setBusiness] = useState(null);
   const [loading, setLoading] = useState(true);
   const [subscribed, setSubscribed] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
   const fetchBusiness = async () => {
@@ -29,6 +32,14 @@ const ProfileInfo = () => {
 
   fetchBusiness();
 }, [id]);
+
+const handleImageClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
  
   const handleSubscribe = async () => {
@@ -91,6 +102,7 @@ const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
               className='profile__info-img'
               src={`https://api2.greeninkltd.com/${business.image}`}
               alt={business.name}
+              onClick={handleImageClick}
             />
             <div className='profile__info_body'>
               <h3>{business.name}</h3>
@@ -115,6 +127,13 @@ const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
   </button>
         </div>
       </div>
+      {showModal && (
+        <ImageModal
+          imageUrl={`https://api2.greeninkltd.com/${business.image}`}
+          alt={business.name}
+          onClose={handleCloseModal} // Add onClose handler to close the modal
+        />
+      )}
     </div>
   );
 };

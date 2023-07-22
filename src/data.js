@@ -115,20 +115,7 @@ export const interest = [
 ]
 
 export const notifications = [
-    {
-        id: 1,
-        name: "Charlies Bagel Garden ",
-        message: 'just replied your review',
-        time: '1:20pm',
-        icon: require("./assets/comment.png"),
-    },
-    {
-        id: 2,
-        name: "Charlies Bagel Garden ",
-        message: 'just replied your review',
-        time: '1:20pm',
-        icon: require("./assets/comment.png"),
-    },
+   
 ]
 
 export const adshistory = [

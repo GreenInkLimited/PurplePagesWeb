@@ -3,13 +3,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { MdClear } from 'react-icons/md';
 import { RiImageAddLine } from 'react-icons/ri';
 import { WriteBlog } from '../../apis/BusinessApi';
-import { useNavigate } from 'react-router-dom';
 import { useMutation, useQueryClient } from 'react-query';
 
 const AddBlog = ({ onCancel, businessId }) => {
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState('No File Selected');
-  const [verificationError, setVerificationError] = useState('');
+  //const [verificationError, setVerificationError] = useState('');
   const [previewURL, setPreviewURL] = useState(null);
   const queryClient = useQueryClient();
 
@@ -50,6 +49,7 @@ const AddBlog = ({ onCancel, businessId }) => {
       ...values,
       business_id: businessId,
       image: image,
+      detail: values.detail.replace(/\n/g, '<br>'), // Replace newlines with <br> tags
     };
     mutateAsync(updatedValues);
   };
@@ -66,7 +66,7 @@ const AddBlog = ({ onCancel, businessId }) => {
         <div className="create__business-body">
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form>
-                <Field name="title" type="text" className='write-blog__title__label' placeholder='Title...'/>
+              <Field name="title" type="text" className="write-blog__title__label" placeholder="Title..." />
               <label>Upload your photo(s)/video</label>
               <div className="upload__file-container" onClick={() => document.querySelector('.logo-input').click()}>
                 <Field
@@ -80,23 +80,20 @@ const AddBlog = ({ onCancel, businessId }) => {
                 {previewURL ? (
                   <img src={previewURL} alt={fileName} className="uploaded-image" />
                 ) : (
-                <RiImageAddLine color="#EBB8FC" />
-                  )}
+                  <RiImageAddLine color="#EBB8FC" />
+                )}
               </div>
               <small>Your image should be in JPEG or PNG format and video in mp4</small>
-              
-
-             
 
               <label>Content</label>
-              <Field as="textarea" className="textarea" name="detail" placeholder="Enter caption" />
+              <Field as="textarea" rows={4} className="textarea" name="detail" placeholder="Enter caption" />
 
               <label>Tags</label>
               <Field className="input" type="text" name="tags" placeholder="Enter product title" />
-              
-               <button className="user_user__button" type="submit">
-                  {isLoading ? 'Submitting...' : 'Submit'}
-                </button>
+
+              <button className="user_user__button" type="submit">
+                {isLoading ? 'Submitting...' : 'Submit'}
+              </button>
             </Form>
           </Formik>
         </div>

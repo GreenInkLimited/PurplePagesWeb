@@ -34,8 +34,30 @@ hr{
     padding-right: 20px;
 }
 
+.notification__body-paragraph-button{
+    width: 100%;
+    margin-bottom: 50px;
+    background-color: transparent;
+    border: solid 1px #650585;
+    height: 50px;
+    color: #650585;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 .notification__body li{
     padding-bottom: 10px;
+}
+
+.notification__body-paragraph{
+    margin-top: 56px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.notification__body-paragraph-sub {
+    text-align: center;
+    margin-bottom: 100px;
 }
 
 .sender{

@@ -707,10 +707,46 @@ button {
     width: 100%;
 }
 
+.modal__overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(200, 200, 200, 0.9);
+}
+
+.modal__content {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Center the content horizontally and vertically */
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal__content img {
+    width: 500px;
+    height: 500px;
+    object-fit: contain;
+    /* Adjust the image's size while maintaining the aspect ratio */
+}
+
+.modal__content .close-icon {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    
+    cursor: pointer;
+    color: #650585;
+    font-size: 30px;
+}
+
 
 .singleproduct__right-header img{
     display: flex;
-    
+    cursor: pointer;
     align-self: flex-end;
     justify-content: flex-end;
     align-items: flex-end;
@@ -843,7 +879,7 @@ button {
 }
 
 .dropdown__filterxx {
-    width: 100%;
+    width: 140px;
     user-select: none;
     font-family: 'avenir-lt-45-book';
     position: relative;
@@ -1146,6 +1182,7 @@ button {
     flex-direction: row;
     gap: 10px;
     align-items: center;
+    width: 100%;
 }
 
 .dropdown__filter-content{

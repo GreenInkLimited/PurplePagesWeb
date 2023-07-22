@@ -8,12 +8,15 @@ import { getMyBusinessById } from '../../apis/BusinessApi'
 import { Bar } from 'react-chartjs-2'
 import { Chart, LinearScale, CategoryScale, BarElement} from 'chart.js';
 import { useQuery } from 'react-query'
+import html2pdf from 'html2pdf.js';
 import { useParams } from 'react-router-dom'
 Chart.register(
     LinearScale,
     CategoryScale, 
     BarElement
 )
+
+
 
 const labels = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
 const data = {
@@ -40,6 +43,34 @@ const data = {
         
     ]
 }
+
+const handleExport = () => {
+  const insightsContainer = document.querySelector('.insights__container');
+
+  const pdfConfig = {
+    margin: 10,
+    filename: 'insights.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+  };
+
+  html2pdf()
+    .from(insightsContainer)
+    .set(pdfConfig)
+    .toPdf() // Change 'outputPdf()' to 'toPdf()'
+    .output('datauristring') // Add this line to generate the PDF as a data URI
+    .then(pdfDataUri => {
+      // Create an anchor element to trigger the download
+      const link = document.createElement('a');
+      link.href = pdfDataUri;
+      link.download = 'insights.pdf';
+      link.click();
+    })
+    .catch(error => {
+      console.error('Error exporting insights as PDF:', error);
+    });
+};
 
 
 
@@ -94,7 +125,7 @@ const Insights = () => {
             <h2>Account Activity</h2>
             <div className='insights__wrapper__bottom-buttons'>
                 <button className='last__week'><img src={Calendar} alt="sub" /> Last week</button>
-                <button className='export'><img src={Export} alt="sub" /> Export</button>
+                <button className='export'><img src={Export} alt="sub" onClick={handleExport}/> Export</button>
             </div>
         </div>
         <div className="insights__wrapper__bottom-content">

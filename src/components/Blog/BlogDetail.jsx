@@ -24,6 +24,10 @@ const truncateTexter = (text) => {
   return text.slice(0, DETAIL_LENGTH) + '...';
 };
 
+const convertLineBreaks = (text) => {
+  return text.replace(/<br\s*\/?>/gm, '\n');
+};
+
 const BlogDetail = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
@@ -205,7 +209,9 @@ const BlogDetail = () => {
         <div className='blog__bottom'>
           <img src={`https://api2.greeninkltd.com/${blog.owner.image}`} alt="autor" />
           <div className="blog__bottom-detail">
+            <Link to={`/business/${blog.owner.id}`}>
             <p>{blog.owner.name}</p>
+            </Link>
             <small>{formattedDate}</small>
           </div>
         </div>
@@ -215,7 +221,12 @@ const BlogDetail = () => {
       </div>
       <div className='blog__body'>
         <div className="blog__body_left">
-          <p>{blog.detail}</p>
+          <pre className="preformatted"
+          style={{
+            width: '100%',
+            whiteSpace: 'pre-wrap',
+          }}
+           dangerouslySetInnerHTML={{ __html: convertLineBreaks(blog.detail) }} />
           <div className='blog__tags'>
             {blog.tags.split(',').map((tag, index) => (
               <p key={index}>{tag.trim()}</p>

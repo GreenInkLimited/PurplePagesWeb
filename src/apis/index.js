@@ -15,6 +15,24 @@ export const submitSignUp = async ({email, password, username, phone}) => {
   return response.data;
 };
 
+export const SignUpWithGoogle = async ({ email, first_name, last_name, username, phone }) => {
+  try {
+    console.log('called signup api');
+    const response = await axios.post(`${API.host}/app/google-auth/sign-in/`, {
+      username,
+      first_name,
+      email,
+      last_name,
+      phone,
+    });
+    console.log(response.data); // Log the response to see if it contains the expected data
+    return response.data;
+  } catch (error) {
+    console.error('Error signing up with Google:', error);
+    throw error; // Rethrow the error to be handled by the calling function
+  }
+};
+
 export const loginUser = async ({username, password}) => {
   console.log('called login api');
 

@@ -38,6 +38,10 @@ const SingleProduct = () => {
     }
   }, []);
 
+  const convertLineBreaks = (text) => {
+  return text.replace(/<br\s*\/?>/gm, '\n');
+};
+
   useEffect(() => {
     localStorage.setItem('isBookmarked', JSON.stringify(isBookmarked));
   }, [isBookmarked]);
@@ -92,13 +96,18 @@ const SingleProduct = () => {
         <div className='singleproduct-right'>
           <div className='singleproduct__right-header'>
             <h3>{product.caption}</h3>
-            <img src={ExternalLinkLine} alt="ExternalLinkLine" />
+            <img src={ExternalLinkLine} alt="ExternalLinkLine" onClick={handleShare} />
           </div>
           <h4 className='singleproduct'><span className='naira_font'>₦</span>{product.price}.00</h4>
           <img className='frame' src={Frame} alt="frame" />
           <div className="product__desc">
             <h5 className='product__desc__header'>Product Details</h5>
-            <p dangerouslySetInnerHTML={{ __html: product.detail }} />
+             <pre className="preformatted"
+          style={{
+            width: '100%',
+            whiteSpace: 'pre-wrap',
+          }}
+           dangerouslySetInnerHTML={{ __html: convertLineBreaks(product.detail) }} />
           </div>
 
           <div className="singlepotter__bottom">

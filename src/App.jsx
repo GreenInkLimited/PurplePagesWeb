@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import React from 'react'
+import React, {useEffect} from 'react'
 import About from './pages/about/About'
 import Home from './pages/home/Home'
 import Notfound from './pages/notfound/Notfound'
@@ -35,11 +35,22 @@ import HomeBlog from './pages/home/HomeBlog'
 import PrivacyPolicy from './pages/terns/PrivacyPolicy'
 import RequestReset from './pages/auth/RequestReset'
 import ForgotPassword from './pages/auth/ForgotPassword'
+import { gapi } from 'gapi-script'
 
-
+const clientId = "901500469662-1c1vhjf4sqtentao8up1joi4bj4sn6qk.apps.googleusercontent.com"
 const queryClient = new QueryClient();
 
 const App = () => {
+
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+        scope: ""
+      })
+    };
+    gapi.load('client:auth2', start)
+  })
   return (
     <QueryClientProvider client={queryClient}>
     <BrowserRouter>

@@ -10,12 +10,6 @@
     <title>Purple Pages - Your One-Stop Digital Classified Business Directory</title>
 
     <link rel="alternate icon" href="https://github.com/GreenInkLimited/PurplePagesWeb/blob/main/src/assets/fav2.png?raw=true">
-    <style>
-        #navbar {
-            background-color: #000;
-            color: #fff;
-        }
-    </style>
     <link rel="icon" type="image/svg+xml" href="https://github.com/GreenInkLimited/PurplePagesWeb/blob/main/src/assets/fav2.png?raw=true">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keywords"
@@ -54,31 +48,6 @@
 
 <body>
     <div id="root"></div>
-    <div id="navbar">Navigation Bar</div>
-    
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            var navbar = document.getElementById('navbar');
-            var favicon = document.getElementById('favicon');
-
-            var observer = new MutationObserver(function (mutations) {
-                mutations.forEach(function (mutation) {
-                    if (mutation.attributeName === 'style') {
-                        var backgroundColor = getComputedStyle(navbar).backgroundColor;
-                        if (backgroundColor === 'rgb(0, 0, 0)') {
-                            favicon.href = "https://github.com/GreenInkLimited/PurplePagesWeb/blob/main/src/assets/fav-black.png?raw=true";
-                        } else if (backgroundColor === 'rgb(255, 255, 255)') {
-                            favicon.href = "https://github.com/GreenInkLimited/PurplePagesWeb/blob/main/src/assets/fav-white.png?raw=true";
-                        } else {
-                            favicon.href = "https://github.com/GreenInkLimited/PurplePagesWeb/blob/main/src/assets/fav-default.png?raw=true";
-                        }
-                    }
-                });
-            });
-
-            observer.observe(navbar, { attributes: true });
-        });
-    </script>
 </body>
 
 </html>

@@ -6,7 +6,6 @@ import { getUser } from '../apis';
 import { getMyBusiness } from '../apis/BusinessApi';
 import CreateBusiness from './Users/CreateBusiness';
 import { BiLogOut } from "react-icons/bi"
-import { logoutUser } from '../apis';
 import { useNavigate } from 'react-router-dom';
 import SignOut from './Users/SignOut';
 

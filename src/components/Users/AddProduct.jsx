@@ -48,6 +48,7 @@ const AddProduct = ({ onCancel, businessId }) => {
       ...values,
       business_id: businessId,
       image: image,
+      detail: values.detail.replace(/\n/g, '<br>'), // Replace newlines with <br> tags
     };
     await mutateAsync(updatedValues);
   };

@@ -10,6 +10,22 @@ export const getAllAds = async ({pageParam = 0}) => {
   return response.data;
 };
 
+export const addCommentReply = async ({ comment_id, reply }) => {
+  console.log('called add comment reply API');
+  const auth_code = localStorage.getItem('auth_code');
+  console.log('auth_code', auth_code);
+  const response = await axios.post(
+    `${API.host}/reply-comment/ads/${comment_id}/`,
+    {
+      reply,
+      auth_code, // Include the auth_code in the request payload
+    }
+  );
+  console.log(response.data);
+  const commentId = response.data.id; // Assuming the comment ID is returned as "id" in the response
+  return commentId;
+};
+
 export const getAdsById = async (id) => {
   const response = await axios.get(`${API.host}/get/ads-detail/${id}/`);
   return response.data;

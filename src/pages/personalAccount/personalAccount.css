@@ -182,16 +182,19 @@ button {
     flex-direction: row;
     align-items: center;
     background-color: #E0E0E0;
-    gap: 15px;
+    gap: 10px;
     padding: 8px 12px 8px 12px;
     border-radius: 5px;
     margin-bottom: 30px;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .account__settings-edit button{
     background: transparent;
+    cursor: pointer;
+    width: 100%;
 }
 
 .account__settings-edit .edit_icon {

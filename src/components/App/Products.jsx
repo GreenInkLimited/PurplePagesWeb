@@ -97,7 +97,7 @@ const productsToDisplay = searchQuery ? searchResults : filteredResults.filter((
                       <img className='product__value-img' src={`https://api2.greeninkltd.com/${image}`} alt='icon' />
                       <h4>{name}</h4>
                       <p>{category}</p>
-                      <small>{location}, {lga}</small>
+                      <small>{lga}, {location} </small>
                       <div className='rating'>
                         {[...Array(fullStars)].map((_, index) => (
                           <ImStarFull key={index} />
