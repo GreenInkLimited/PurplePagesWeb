@@ -16,9 +16,12 @@ import * as Yup from 'yup';
 
 const CreateBusiness = ({ closeModal }) => {
   const [image, setImage] = useState(null);
+  const [banner, setBanner] = useState(null);
   const [fileName, setFileName] = useState('No File Selected');
+  const [bannerName, setBannerName] = useState('No File Selected');
   const [verificationError, setVerificationError] = useState('');
   const [previewURL, setPreviewURL] = useState(null);
+  const [previewBannerURL, setPreviewBannerURL] = useState(null);
 
   const [isActive, setIsActive] = useState(false)
   const [isActiveLocation, setIsActiveLocation] = useState(false)
@@ -925,6 +928,16 @@ const stateLgasMap = {
   }
 };
 
+const handleBannerUpload = (event) => {
+  const fileBanner = event.target.files[0];
+  if (fileBanner) {
+    setBannerName(fileBanner.name);
+    setBanner(fileBanner);
+    const previewBannerURL = URL.createObjectURL(fileBanner);
+    setPreviewBannerURL(previewBannerURL);
+  }
+};
+
   const handleCACUpload = (event) => {
     const file = event.target.files[0];
     // Handle CAC certificate upload logic
@@ -932,6 +945,7 @@ const stateLgasMap = {
 
   const initialValues = {
   image: null,
+  banner: null,
   name: '',
   business_type: '',
   rc_number: '',
@@ -965,9 +979,11 @@ const validationSchema = Yup.object({
 
 
   const handleSubmit = async (values) => {
+    console.log('handleSubmit called with values:', values);
     const updatedValues = {
     ...values,
     image: image,
+    banner: banner,
     business_type : selected,
     location: selectedLocation,
     lga: selectedLga,
@@ -1006,7 +1022,7 @@ const validationSchema = Yup.object({
           </div>
         </div>
         <div className="create__business-body">
-          <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
+          <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form>
               <label>Upload your logo (optional)</label>
               <div className="upload__file-container" onClick={() => document.querySelector('.logo-input').click()}>
@@ -1025,6 +1041,25 @@ const validationSchema = Yup.object({
                   )}
               </div>
               <small>Your image should be in JPEG or PNG format</small>
+
+              <label>Upload your Banner (optional)</label>
+<div className="upload__file-container" onClick={() => document.querySelector('.banner-input').click()}>
+  <Field
+    className="input-field banner-input" // Change the class name to 'banner-input'
+    type="file"
+    accept="image/jpeg, image/png"
+    name="banner"
+    hidden
+    onChange={handleBannerUpload}
+  />
+  {previewBannerURL ? ( // Use 'previewBannerURL' for displaying the banner preview
+    <img src={previewBannerURL} alt={bannerName} className="uploaded-image" />
+  ) : (
+    <RiImageAddLine color="#EBB8FC" />
+  )}
+</div>
+<small>Your image should be in JPEG or PNG format</small>
+
               <label>Business Name</label>
               <Field className="input" type="text" name="name" placeholder="e.g Purplepages" />
               <ErrorMessage name="name" component="small" className="error-message" />
@@ -1258,9 +1293,9 @@ const validationSchema = Yup.object({
               <ErrorMessage name="description" component="small" className="error-message" />
               <div className='create__binex-button'>
                 
-              <button className='subscribe' type="submit">
-                {isLoading ? 'Submitting...' : 'Submit'}
-              </button>
+              <button className="user_user__button" type="submit">
+                  {isLoading ? 'Submitting...' : 'Submit'}
+                </button>
               </div>
             </Form>
           </Formik>

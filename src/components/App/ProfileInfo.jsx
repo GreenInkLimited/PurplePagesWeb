@@ -92,7 +92,7 @@ const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
     <div>
       <Header
         title=''
-        image={`https://api2.greeninkltd.com/${business.image}`}
+        image={`https://api2.greeninkltd.com/${business.banner}`}
         style={{ width: '292px', height: '402px', objectFit: 'cover' }}
       />
       <div className='container profile__container'>

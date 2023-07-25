@@ -19,13 +19,14 @@ export const getMyBusiness = async ({pageParam = 0}) => {
   return response.data;
 };
 
-export const AddBusiness = async ({ name, business_type, rc_number, category, location, lga, description, phone, email, website, address, marketplace, marketplace_link, image }) => {
+export const AddBusiness = async ({ name, business_type, rc_number, category, location, lga, description, phone, email, website, address, marketplace, marketplace_link, image, banner }) => {
   console.log('called business api');
   const auth_code = localStorage.getItem('auth_code');
   console.log('auth_code', auth_code);
 
   const formData = new FormData();
   formData.append('image', image);
+  formData.append('banner', banner);
   formData.append('name', name);
   formData.append('business_type', business_type);
   formData.append('rc_number', rc_number);
