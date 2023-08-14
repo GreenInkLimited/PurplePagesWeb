@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getAllAds } from '../../apis/AdsApis';
-import Logo from '../../assets/pplogo.png';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { getAllAds } from "../../apis/AdsApis";
+import Logo from "../../assets/pplogo.png";
 
 const AdsContent = ({ searchQuery, searchResults, filteredResults }) => {
   const [adverts, setAdverts] = useState([]);
@@ -15,7 +15,7 @@ const AdsContent = ({ searchQuery, searchResults, filteredResults }) => {
         setAdverts(response);
         setLoading(false);
       } catch (error) {
-        console.log('Error fetching adverts:', error);
+        console.log("Error fetching adverts:", error);
       }
     };
     fetchAdverts();
@@ -43,42 +43,67 @@ const AdsContent = ({ searchQuery, searchResults, filteredResults }) => {
     <div className="ads container">
       <div className="ads__container">
         <div className="ads__wrapper">
-          {adsToDisplay.slice(0, showCount).map(({ id, title, image, owner, ads_type }) => {
-            const adType = ads_type;
+          {adsToDisplay
+            .slice(0, showCount)
+            .map(({ id, title, image, owner, ads_type }) => {
+              const adType = ads_type;
 
-            let adLink = '';
-            if (adType === 'blog') {
-              adLink = `/appblog/${id}`;
-            } else if (adType === 'business') {
-              adLink = `/business/${id}`;
-            } else if (adType === 'brand') {
-              adLink = `/ads/${id}`;
-            } else if (adType === 'product') {
-              adLink = `/singleproduct/${id}`;
-            }
+              let adLink = "";
+              if (adType === "blog") {
+                adLink = `/appblog/${id}`;
+              } else if (adType === "business") {
+                adLink = `/business/${id}`;
+              } else if (adType === "brand") {
+                adLink = `/ads/${id}`;
+              } else if (adType === "product") {
+                adLink = `/singleproduct/${id}`;
+              }
 
-            
-
-            return (
-              <div key={id}>
-                <div className="ads__value">
-                  <img className="ads__value-img" src={`https://api2.greeninkltd.com/${image}`} alt="icon" />
-                  <div className="ads__bottom">
-                    {owner && owner.image && <img src={`https://api2.greeninkltd.com/${owner.image}`} alt="autor" />}
-                    <div className="ads__bottom-detail-flex">
-                      <div className="ads__bottom-detail">
+              return (
+                <div key={id}>
+                  <div className="ads__value">
+                    <Link to={adLink}>
+                      {ads_type === "brand" ? (
+                        <img
+                          className="ads__value-img"
+                          src={`https://api2.greeninkltd.com/media/account_files/images/${image}`}
+                          alt="icon"
+                        />
+                      ) : (
+                        <img
+                          className="ads__value-img"
+                          src={`https://api2.greeninkltd.com/${owner.image}`}
+                          alt="icon"
+                        />
+                      )}
+                    </Link>
+                    <div className="ads__bottom">
+                      <Link to={`business/${owner.id}`}>
+                        {owner && owner.image && (
+                          <img
+                            src={`https://api2.greeninkltd.com/${owner.image}`}
+                            alt="autor"
+                          />
+                        )}
+                      </Link>
+                      <div className="ads__bottom-detail-flex">
+                        <div className="ads__bottom-detail">
+                          <Link to={adLink}>
+                            <h3>{title}</h3>
+                          </Link>
+                          <Link to={`business/${owner.id}`}>
+                            {owner && owner.name && <p>{owner.name}</p>}
+                          </Link>
+                        </div>
                         <Link to={adLink}>
-                          <h4>{title}</h4>
+                          <p className="ads_category">{ads_type}</p>
                         </Link>
-                        {owner && owner.name && <p>{owner.name}</p>}
                       </div>
-                      <p className="ads_category">{ads_type}</p>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
       {showCount < adverts.length && (

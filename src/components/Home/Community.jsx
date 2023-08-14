@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { getBusinessCount, getUserCount } from '../../apis/BusinessApi';
+import React, { useEffect, useState } from "react";
+import { getBusinessCount, getUserCount } from "../../apis/BusinessApi";
 
 const Community = () => {
-  const [count, setCount] = useState('');
-  const [userCount, setUserCount] = useState('');
+  const [count, setCount] = useState("");
+  const [userCount, setUserCount] = useState("");
 
   useEffect(() => {
     const fetchCount = async () => {
@@ -14,14 +14,14 @@ const Community = () => {
 
         let formattedCount;
         if (countValue < 999) {
-          formattedCount = countValue.toString().padStart(4, '0');
+          formattedCount = countValue.toString().padStart(4, "0");
         } else {
           formattedCount = countValue.toString();
         }
 
         setCount(formattedCount);
       } catch (error) {
-        console.log('Error fetching business count:', error);
+        console.log("Error fetching business count:", error);
       }
     };
 
@@ -37,14 +37,14 @@ const Community = () => {
 
         let formattedCount;
         if (countValue < 999) {
-          formattedCount = countValue.toString().padStart(4, '0');
+          formattedCount = countValue.toString().padStart(4, "0");
         } else {
           formattedCount = countValue.toString();
         }
 
         setUserCount(formattedCount);
       } catch (error) {
-        console.log('Error fetching user count:', error);
+        console.log("Error fetching user count:", error);
       }
     };
 

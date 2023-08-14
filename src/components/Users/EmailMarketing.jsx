@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getMyBusinessById, getMails } from '../../apis/BusinessApi';
-import Sender from '../../assets/comment.png';
-import Clip from '../../assets/emailclip.png';
-import SendMailModal from './SendMailModal';
-import Logo from '../../assets/pplogo.png';
-import UpdateMailModal from './UpdateMailModal';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getMyBusinessById, getMails } from "../../apis/BusinessApi";
+import Sender from "../../assets/comment.png";
+import Clip from "../../assets/emailclip.png";
+import SendMailModal from "./SendMailModal";
+import Logo from "../../assets/pplogo.png";
+import UpdateMailModal from "./UpdateMailModal";
 
 const EmailMarketing = () => {
   const { id } = useParams(); // Make sure to include curly braces around `useParams`
@@ -18,7 +18,6 @@ const EmailMarketing = () => {
   const [showModal, setShowModal] = useState(false);
   const [expandedEmailIds, setExpandedEmailIds] = useState([]);
 
-  
   useEffect(() => {
     const fetchBusiness = async () => {
       try {
@@ -26,7 +25,7 @@ const EmailMarketing = () => {
         setBusiness(businessData);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching bio:', error);
+        console.error("Error fetching bio:", error);
       }
     };
 
@@ -41,7 +40,7 @@ const EmailMarketing = () => {
         setMails(mailData);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching mails:', error);
+        console.error("Error fetching mails:", error);
       }
     };
 
@@ -100,7 +99,10 @@ const EmailMarketing = () => {
 
           {updateEmailModal && (
             <div className="add-product-modal">
-              <UpdateMailModal onCancel={closeUpdateEmailModal} businessId={id} />
+              <UpdateMailModal
+                onCancel={closeUpdateEmailModal}
+                businessId={id}
+              />
             </div>
           )}
 
@@ -115,31 +117,44 @@ const EmailMarketing = () => {
 
         {mails?.map(({ id, mail, file, subject, bundle, pub_date }) => (
           <div className="email__marketing-wrapper" key={id}>
-            
-            
             <div className="email__marketting-sender">
               <div className="email__marketing-senderleft">
-                <img src={`https://api2.greeninkltd.com/${business?.image}`} alt="Sender" />
+                <img
+                  src={`https://api2.greeninkltd.com/${business?.image}`}
+                  alt="Sender"
+                />
                 <div className="email__marketing-senderdetails">
-                  <p><b>{subject}</b></p>
+                  <p>
+                    <b>{subject}</b>
+                  </p>
                   <small>To {bundle}</small>
                 </div>
               </div>
               <div className="email__marketing-senderright">
-                <p>{new Date(pub_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</p>
+                <p>
+                  {new Date(pub_date).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </p>
               </div>
             </div>
             {expandedEmailIds.includes(id) ? (
               <>
-
                 <div className="email__marketing-content">
                   <p>{mail}</p>
                 </div>
                 <div className="email__marketing-clip">
-                  <img src={`https://api2.greeninkltd.com/${file}`} alt="Clip" />
+                  <img
+                    src={`https://api2.greeninkltd.com/${file}`}
+                    alt="Clip"
+                  />
                 </div>
                 <div className="email__marketing-info">
-                  <img src={`https://api2.greeninkltd.com/${business?.image}`} alt="Sender" />
+                  <img
+                    src={`https://api2.greeninkltd.com/${business?.image}`}
+                    alt="Sender"
+                  />
                   <div className="email__marketing-senderdetails">
                     <p>{business?.name}</p>
                     <p>{business?.category}</p>
@@ -150,13 +165,19 @@ const EmailMarketing = () => {
                     </p>
                   </div>
                 </div>
-              
-                <div className="email__seeless" onClick={() => toggleEmailBody(id)}>
+
+                <div
+                  className="email__seeless"
+                  onClick={() => toggleEmailBody(id)}
+                >
                   <p>Show less</p>
                 </div>
               </>
             ) : (
-              <div className="email__seeless" onClick={() => toggleEmailBody(id)}>
+              <div
+                className="email__seeless"
+                onClick={() => toggleEmailBody(id)}
+              >
                 <p>Show more</p>
               </div>
             )}

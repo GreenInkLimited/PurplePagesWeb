@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { getBlogs } from '../../apis/BlogApis';
-import Logo from '../../assets/pplogo.png';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { getBlogs } from "../../apis/BlogApis";
+import Logo from "../../assets/pplogo.png";
 
 const MAX_DETAIL_LENGTH = 50;
 
@@ -9,7 +9,7 @@ const truncateText = (text) => {
   if (text.length <= MAX_DETAIL_LENGTH) {
     return text;
   }
-  return text.slice(0, MAX_DETAIL_LENGTH) + '...';
+  return text.slice(0, MAX_DETAIL_LENGTH) + "...";
 };
 
 const BlogContent = ({ searchQuery, searchResults, filteredResults }) => {
@@ -24,7 +24,7 @@ const BlogContent = ({ searchQuery, searchResults, filteredResults }) => {
         setBlogs(blogs);
         setLoading(false);
       } catch (error) {
-        console.log('Error fetching blogs:', error);
+        console.log("Error fetching blogs:", error);
       }
     };
 
@@ -33,7 +33,7 @@ const BlogContent = ({ searchQuery, searchResults, filteredResults }) => {
 
   if (loading) {
     return (
-      <div className='spinner_container'>
+      <div className="spinner_container">
         <img src={Logo} alt="logo" />
       </div>
     );
@@ -53,17 +53,24 @@ const BlogContent = ({ searchQuery, searchResults, filteredResults }) => {
         <div className="blog__wrapper">
           {blogsToDisplay.map(({ id, image, detail, title, owner, date }) => {
             const createdDate = new Date(date);
-            const options = { month: 'long', day: 'numeric', year: 'numeric' };
-            const formattedDate = createdDate.toLocaleDateString('en-US', options);
+            const options = { month: "long", day: "numeric", year: "numeric" };
+            const formattedDate = createdDate.toLocaleDateString(
+              "en-US",
+              options
+            );
             return (
               <div className="blog__value" key={id}>
                 <Link to={`/appblog/${id}`}>
                   <img className="blog__value-img" src={image} alt="icon" />
                   <div className="blog__value___bodies">
                     <h2>{title}</h2>
-                    <small className='small'>{truncateText(detail)}</small>
+                    <small className="small">{truncateText(detail)}</small>
                     <div className="blog__bottom">
-                      <img className="blog__value___bodies-img" src={owner.image} alt="author" />
+                      <img
+                        className="blog__value___bodies-img"
+                        src={owner.image}
+                        alt="author"
+                      />
                       <div className="blog__bottom-detail">
                         <p>{owner.name}</p>
                         <small>{formattedDate}</small>

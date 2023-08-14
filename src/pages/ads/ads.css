@@ -1,350 +1,374 @@
 /*==================ads======================*/
-@import url('https://fonts.cdnfonts.com/css/clash-display');
+@import url("https://fonts.cdnfonts.com/css/clash-display");
 .ads {
-    margin-top: 3rem;
+  margin-top: 3rem;
 }
 
-.recent__post-header{
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    margin-bottom: 44px;
+.recent__post-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 44px;
 }
 
-.recent__post-header h4{
-    font-family: 'Clash Display';
-    color: #14011B;
+.recent__post-header h4 {
+  font-family: "Clash Display";
+  color: #14011b;
 }
 
 .ads__container {
-    display: grid;
-    gap: 5%;
-    margin-top: 5rem;
-    margin-bottom: 233px;
+  display: grid;
+  gap: 5%;
+  margin-top: 5rem;
+  margin-bottom: 233px;
 }
 
 .recent__post-header-mobile {
-    display: none;
+  display: none;
 }
 .ads__wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 24px 24px;
-    font-family: "avenir-lt-45-book";
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 24px 24px;
+  font-family: "avenir-lt-45-book";
 }
 
 .ads__value {
-    align-items: center;
-    border-radius: 10px;
+  align-items: center;
+  border-radius: 10px;
 }
 
-.ads__value-img{
-    
-    height: 210px;
-    object-fit: cover;
-    border-radius: 15px;
+.ads__value-img {
+  height: 210px;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
-
-
-.ads__wrapper h4 {
-    
-    line-height: 1.2;
-    font-size: 20px;
-    font-weight: 600;
+.ads__wrapper h3 {
+  line-height: 1.2;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .ads__bottom-detail p {
-    color: #C7005C;
-    font-size: 16px;
-    font-weight: 350;
+  color: #c7005c;
+  font-size: 14px;
+  font-weight: 350;
 }
 
 .ads__bottom-detail-flex {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
-
-
 .ads__bottom {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .ads__bottom img {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-    display: flex;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  display: flex;
 }
 
-.ads__bottom button{
-    display: flex;
-    margin-left: 80px;
+.ads__bottom button {
+  display: flex;
+  margin-left: 80px;
 }
 
-.ads_category{
-    color: #333333;
-    text-transform: capitalize;
-    font-weight: 600;
-    background-color: #E0E0E0;
-    font-size: 12px;
-    padding: 2px 8px 2px 8px;
-    display: flex;
-    align-items: center;
-    border-radius: 4px;
-    height: 25px;
+.ads_category {
+  color: #333333;
+  text-transform: capitalize;
+  font-weight: 600;
+  background-color: #e0e0e0;
+  font-size: 12px;
+  padding: 2px 8px 2px 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  height: 25px;
 }
 
 /*=========================ads details========================*/
 .ads__title-body {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .ads__title__left {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    color: var(--color-secondary);
-    cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  color: var(--color-secondary);
+  cursor: pointer;
 }
 
-.ads__tags{
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
-    justify-content: space-between;
-    align-items: center;
+.ads__tags {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .ads__tags-left {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .ads__tags .ads__tags-right {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .ads__tags p {
-    font-size: 10px;
-    background-color: #E0E0E0;
-    padding: 4px 12px;
-    border-radius: 13px;
-    margin-right: 15px;
+  font-size: 10px;
+  background-color: #e0e0e0;
+  padding: 4px 12px;
+  border-radius: 13px;
+  margin-right: 15px;
 }
 
 .ads__bottom {
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
-    margin-bottom: 24px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 24px;
 }
 
 .ads__bottom img {
-    width: 40px;
-    margin-right: 10px;
-    display: flex;
+  width: 40px;
+  margin-right: 10px;
+  display: flex;
 }
 
-.ads__bottom h4{
-    font-family: "avenir-lt-45-book";
-    line-height: 1rem;
-    font-size: 14px;
+.ads__bottom h4 {
+  font-family: "avenir-lt-45-book";
+  line-height: 1rem;
+  font-size: 14px;
 }
 
 .ads__bottom small {
-    font-family: "avenir-lt-45-book";
-    line-height: 1rem;
-    font-size: 10px;
+  font-family: "avenir-lt-45-book";
+  line-height: 1rem;
+  font-size: 10px;
 }
 
-
 .ads__comment-body {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 30px;
-
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
 }
 
 .ads__comment-body-mobile {
-    display: none;
-    flex-direction: row;
-    margin-bottom: 30px;
-
+  display: none;
+  flex-direction: row;
+  margin-bottom: 30px;
 }
 
 .ads__comment-body img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    object-fit: cover;
-    border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
+.custom__ads-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal__ads-content {
+  background: white;
+  padding: 120px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal__ads-close {
+  position: absolute;
+  top: 40px;
+  left: 120px;
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.modal__ads-image {
+  max-width: 50vw;
+  max-height: 50vh;
+  border-radius: 10px;
+}
 
 .ads__comment {
-    display: flex;
-    flex-direction: column;
-    
+  display: flex;
+  flex-direction: column;
 }
 
-.ads__comment-body h4{
-    font-family: "avenir-lt-45-book";
+.ads__comment-body h4 {
+  font-family: "avenir-lt-45-book";
 }
 
 .ads__comment-body p {
-    font-size: 16px;
+  font-size: 16px;
 }
 
-
 .ads__body {
-    display: grid;
-    grid-template-columns: 70% 15%;
-    margin-top: 20px;
-    justify-content: space-between;
-    gap: 15px;
+  display: grid;
+  grid-template-columns: 70% 15%;
+  margin-top: 20px;
+  justify-content: space-between;
+  gap: 15px;
 }
 
 .ads__body__right h4 {
-    font-family: "avenir-lt-45-book";
+  font-family: "avenir-lt-45-book";
 }
 
 .ads__body__right img {
-    height: 160px;
-    width: 100%;
-    object-fit: cover;
-    margin-bottom: 10px;
-    border-radius: 10px;
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
-.ads__body__right small{
-    font-size: 12px;
-    color: #C7005C;
+.ads__body__right small {
+  font-size: 12px;
+  color: #c7005c;
 }
 
 .ads__body__right {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .ads__body__autor {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .ads__body__autor img {
-    height: 15px;
-    width: 15px;
-    margin-right: 5px;
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
 }
 
 .ads__body__autor p {
-    font-size: 12px;
-    color: #C7005C;
+  font-size: 12px;
+  color: #c7005c;
 }
 
 .ads__body__autor small {
-    font-size: 10px;
-    font-family: "avenir-lt-45-book";
+  font-size: 10px;
+  font-family: "avenir-lt-45-book";
 }
 
-.ads__info{
-    display: flex;
-    flex-direction: row;
+.ads__info {
+  display: flex;
+  flex-direction: row;
 }
 
-.ads__info small{
-    margin-left: 5px;
+.ads__info small {
+  margin-left: 5px;
 }
 
-.ads__info-reply small{
-    color: #C7005C;
-    /*margin-left: 30px;*/
+.ads__info-reply small {
+  color: #c7005c;
+  /*margin-left: 30px;*/
 }
 
 .ads__tags-right-mobile {
-    display: none;
-
+  display: none;
 }
 
 /*=============== media queries (small screens)================*/
-@media screen and (max-width:600px) {
-    .ads__wrapper {
-        display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem 2rem;
-            font-family: "avenir-lt-45-book";
-    }
-    .ads__body {
-        display: grid;
-        grid-template-columns: 1fr;
-        margin-top: 20px;
-        justify-content: space-between;
-        gap: 15px;
-    }
+@media screen and (max-width: 600px) {
+  .ads__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem 2rem;
+    font-family: "avenir-lt-45-book";
+  }
+  .ads__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+    justify-content: space-between;
+    gap: 15px;
+  }
 
-    .ads__comment-body {
-        display: none;
-    }
+  .ads__comment-body {
+    display: none;
+  }
 
-    .recent__post-header {
-        display: none;
-    }
+  .recent__post-header {
+    display: none;
+  }
 
-    .ads__title-body h2{
-        font-size: 20px;
-    }
+  .ads__title-body h2 {
+    font-size: 20px;
+  }
 
-    .ads__comment-body-mobile {
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 30px;
-    }
+  .ads__comment-body-mobile {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+  }
 
-    .ads__comment-body-mobile img {
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-    }
-    .recent__post-header-mobile {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-        font-family: "avenir-lt-45-book";
-        margin-bottom: 20px;
-    }
+  .ads__comment-body-mobile img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  .recent__post-header-mobile {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    font-family: "avenir-lt-45-book";
+    margin-bottom: 20px;
+  }
 
-    .ads__tags .ads__tags-right {
-        display: none;
-        align-items: center;
-    }
+  .ads__tags .ads__tags-right {
+    display: none;
+    align-items: center;
+  }
 
-    .ads__tags-right-mobile{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        margin-bottom: 10px;
+  .ads__tags-right-mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 10px;
+  }
 
-    }
-
-    .ads__tags-right-mobile p {
-        font-size: 14px;
-        background-color: #E0E0E0;
-        padding: 4px 12px;
-        border-radius: 13px;
-        margin-right: 15px;
-    }
+  .ads__tags-right-mobile p {
+    font-size: 14px;
+    background-color: #e0e0e0;
+    padding: 4px 12px;
+    border-radius: 13px;
+    margin-right: 15px;
+  }
 }

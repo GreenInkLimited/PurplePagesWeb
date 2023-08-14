@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import './profile.css';
-import AddBusiness from '../assets/add-line.png';
-import { Link } from 'react-router-dom';
-import { getUser } from '../apis';
-import { getMyBusiness } from '../apis/BusinessApi';
-import CreateBusiness from './Users/CreateBusiness';
-import { BiLogOut } from "react-icons/bi"
-import { useNavigate } from 'react-router-dom';
-import SignOut from './Users/SignOut';
+import React, { useEffect, useState } from "react";
+import "./profile.css";
+import AddBusiness from "../assets/add-line.png";
+import { Link } from "react-router-dom";
+import { getUser } from "../apis";
+import { getMyBusiness } from "../apis/BusinessApi";
+import CreateBusiness from "./Users/CreateBusiness";
+import { BiLogOut } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import SignOut from "./Users/SignOut";
 
 const Profile = ({ onClose }) => {
   const navigate = useNavigate();
@@ -37,13 +37,11 @@ const Profile = ({ onClose }) => {
         setMyBusiness(response);
         setLoading(false);
       } catch (error) {
-        console.log('Error fetching Wishlists:', error);
+        console.log("Error fetching Wishlists:", error);
       }
     };
     fetchMyBusiness();
   }, []);
-
-  
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -51,73 +49,67 @@ const Profile = ({ onClose }) => {
         const response = await getUser({ pageParam: 0 });
         setUserInfo(response);
       } catch (error) {
-        console.log('Error fetching User:', error);
+        console.log("Error fetching User:", error);
       }
     };
     fetchUser();
   }, []);
 
-  
-
   return (
-    <div className='profile'>
+    <div className="profile">
       <ul>
-        
-          <div className='profile__body'>
-            {userInfo && (
+        <div className="profile__body">
+          {userInfo && (
             <Link to={`/personal/`}>
-              <div className='profile__content-new'>
-                <img className='user' src={userInfo.image} alt='icon' />
-                <div className='profile__content-left'>
+              <div className="profile__content-new">
+                <img className="user" src={userInfo.image} alt="icon" />
+                <div className="profile__content-left">
                   <p>My Account</p>
                 </div>
               </div>
             </Link>
-            )}
+          )}
 
-            {myBusiness.map(({ id, image, name }) => (
-              <div key={id}>
-                <Link to={`/userprofile/${id}`}>
-                  <div className='profile__content-new'>
-                    <img
-                      className='user'
-                      src={`https://api2.greeninkltd.com/${image}`}
-                      alt='icon'
-                    />
-                    <div className='profile__content-left'>
-                      <p>{name}</p>
-                    </div>
+          {myBusiness.map(({ id, image, name }) => (
+            <div key={id}>
+              <Link to={`/userprofile/${id}`}>
+                <div className="profile__content-new">
+                  <img
+                    className="user"
+                    src={`https://api2.greeninkltd.com/${image}`}
+                    alt="icon"
+                  />
+                  <div className="profile__content-left">
+                    <p>{name}</p>
                   </div>
-                </Link>
-              </div>
-            ))}
+                </div>
+              </Link>
+            </div>
+          ))}
 
-            <div className='profile__content-new' onClick={openModal}>
-          <img className='user' src={AddBusiness} alt='icon' />
-          <div className='profile__content-left'>
-            <p>Add Business</p>
+          <div className="profile__content-new" onClick={openModal}>
+            <img className="user" src={AddBusiness} alt="icon" />
+            <div className="profile__content-left">
+              <p>Add Business</p>
+            </div>
+          </div>
+
+          <div
+            className="profile__content-new sign_out"
+            onClick={openSignoutModal}
+          >
+            <BiLogOut className="user" />
+            <div className="profile__content-left">
+              <p>Sign Out</p>
+            </div>
           </div>
         </div>
-
-        <div className='profile__content-new sign_out' onClick={openSignoutModal}>
-          <BiLogOut className='user'/>
-          <div className='profile__content-left'>
-            <p>Sign Out</p>
-          </div>
-        </div>
-        
-          </div>
-        
-
-        
-
-        
       </ul>
 
       {showModal && (
-        <div className='modal'>
-          <div className='modal-content'>
-            <span className='close' onClick={closeModal}>
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
               &times;
             </span>
             <CreateBusiness closeModal={closeModal} />
@@ -126,9 +118,9 @@ const Profile = ({ onClose }) => {
       )}
 
       {showSignoutModal && (
-        <div className='modal'>
-          <div className='modal-content'>
-            <span className='close' onClick={closeModal}>
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
               &times;
             </span>
             <SignOut closeModal={closeModal} />

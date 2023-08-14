@@ -1,63 +1,62 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Logo from '../../assets/pplogo.png';
-import Google from '../../assets/Google.png';
-import FacebookLogin from '../../assets/FacebookLogin.png';
-import Line from '../../assets/Line.png';
-import { BiError } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
-import Footer from '../../components/Footer';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { useMutation } from 'react-query';
-import { loginUser } from '../../apis';
-import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Logo from "../../assets/pplogo.png";
+import Google from "../../assets/Google.png";
+import FacebookLogin from "../../assets/FacebookLogin.png";
+import Line from "../../assets/Line.png";
+import { BiError } from "react-icons/bi";
+import { Link } from "react-router-dom";
+import Footer from "../../components/Footer";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { useMutation } from "react-query";
+import { loginUser } from "../../apis";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 const Signin = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [verificationError, setVerificationError] = useState('');
+  const [verificationError, setVerificationError] = useState("");
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
 
-  const { isLoading, isError, mutateAsync } = useMutation('signin', loginUser, {
+  const { isLoading, isError, mutateAsync } = useMutation("signin", loginUser, {
     onSuccess: (data) => {
       if (data && data.status_lean) {
-        navigate('/apphome');
+        navigate("/apphome");
         console.log(data);
-        localStorage.setItem('auth_code', data.auth_code);
+        localStorage.setItem("auth_code", data.auth_code);
         // Redirect to home page after successful form submission
-        
       } else {
         // Verification unsuccessful
-        setVerificationError('Username/Email or Password not correct.');
+        setVerificationError("Username/Email or Password not correct.");
       }
     },
   });
 
   const handleReset = () => {
-    navigate('/request-reset');
+    navigate("/request-reset");
   };
 
   const validationSchema = Yup.object({
-    username: Yup.string().required('Username is required'),
+    username: Yup.string().required("Username is required"),
     password: Yup.string()
-      .required('Password is required')
-      .min(8, 'Password must be at least 8 characters')
-      .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
-      .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
-      .matches(/[0-9]/, 'Password must contain at least one number')
+      .required("Password is required")
+      .min(8, "Password must be at least 8 characters")
+      .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+      .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .matches(/[0-9]/, "Password must contain at least one number")
       .matches(
         /[!@#$%^&*]/,
-        'Password must contain at least one special character (!@#$%^&*)'
+        "Password must contain at least one special character (!@#$%^&*)"
       ),
   });
 
   const initialValues = {
-    username: '', 
-    password: ''
+    username: "",
+    password: "",
   };
 
   return (
@@ -100,7 +99,6 @@ const Signin = () => {
                   password: values.password,
                 });
                 console.log(values);
-               
               }}
             >
               <Form>
@@ -120,7 +118,7 @@ const Signin = () => {
                 <div className="input__div">
                   <Field
                     className="inputxyz"
-                    type={showPassword ? 'text' : 'password'}
+                    type={showPassword ? "text" : "password"}
                     name="password"
                     placeholder="*******"
                   />
@@ -147,7 +145,7 @@ const Signin = () => {
                   className="error-message"
                 />
                 <button className="input" type="submit">
-                  {isLoading ? 'Submitting...' : 'Submit'}
+                  {isLoading ? "Submitting..." : "Submit"}
                 </button>
               </Form>
             </Formik>

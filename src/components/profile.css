@@ -1,76 +1,72 @@
 .profile {
-    position: fixed;
-    top: 5.5rem;
-    right: 5rem;
-    width: 220px;
-    height: auto;
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    z-index: 1000;
-    box-shadow: 0px 6px 12px rgba(41, 41, 41, 0.08);
-    transition: var(--transition);
+  position: fixed;
+  top: 5.5rem;
+  right: 5rem;
+  width: 220px;
+  height: auto;
+  border-radius: 5px;
+  background-color: #ffffff;
+  z-index: 1000;
+  box-shadow: 0px 6px 12px rgba(41, 41, 41, 0.08);
+  transition: var(--transition);
 }
-
 
 .profile__body {
-    padding-top: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-
 .user {
-    height: 20px;
-    width: 20px;
-    margin-right: 10px;
-    object-fit: cover;
-    border-radius: 20px;
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 .event {
-    height: 16px;
-    width: 20px;
-    margin-right: 10px;
+  height: 16px;
+  width: 20px;
+  margin-right: 10px;
 }
 
 .profile__content-new {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-    align-items: center;
-    cursor: pointer;
-
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  align-items: center;
+  cursor: pointer;
 }
 
-.profile__content-new.sign_out{
-    color: #C7005C;
+.profile__content-new.sign_out {
+  color: #c7005c;
 }
-
 
 .profile__content-new p {
-    font-size: 14px;
-    align-items: center;
+  font-size: 14px;
+  align-items: center;
 }
 
 .click {
-    height: 6px;
-    width: 6px;
-    display: flex;
-    align-items: center;
-    margin-left: auto;
+  height: 6px;
+  width: 6px;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 /*==================mobile======================*/
 @media screen and (max-width: 600px) {
-.profile {
+  .profile {
     position: fixed;
     top: 4.5rem;
     right: 1rem;
     width: 220px;
     height: auto;
     border-radius: 5px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     z-index: 1000;
     box-shadow: 0px 6px 12px rgba(41, 41, 41, 0.08);
     transition: var(--transition);
-}
+  }
 }

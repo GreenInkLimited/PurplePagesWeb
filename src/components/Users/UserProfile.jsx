@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { ImStarEmpty, ImStarFull, ImStarHalf } from 'react-icons/im';
-import { getMyBusinessById } from '../../apis/BusinessApi';
-import Logo from '../../assets/pplogo.png';
-import PromoteModal from './PromoteModal';
-import { RxDotFilled } from 'react-icons/rx';
+import React, { useEffect, useState, useRef } from "react";
+import { Link, useParams } from "react-router-dom";
+import { ImStarEmpty, ImStarFull, ImStarHalf } from "react-icons/im";
+import { getMyBusinessById } from "../../apis/BusinessApi";
+import Logo from "../../assets/pplogo.png";
+import PromoteModal from "./PromoteModal";
+import { RxDotFilled } from "react-icons/rx";
 
 const UserProfile = () => {
   const { id } = useParams();
@@ -24,7 +24,7 @@ const UserProfile = () => {
         setBusiness(businessData);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching business:', error);
+        console.error("Error fetching business:", error);
       }
     };
 
@@ -46,43 +46,54 @@ const UserProfile = () => {
       }
     };
 
-    document.addEventListener('click', handleClickOutsideModal);
+    document.addEventListener("click", handleClickOutsideModal);
 
     return () => {
-      document.removeEventListener('click', handleClickOutsideModal);
+      document.removeEventListener("click", handleClickOutsideModal);
     };
   }, []);
 
   if (loading) {
     return (
-      <div className='spinner_container'>
-        <img src={Logo} alt='Loading' />
+      <div className="spinner_container">
+        <img src={Logo} alt="Loading" />
       </div>
     );
   }
 
   return (
     <>
-      <div className='user__header'>
-        <div className='user__header__container'>
-          <div className='user__header__container-bg'>
-            <img src={`https://api2.greeninkltd.com/${business?.image}`} alt='header bg' />
+      <div className="user__header">
+        <div className="user__header__container">
+          <div className="user__header__container-bg">
+            <img
+              src={`https://api2.greeninkltd.com/${business?.banner}`}
+              alt="header bg"
+            />
           </div>
         </div>
       </div>
 
-      <div className='userprofile__container'>
-        <div className='userprofile__infor-wrapper'>
-          <div className='userprofile__info-left'>
-            <img className='userprofile__info-img' src={`https://api2.greeninkltd.com/${business?.image}`} />
-            <div className='userprofile__info_body'>
+      <div className="userprofile__container">
+        <div className="userprofile__infor-wrapper">
+          <div className="userprofile__info-left">
+            <img
+              className="userprofile__info-img"
+              src={`https://api2.greeninkltd.com/${business?.image}`}
+            />
+            <div className="userprofile__info_body">
               <h3>{business?.name}</h3>
-              <div className='userprofile__info_body-mobile'>
-                <p className='userprofile__category'> {business?.category}</p>
-                <RxDotFilled className='dot_filled' /><p> {business?.subscriptions.length} subscribers</p>
-                <RxDotFilled className='dot_filled' /><p> {business?.location}, {business?.lga}</p>
+              <div className="userprofile__info_body-mobile">
+                <p className="userprofile__category"> {business?.category}</p>
+                <RxDotFilled className="dot_filled" />
+                <p> {business?.subscriptions.length} subscribers</p>
+                <RxDotFilled className="dot_filled" />
+                <p>
+                  {" "}
+                  {business?.location}, {business?.lga}
+                </p>
               </div>
-              <div className='rating'>
+              <div className="rating">
                 {[...Array(fullStars)].map((_, index) => (
                   <ImStarFull key={index} />
                 ))}
@@ -93,12 +104,20 @@ const UserProfile = () => {
               </div>
             </div>
           </div>
-          <div className='containerx'>
-            <button className='subscribe' onClick={handlePromotePage}>Promote Page</button>
+          <div className="containerx">
+            <button className="subscribe" onClick={handlePromotePage}>
+              Promote Page
+            </button>
           </div>
         </div>
       </div>
-      {showModal && <PromoteModal onCloseModal={handleCloseModal} businessId={id} ref={modalRef} />}
+      {showModal && (
+        <PromoteModal
+          onCloseModal={handleCloseModal}
+          businessId={id}
+          ref={modalRef}
+        />
+      )}
     </>
   );
 };

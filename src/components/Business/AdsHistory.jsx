@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
-import PostAdsModal from './PostAdsModal';
-import { getMyBusinessById } from '../../apis/BusinessApi';
-import { useParams } from 'react-router-dom';
-import Logo from '../../assets/pplogo.png';
-import { getMyAds } from '../../apis/AdsApis';
+import React, { useState, useRef, useEffect } from "react";
+import PostAdsModal from "./PostAdsModal";
+import { getMyBusinessById } from "../../apis/BusinessApi";
+import { useParams } from "react-router-dom";
+import Logo from "../../assets/pplogo.png";
+import { getMyAds } from "../../apis/AdsApis";
 
 const AdsHistory = () => {
   const { id } = useParams();
@@ -28,7 +28,7 @@ const AdsHistory = () => {
         setBusiness(businessData);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching business:', error);
+        console.error("Error fetching business:", error);
       }
     };
 
@@ -42,7 +42,7 @@ const AdsHistory = () => {
         setMyAds(response);
         setLoading(false);
       } catch (error) {
-        console.log('Error fetching Wishlists:', error);
+        console.log("Error fetching Wishlists:", error);
       }
     };
     fetchMyAds();
@@ -55,43 +55,50 @@ const AdsHistory = () => {
       }
     };
 
-    document.addEventListener('click', handleClickOutsideModal);
+    document.addEventListener("click", handleClickOutsideModal);
 
     return () => {
-      document.removeEventListener('click', handleClickOutsideModal);
+      document.removeEventListener("click", handleClickOutsideModal);
     };
   }, []);
 
   if (loading) {
     return (
-      <div className='spinner_container'>
-        <img src={Logo} alt='Loading' />
+      <div className="spinner_container">
+        <img src={Logo} alt="Loading" />
       </div>
     );
   }
   return (
-    <section className='adshistory'>
+    <section className="adshistory">
       <div className="adshistory">
         <div className="adshistory__header">
-            <h4>Adverts History</h4>
-            <p onClick={handlePromotePage}>Post an ad</p>
+          <h4>Adverts History</h4>
+          <p onClick={handlePromotePage}>Post an ad</p>
         </div>
-      <div className=" adshistory__wrapper">
-        {
-            myAds.map(({ id, image, title }) => {
-                return (
-                    <div className="adshistory__content" key={id}>
-                      <img src={`https://api2.greeninkltd.com/${image}`} alt={title} />
-                        <p>{title}</p>
-                    </div>
-                )
-            })
-        }
+        <div className=" adshistory__wrapper">
+          {myAds.map(({ id, image, title }) => {
+            return (
+              <div className="adshistory__content" key={id}>
+                <img
+                  src={`https://api2.greeninkltd.com/media/account_files/images/${image}`}
+                  alt={title}
+                />
+                <p>{title}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
-      </div>
-      {showModal && <PostAdsModal onCloseModal={handleCloseModal} businessId={id} ref={modalRef} />}
+      {showModal && (
+        <PostAdsModal
+          onCloseModal={handleCloseModal}
+          businessId={id}
+          ref={modalRef}
+        />
+      )}
     </section>
-  )
-}
+  );
+};
 
 export default AdsHistory;

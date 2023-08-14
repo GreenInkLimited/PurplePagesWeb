@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import Frame from '../../assets/Frame.png';
-import { Link } from 'react-router-dom';
-import { getProduct } from '../../apis/BusinessApi';
+import React, { useState, useEffect } from "react";
+import Frame from "../../assets/Frame.png";
+import { Link } from "react-router-dom";
+import { getProduct } from "../../apis/BusinessApi";
 
 const SuggestedProducts = () => {
   const [products, setProducts] = useState([]);
@@ -12,7 +12,7 @@ const SuggestedProducts = () => {
         const response = await getProduct({ pageParam: 0 });
         setProducts(response || []);
       } catch (error) {
-        console.log('Error fetching products:', error);
+        console.log("Error fetching products:", error);
       }
     };
 
@@ -37,11 +37,18 @@ const SuggestedProducts = () => {
         {shuffledProducts.length > 0 ? (
           shuffledProducts.map(({ id, image, price, caption }) => (
             <div className="productandservice__value x" key={id}>
-              <img className="framex" src={`https://api2.greeninkltd.com/${image}`} alt="icon" />
+              <img
+                className="framex"
+                src={`https://api2.greeninkltd.com/${image}`}
+                alt="icon"
+              />
               <Link to={`/singleproduct/${id}`}>
                 <small>{caption}</small>
               </Link>
-              <p><span className='naira_font'>₦</span>{price}.00</p>
+              <p>
+                <span className="naira_font">₦</span>
+                {price}.00
+              </p>
               <img className="frame" src={Frame} alt="" />
             </div>
           ))

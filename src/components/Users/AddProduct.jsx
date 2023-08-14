@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Formik, Form, Field } from 'formik';
-import { MdClear } from 'react-icons/md';
-import { RiImageAddLine } from 'react-icons/ri';
-import { AddNewProduct } from '../../apis/BusinessApi';
-import { useMutation, useQueryClient } from 'react-query';
+import React, { useState } from "react";
+import { Formik, Form, Field } from "formik";
+import { MdClear } from "react-icons/md";
+import { RiImageAddLine } from "react-icons/ri";
+import { AddNewProduct } from "../../apis/BusinessApi";
+import { useMutation, useQueryClient } from "react-query";
 
 const AddProduct = ({ onCancel, businessId }) => {
   const [image, setImage] = useState(null);
-  const [fileName, setFileName] = useState('No File Selected');
+  const [fileName, setFileName] = useState("No File Selected");
   const [previewURL, setPreviewURL] = useState(null);
   const queryClient = useQueryClient();
 
@@ -15,13 +15,13 @@ const AddProduct = ({ onCancel, businessId }) => {
     onCancel();
   };
 
-  const { mutateAsync, isLoading } = useMutation('add product', AddNewProduct, {
+  const { mutateAsync, isLoading } = useMutation("add product", AddNewProduct, {
     onSuccess: () => {
       handleCancel();
-      queryClient.invalidateQueries('business'); // Refresh the business data to update the product list
+      queryClient.invalidateQueries("business"); // Refresh the business data to update the product list
     },
     onError: (error) => {
-      console.error('Failed to add product:', error);
+      console.error("Failed to add product:", error);
     },
   });
 
@@ -36,11 +36,11 @@ const AddProduct = ({ onCancel, businessId }) => {
   };
 
   const initialValues = {
-    caption: '',
-    price: '',
-    discount: '',
-    color: '',
-    detail: '',
+    caption: "",
+    price: "",
+    discount: "",
+    color: "",
+    detail: "",
   };
 
   const handleSubmit = async (values) => {
@@ -48,7 +48,7 @@ const AddProduct = ({ onCancel, businessId }) => {
       ...values,
       business_id: businessId,
       image: image,
-      detail: values.detail.replace(/\n/g, '<br>'), // Replace newlines with <br> tags
+      detail: values.detail.replace(/\n/g, "<br>"), // Replace newlines with <br> tags
     };
     await mutateAsync(updatedValues);
   };
@@ -66,7 +66,10 @@ const AddProduct = ({ onCancel, businessId }) => {
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form>
               <label>Upload your photo(s)/video</label>
-              <div className="upload__file-container" onClick={() => document.querySelector('.logo-input').click()}>
+              <div
+                className="upload__file-container"
+                onClick={() => document.querySelector(".logo-input").click()}
+              >
                 <Field
                   className="input-field logo-input"
                   type="file"
@@ -76,34 +79,65 @@ const AddProduct = ({ onCancel, businessId }) => {
                   onChange={handleLogoUpload}
                 />
                 {previewURL ? (
-                  <img src={previewURL} alt={fileName} className="uploaded-image" />
+                  <img
+                    src={previewURL}
+                    alt={fileName}
+                    className="uploaded-image"
+                  />
                 ) : (
                   <RiImageAddLine color="#EBB8FC" />
                 )}
               </div>
-              <small>Your image should be in JPEG or PNG format and video in mp4</small>
+              <small>
+                Your image should be in JPEG or PNG format and video in mp4
+              </small>
               <label>Product/Service Title</label>
-              <Field className="input" type="text" name="caption" placeholder="Enter product title" />
+              <Field
+                className="input"
+                type="text"
+                name="caption"
+                placeholder="Enter product title"
+              />
 
               <label>Price</label>
-              <Field className="input" type="text" name="price" placeholder="Enter price" />
+              <Field
+                className="input"
+                type="text"
+                name="price"
+                placeholder="Enter price"
+              />
 
               <label>Caption (Optional)</label>
-              <Field as="textarea" className="textareax" name="detail" placeholder="Enter caption" />
+              <Field
+                as="textarea"
+                className="textareax"
+                name="detail"
+                placeholder="Enter caption"
+              />
 
               <div className="create__business__row">
                 <div>
                   <label>Discount (Optional)</label>
-                  <Field className="input" type="text" name="discount" placeholder="Enter discount" />
+                  <Field
+                    className="input"
+                    type="text"
+                    name="discount"
+                    placeholder="Enter discount"
+                  />
                 </div>
                 <div>
                   <label>Choose Colors</label>
-                  <Field className="input" type="text" name="color" placeholder="Enter colors" />
+                  <Field
+                    className="input"
+                    type="text"
+                    name="color"
+                    placeholder="Enter colors"
+                  />
                 </div>
               </div>
               <div className="create__binex-button">
                 <button className="user_user__button" type="submit">
-                  {isLoading ? 'Submitting...' : 'Submit'}
+                  {isLoading ? "Submitting..." : "Submit"}
                 </button>
               </div>
             </Form>

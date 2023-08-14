@@ -1,19 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { AiOutlineLike, AiOutlineShareAlt, AiFillLike } from 'react-icons/ai';
-import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
-import { RiArrowDropDownLine } from 'react-icons/ri';
-import { getBlogById, getBlogs, AddBlogComment, AddBlogLike } from '../../apis/BlogApis';
-import { AddBlogWishlist } from '../../apis/WishlistApis';
-import Logo from '../../assets/pplogo.png';
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import {
+  getBlogById,
+  getBlogs,
+  AddBlogComment,
+  AddBlogLike,
+} from "../../apis/BlogApis";
+import { AddBlogWishlist } from "../../apis/WishlistApis";
+import Logo from "../../assets/pplogo.png";
 
 const MAX_DETAIL_LENGTH = 150;
 
 const truncateText = (text) => {
-  if (text.length <= MAX_DETAIL_LENGTH) {
+  // Remove HTML tags from the text
+  const plainText = text.replace(/<[^>]+>/g, "");
+
+  if (plainText.length <= MAX_DETAIL_LENGTH) {
     return text;
   }
-  return text.slice(0, MAX_DETAIL_LENGTH) + '...';
+
+  return plainText.slice(0, MAX_DETAIL_LENGTH) + "...";
+};
+
+const convertLineBreaks = (text) => {
+  return text.replace(/<br\s*\/?>/gm, "\n");
 };
 
 const HomeBlogDetail = () => {
@@ -22,7 +32,7 @@ const HomeBlogDetail = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [commentText, setCommentText] = useState('');
+  const [commentText, setCommentText] = useState("");
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
@@ -32,11 +42,13 @@ const HomeBlogDetail = () => {
         setBlog(blogData);
         setLoading(false);
 
-        const auth_code = localStorage.getItem('auth_code');
-        const likedStatus = JSON.parse(localStorage.getItem(`likedStatus_${id}_${auth_code}`));
+        const auth_code = localStorage.getItem("auth_code");
+        const likedStatus = JSON.parse(
+          localStorage.getItem(`likedStatus_${id}_${auth_code}`)
+        );
         setIsLiked(likedStatus || blogData.isLiked); // Update the isLiked state
       } catch (error) {
-        console.error('Error fetching blog:', error);
+        console.error("Error fetching blog:", error);
       }
     };
 
@@ -50,7 +62,7 @@ const HomeBlogDetail = () => {
         const { blogs } = response;
         setBlogs(blogs);
       } catch (error) {
-        console.log('Error fetching blogs:', error);
+        console.log("Error fetching blogs:", error);
       }
     };
 
@@ -59,16 +71,16 @@ const HomeBlogDetail = () => {
 
   if (loading) {
     return (
-      <div className='spinner_container'>
+      <div className="spinner_container">
         <img src={Logo} alt="Logo" />
       </div>
     );
   }
 
-  const formattedDate = new Date(blog.date).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
+  const formattedDate = new Date(blog.date).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
   });
 
   const handleAddToWishlist = async () => {
@@ -76,7 +88,7 @@ const HomeBlogDetail = () => {
       await AddBlogWishlist({ blog_id: id });
       setIsBookmarked(true);
     } catch (error) {
-      console.error('Error adding blog to wishlist:', error);
+      console.error("Error adding blog to wishlist:", error);
     }
   };
 
@@ -90,28 +102,36 @@ const HomeBlogDetail = () => {
       // Optionally, you can fetch the updated blog data to refresh the comments section
       const blogData = await getBlogById(id);
       setBlog(blogData);
-      setCommentText(''); // Clear the comment textarea
+      setCommentText(""); // Clear the comment textarea
     } catch (error) {
-      console.error('Error posting comment:', error);
+      console.error("Error posting comment:", error);
     }
   };
 
   const handleLikeBlog = async () => {
     try {
-      const auth_code = localStorage.getItem('auth_code');
-      const likedStatus = JSON.parse(localStorage.getItem(`likedStatus_${id}_${auth_code}`));
+      const auth_code = localStorage.getItem("auth_code");
+      const likedStatus = JSON.parse(
+        localStorage.getItem(`likedStatus_${id}_${auth_code}`)
+      );
 
       if (likedStatus) {
         // User has already liked the blog, so unlike logic
         // Call the appropriate function to unlike the blog
         // Update the liked status in the local storage and state
-        localStorage.setItem(`likedStatus_${id}_${auth_code}`, JSON.stringify(false));
+        localStorage.setItem(
+          `likedStatus_${id}_${auth_code}`,
+          JSON.stringify(false)
+        );
         setIsLiked(false);
       } else {
         // User has not liked the blog, so like logic
         await AddBlogLike({ blog_id: id, auth_code });
         // Update the liked status in the local storage and state
-        localStorage.setItem(`likedStatus_${id}_${auth_code}`, JSON.stringify(true));
+        localStorage.setItem(
+          `likedStatus_${id}_${auth_code}`,
+          JSON.stringify(true)
+        );
         setIsLiked(true);
       }
 
@@ -119,7 +139,7 @@ const HomeBlogDetail = () => {
       const updatedBlogData = await getBlogById(id);
       setBlog(updatedBlogData);
     } catch (error) {
-      console.error('Error liking blog:', error);
+      console.error("Error liking blog:", error);
     }
   };
 
@@ -129,25 +149,35 @@ const HomeBlogDetail = () => {
   const randomBlogs = shuffledBlogs.slice(0, 2);
 
   return (
-    <div className='container blog__detail'>
+    <div className="container blog__detail">
       <div className="blog__detail-header">
         <h2>{blog.title}</h2>
-        <div className='blog__bottom'>
-          <img src={`https://api2.greeninkltd.com/${blog.owner.image}`} alt="autor" />
+        <div className="blog__bottom">
+          <img
+            src={`https://api2.greeninkltd.com/${blog.owner.image}`}
+            alt="autor"
+          />
           <div className="blog__bottom-detail">
             <p>{blog.owner.name}</p>
-            <p className='smallx'>{formattedDate}</p>
+            <p className="smallx">{formattedDate}</p>
           </div>
         </div>
       </div>
-      <div className='blog__detail-content'>
+      <div className="blog__detail-content">
         <img src={blog.image} alt="Blog" />
       </div>
-      <div className='blog__body'>
+      <div className="blog__body">
         <div className="blog__body_left">
-          <p>{blog.detail}</p>
-          <div className='blog__tags'>
-            {blog.tags.split(',').map((tag, index) => (
+          <pre
+            className="preformatted"
+            style={{
+              width: "100%",
+              whiteSpace: "pre-wrap",
+            }}
+            dangerouslySetInnerHTML={{ __html: convertLineBreaks(blog.detail) }}
+          />
+          <div className="blog__tags">
+            {blog.tags.split(",").map((tag, index) => (
               <p key={index}>{tag.trim()}</p>
             ))}
           </div>
@@ -155,23 +185,30 @@ const HomeBlogDetail = () => {
         <div>
           {randomBlogs.map(({ id, image, detail, title, owner, date }) => {
             const createdDate = new Date(date);
-            const options = { month: 'long', day: 'numeric', year: 'numeric' };
-            const formattedDate = createdDate.toLocaleDateString('en-US', options);
+            const options = { month: "long", day: "numeric", year: "numeric" };
+            const formattedDate = createdDate.toLocaleDateString(
+              "en-US",
+              options
+            );
             return (
               <div className="blog__body__right" key={id}>
-                 <Link to={`/blog/${id}`}>
-                <img className="blog__body__right-img" src={image} alt="image" />
-               
+                <Link to={`/blog/${id}`}>
+                  <img
+                    className="blog__body__right-img"
+                    src={image}
+                    alt="image"
+                  />
+
                   <h4>{title}</h4>
-                
-                <p>{truncateText(detail)}</p>
-                <div className='blog__body__autor'>
-                  <img src={owner.image} alt="author" />
-                  <div>
-                    <p>{owner.name}</p>
-                    <small>{formattedDate}</small>
+
+                  <p>{truncateText(detail)}</p>
+                  <div className="blog__body__autor">
+                    <img src={owner.image} alt="author" />
+                    <div>
+                      <p>{owner.name}</p>
+                      <small>{formattedDate}</small>
+                    </div>
                   </div>
-                </div>
                 </Link>
               </div>
             );

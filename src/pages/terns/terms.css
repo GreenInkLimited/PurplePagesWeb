@@ -1,69 +1,69 @@
-@import url('https://fonts.cdnfonts.com/css/clash-display');
-.terms{
-    margin-top: 7rem;
+@import url("https://fonts.cdnfonts.com/css/clash-display");
+.terms {
+  margin-top: 7rem;
 }
 
-.terms h2{
-    font-family: 'Clash Display';
-    font-weight: 600;
-    color: #14011B;
+.terms h2 {
+  font-family: "Clash Display";
+  font-weight: 600;
+  color: #14011b;
 }
 
-.agreement h4{
-    margin-top: 60px;
-    margin-bottom: 24px;
-    font-family: 'avenir-lt-85-heavy';
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 20px;
+.agreement h4 {
+  margin-top: 60px;
+  margin-bottom: 24px;
+  font-family: "avenir-lt-85-heavy";
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 20px;
 }
 
-.agreement li{
-    display: flex;
-    flex-direction: row;
-    font-family: 'avenir-lt-45-book';
-    font-size: 16px;
-    line-height: 36px;
+.agreement li {
+  display: flex;
+  flex-direction: row;
+  font-family: "avenir-lt-45-book";
+  font-size: 16px;
+  line-height: 36px;
 }
 
-.agreement p{
-    font-size: 16px;
-    line-height: 36px;
-    font-family: 'avenir-lt-45-book';
+.agreement p {
+  font-size: 16px;
+  line-height: 36px;
+  font-family: "avenir-lt-45-book";
 }
 
 /*=============== media queries (small screens)================*/
-@media screen and (max-width:600px) {
-    .terms {
-        margin-top: 7rem;
-    }
+@media screen and (max-width: 600px) {
+  .terms {
+    margin-top: 7rem;
+  }
 
-    .terms h2 {
-        font-family: 'Clash Display';
-        font-weight: 600;
-        color: #14011B;
-    }
+  .terms h2 {
+    font-family: "Clash Display";
+    font-weight: 600;
+    color: #14011b;
+  }
 
-    .agreement h4 {
-        margin-top: 60px;
-        margin-bottom: 24px;
-        font-family: 'avenir-lt-85-heavy';
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 18px;
-    }
+  .agreement h4 {
+    margin-top: 60px;
+    margin-bottom: 24px;
+    font-family: "avenir-lt-85-heavy";
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+  }
 
-    .agreement li {
-        display: flex;
-        flex-direction: row;
-        font-family: 'avenir-lt-45-book';
-        font-size: 16px;
-        line-height: 26px;
-    }
+  .agreement li {
+    display: flex;
+    flex-direction: row;
+    font-family: "avenir-lt-45-book";
+    font-size: 16px;
+    line-height: 26px;
+  }
 
-    .agreement p {
-        font-size: 16px;
-        line-height: 26px;
-        font-family: 'avenir-lt-45-book';
-    }
+  .agreement p {
+    font-size: 16px;
+    line-height: 26px;
+    font-family: "avenir-lt-45-book";
+  }
 }

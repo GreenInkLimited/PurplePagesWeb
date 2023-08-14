@@ -1,29 +1,28 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { TiArrowUnsorted } from 'react-icons/ti';
-import { Formik, Form } from 'formik';
-import { fetchBlogByCategory, fetchBlogsByLikes } from '../../apis/FilterApis';
+import React, { useState, useEffect, useRef } from "react";
+import { TiArrowUnsorted } from "react-icons/ti";
+import { Formik, Form } from "formik";
+import { fetchBlogByCategory, fetchBlogsByLikes } from "../../apis/FilterApis";
 
 const BlogFilter = ({ setBlogs, blogs }) => {
-  console.log(blogs, "they load")
+  console.log(blogs, "they load");
   const [activeFilter, setActiveFilter] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [start, setStart] = useState(0);
   const [stop, setStop] = useState(10);
-  
 
   const categories = [
-    'Education',
-    'Food & Drinks',
-    'Fashion',
-    'Technology',
-    'Logistics',
-    'Entertainment',
-    'Agriculture',
-    'Finance',
-    'Construction',
-    'Pharmaceuticals',
-    'Branding and Marketing',
-    'Others',
+    "Education",
+    "Food & Drinks",
+    "Fashion",
+    "Technology",
+    "Logistics",
+    "Entertainment",
+    "Agriculture",
+    "Finance",
+    "Construction",
+    "Pharmaceuticals",
+    "Branding and Marketing",
+    "Others",
   ];
 
   const filterRef = useRef(null);
@@ -37,11 +36,11 @@ const BlogFilter = ({ setBlogs, blogs }) => {
     };
 
     // Attach the event listener to the window object
-    window.addEventListener('click', handleClickOutside);
+    window.addEventListener("click", handleClickOutside);
 
     // Cleanup the event listener on component unmount
     return () => {
-      window.removeEventListener('click', handleClickOutside);
+      window.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -49,62 +48,66 @@ const BlogFilter = ({ setBlogs, blogs }) => {
     setSelectedCategory(selectedCategory);
 
     try {
-      const blogs = await fetchBlogByCategory(selectedCategory);
-      console.log('Blogs:', blogs);
-      //console.log('Blogs length:', blogs.length);
+      const filteredBlogs = await fetchBlogByCategory(selectedCategory);
+      console.log("Filtered Blogs:", filteredBlogs);
 
-      if (blogs.length > 0) {
-        const selectedBlog = blogs[0];
-        console.log('Selected blog:', selectedBlog);
-        setBlogs([selectedBlog]); // Update the filtered blogs state
+      if (filteredBlogs.length > 0) {
+        setBlogs(filteredBlogs); // Update the filtered blogs state
       } else {
-        console.log('No blogs found for the selected category.');
+        console.log("No blogs found for the selected category.");
+        setBlogs([]); // Clear the blogs state if no blogs are found
       }
-      // Update state or perform any necessary operations with the fetched blogs
+
+      setActiveFilter(null);
     } catch (error) {
-      console.error('Error fetching blogs by category:', error);
+      console.error("Error fetching blogs by category:", error);
     }
   };
 
-  
-
-  const handleLikesFilter =  () => {
-    // only filters current blogs on the page by the amount of likes they have 
-    let filteredBlogsByLikes = [...blogs]
-    filteredBlogsByLikes = filteredBlogsByLikes.sort((a, b) => b.likes - a.likes);
-    console.log(filteredBlogsByLikes[0].id, "after filtering")
-    setBlogs(filteredBlogsByLikes)
+  const handleLikesFilter = () => {
+    // only filters current blogs on the page by the amount of likes they have
+    let filteredBlogsByLikes = [...blogs];
+    filteredBlogsByLikes = filteredBlogsByLikes.sort(
+      (a, b) => b.likes - a.likes
+    );
+    console.log(filteredBlogsByLikes[0].id, "after filtering");
+    setBlogs(filteredBlogsByLikes);
+    setActiveFilter(null);
   };
 
   const handleDateFilter = () => {
-  let filteredBlogsByDate = [...blogs];
-  filteredBlogsByDate = filteredBlogsByDate.sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
-    return dateB - dateA;
-  });
-  console.log(filteredBlogsByDate[0].id, "after filtering");
-  setBlogs(filteredBlogsByDate);
-};
+    let filteredBlogsByDate = [...blogs];
+    filteredBlogsByDate = filteredBlogsByDate.sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateB - dateA;
+    });
+    setActiveFilter(null);
+    console.log(filteredBlogsByDate[0].id, "after filtering");
+    setBlogs(filteredBlogsByDate);
+  };
 
-const handleDateFilterOld = () => {
-  let filteredBlogsByDate = [...blogs];
-  filteredBlogsByDate = filteredBlogsByDate.sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
-    return dateA - dateB;
-  });
-  console.log(filteredBlogsByDate[0].id, "after filtering");
-  setBlogs(filteredBlogsByDate);
-};
+  const handleDateFilterOld = () => {
+    let filteredBlogsByDate = [...blogs];
+    filteredBlogsByDate = filteredBlogsByDate.sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateA - dateB;
+    });
+    setActiveFilter(null);
+    console.log(filteredBlogsByDate[0].id, "after filtering");
+    setBlogs(filteredBlogsByDate);
+  };
 
-
-  const handleLikesFilterLowToHigh =  () => {
-    // only filters current blogs on the page by the amount of likes they have 
-    let filteredBlogsByLikes = [...blogs]
-    filteredBlogsByLikes = filteredBlogsByLikes.sort((a, b) => a.likes - b.likes);
-    console.log(filteredBlogsByLikes[0].id, "after filtering")
-    setBlogs(filteredBlogsByLikes)
+  const handleLikesFilterLowToHigh = () => {
+    // only filters current blogs on the page by the amount of likes they have
+    let filteredBlogsByLikes = [...blogs];
+    filteredBlogsByLikes = filteredBlogsByLikes.sort(
+      (a, b) => a.likes - b.likes
+    );
+    console.log(filteredBlogsByLikes[0].id, "after filtering");
+    setBlogs(filteredBlogsByLikes);
+    setActiveFilter(null);
   };
 
   return (
@@ -115,19 +118,27 @@ const handleDateFilterOld = () => {
             <p>Filter by:</p>
             <div className="dropdown__filterxx">
               <div
-                className={`dropdown__filter-btn${activeFilter === 'category' ? ' active' : ''}`}
-                onClick={() => setActiveFilter(activeFilter === 'category' ? null : 'category')}
+                className={`dropdown__filter-btn${
+                  activeFilter === "category" ? " active" : ""
+                }`}
+                onClick={() =>
+                  setActiveFilter(
+                    activeFilter === "category" ? null : "category"
+                  )
+                }
               >
-                {activeFilter === 'category' ? selectedCategory || 'Categories' : 'Categories'}
+                {activeFilter === "category"
+                  ? selectedCategory || "Categories"
+                  : "Categories"}
                 <div className="dropdown__filter-icons">
-                  {activeFilter === 'category' ? (
+                  {activeFilter === "category" ? (
                     <TiArrowUnsorted className="dropdown__filter-icon" />
                   ) : (
                     <TiArrowUnsorted className="dropdown-icon" />
                   )}
                 </div>
               </div>
-              {activeFilter === 'category' && (
+              {activeFilter === "category" && (
                 <div className="dropdown__filter-content">
                   {categories.map((option) => (
                     <div
@@ -143,52 +154,78 @@ const handleDateFilterOld = () => {
             </div>
             <div className="dropdown__filterxx">
               <div
-                className={`dropdown__filter-btn${activeFilter === 'likes' ? ' active' : ''}`}
-                onClick={() => setActiveFilter(activeFilter === 'likes' ? null : 'likes')}
+                className={`dropdown__filter-btn${
+                  activeFilter === "likes" ? " active" : ""
+                }`}
+                onClick={() =>
+                  setActiveFilter(activeFilter === "likes" ? null : "likes")
+                }
               >
                 Likes
                 <div className="dropdown__filter-icons">
-                  {activeFilter === 'likes' ? (
+                  {activeFilter === "likes" ? (
                     <TiArrowUnsorted className="dropdown__filter-icon" />
                   ) : (
                     <TiArrowUnsorted className="dropdown-icon" />
                   )}
                 </div>
               </div>
-              {activeFilter === 'likes' && (
-    <div className="dropdown__filter-content">
-      <div >
-      <div className="dropdown__filter-item" onClick={handleLikesFilter}>High to Low</div>
-      <div className="dropdown__filter-item" onClick={handleLikesFilterLowToHigh}>Low to High</div>
-      </div>
-    </div>
-    
-  )}
+              {activeFilter === "likes" && (
+                <div className="dropdown__filter-content">
+                  <div>
+                    <div
+                      className="dropdown__filter-item"
+                      onClick={handleLikesFilter}
+                    >
+                      High to Low
+                    </div>
+                    <div
+                      className="dropdown__filter-item"
+                      onClick={handleLikesFilterLowToHigh}
+                    >
+                      Low to High
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="dropdown__filterxx">
               <div
-                className={`dropdown__filter-btn${activeFilter === 'date' ? ' active' : ''}`}
-                onClick={() => setActiveFilter(activeFilter === 'date' ? null : 'date')}
+                className={`dropdown__filter-btn${
+                  activeFilter === "date" ? " active" : ""
+                }`}
+                onClick={() =>
+                  setActiveFilter(activeFilter === "date" ? null : "date")
+                }
               >
                 Date Published
                 <div className="dropdown__filter-icons">
-                  {activeFilter === 'date' ? (
+                  {activeFilter === "date" ? (
                     <TiArrowUnsorted className="dropdown__filter-icon" />
                   ) : (
                     <TiArrowUnsorted className="dropdown-icon" />
                   )}
                 </div>
               </div>
-              {activeFilter === 'date' && (
-    <div className="dropdown__filter-content">
-      <div >
-      <div className="dropdown__filter-item" onClick={handleDateFilter}>Latest</div>
-      <div className="dropdown__filter-item" onClick={handleDateFilterOld}>Oldest</div>
-      </div>
-    </div>
-    
-  )}
+              {activeFilter === "date" && (
+                <div className="dropdown__filter-content">
+                  <div>
+                    <div
+                      className="dropdown__filter-item"
+                      onClick={handleDateFilter}
+                    >
+                      Latest
+                    </div>
+                    <div
+                      className="dropdown__filter-item"
+                      onClick={handleDateFilterOld}
+                    >
+                      Oldest
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </Form>
@@ -197,4 +234,4 @@ const handleDateFilterOld = () => {
   );
 };
 
-export default BlogFilter; 
+export default BlogFilter;

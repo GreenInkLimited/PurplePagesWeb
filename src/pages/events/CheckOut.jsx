@@ -1,16 +1,13 @@
-import React from 'react'
-import CheckingOut from '../../components/Modals/CheckingOut'
-import './events.css'
-
+import React from "react";
+import CheckingOut from "../../components/Modals/CheckingOut";
+import "./events.css";
 
 const CheckOut = () => {
   return (
     <>
-    
-    <CheckingOut />
-
+      <CheckingOut />
     </>
-  )
-}
+  );
+};
 
-export default CheckOut
+export default CheckOut;

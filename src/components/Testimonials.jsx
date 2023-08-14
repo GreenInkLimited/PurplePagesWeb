@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import SectionHead from './SectionHead';
-import Card from '../UI/Card';
-import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
-import { testimonials } from '../data';
-
+import React, { useState } from "react";
+import SectionHead from "./SectionHead";
+import Card from "../UI/Card";
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+} from "react-icons/io";
+import { testimonials } from "../data";
 
 const Testimonials = () => {
   const [index, setIndex] = useState(0);
@@ -31,11 +33,17 @@ const Testimonials = () => {
 
   return (
     <section className="testimonials">
-      <SectionHead title="Coverage across all 36 states of Nigeria" className="testimonials__head" />
+      <SectionHead
+        title="Coverage across all 36 states of Nigeria"
+        className="testimonials__head"
+      />
 
       <div className="container testimonials__container">
         <div className="testimonials__btn-container">
-          <button className="testimonials__btn" onClick={prevTestimonialHandler}>
+          <button
+            className="testimonials__btn"
+            onClick={prevTestimonialHandler}
+          >
             <IoIosArrowDropleftCircle />
           </button>
         </div>
@@ -50,7 +58,10 @@ const Testimonials = () => {
           </Card>
         ))}
         <div className="testimonials__btn-container">
-          <button className="testimonials__btn" onClick={nextTestimonialHandler}>
+          <button
+            className="testimonials__btn"
+            onClick={nextTestimonialHandler}
+          >
             <IoIosArrowDroprightCircle />
           </button>
         </div>

@@ -1,22 +1,21 @@
 import React, { useState } from "react";
 
+const Progress = ({ done }) => {
+  const [style, setStyle] = React.useState({});
 
-const Progress = ({done}) => {
-    const [style, setStyle] = React.useState({});
-	
-	setTimeout(() => {
-		const newStyle = {
-			opacity: 1,
-			width: `${done}%`
-		}
-		
-		setStyle(newStyle);
-	}, 200);
+  setTimeout(() => {
+    const newStyle = {
+      opacity: 1,
+      width: `${done}%`,
+    };
+
+    setStyle(newStyle);
+  }, 200);
   return (
     <div className="progress">
-        <div className="progress-done" style={style}></div>
+      <div className="progress-done" style={style}></div>
     </div>
-  )
-}
+  );
+};
 
-export default Progress
+export default Progress;

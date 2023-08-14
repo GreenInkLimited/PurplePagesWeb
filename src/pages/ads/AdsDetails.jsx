@@ -1,7 +1,7 @@
-import React from 'react'
-import AdsDetail from '../../components/Ads/AdsDetail'
-import AppNavbar from '../../components/AppNavBar'
-import Footer from '../../components/Footer'
+import React from "react";
+import AdsDetail from "../../components/Ads/AdsDetail";
+import AppNavbar from "../../components/AppNavBar";
+import Footer from "../../components/Footer";
 
 const AdsDetails = () => {
   return (
@@ -10,7 +10,7 @@ const AdsDetails = () => {
       <AdsDetail />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default AdsDetails
+export default AdsDetails;

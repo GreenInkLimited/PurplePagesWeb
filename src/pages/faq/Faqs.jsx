@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Footer from '../../components/Footer';
-import Navbar from '../../components/Navbar';
-import { getFaqs } from '../../apis/FaqApis';
-import './faqs.css';
-import { RiArrowDropDownLine, RiArrowDropUpLine } from 'react-icons/ri';
+import React, { useEffect, useState } from "react";
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
+import { getFaqs } from "../../apis/FaqApis";
+import "./faqs.css";
+import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 
 const Faqs = () => {
   const [faqs, setFaqs] = useState([]);
@@ -17,17 +17,17 @@ const Faqs = () => {
   };
 
   useEffect(() => {
-  const fetchFaqs = async () => {
-  try {
-    const response = await getFaqs({ pageParam: 0 });
-    setFaqs(response || []); // Set the response directly as the faqs state
-  } catch (error) {
-    console.log('Error fetching faqs:', error);
-  }
-};
+    const fetchFaqs = async () => {
+      try {
+        const response = await getFaqs({ pageParam: 0 });
+        setFaqs(response || []); // Set the response directly as the faqs state
+      } catch (error) {
+        console.log("Error fetching faqs:", error);
+      }
+    };
 
-  fetchFaqs();
-}, []);
+    fetchFaqs();
+  }, []);
 
   return (
     <>
@@ -53,7 +53,9 @@ const Faqs = () => {
                   </div>
                   <div
                     className={
-                      selected === i ? 'accordion__content show' : 'accordion__content'
+                      selected === i
+                        ? "accordion__content show"
+                        : "accordion__content"
                     }
                   >
                     <p>{item.answer}</p>

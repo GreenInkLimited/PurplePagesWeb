@@ -3,7 +3,6 @@ import Footer from "../../components/Footer";
 import { Link, useParams } from "react-router-dom";
 import { trendingevents } from "../../data";
 import "./events.css";
-import Navbar from "../../components/Navbar";
 import Modal from "../../components/Modals/Modal";
 import { getEventById } from "../../apis/EventsApis";
 import icon from "../../assets/fashion.png";
@@ -11,13 +10,14 @@ import Logo from "../../assets/pplogo.png";
 import { RiCalendarEventLine, RiTimeLine } from "react-icons/ri";
 import { TiLocationOutline } from "react-icons/ti";
 import { format, parseISO } from "date-fns";
+import AppNavbar from "../../components/AppNavBar";
 import AdsbannerModal from "../../components/Modals/AdsBannerModal";
 
 const convertLineBreaks = (text) => {
   return text.replace(/<br\s*\/?>/gm, "\n");
 };
 
-const EventDetails = () => {
+const UserEventDetails = () => {
   const [openModal, setOpenModal] = useState(false);
   const { id } = useParams();
   const event = trendingevents.find((event) => event.id === parseInt(id));
@@ -92,7 +92,7 @@ const EventDetails = () => {
     <>
       {openModal && <Modal closeModal={setOpenModal} />}
 
-      <Navbar />
+      <AppNavbar />
       {events && (
         <header className="myevent__header">
           <div className="myevent__header__container">
@@ -234,4 +234,4 @@ const EventDetails = () => {
   );
 };
 
-export default EventDetails;
+export default UserEventDetails;

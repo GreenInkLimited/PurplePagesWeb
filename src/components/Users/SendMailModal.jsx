@@ -1,27 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { MdClear } from 'react-icons/md';
-import { RiImageAddLine } from 'react-icons/ri';
-import { SendMail } from '../../apis/BusinessApi';
-import { useNavigate } from 'react-router-dom';
-import { useMutation } from 'react-query';
-import BundleSelectionModal from './BundleSelectionModal';
-import { PaystackButton } from 'react-paystack';
-import Paystack from '../../assets/Paystack.png';
-import Flutterwave from '../../assets/Flutterwave.png';
-import { getUser } from '../../apis';
-import * as Yup from 'yup';
+import React, { useState, useEffect, useRef } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { MdClear } from "react-icons/md";
+import { RiImageAddLine } from "react-icons/ri";
+import { SendMail } from "../../apis/BusinessApi";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "react-query";
+import BundleSelectionModal from "./BundleSelectionModal";
+import { PaystackButton } from "react-paystack";
+import Paystack from "../../assets/Paystack.png";
+import Flutterwave from "../../assets/Flutterwave.png";
+import { getUser } from "../../apis";
+import * as Yup from "yup";
 
 const SendMailModal = ({ onCancel, businessId }) => {
   const [image, setImage] = useState(null);
-  const [fileName, setFileName] = useState('No File Selected');
+  const [fileName, setFileName] = useState("No File Selected");
   const [previewURL, setPreviewURL] = useState(null);
   const [selectedBundle, setSelectedBundle] = useState(null);
   const [showBundleModal, setShowBundleModal] = useState(false);
   const [submitting, setSubmitting] = useState(false); // State to track form submission
-  const [verificationError, setVerificationError] = useState('');
-  const [flutterwavePaymentStatus, setFlutterwavePaymentStatus] = useState('');
-  const [paymentError, setPaymentError] = useState('');
+  const [verificationError, setVerificationError] = useState("");
+  const [flutterwavePaymentStatus, setFlutterwavePaymentStatus] = useState("");
+  const [paymentError, setPaymentError] = useState("");
   const [userInfo, setUserInfo] = useState(null);
 
   const modalRef = useRef(null); // Reference to the modal element
@@ -31,8 +31,8 @@ const SendMailModal = ({ onCancel, businessId }) => {
   };
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://checkout.flutterwave.com/v3.js';
+    const script = document.createElement("script");
+    script.src = "https://checkout.flutterwave.com/v3.js";
     script.async = true;
 
     document.body.appendChild(script);
@@ -48,29 +48,29 @@ const SendMailModal = ({ onCancel, businessId }) => {
         const response = await getUser({ pageParam: 0 });
         setUserInfo(response);
       } catch (error) {
-        console.log('Error fetching User:', error);
+        console.log("Error fetching User:", error);
       }
     };
     fetchUser();
   }, []);
 
   const navigate = useNavigate();
-  const [paymentStatus, setPaymentStatus] = useState('');
-  const paystackPublicKey = 'pk_test_28e2ccbe1c4ec534a4472dbf969a7ea9469a967c';
-  const { mutateAsync} = useMutation('send mail', SendMail, {
+  const [paymentStatus, setPaymentStatus] = useState("");
+  const paystackPublicKey = "pk_test_28e2ccbe1c4ec534a4472dbf969a7ea9469a967c";
+  const { mutateAsync } = useMutation("send mail", SendMail, {
     onSuccess: (data) => {
       if (data && data.status_lean) {
         // Verification successful
         openPaymentFlow();
       } else {
         // Verification unsuccessful
-        setVerificationError('Something is wrong');
+        setVerificationError("Something is wrong");
         // You can perform any additional actions here, such as showing an error message
       }
     },
   });
 
-  const userEmail = userInfo ? userInfo.email : '';
+  const userEmail = userInfo ? userInfo.email : "";
 
   useEffect(() => {
     if (submitting) {
@@ -90,13 +90,13 @@ const SendMailModal = ({ onCancel, businessId }) => {
   };
 
   const initialValues = {
-    subject: '',
-    mail: '',
+    subject: "",
+    mail: "",
   };
 
   const validationSchema = Yup.object({
-    subject: Yup.string().required('Subject is Required'),
-    mail: Yup.string().required('Mail Content is Required'),
+    subject: Yup.string().required("Subject is Required"),
+    mail: Yup.string().required("Mail Content is Required"),
   });
 
   const handleSubmit = async (values) => {
@@ -112,9 +112,9 @@ const SendMailModal = ({ onCancel, businessId }) => {
 
       try {
         await mutateAsync(updatedValues);
-        navigate('/personal');
+        navigate("/personal");
       } catch (error) {
-        console.error('Error sending mail:', error);
+        console.error("Error sending mail:", error);
         // Handle error
       }
     } else {
@@ -134,37 +134,37 @@ const SendMailModal = ({ onCancel, businessId }) => {
   };
 
   const handlePaymentFailure = (error) => {
-    console.error('Payment failed:', error);
+    console.error("Payment failed:", error);
     // Handle the payment failure scenario, e.g., display an error message
   };
 
   const makeFlutterwavePayment = () => {
     const payload = {
-      public_key: 'FLWPUBK_TEST-af7baca9a5891ab36642c5e52fb6db61-X',
+      public_key: "FLWPUBK_TEST-af7baca9a5891ab36642c5e52fb6db61-X",
       tx_ref: `business_${businessId}_${Date.now()}`,
       amount: parseInt(selectedBundle.price),
-      currency: 'NGN',
-      payment_options: 'card',
+      currency: "NGN",
+      payment_options: "card",
       customer: {
         email: userEmail,
       },
       customizations: {
-        title: 'Post Mail',
+        title: "Post Mail",
         description: `Payment for Email Marketing`,
-        logo: 'https://api2.greeninkltd.com/images/fav2.png', // Replace with your business logo URL
+        logo: "https://api2.greeninkltd.com/images/fav2.png", // Replace with your business logo URL
       },
       callback: function (response) {
-        if (response.status === 'successful') {
-          setFlutterwavePaymentStatus('Payment successful');
+        if (response.status === "successful") {
+          setFlutterwavePaymentStatus("Payment successful");
           // Perform any additional actions here, such as updating the UI or sending payment details to the server
           handlePaymentSuccess(response.reference, initialValues);
         } else {
-          setPaymentError('Payment failed');
+          setPaymentError("Payment failed");
           // Handle the payment failure scenario, e.g., display an error message
         }
       },
       onClose: function () {
-        setFlutterwavePaymentStatus('Payment cancelled.');
+        setFlutterwavePaymentStatus("Payment cancelled.");
       },
     };
 
@@ -193,10 +193,10 @@ const SendMailModal = ({ onCancel, businessId }) => {
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutsideModal);
+    document.addEventListener("mousedown", handleClickOutsideModal);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutsideModal);
+      document.removeEventListener("mousedown", handleClickOutsideModal);
     };
   }, []);
 
@@ -206,7 +206,7 @@ const SendMailModal = ({ onCancel, businessId }) => {
     // You'll need to integrate with Paystack's API and use their payment flow
 
     // Example code for redirection
-    navigate('/paystack-payment'); // Redirect to the Paystack payment page
+    navigate("/paystack-payment"); // Redirect to the Paystack payment page
   };
 
   return (
@@ -220,30 +220,56 @@ const SendMailModal = ({ onCancel, businessId }) => {
         </div>
         <p className="send__mail-gist">Send email to your subscribers</p>
         <div className="create__business-body">
-          <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+            validationSchema={validationSchema}
+          >
             <Form>
               <label>Subject of mail</label>
-              <Field className="input" type="text" name="subject" placeholder="Enter discount" />
-              <ErrorMessage name="subject" component="small" className="error-message" />
+              <Field
+                className="input"
+                type="text"
+                name="subject"
+                placeholder="Enter discount"
+              />
+              <ErrorMessage
+                name="subject"
+                component="small"
+                className="error-message"
+              />
 
               <label>Content of mail</label>
-              <Field as="textarea" className="textareax" name="mail" placeholder="Enter caption" />
-              <ErrorMessage name="mail" component="small" className="error-message" />
+              <Field
+                as="textarea"
+                className="textareax"
+                name="mail"
+                placeholder="Enter caption"
+              />
+              <ErrorMessage
+                name="mail"
+                component="small"
+                className="error-message"
+              />
 
               <label>Upload your photo(s)/video</label>
               <div
                 className="upload__file-container"
-                onClick={() => document.querySelector('.logo-input').click()}
+                onClick={() => document.querySelector(".logo-input").click()}
               >
                 <input
                   type="file"
                   accept="image/*, video/*"
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   className="logo-input"
                   onChange={handleLogoUpload}
                 />
                 {previewURL ? (
-                  <img src={previewURL} alt={fileName} className="uploaded-image" />
+                  <img
+                    src={previewURL}
+                    alt={fileName}
+                    className="uploaded-image"
+                  />
                 ) : (
                   <RiImageAddLine color="#EBB8FC" />
                 )}
@@ -260,25 +286,38 @@ const SendMailModal = ({ onCancel, businessId }) => {
                         className="user_user__button"
                         publicKey={paystackPublicKey}
                         amount={
-                          selectedBundle && selectedBundle.price !== null ? parseInt(selectedBundle.price) * 100 : 0
+                          selectedBundle && selectedBundle.price !== null
+                            ? parseInt(selectedBundle.price) * 100
+                            : 0
                         }
                         currency="NGN"
                         reference={`business_${businessId}_${Date.now()}`}
                         email={userEmail}
-                        onSuccess={(reference) => handlePaymentSuccess(reference, initialValues)}
-                        onClose={() => setPaymentStatus('Payment cancelled.')}
+                        onSuccess={(reference) =>
+                          handlePaymentSuccess(reference, initialValues)
+                        }
+                        onClose={() => setPaymentStatus("Payment cancelled.")}
                       >
                         <span>Pay with</span>
                         <img src={Paystack} alt="Paystack Logo" />
                       </PaystackButton>
 
-                      <button className="user_user__button" type="button" onClick={makeFlutterwavePayment}>
-                        Pay with <img src={Flutterwave} alt="Flutterwave Logo" />
+                      <button
+                        className="user_user__button"
+                        type="button"
+                        onClick={makeFlutterwavePayment}
+                      >
+                        Pay with{" "}
+                        <img src={Flutterwave} alt="Flutterwave Logo" />
                       </button>
                     </div>
                   </div>
                 ) : (
-                  <button className="user_user__button" type="button" onClick={handleOpenBundleModal}>
+                  <button
+                    className="user_user__button"
+                    type="button"
+                    onClick={handleOpenBundleModal}
+                  >
                     Select Bundle
                   </button>
                 )}

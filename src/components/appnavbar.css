@@ -1,154 +1,159 @@
 .my__nav {
-    height: 5rem;
-    width: 100vw;
-    display: grid;
-    background-color: var(--color-primary);
-    place-items: center;
-    position: fixed;
-    right: 0;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    font-family: "avenir-lt-45-book";
-    border-bottom: 1px solid var(--color-secondary);
+  height: 5rem;
+  width: 100vw;
+  display: grid;
+  background-color: var(--color-primary);
+  place-items: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  font-family: "avenir-lt-45-book";
+  border-bottom: 1px solid var(--color-secondary);
 }
 
 .nav__btn {
-    background-color: transparent;
-    border: 2px solid var(--purple-primary);
-    padding: 6px 12px 6px 12px;
-    border-radius: 5px;
-    color: var(--purple-primary);
-    transition: var(--transition);
+  background-color: transparent;
+  border: 2px solid var(--purple-primary);
+  padding: 6px 12px 6px 12px;
+  border-radius: 5px;
+  color: var(--purple-primary);
+  transition: var(--transition);
 }
 
 .nav__btn:hover {
-    background-color: var(--purple-primary);
-    color: var(--color-white);
+  background-color: var(--purple-primary);
+  color: var(--color-white);
 }
 
 /* only show on medium and small screens */
 .nav__toggle-btn {
-    display: none;
+  display: none;
 }
 
 .my__nav__links .active {
-    background-color: #650585;
-    color: #ffffff;
-    padding: 4px 12px 4px 12px;
-    border-radius: 16px;
+  background-color: #650585;
+  color: #ffffff;
+  padding: 4px 12px 4px 12px;
+  border-radius: 16px;
 }
 
 .nav__containers {
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 
 .nav__profile p {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .logo {
-    width: 3.5rem;
-    display: block;
-    display: flex;
+  width: 3.5rem;
+  display: block;
+  display: flex;
 }
 
 .my__nav__links {
-    display: flex;
-    gap: 40px 40px;
-    align-items: center;
-    font-size: 14px;
-    justify-content: space-between;
+  display: flex;
+  gap: 40px 40px;
+  align-items: center;
+  font-size: 14px;
+  justify-content: space-between;
 }
 
 .my__nav__links a {
-    color: #14011B;
-    transition: var(--transition);
+  color: #14011b;
+  transition: var(--transition);
 }
 
 .my__nav__links a:hover {
-    color: var(--purple-primary);
+  color: var(--purple-primary);
 }
 
 .active-nav {
-    position: relative;
+  position: relative;
 }
-
-
 
 .searchContainer {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    gap: 5rem;
-
-    
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 5rem;
 }
 .appsearch {
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 450px;
+  transition: var(--transition);
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.appinput {
+  border: none;
+  padding: 5px;
+  font-family: "avenir-lt-45-book";
+  width: 100%;
+  outline: none;
+}
+
+.nav__right {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  /* Add this line */
+}
+
+.nav__right img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav__right .nav__profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  gap: 6px;
+}
+
+.nav__profile {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1400px) {
+  .appsearch {
     background-color: #ffffff;
     border-radius: 20px;
-    width: 450px;
+    width: 300px;
     transition: var(--transition);
     height: 30px;
     display: flex;
     align-items: center;
     padding: 10px;
-       
-
+  }
 }
-
-.appinput {
-    border: none;
-    padding: 5px;
-    font-family: 'avenir-lt-45-book';
-    width: 100%;
-    outline: none;
-}
-
-.nav__right {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    /* Add this line */
-}
-
-.nav__right img {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-
-.nav__right .nav__profile{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: end;
-    gap: 6px;
-}
-
-.nav__profile{
-    cursor: pointer;
-}
-
 
 @media screen and (max-width: 1024px) {
-.nav__toggle-btn {
-        display: inline-block;
-        background: transparent;
-        font-size: 1.8rem;
-        cursor: pointer;
-    }
+  .nav__toggle-btn {
+    display: inline-block;
+    background: transparent;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
 
-.my__nav {
+  .my__nav {
     height: 5rem;
     width: 100vw;
     display: grid;
@@ -161,13 +166,13 @@
     z-index: 99;
     font-family: "avenir-lt-45-book";
     border-bottom: none;
-}
+  }
 
-.nav__toggle-btn svg {
+  .nav__toggle-btn svg {
     color: var(--purple-primary);
-}
+  }
 
-.my__nav__links {
+  .my__nav__links {
     display: flex;
     position: fixed;
     top: 10%;
@@ -181,17 +186,16 @@
     justify-content: flex-start;
     flex-direction: column;
     background-color: var(--footer-color);
-}
+  }
 
-.my__nav__links li {
+  .my__nav__links li {
     height: 0;
     width: 100%;
     margin-bottom: 24px;
     margin-top: 24px;
-}
+  }
 
-
-.my_nav__links li a {
+  .my_nav__links li a {
     padding-left: 30px;
     background-color: var(--footer-color);
     height: 100%;
@@ -199,18 +203,18 @@
     display: flex;
     align-items: center;
     flex-direction: column-reverse;
-}
+  }
 
-.nav__btn {
+  .nav__btn {
     background-color: transparent;
     border: none;
     padding: 6px 12px 6px 12px;
     border-radius: 5px;
     color: var(--purple-primary);
     transition: var(--transition);
-}
+  }
 
-.appsearch {
+  .appsearch {
     background-color: #ffffff;
     border-radius: 20px;
     width: 327px;
@@ -219,29 +223,24 @@
     display: flex;
     align-items: center;
     padding: 10px;
-}
+  }
 
-.my__nav__links .active {
+  .my__nav__links .active {
     background-color: transparent;
-    color: #14011B;
+    color: #14011b;
     padding: 0;
     border-radius: none;
-}
+  }
 
-.nav__profile p {
+  .nav__profile p {
     display: none;
-}
+  }
 
-.show__nav {
+  .show__nav {
     display: flex;
-}
+  }
 
-.hide__nav {
+  .hide__nav {
     display: none;
+  }
 }
-
-}
-
-
-
-

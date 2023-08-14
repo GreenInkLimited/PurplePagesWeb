@@ -82,7 +82,9 @@ function Tabs() {
       <div className="content-tabs container">
         <div className="first-content-container">
           <div
-            className={toggleState === 1 ? "content  active-content" : "content"}
+            className={
+              toggleState === 1 ? "content  active-content" : "content"
+            }
           >
             <div className="first__content">
               <h4>Description</h4>
@@ -118,22 +120,42 @@ function Tabs() {
               <br />
               <div className="user__utabs__marketplace">
                 <a href={business.marketplace_link}>
-                {business.marketplace === 'Jiji' && <img src={Marketplace1} alt="jiji"/>}
+                  {business.marketplace === "Jiji" && (
+                    <img src={Marketplace1} alt="jiji" />
+                  )}
                 </a>
                 <a href={business.marketplace_link}>
-                {business.marketplace === 'Jumia' && <img src={Marketplace3} alt="jiji" className="jumia__marketplace"/>}
+                  {business.marketplace === "Jumia" && (
+                    <img
+                      src={Marketplace3}
+                      alt="jiji"
+                      className="jumia__marketplace"
+                    />
+                  )}
                 </a>
                 <a href={business.marketplace_link}>
-                {business.marketplace === 'Bumpa' && <img src={Marketplace4} alt="jiji" className="jumia__marketplace"/>}
+                  {business.marketplace === "Bumpa" && (
+                    <img
+                      src={Marketplace4}
+                      alt="jiji"
+                      className="jumia__marketplace"
+                    />
+                  )}
                 </a>
                 <a href={business.marketplace_link}>
-                {business.marketplace === 'Pocket' && <img src={Marketplace0} alt="jiji" />}
+                  {business.marketplace === "Pocket" && (
+                    <img src={Marketplace0} alt="jiji" />
+                  )}
                 </a>
                 <a href={business.marketplace_link}>
-                {business.marketplace === 'Shopify' && <img src={Marketplace2} alt="jiji" />}
+                  {business.marketplace === "Shopify" && (
+                    <img src={Marketplace2} alt="jiji" />
+                  )}
                 </a>
                 <a href={business.marketplace_link}>
-                {business.marketplace === 'Flutter' && <img src={Marketplace5} alt="jiji" />}
+                  {business.marketplace === "Flutter" && (
+                    <img src={Marketplace5} alt="jiji" />
+                  )}
                 </a>
               </div>
             </div>
@@ -141,13 +163,17 @@ function Tabs() {
         </div>
 
         <div
-          className={toggleState === 2 ? "contentx  active-content" : "contentx"}
+          className={
+            toggleState === 2 ? "contentx  active-content" : "contentx"
+          }
         >
           <ProductAndService />
         </div>
 
         <div
-          className={toggleState === 3 ? "contentx  active-content" : "contentx"}
+          className={
+            toggleState === 3 ? "contentx  active-content" : "contentx"
+          }
         >
           <div className="reviews__tab">
             <h4>Purple Pages User Reviews & Ratings</h4>
@@ -163,7 +189,7 @@ function Tabs() {
       {/* Render the modal when showModal is true */}
       {showModal && (
         <div className="modal">
-          <ReviewModal closeModal={closeModal} businessId={id}/>
+          <ReviewModal closeModal={closeModal} businessId={id} />
         </div>
       )}
     </div>

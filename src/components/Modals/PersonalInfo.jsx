@@ -3,7 +3,8 @@ import React from "react";
 function PersonalInfo({ formData, setFormData }) {
   return (
     <div className="personal-info-container">
-      <input className="input"
+      <input
+        className="input"
         type="text"
         placeholder="First Name..."
         value={formData.firstName}
@@ -11,7 +12,8 @@ function PersonalInfo({ formData, setFormData }) {
           setFormData({ ...formData, firstName: e.target.value });
         }}
       />
-      <input className="input"
+      <input
+        className="input"
         type="text"
         placeholder="Last Name..."
         value={formData.lastName}
@@ -19,7 +21,8 @@ function PersonalInfo({ formData, setFormData }) {
           setFormData({ ...formData, lastName: e.target.value });
         }}
       />
-      <input className="input"
+      <input
+        className="input"
         type="text"
         placeholder="Username..."
         value={formData.username}

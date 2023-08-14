@@ -1,462 +1,434 @@
-@import url('https://fonts.cdnfonts.com/css/clash-display');
+@import url("https://fonts.cdnfonts.com/css/clash-display");
 /*====================tabs========================================*/
 .personal-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 150px;
 }
 
 .personal__bloc-tabs {
-    width: 15%;
-    flex-direction: row;
+  width: 15%;
+  flex-direction: row;
 }
 
 .personal__bloc-profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 24px;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-.personal__bloc-profile h3{
-    font-weight: 600px;
-    font-size: 18px;
-    font-family: 'avenir-lt-45-book';
+.personal__bloc-profile h3 {
+  font-weight: 600px;
+  font-size: 18px;
+  font-family: "avenir-lt-45-book";
 }
 
-.personal__bloc-profile img{
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-top: -35px;
-    
+.personal__bloc-profile img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: -35px;
 }
-
 
 .personal__content-tabs {
-    width: 80%;
+  width: 80%;
 }
 
 .personal__tabs {
-    padding: 10px;
-    padding-left: 20px;
-    width: 100%;
-    cursor: pointer;
-    outline: none;
-    display: flex;
-    flex-direction: row;
-    background: transparent;
-    outline: none;
+  padding: 10px;
+  padding-left: 20px;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  flex-direction: row;
+  background: transparent;
+  outline: none;
 }
 
-
-
 .active-personal__tabs {
-    background: transparent;
-    border-left: 1px solid transparent;
+  background: transparent;
+  border-left: 1px solid transparent;
 
-    border-left: 3px solid #C42AF7;
-
-
+  border-left: 3px solid #c42af7;
 }
 
 .active-personal__tabs::before {
-    content: "";
-    display: block;
-    position: absolute;
-    color: #C42AF7;
-    transform: translateX(-50%);
-    height: 5px;
+  content: "";
+  display: block;
+  position: absolute;
+  color: #c42af7;
+  transform: translateX(-50%);
+  height: 5px;
 }
 
-
 .tabs__personal-information {
-    display: grid;
+  display: grid;
 }
 
 .tabs__personal-information small {
-    display: flex;
-    align-items: center;
-    font-family: "avenir-lt-45-book";
-    margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  font-family: "avenir-lt-45-book";
+  margin-bottom: 12px;
 }
 
 .tabs__personal-information .icon {
-    color: var(--color-secondary);
-    margin-right: 18px;
+  color: var(--color-secondary);
+  margin-right: 18px;
 }
 
 .tabs__personal-information .location {
-    display: flex;
+  display: flex;
 }
 
 .tabs__personal-information .location small {
-    width: 250px;
+  width: 250px;
 }
 
 button {
-    border: none;
-    font-family: "avenir-lt-45-book";
-    font-size: 14px;
-
+  border: none;
+  font-family: "avenir-lt-45-book";
+  font-size: 14px;
 }
 
 /*===============================settings tabs=============*/
 
 .personal__content {
-    display: none;
+  display: none;
 }
 
 .personal__contentx {
-    display: none;
-
+  display: none;
 }
 
 .personal__content h4 {
-    color: var(--color-secondary);
-    font-family: "avenir-lt-45-book";
-    margin-bottom: 15px;
+  color: var(--color-secondary);
+  font-family: "avenir-lt-45-book";
+  margin-bottom: 15px;
 }
 
 .personal__content hr {
-    width: 100%;
-    height: 0.5px;
-    background: #BDBDBD;
-    margin-bottom: 5px;
-    margin-top: 20px;
+  width: 100%;
+  height: 0.5px;
+  background: #bdbdbd;
+  margin-bottom: 5px;
+  margin-top: 20px;
 }
 
 .personal__content p {
-    width: 100%;
-
+  width: 100%;
 }
 
 .active-personal__content {
-    display: block;
+  display: block;
 }
 
 .tabs__personal-marketplace {
-    color: #C7005C;
-    display: grid;
-    font-family: "avenir-lt-45-book";
+  color: #c7005c;
+  display: grid;
+  font-family: "avenir-lt-45-book";
 }
 
 .personal__bloc-tabs h4 {
-    font-family: "avenir-lt-85-heavy";
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
+  font-family: "avenir-lt-85-heavy";
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
 }
 
 .first__personal-content h3 {
-    font-family: "Clash Display";
-    font-weight: 600;
-    font-size: 30px;
-    margin-bottom: 32px;
+  font-family: "Clash Display";
+  font-weight: 600;
+  font-size: 30px;
+  margin-bottom: 32px;
 }
 
 .first__personal-content {
-    display: flex;
-    width: 90%;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .account__settings-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .account__settings-header h4 {
-    font-family: 'avenir-lt-85-heavy';
+  font-family: "avenir-lt-85-heavy";
 }
 
 .account__settings-edit {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #E0E0E0;
-    gap: 10px;
-    padding: 8px 12px 8px 12px;
-    border-radius: 5px;
-    margin-bottom: 30px;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #e0e0e0;
+  gap: 10px;
+  padding: 8px 12px 8px 12px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.account__settings-edit button{
-    background: transparent;
-    cursor: pointer;
-    width: 100%;
+.account__settings-edit button {
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
 }
 
 .account__settings-edit .edit_icon {
-    color: #4F4F4F;
+  color: #4f4f4f;
 }
 
 .account__settings-content {
-    display: flex;
-    margin-bottom: 20px;
-    margin-top: 100px;
-    flex-direction: row;
+  display: flex;
+  margin-bottom: 20px;
+  margin-top: 100px;
+  flex-direction: row;
 }
 
 .account__settings-left p {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 .account__settings-right p {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
-.account__settings-left{
-    width: 100%;
+.account__settings-left {
+  width: 100%;
 }
 
-
-
-.account__settings-left-img{
-    height: 60px;
-    width: 60px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 50px;
+.account__settings-left-img {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 50px;
 }
 
-.save_profile-button{
-    background: #650585;
-    cursor: pointer;
-    padding: 8px 12px 8px 12px;
-    color: #ffffff;
-    border-radius: 8px;
+.save_profile-button {
+  background: #650585;
+  cursor: pointer;
+  padding: 8px 12px 8px 12px;
+  color: #ffffff;
+  border-radius: 8px;
 }
 
 .notification__preferences {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 1px solid #E0E0E0;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 20px;
 }
 
 .notification__preferences h4 {
-    font-family: 'avenir-lt-85-heavy';
+  font-family: "avenir-lt-85-heavy";
 }
 
 .pust__email-notification {
-    display: flex;
-    gap: 7rem;
+  display: flex;
+  gap: 7rem;
 }
 
 .notification__preferences-body {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
 .notification__preferences-body p {
-    font-family: 'avenir-lt-85-heavy';
+  font-family: "avenir-lt-85-heavy";
 }
 
 .subscriptions-detail {
-    display: flex;
-    gap: 8.3rem;
-    padding-right: 10px;
+  display: flex;
+  gap: 8.3rem;
+  padding-right: 10px;
 }
 
 .check {
-    color: #C42AF7;
+  color: #c42af7;
 }
 
 /*=========================subscription tabs==============*/
 
 .subscription__personal-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .subscription__personal-content h3 {
-    font-family: "Clash Display";
-    font-weight: 600;
+  font-family: "Clash Display";
+  font-weight: 600;
 }
 
 .subscription__personal-content h4 {
-    color: #C7005C;
-    font-family: 'avenir-lt-45-book';
+  color: #c7005c;
+  font-family: "avenir-lt-45-book";
 }
 
 .subscription__section p {
-    font-family: 'avenir-lt-85-heavy';
+  font-family: "avenir-lt-85-heavy";
 }
 
 .subscription__section {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 /*=========================personal profile================*/
 .personalprofile__infor-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
 }
 
 .personalprofile__info-left {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    justify-content: center;
-
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
 }
 
 .personalprofile__container {
-    align-items: center;
-    position: relative;
+  align-items: center;
+  position: relative;
 }
 
 .personalprofile__info-img {
-
-    height: 150px;
-    width: 150px;
-    border-radius: 150px;
+  height: 150px;
+  width: 150px;
+  border-radius: 150px;
 }
 
 .personalprofile__category {
-    color: #C7005C;
+  color: #c7005c;
 }
 
 .personalprofile__info_body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .personalprofile__info_body h3 {
-    font-family: 'avenir-lt-85-heavy';
+  font-family: "avenir-lt-85-heavy";
 }
 
 .personalprofile__infor-wrapper .subscribe {
-    display: flex;
-    margin-right: 150px;
+  display: flex;
+  margin-right: 150px;
 }
-
-
 
 .personal__header__container {
-    width: 100%;
-    height: 100%;
-    position: relative;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
-
 
 .account__settings-right label {
-    display: none;
+  display: none;
 }
-
-
 
 /*==================product and service======================*/
 
-
 .personal__productandservice__container {
-
-    flex-direction: row;
-    margin-top: 40px;
-    width: 90%;
+  flex-direction: row;
+  margin-top: 40px;
+  width: 90%;
 }
 
-
-
 .personal__productandservice__wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem 1rem;
-    font-family: "avenir-lt-45-book";
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem 1rem;
+  font-family: "avenir-lt-45-book";
 }
 
 .personal__productandservice__value {
-    align-items: center;
-    border-radius: 10px;
+  align-items: center;
+  border-radius: 10px;
 }
 
 .personal__productandservice__wrapper p {
-    color: #4F4F4F;
-    font-size: 14px;
+  color: #4f4f4f;
+  font-size: 14px;
 }
 
 .frame {
-    height: 12px;
-    width: 44px;
+  height: 12px;
+  width: 44px;
 }
 /*=============== media queries (small screens)================*/
-@media screen and (max-width:600px) {
-.personal__bloc-profile{
+@media screen and (max-width: 600px) {
+  .personal__bloc-profile {
     display: none;
-}
-.personal__tabs{
+  }
+  .personal__tabs {
     display: none;
-}
+  }
 
-.subscription__section {
+  .subscription__section {
     margin-bottom: 32px;
     display: none;
-}
+  }
 
-.personal-container {
+  .personal-container {
     display: block;
     width: 100%;
     justify-content: space-between;
     align-items: flex-start;
     margin-top: 150px;
-}
+  }
 
-.account__settings-content {
+  .account__settings-content {
     display: flex;
     margin-bottom: 20px;
     flex-direction: row;
-}
+  }
 
-.personal__content-tabs {
+  .personal__content-tabs {
     width: 100%;
-}
+  }
 
-.account__settings-left{
+  .account__settings-left {
     width: 100%;
-}
+  }
 
-.account__settings-right {
-
+  .account__settings-right {
     margin-left: 0;
-}
+  }
 
-.inputing{
+  .inputing {
     width: 327px;
-}
+  }
 
-.account__settings-right label{
+  .account__settings-right label {
     margin-bottom: 8px;
     display: block;
-}
+  }
 
-
-.tabs__personal-information .icon {
+  .tabs__personal-information .icon {
     color: var(--color-secondary);
     margin-right: 0;
-}
+  }
 
-.should__not-show__mobile{
+  .should__not-show__mobile {
     display: none;
-}
-
-
-
+  }
 }

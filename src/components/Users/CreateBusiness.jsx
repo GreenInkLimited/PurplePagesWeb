@@ -1,33 +1,37 @@
-import React, { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { MdClear } from 'react-icons/md';
-import { AddBusiness } from '../../apis/BusinessApi';
-import { useNavigate } from 'react-router-dom';
-import { useMutation } from 'react-query';
-import { RiArrowDownSLine, RiArrowUpSLine, RiImageAddLine } from 'react-icons/ri'
-import Marketplace1 from '../../assets/Jiji.png'
-import Marketplace2 from '../../assets/Marketplace3.png'
-import Marketplace3 from '../../assets/Bumpa.png'
-import Marketplace4 from '../../assets/Marketplace1.png'
-import Marketplace5 from '../../assets/Marketplace2.png'
-import Marketplace6 from '../../assets/Flutter.png'
-import Marketplace7 from '../../assets/Others.png'
-import * as Yup from 'yup';
+import React, { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { MdClear } from "react-icons/md";
+import { AddBusiness } from "../../apis/BusinessApi";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "react-query";
+import {
+  RiArrowDownSLine,
+  RiArrowUpSLine,
+  RiImageAddLine,
+} from "react-icons/ri";
+import Marketplace1 from "../../assets/Jiji.png";
+import Marketplace2 from "../../assets/Marketplace3.png";
+import Marketplace3 from "../../assets/Bumpa.png";
+import Marketplace4 from "../../assets/Marketplace1.png";
+import Marketplace5 from "../../assets/Marketplace2.png";
+import Marketplace6 from "../../assets/Flutter.png";
+import Marketplace7 from "../../assets/Others.png";
+import * as Yup from "yup";
 
 const CreateBusiness = ({ closeModal }) => {
   const [image, setImage] = useState(null);
   const [banner, setBanner] = useState(null);
-  const [fileName, setFileName] = useState('No File Selected');
-  const [bannerName, setBannerName] = useState('No File Selected');
-  const [verificationError, setVerificationError] = useState('');
+  const [fileName, setFileName] = useState("No File Selected");
+  const [bannerName, setBannerName] = useState("No File Selected");
+  const [verificationError, setVerificationError] = useState("");
   const [previewURL, setPreviewURL] = useState(null);
   const [previewBannerURL, setPreviewBannerURL] = useState(null);
 
-  const [isActive, setIsActive] = useState(false)
-  const [isActiveLocation, setIsActiveLocation] = useState(false)
-  const [isActiveLga, setIsActiveLga] = useState(false)
-  const [isActiveCategory, setIsActiveCategory] = useState(false)
-  const [isActiveMarket, setIsActiveMarket] = useState(false)
+  const [isActive, setIsActive] = useState(false);
+  const [isActiveLocation, setIsActiveLocation] = useState(false);
+  const [isActiveLga, setIsActiveLga] = useState(false);
+  const [isActiveCategory, setIsActiveCategory] = useState(false);
+  const [isActiveMarket, setIsActiveMarket] = useState(false);
 
   const [selected, setSelected] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
@@ -36,28 +40,72 @@ const CreateBusiness = ({ closeModal }) => {
   const [selectedMarket, setSelectedMarket] = useState("");
   //const [adsContent, setAdsContent] = useState([]);
 
-  
-  
-  const options = ['registered', 'not registered']
-  const locations = 
-    [
-  "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", "Borno", "Cross River", "Delta",
-    "Ebonyi", "Edo", "Ekiti", "Enugu", "FCT", "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi",
-    "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara"
-]
-  const categories = ["Education", "Food & drinks", "Fashion", "Technology", "Logistics", "Entertainment", "Agriculture", "Finance", "Construction", "Pharmaceuticals", "Branding & Marketing", "Others"]
+  const options = ["registered", "not registered"];
+  const locations = [
+    "Abia",
+    "Adamawa",
+    "Akwa Ibom",
+    "Anambra",
+    "Bauchi",
+    "Bayelsa",
+    "Benue",
+    "Borno",
+    "Cross River",
+    "Delta",
+    "Ebonyi",
+    "Edo",
+    "Ekiti",
+    "Enugu",
+    "FCT",
+    "Gombe",
+    "Imo",
+    "Jigawa",
+    "Kaduna",
+    "Kano",
+    "Katsina",
+    "Kebbi",
+    "Kogi",
+    "Kwara",
+    "Lagos",
+    "Nasarawa",
+    "Niger",
+    "Ogun",
+    "Ondo",
+    "Osun",
+    "Oyo",
+    "Plateau",
+    "Rivers",
+    "Sokoto",
+    "Taraba",
+    "Yobe",
+    "Zamfara",
+  ];
+  const categories = [
+    "Education",
+    "Food & drinks",
+    "Fashion",
+    "Technology",
+    "Logistics",
+    "Entertainment",
+    "Agriculture",
+    "Finance",
+    "Construction",
+    "Pharmaceuticals",
+    "Branding & Marketing",
+    "Others",
+  ];
   const markets = [
-  { name: "Jiji", image: Marketplace1 },
-  { name: "Jumia", image: Marketplace2 },
-  { name: "Bumpa", image: Marketplace3 },
-  { name: "Pocket", image: Marketplace4 },
-  { name: "Shopify", image: Marketplace5 },
-  { name: "Flutterwave", image: Marketplace6 },
-  { name: "Others", image: Marketplace7 }
-];
+    { name: "Jiji", image: Marketplace1 },
+    { name: "Jumia", image: Marketplace2 },
+    { name: "Bumpa", image: Marketplace3 },
+    { name: "Pocket", image: Marketplace4 },
+    { name: "Shopify", image: Marketplace5 },
+    { name: "Flutterwave", image: Marketplace6 },
+    { name: "Others", image: Marketplace7 },
+  ];
 
-const stateLgasMap = {
-  "Abia": [
+  const stateLgasMap = {
+    Abia: [
       "Aba North",
       "Aba South",
       "Arochukwu",
@@ -75,9 +123,9 @@ const stateLgasMap = {
       "Ukwa West",
       "Umuahia North",
       "Umuahia South",
-      "Umu-Neochi"
+      "Umu-Neochi",
     ],
-    "Adamawa": [
+    Adamawa: [
       "Demsa",
       "Fufore",
       "Ganaye",
@@ -98,9 +146,9 @@ const stateLgasMap = {
       "Song",
       "Toungo",
       "Yola North",
-      "Yola South"
+      "Yola South",
     ],
-    "Anambra": [
+    Anambra: [
       "Aguata",
       "Anambra East",
       "Anambra West",
@@ -121,7 +169,7 @@ const stateLgasMap = {
       "Onitsha South",
       "Orumba North",
       "Orumba South",
-      "Oyi"
+      "Oyi",
     ],
     "Akwa Ibom": [
       "Abak",
@@ -154,9 +202,9 @@ const stateLgasMap = {
       "Ukanafun",
       "Uruan",
       "Urue-Offong/Oruko ",
-      "Uyo"
+      "Uyo",
     ],
-    "Bauchi": [
+    Bauchi: [
       "Alkaleri",
       "Bauchi",
       "Bogoro",
@@ -175,9 +223,9 @@ const stateLgasMap = {
       "Tafawa-Balewa",
       "Toro",
       "Warji",
-      "Zaki"
+      "Zaki",
     ],
-    "Bayelsa": [
+    Bayelsa: [
       "Brass",
       "Ekeremor",
       "Kolokuma/Opokuma",
@@ -185,9 +233,9 @@ const stateLgasMap = {
       "Ogbia",
       "Sagbama",
       "Southern Jaw",
-      "Yenegoa"
+      "Yenegoa",
     ],
-    "Benue": [
+    Benue: [
       "Ado",
       "Agatu",
       "Apa",
@@ -210,9 +258,9 @@ const stateLgasMap = {
       "Tarka",
       "Ukum",
       "Ushongo",
-      "Vandeikya"
+      "Vandeikya",
     ],
-    "Borno": [
+    Borno: [
       "Abadam",
       "Askira/Uba",
       "Bama",
@@ -239,7 +287,7 @@ const stateLgasMap = {
       "Monguno",
       "Ngala",
       "Nganzai",
-      "Shani"
+      "Shani",
     ],
     "Cross River": [
       "Akpabuyo",
@@ -259,9 +307,9 @@ const stateLgasMap = {
       "Etung",
       "Bekwara",
       "Bakassi",
-      "Calabar Municipality"
+      "Calabar Municipality",
     ],
-    "Delta": [
+    Delta: [
       "Oshimili",
       "Aniocha",
       "Aniocha South",
@@ -286,9 +334,9 @@ const stateLgasMap = {
       "Warri Central",
       "Ukwani",
       "Oshimili North",
-      "Patani"
+      "Patani",
     ],
-    "Ebonyi": [
+    Ebonyi: [
       "Afikpo South",
       "Afikpo North",
       "Onicha",
@@ -300,9 +348,9 @@ const stateLgasMap = {
       "Ezza South",
       "Ohaukwu",
       "Ebonyi",
-      "Ivo"
+      "Ivo",
     ],
-    "Enugu": [
+    Enugu: [
       "Enugu South,",
       "Igbo-Eze South",
       "Enugu North",
@@ -318,9 +366,9 @@ const stateLgasMap = {
       "Enugu Eas",
       "Aninri",
       "Nkanu East",
-      "Udenu."
+      "Udenu.",
     ],
-    "Edo": [
+    Edo: [
       "Esan North-East",
       "Esan Central",
       "Esan West",
@@ -335,9 +383,9 @@ const stateLgasMap = {
       "Orhionwon",
       "Uhunmwonde",
       "Etsako East",
-      "Esan South-East"
+      "Esan South-East",
     ],
-    "Ekiti": [
+    Ekiti: [
       "Ado",
       "Ekiti-East",
       "Ekiti-West",
@@ -353,7 +401,7 @@ const stateLgasMap = {
       "Gbonyin",
       "Efon",
       "Ise/Orun",
-      "Ilejemeje."
+      "Ilejemeje.",
     ],
     "FCT - Abuja": [
       "Abaji",
@@ -361,9 +409,9 @@ const stateLgasMap = {
       "Bwari",
       "Gwagwalada",
       "Kuje",
-      "Kwali"
+      "Kwali",
     ],
-    "Gombe": [
+    Gombe: [
       "Akko",
       "Balanga",
       "Billiri",
@@ -374,9 +422,9 @@ const stateLgasMap = {
       "Funakaye",
       "Gombe",
       "Nafada/Bajoga",
-      "Yamaltu/Delta."
+      "Yamaltu/Delta.",
     ],
-    "Imo": [
+    Imo: [
       "Aboh-Mbaise",
       "Ahiazu-Mbaise",
       "Ehime-Mbano",
@@ -403,9 +451,9 @@ const stateLgasMap = {
       "Oru West",
       "Owerri-Municipal",
       "Owerri North",
-      "Owerri West"
+      "Owerri West",
     ],
-    "Jigawa": [
+    Jigawa: [
       "Auyo",
       "Babura",
       "Birni Kudu",
@@ -431,9 +479,9 @@ const stateLgasMap = {
       "Roni",
       "Sule-Tankarkar",
       "Taura",
-      "Yankwashi"
+      "Yankwashi",
     ],
-    "Kaduna": [
+    Kaduna: [
       "Birni-Gwari",
       "Chikun",
       "Giwa",
@@ -456,9 +504,9 @@ const stateLgasMap = {
       "Sanga",
       "Soba",
       "Zango-Kataf",
-      "Zaria"
+      "Zaria",
     ],
-    "Kano": [
+    Kano: [
       "Ajingi",
       "Albasu",
       "Bagwai",
@@ -503,9 +551,9 @@ const stateLgasMap = {
       "Tudun Wada",
       "Ungogo",
       "Warawa",
-      "Wudil"
+      "Wudil",
     ],
-    "Katsina": [
+    Katsina: [
       "Bakori",
       "Batagarawa",
       "Batsari",
@@ -539,9 +587,9 @@ const stateLgasMap = {
       "Sabuwa",
       "Safana",
       "Sandamu",
-      "Zango"
+      "Zango",
     ],
-    "Kebbi": [
+    Kebbi: [
       "Aleiro",
       "Arewa-Dandi",
       "Argungu",
@@ -562,9 +610,9 @@ const stateLgasMap = {
       "Suru",
       "Wasagu/Danko",
       "Yauri",
-      "Zuru"
+      "Zuru",
     ],
-    "Kogi": [
+    Kogi: [
       "Adavi",
       "Ajaokuta",
       "Ankpa",
@@ -585,9 +633,9 @@ const stateLgasMap = {
       "Olamabolo",
       "Omala",
       "Yagba East",
-      "Yagba West"
+      "Yagba West",
     ],
-    "Kwara": [
+    Kwara: [
       "Asa",
       "Baruten",
       "Edu",
@@ -602,9 +650,9 @@ const stateLgasMap = {
       "Offa",
       "Oke-Ero",
       "Oyun",
-      "Pategi"
+      "Pategi",
     ],
-    "Lagos": [
+    Lagos: [
       "Agege",
       "Ajeromi-Ifelodun",
       "Alimosho",
@@ -624,9 +672,9 @@ const stateLgasMap = {
       "Ojo",
       "Oshodi-Isolo",
       "Shomolu",
-      "Surulere"
+      "Surulere",
     ],
-    "Nasarawa": [
+    Nasarawa: [
       "Akwanga",
       "Awe",
       "Doma",
@@ -639,9 +687,9 @@ const stateLgasMap = {
       "Nasarawa-Eggon",
       "Obi",
       "Toto",
-      "Wamba"
+      "Wamba",
     ],
-    "Niger": [
+    Niger: [
       "Agaie",
       "Agwara",
       "Bida",
@@ -666,9 +714,9 @@ const stateLgasMap = {
       "Shiroro",
       "Suleja",
       "Tafa",
-      "Wushishi"
+      "Wushishi",
     ],
-    "Ogun": [
+    Ogun: [
       "Abeokuta North",
       "Abeokuta South",
       "Ado-Odo/Ota",
@@ -688,9 +736,9 @@ const stateLgasMap = {
       "Odeda",
       "Odogbolu",
       "Remo North",
-      "Shagamu"
+      "Shagamu",
     ],
-    "Ondo": [
+    Ondo: [
       "Akoko North East",
       "Akoko North West",
       "Akoko South Akure East",
@@ -709,9 +757,9 @@ const stateLgasMap = {
       "Ondo East",
       "Ondo West",
       "Ose",
-      "Owo"
+      "Owo",
     ],
-    "Osun": [
+    Osun: [
       "Aiyedade",
       "Aiyedire",
       "Atakumosa East",
@@ -741,9 +789,9 @@ const stateLgasMap = {
       "Olorunda",
       "Oriade",
       "Orolu",
-      "Osogbo"
+      "Osogbo",
     ],
-    "Oyo": [
+    Oyo: [
       "Afijio",
       "Akinyele",
       "Atiba",
@@ -775,9 +823,9 @@ const stateLgasMap = {
       "Oyo West",
       "Saki East",
       "Saki West",
-      "Surulere"
+      "Surulere",
     ],
-    "Plateau": [
+    Plateau: [
       "Barikin Ladi",
       "Bassa",
       "Bokkos",
@@ -794,9 +842,9 @@ const stateLgasMap = {
       "Qua'an Pan",
       "Riyom",
       "Shendam",
-      "Wase"
+      "Wase",
     ],
-    "Rivers": [
+    Rivers: [
       "Abua/Odual",
       "Ahoada East",
       "Ahoada West",
@@ -819,9 +867,9 @@ const stateLgasMap = {
       "Opobo/Nkoro",
       "Oyigbo",
       "Port-Harcourt",
-      "Tai"
+      "Tai",
     ],
-    "Sokoto": [
+    Sokoto: [
       "Binji",
       "Bodinga",
       "Dange-shnsi",
@@ -844,9 +892,9 @@ const stateLgasMap = {
       "Tureta",
       "Wamako",
       "Wurno",
-      "Yabo"
+      "Yabo",
     ],
-    "Taraba": [
+    Taraba: [
       "Ardo-kola",
       "Bali",
       "Donga",
@@ -862,9 +910,9 @@ const stateLgasMap = {
       "Ussa",
       "Wukari",
       "Yorro",
-      "Zing"
+      "Zing",
     ],
-    "Yobe": [
+    Yobe: [
       "Bade",
       "Bursari",
       "Damaturu",
@@ -881,9 +929,9 @@ const stateLgasMap = {
       "Nguru Potiskum",
       "Tarmua",
       "Yunusari",
-      "Yusufari"
+      "Yusufari",
     ],
-    "Zamfara": [
+    Zamfara: [
       "Anka",
       "Bakura",
       "Birnin Magaji",
@@ -898,45 +946,49 @@ const stateLgasMap = {
       "Shinkafi",
       "Talata Mafara",
       "Tsafe",
-      "Zurmi"
-    ]
-};
+      "Zurmi",
+    ],
+  };
   const navigate = useNavigate();
 
-  const { isLoading, error, isError, mutateAsync, data } = useMutation('create business', AddBusiness, {
-  onSuccess: (data) => {
-    if (data && data.status_lean) {
-      const business_id = data.id;
-      localStorage.setItem('id', business_id);
-      // Verification successful
-      navigate('/personal');
-    } else {
-      // Verification unsuccessful
-      setVerificationError('Something is wrong');
-      // You can perform any additional actions here, such as showing an error message
+  const { isLoading, error, isError, mutateAsync, data } = useMutation(
+    "create business",
+    AddBusiness,
+    {
+      onSuccess: (data) => {
+        if (data && data.status_lean) {
+          const business_id = data.id;
+          localStorage.setItem("id", business_id);
+          // Verification successful
+          navigate("/personal");
+        } else {
+          // Verification unsuccessful
+          setVerificationError("Something is wrong");
+          // You can perform any additional actions here, such as showing an error message
+        }
+      },
     }
-  },
-});
+  );
 
   const handleLogoUpload = (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    setFileName(file.name);
-    setImage(file);
-    const previewURL = URL.createObjectURL(file);
-    setPreviewURL(previewURL);
-  }
-};
+    const file = event.target.files[0];
+    if (file) {
+      setFileName(file.name);
+      setImage(file);
+      const previewURL = URL.createObjectURL(file);
+      setPreviewURL(previewURL);
+    }
+  };
 
-const handleBannerUpload = (event) => {
-  const fileBanner = event.target.files[0];
-  if (fileBanner) {
-    setBannerName(fileBanner.name);
-    setBanner(fileBanner);
-    const previewBannerURL = URL.createObjectURL(fileBanner);
-    setPreviewBannerURL(previewBannerURL);
-  }
-};
+  const handleBannerUpload = (event) => {
+    const fileBanner = event.target.files[0];
+    if (fileBanner) {
+      setBannerName(fileBanner.name);
+      setBanner(fileBanner);
+      const previewBannerURL = URL.createObjectURL(fileBanner);
+      setPreviewBannerURL(previewBannerURL);
+    }
+  };
 
   const handleCACUpload = (event) => {
     const file = event.target.files[0];
@@ -944,65 +996,63 @@ const handleBannerUpload = (event) => {
   };
 
   const initialValues = {
-  image: null,
-  banner: null,
-  name: '',
-  business_type: '',
-  rc_number: '',
-  category: '',
-  location: '',
-  lga: '',
-  description: '',
-  phone: '',
-  email: '',
-  website: '',
-  address: '',
-  marketplace: '',
-  marketplace_link: '',
-};
+    image: null,
+    banner: null,
+    name: "",
+    business_type: "",
+    rc_number: "",
+    category: "",
+    location: "",
+    lga: "",
+    description: "",
+    phone: "",
+    email: "",
+    website: "",
+    address: "",
+    marketplace: "",
+    marketplace_link: "",
+  };
 
-const validationSchema = Yup.object({
-    name: Yup.string().required('Business Name is Required'),
-    business_type: Yup.string().email('Business Type is Required'),
-    rc_number: Yup.string().required('rc_number is Required'),
-    category: Yup.string().required('Business Category is Required'),
-    location: Yup.string().required('Business Location is Required'),
-    lga: Yup.string().required('Business LGA is Required'),
-    description: Yup.string().required('Business Description is Required'),
-    phone: Yup.string().required('Business Phone is Required'),
-    email: Yup.string().required('Business Email is Required'),
-    website: Yup.string().required('Website is Required'),
-    address: Yup.string().required('Address is Required'),
-    marketplace: Yup.string().required('Marketplace is Required'),
-    marketplace_link: Yup.string().required('Marketplace Link is Required'),
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Business Name is Required"),
+    business_type: Yup.string().email("Business Type is Required"),
+    rc_number: Yup.string().required("rc_number is Required"),
+    category: Yup.string().required("Business Category is Required"),
+    location: Yup.string().required("Business Location is Required"),
+    lga: Yup.string().required("Business LGA is Required"),
+    description: Yup.string().required("Business Description is Required"),
+    phone: Yup.string().required("Business Phone is Required"),
+    email: Yup.string().required("Business Email is Required"),
+    website: Yup.string().required("Website is Required"),
+    address: Yup.string().required("Address is Required"),
+    marketplace: Yup.string().required("Marketplace is Required"),
+    marketplace_link: Yup.string().required("Marketplace Link is Required"),
   });
 
-
   const handleSubmit = async (values) => {
-    console.log('handleSubmit called with values:', values);
+    console.log("handleSubmit called with values:", values);
     const updatedValues = {
-    ...values,
-    image: image,
-    banner: banner,
-    business_type : selected,
-    location: selectedLocation,
-    lga: selectedLga,
-    category: selectedCategory,
-    marketplace: selectedMarket,
-    }
+      ...values,
+      image: image,
+      banner: banner,
+      business_type: selected,
+      location: selectedLocation,
+      lga: selectedLga,
+      category: selectedCategory,
+      marketplace: selectedMarket,
+    };
     try {
-      
       const response = await mutateAsync(updatedValues);
       if (response && response.status_lean) {
         const businessId = response.id;
-        
-        localStorage.setItem('business_id', businessId);
-        
+
+        localStorage.setItem("business_id", businessId);
+
         // Verification successful
-        navigate('/personal');
+        navigate("/personal");
       } else {
         // Verification unsuccessful
-        setVerificationError('Something is wrong');
+        setVerificationError("Something is wrong");
         // You can perform any additional actions here, such as showing an error message
       }
     } catch (error) {
@@ -1025,7 +1075,10 @@ const validationSchema = Yup.object({
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form>
               <label>Upload your logo (optional)</label>
-              <div className="upload__file-container" onClick={() => document.querySelector('.logo-input').click()}>
+              <div
+                className="upload__file-container"
+                onClick={() => document.querySelector(".logo-input").click()}
+              >
                 <Field
                   className="input-field logo-input"
                   type="file"
@@ -1035,266 +1088,364 @@ const validationSchema = Yup.object({
                   onChange={handleLogoUpload}
                 />
                 {previewURL ? (
-                  <img src={previewURL} alt={fileName} className="uploaded-image" />
+                  <img
+                    src={previewURL}
+                    alt={fileName}
+                    className="uploaded-image"
+                  />
                 ) : (
-                <RiImageAddLine color="#EBB8FC" />
-                  )}
+                  <RiImageAddLine color="#EBB8FC" />
+                )}
               </div>
               <small>Your image should be in JPEG or PNG format</small>
 
               <label>Upload your Banner (optional)</label>
-<div className="upload__file-container" onClick={() => document.querySelector('.banner-input').click()}>
-  <Field
-    className="input-field banner-input" // Change the class name to 'banner-input'
-    type="file"
-    accept="image/jpeg, image/png"
-    name="banner"
-    hidden
-    onChange={handleBannerUpload}
-  />
-  {previewBannerURL ? ( // Use 'previewBannerURL' for displaying the banner preview
-    <img src={previewBannerURL} alt={bannerName} className="uploaded-image" />
-  ) : (
-    <RiImageAddLine color="#EBB8FC" />
-  )}
-</div>
-<small>Your image should be in JPEG or PNG format</small>
+              <div
+                className="upload__file-container"
+                onClick={() => document.querySelector(".banner-input").click()}
+              >
+                <Field
+                  className="input-field banner-input" // Change the class name to 'banner-input'
+                  type="file"
+                  accept="image/jpeg, image/png"
+                  name="banner"
+                  hidden
+                  onChange={handleBannerUpload}
+                />
+                {previewBannerURL ? ( // Use 'previewBannerURL' for displaying the banner preview
+                  <img
+                    src={previewBannerURL}
+                    alt={bannerName}
+                    className="uploaded-image"
+                  />
+                ) : (
+                  <RiImageAddLine color="#EBB8FC" />
+                )}
+              </div>
+              <small>Your image should be in JPEG or PNG format</small>
 
               <label>Business Name</label>
-              <Field className="input" type="text" name="name" placeholder="e.g Purplepages" />
-              <ErrorMessage name="name" component="small" className="error-message" />
-              <div className='create__business__row'>
+              <Field
+                className="input"
+                type="text"
+                name="name"
+                placeholder="e.g Purplepages"
+              />
+              <ErrorMessage
+                name="name"
+                component="small"
+                className="error-message"
+              />
+              <div className="create__business__row">
                 <div>
                   <label>Business Type</label>
-<Field name="business_type">
-  {({ field }) => (
-    <div className="dropdown">
-      <div
-        className="dropdown-btn"
-        onClick={() => setIsActive(!isActive)}
-      >
-        {selected || field.value || "Select Type"} {/* Add the placeholder text */}
-        <div className="dropdown-icons">
-        {isActive ? <RiArrowUpSLine className="dropdown-icon"/> : <RiArrowDownSLine className="dropdown-icon"/>}
-        </div>
-      </div>
-      {isActive && (
-        <div className="dropdown-content">
-          {options.map((option) => (
-            <div
-              key={option}
-              onClick={() => {
-                setSelected(option);
-                setIsActive(false);
-                field.onChange({ target: { value: option } });
-              }}
-              className="dropdown-item"
-            >
-              {option}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  )}
-  
-</Field>
+                  <Field name="business_type">
+                    {({ field }) => (
+                      <div className="dropdown">
+                        <div
+                          className="dropdown-btn"
+                          onClick={() => setIsActive(!isActive)}
+                        >
+                          {selected || field.value || "Select Type"}{" "}
+                          {/* Add the placeholder text */}
+                          <div className="dropdown-icons">
+                            {isActive ? (
+                              <RiArrowUpSLine className="dropdown-icon" />
+                            ) : (
+                              <RiArrowDownSLine className="dropdown-icon" />
+                            )}
+                          </div>
+                        </div>
+                        {isActive && (
+                          <div className="dropdown-content">
+                            {options.map((option) => (
+                              <div
+                                key={option}
+                                onClick={() => {
+                                  setSelected(option);
+                                  setIsActive(false);
+                                  field.onChange({ target: { value: option } });
+                                }}
+                                className="dropdown-item"
+                              >
+                                {option}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </Field>
                 </div>
-                <ErrorMessage name="business_type" component="small" className="error-message" />
+                <ErrorMessage
+                  name="business_type"
+                  component="small"
+                  className="error-message"
+                />
                 <div>
-
-                  
                   <label>RC Number</label>
-                  <Field className="input" type="text" name="rc_number" placeholder="If applicable" />
-                  <ErrorMessage name="rc_number" component="small" className="error-message" />
-
+                  <Field
+                    className="input"
+                    type="text"
+                    name="rc_number"
+                    placeholder="If applicable"
+                  />
+                  <ErrorMessage
+                    name="rc_number"
+                    component="small"
+                    className="error-message"
+                  />
                 </div>
               </div>
-              <div className='create__business__row'>
+              <div className="create__business__row">
                 <div>
                   <label>Business Location</label>
                   <Field name="location">
-      {({ field }) => (
-        <div className="dropdown">
-          <div
-            className="dropdown-btn"
-            onClick={() => setIsActiveLocation(!isActiveLocation)}
-          >
-            {selectedLocation || field.value || "Select"}
-            <div className="dropdown-icons">
-              {isActiveLocation ? (
-                <RiArrowUpSLine className="dropdown-icon" />
-              ) : (
-                <RiArrowDownSLine className="dropdown-icon" />
-              )}
-            </div>
-          </div>
-          {isActiveLocation && (
-            <div className="dropdown-content">
-              {locations.map((option) => (
-                <div
-                  key={option}
-                  onClick={() => {
-                    setSelectedLocation(option);
-                    setSelectedLga(""); // Clear selected LGA
-                    setIsActiveLocation(false);
-                    field.onChange({ target: { value: option } });
-                  }}
-                  className="dropdown-item"
-                >
-                  {option}
+                    {({ field }) => (
+                      <div className="dropdown">
+                        <div
+                          className="dropdown-btn"
+                          onClick={() => setIsActiveLocation(!isActiveLocation)}
+                        >
+                          {selectedLocation || field.value || "Select"}
+                          <div className="dropdown-icons">
+                            {isActiveLocation ? (
+                              <RiArrowUpSLine className="dropdown-icon" />
+                            ) : (
+                              <RiArrowDownSLine className="dropdown-icon" />
+                            )}
+                          </div>
+                        </div>
+                        {isActiveLocation && (
+                          <div className="dropdown-content">
+                            {locations.map((option) => (
+                              <div
+                                key={option}
+                                onClick={() => {
+                                  setSelectedLocation(option);
+                                  setSelectedLga(""); // Clear selected LGA
+                                  setIsActiveLocation(false);
+                                  field.onChange({ target: { value: option } });
+                                }}
+                                className="dropdown-item"
+                              >
+                                {option}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </Field>
                 </div>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-    </Field>
-  </div>
-  <div>
-    <label>LGA</label>
-    <Field name="lga">
-      {({ field }) => (
-        <div className="dropdown">
-          <div
-            className="dropdown-btn"
-            onClick={() => setIsActiveLga(!isActiveLga)}
-          >
-            {selectedLga || field.value || "Select"}
-            <div className="dropdown-icons">
-              {isActiveLga ? (
-                <RiArrowUpSLine className="dropdown-icon" />
-              ) : (
-                <RiArrowDownSLine className="dropdown-icon" />
-              )}
-            </div>
-          </div>
-          {isActiveLga && (
-            <div className="dropdown-content">
-              {stateLgasMap[selectedLocation]?.map((option) => (
-                <div
-                  key={option}
-                  onClick={() => {
-                    setSelectedLga(option);
-                    setIsActiveLga(false);
-                    field.onChange({ target: { value: option } });
-                  }}
-                  className="dropdown-item"
-                >
-                  {option}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-    </Field>
+                <div>
+                  <label>LGA</label>
+                  <Field name="lga">
+                    {({ field }) => (
+                      <div className="dropdown">
+                        <div
+                          className="dropdown-btn"
+                          onClick={() => setIsActiveLga(!isActiveLga)}
+                        >
+                          {selectedLga || field.value || "Select"}
+                          <div className="dropdown-icons">
+                            {isActiveLga ? (
+                              <RiArrowUpSLine className="dropdown-icon" />
+                            ) : (
+                              <RiArrowDownSLine className="dropdown-icon" />
+                            )}
+                          </div>
+                        </div>
+                        {isActiveLga && (
+                          <div className="dropdown-content">
+                            {stateLgasMap[selectedLocation]?.map((option) => (
+                              <div
+                                key={option}
+                                onClick={() => {
+                                  setSelectedLga(option);
+                                  setIsActiveLga(false);
+                                  field.onChange({ target: { value: option } });
+                                }}
+                                className="dropdown-item"
+                              >
+                                {option}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </Field>
                 </div>
               </div>
               <label>Business Address</label>
-              <Field className="input" type="text" name="address" placeholder="placeholder text" />
-              <ErrorMessage name="address" component="small" className="error-message" />
-              <div className='create__business__row'>
+              <Field
+                className="input"
+                type="text"
+                name="address"
+                placeholder="placeholder text"
+              />
+              <ErrorMessage
+                name="address"
+                component="small"
+                className="error-message"
+              />
+              <div className="create__business__row">
                 <div>
                   <label>Business Email</label>
-                  <Field className="input" type="text" name="email" placeholder="" />
-                  <ErrorMessage name="email" component="small" className="error-message" />
+                  <Field
+                    className="input"
+                    type="text"
+                    name="email"
+                    placeholder=""
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="small"
+                    className="error-message"
+                  />
                 </div>
                 <div>
                   <label>Business Phone Number</label>
-                  <Field className="input" type="text" name="phone" placeholder="" />
-                  <ErrorMessage name="phone" component="small" className="error-message" />
+                  <Field
+                    className="input"
+                    type="text"
+                    name="phone"
+                    placeholder=""
+                  />
+                  <ErrorMessage
+                    name="phone"
+                    component="small"
+                    className="error-message"
+                  />
                 </div>
               </div>
               <label>Business Category</label>
               <Field name="category" className="input">
-  {({ field }) => (
-    <div className="dropdownx">
-      <div
-        className="dropdown-btn"
-        onClick={() => setIsActiveCategory(!isActiveCategory)}
-      >
-        {selectedCategory || field.value || "Select Type"} {/* Add the placeholder text */}
-        <div className="dropdown-icons">
-        {isActiveCategory ? <RiArrowUpSLine className="dropdown-icon"/> : <RiArrowDownSLine className="dropdown-icon"/>}
-        </div>
-      </div>
-      {isActiveCategory && (
-        <div className="dropdown-content">
-          {categories.map((option) => (
-            <div
-              key={option}
-              onClick={() => {
-                setSelectedCategory(option);
-                setIsActiveCategory(false);
-                field.onChange({ target: { value: option } });
-              }}
-              className="dropdown-item"
-            >
-              {option}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  )}
-</Field>
-              <div className='create__business__row'>
+                {({ field }) => (
+                  <div className="dropdownx">
+                    <div
+                      className="dropdown-btn"
+                      onClick={() => setIsActiveCategory(!isActiveCategory)}
+                    >
+                      {selectedCategory || field.value || "Select Type"}{" "}
+                      {/* Add the placeholder text */}
+                      <div className="dropdown-icons">
+                        {isActiveCategory ? (
+                          <RiArrowUpSLine className="dropdown-icon" />
+                        ) : (
+                          <RiArrowDownSLine className="dropdown-icon" />
+                        )}
+                      </div>
+                    </div>
+                    {isActiveCategory && (
+                      <div className="dropdown-content">
+                        {categories.map((option) => (
+                          <div
+                            key={option}
+                            onClick={() => {
+                              setSelectedCategory(option);
+                              setIsActiveCategory(false);
+                              field.onChange({ target: { value: option } });
+                            }}
+                            className="dropdown-item"
+                          >
+                            {option}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </Field>
+              <div className="create__business__row">
                 <div>
                   <label>Your Marketplace</label>
-                  
+
                   <Field name="marketplace">
-  {({ field }) => (
-    <div className="dropdown">
-      <div
-        className="dropdown-btn"
-        onClick={() => setIsActiveMarket(!isActiveMarket)}
-      >
-        {selectedMarket || field.value || "Select Market"} {/* Add the placeholder text */}
-        <div className="dropdown-icons">
-        {isActiveMarket ? <RiArrowUpSLine className="dropdown-icon"/> : <RiArrowDownSLine className="dropdown-icon"/>}
-        </div>
-      </div>
-      {isActiveMarket && (
-        <div className="dropdown-content">
-          {markets.map((option) => (
-            <div
-              key={option}
-              onClick={() => {
-                setSelectedMarket(option.name);
-                setIsActiveMarket(false);
-                field.onChange({ target: { value: option.name } });
-              }}
-              className="dropdown-itemx"
-            >
-              <p>{option.name}</p>
-              <img src={option.image} alt={option.name} />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  )}
-  
-</Field>
+                    {({ field }) => (
+                      <div className="dropdown">
+                        <div
+                          className="dropdown-btn"
+                          onClick={() => setIsActiveMarket(!isActiveMarket)}
+                        >
+                          {selectedMarket || field.value || "Select Market"}{" "}
+                          {/* Add the placeholder text */}
+                          <div className="dropdown-icons">
+                            {isActiveMarket ? (
+                              <RiArrowUpSLine className="dropdown-icon" />
+                            ) : (
+                              <RiArrowDownSLine className="dropdown-icon" />
+                            )}
+                          </div>
+                        </div>
+                        {isActiveMarket && (
+                          <div className="dropdown-content">
+                            {markets.map((option) => (
+                              <div
+                                key={option}
+                                onClick={() => {
+                                  setSelectedMarket(option.name);
+                                  setIsActiveMarket(false);
+                                  field.onChange({
+                                    target: { value: option.name },
+                                  });
+                                }}
+                                className="dropdown-itemx"
+                              >
+                                <p>{option.name}</p>
+                                <img src={option.image} alt={option.name} />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </Field>
                 </div>
                 <div>
-                  <label>Marketplace  Link</label>
-                  <Field className="input" type="text" name="marketplace_link" placeholder="" />
-                  <ErrorMessage name="marketplace_link" component="small" className="error-message" />
+                  <label>Marketplace Link</label>
+                  <Field
+                    className="input"
+                    type="text"
+                    name="marketplace_link"
+                    placeholder=""
+                  />
+                  <ErrorMessage
+                    name="marketplace_link"
+                    component="small"
+                    className="error-message"
+                  />
                 </div>
               </div>
               <label>Business Website (If any)</label>
-              <Field className="input" type="text" name="website" placeholder="" />
-              <ErrorMessage name="website" component="small" className="error-message" />
+              <Field
+                className="input"
+                type="text"
+                name="website"
+                placeholder=""
+              />
+              <ErrorMessage
+                name="website"
+                component="small"
+                className="error-message"
+              />
 
               <label>Describe your business</label>
-              <Field as="textarea" className="textareax" name="description" placeholder="What seems to be the problem?" />
-              <ErrorMessage name="description" component="small" className="error-message" />
-              <div className='create__binex-button'>
-                
-              <button className="user_user__button" type="submit">
-                  {isLoading ? 'Submitting...' : 'Submit'}
+              <Field
+                as="textarea"
+                className="textareax"
+                name="description"
+                placeholder="What seems to be the problem?"
+              />
+              <ErrorMessage
+                name="description"
+                component="small"
+                className="error-message"
+              />
+              <div className="create__binex-button">
+                <button className="user_user__button" type="submit">
+                  {isLoading ? "Submitting..." : "Submit"}
                 </button>
               </div>
             </Form>

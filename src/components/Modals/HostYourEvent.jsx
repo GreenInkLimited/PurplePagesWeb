@@ -58,15 +58,14 @@ function HostYourEvent({ onProceed, closeModal }) {
             }`}
           >
             <img
-              src={
-                selectedOption === "personal"
-                  ? PersonalSelected
-                  : Personal
-              }
+              src={selectedOption === "personal" ? PersonalSelected : Personal}
               alt="Personal"
             />
             <h4>Personal</h4>
-            <p>Ideal for individuals and group of friends or people hosting events</p>
+            <p>
+              Ideal for individuals and group of friends or people hosting
+              events
+            </p>
           </div>
         </button>
         <button onClick={() => handleOptionSelect("corporate")}>
@@ -77,9 +76,7 @@ function HostYourEvent({ onProceed, closeModal }) {
           >
             <img
               src={
-                selectedOption === "corporate"
-                  ? CorporateSelected
-                  : Corporate
+                selectedOption === "corporate" ? CorporateSelected : Corporate
               }
               alt="Corporate"
             />

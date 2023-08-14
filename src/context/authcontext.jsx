@@ -1,6 +1,6 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from "react";
 //import { getProfile, getUserProfile } from '../apis/AuthApis';
-import { deleteSecureKey, saveSecureKey } from '../utils/authfunctions';
+import { deleteSecureKey, saveSecureKey } from "../utils/authfunctions";
 
 export const AuthContext = createContext();
 
@@ -14,13 +14,13 @@ const AuthProvider = ({ children, _token, _profile }) => {
     if (value) {
       setToken(value);
       value = JSON.stringify(value);
-      await saveSecureKey('token', value);
+      await saveSecureKey("token", value);
     }
   };
 
   const deleteTokenAsync = async () => {
-    deleteSecureKey('token');
-    deleteSecureKey('profile');
+    deleteSecureKey("token");
+    deleteSecureKey("profile");
     setToken(null);
     //setUserProfile(null);
   };
@@ -29,13 +29,13 @@ const AuthProvider = ({ children, _token, _profile }) => {
     const loadUserAsync = async () => {
       if (token) {
         try {
-          console.log(token, 'the token');
+          console.log(token, "the token");
           //let profile = await getUserProfile(token);
           //setUserProfile(profile);
           //profile = JSON.stringify(profile);
           //await saveSecureKey('profile', profile);
         } catch (e) {
-          console.log('>>>>>Setting User Data<<<<<<<');
+          console.log(">>>>>Setting User Data<<<<<<<");
           console.log(Object.keys(e));
           console.log(e.message);
         }

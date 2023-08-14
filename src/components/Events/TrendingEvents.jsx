@@ -3,11 +3,22 @@ import { MdOutlineDateRange } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { getAllEvents } from '../../apis/EventsApis';
 import Logo from '../../assets/pplogo.png';
+import { format, parseISO } from 'date-fns';
 
 const TrendingEvents = ({ searchQuery, searchResults, selectedCategory }) => {
   const [event, setEvent] = useState([]);
   const [initialEvents, setInitialEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const shuffleArray = (arr) => {
+    const shuffledArr = [...arr];
+    for (let i = shuffledArr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArr[i], shuffledArr[j]] = [shuffledArr[j], shuffledArr[i]];
+    }
+    return shuffledArr;
+  };
+  
   
 
   useEffect(() => {
@@ -23,6 +34,20 @@ const TrendingEvents = ({ searchQuery, searchResults, selectedCategory }) => {
     };
     fetchEvent();
   }, []);
+
+  const getDayOfWeek = (dateString) => {
+  try {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      return 'Unknown';
+    }
+    const dayOfWeek = format(date, 'EEEE');
+    return dayOfWeek;
+  } catch (error) {
+    console.error('Error parsing date:', error);
+    return 'Unknown';
+  }
+};
 
   useEffect(() => {
     if (selectedCategory && initialEvents.length > 0) {
@@ -61,6 +86,9 @@ const TrendingEvents = ({ searchQuery, searchResults, selectedCategory }) => {
     );
   }
 
+  const shuffledEvents = shuffleArray(event);
+  
+
   return (
     <section className='trending__events'>
       <div className="container">
@@ -68,13 +96,39 @@ const TrendingEvents = ({ searchQuery, searchResults, selectedCategory }) => {
         <div className="trending__events__container">
           <div className='trending__events__wrapper'>
             {
-              event.map(({ id, event_location, event_name, days, event_flier, event_category, start_time, event_description, from_date, end_time }) => {
+              shuffledEvents.map(({ id, end_date, event_name, days, event_flier, event_category, start_time, event_description, from_date, end_time }) => {
                 return <div className="trending__events__value" key={id}>
                   <Link to={`/events/${id}`}>
                   <img src={`https://api2.greeninkltd.com/${event_flier}`} alt="icon" />
                   <p className='category'>{event_category}</p>
                   <h4 className='title'><b>{event_name}</b></h4>
-                  <p className='date'><MdOutlineDateRange />  {days}, {from_date} at {start_time} - {end_time}</p>
+                   {start_time !== "null" && end_time !== "null" ? ( 
+                  <p className='date'><MdOutlineDateRange /> 
+                  
+                  {from_date ? (
+                    <>
+                  {getDayOfWeek(from_date)}, {from_date} at {start_time} - {end_time}
+                  </>
+                  ) : (
+                    <>
+                    {getDayOfWeek(end_date)}, {end_date} at {start_time} - {end_time}
+                    </>
+                  )}
+                  </p>
+                  ) : 
+                  <p className='date'><MdOutlineDateRange /> 
+                  
+                  {from_date ? (
+                    <>
+                  {getDayOfWeek(from_date)}, {from_date} 
+                  </>
+                  ) : (
+                    <>
+                    {getDayOfWeek(end_date)}, {end_date}
+                    </>
+                  )}
+                  </p>
+                  }
                   <p>{event_description}</p>
                   </Link>
                   <div className='link'>

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import ExternalLinkLine from '../../assets/ExternalLinkLine.png';
-import Delete from '../../assets/Delete.png';
-import { getWishlist } from '../../apis/WishlistApis';
-import Logo from '../../assets/pplogo.png';
-import { DeleteWishlist } from '../../apis/WishlistApis';
-import { MdClear } from 'react-icons/md';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import ExternalLinkLine from "../../assets/ExternalLinkLine.png";
+import Delete from "../../assets/Delete.png";
+import { getWishlist } from "../../apis/WishlistApis";
+import Logo from "../../assets/pplogo.png";
+import { DeleteWishlist } from "../../apis/WishlistApis";
+import { MdClear } from "react-icons/md";
 
 const ProductWishlist = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -20,7 +20,7 @@ const ProductWishlist = () => {
         setWishlist(response); // Set the user state with the response data directly
         setLoading(false);
       } catch (error) {
-        console.log('Error fetching Wishlists:', error);
+        console.log("Error fetching Wishlists:", error);
       }
     };
     fetchWishlist();
@@ -39,47 +39,56 @@ const ProductWishlist = () => {
       );
       setShowModal(false); // Hide the modal after successful delete
     } catch (error) {
-      console.log('Error deleting item:', error);
+      console.log("Error deleting item:", error);
     }
   };
 
   if (loading) {
     return (
-      <div className='spinner_container'>
+      <div className="spinner_container">
         <img src={Logo} />
       </div>
     );
   }
 
   return (
-    <div className='productwishlist__container'>
-      <div className='productwishlist__wrapper'>
+    <div className="productwishlist__container">
+      <div className="productwishlist__wrapper">
         {wishlist.length === 0 ? (
-          <div className='empity-productwishlist__container'>
+          <div className="empity-productwishlist__container">
             <h4>You have no product(s) in your wishlist</h4>
             <p>Explore the products and services by diverse businesses.</p>
-            <Link to="/apphome/" className='empty__wishlist'>Go Home</Link>
+            <Link to="/apphome/" className="empty__wishlist">
+              Go Home
+            </Link>
           </div>
         ) : (
           wishlist.map(({ id, image, price, caption }) => (
-            <div className='productwishlist__value' key={id}>
-              <div className='productwishlist__right'>
-                <img src={`https://api2.greeninkltd.com/${image}`} alt='icon' />
+            <div className="productwishlist__value" key={id}>
+              <div className="productwishlist__right">
+                <img src={`https://api2.greeninkltd.com/${image}`} alt="icon" />
                 <div>
                   <Link to={`/singleproduct/${id}`}>
-                    <p className='product-wishlist__name'>{caption}</p>
+                    <p className="product-wishlist__name">{caption}</p>
                   </Link>
                   <p>
-                    <b><span className='naira_font'>₦</span>{price}.00</b>
+                    <b>
+                      <span className="naira_font">₦</span>
+                      {price}.00
+                    </b>
                   </p>
                 </div>
               </div>
-              <div className='productwishlist__left'>
-                <img className='productwishlist__frame' src={ExternalLinkLine} alt='' />
+              <div className="productwishlist__left">
                 <img
-                  className='productwishlist__frame'
+                  className="productwishlist__frame"
+                  src={ExternalLinkLine}
+                  alt=""
+                />
+                <img
+                  className="productwishlist__frame"
                   src={Delete}
-                  alt=''
+                  alt=""
                   onClick={() => handleDelete(id)}
                 />
               </div>
@@ -92,18 +101,27 @@ const ProductWishlist = () => {
         <div className="delete__product__modal-container">
           <div className="delete__product__modal-wrapper">
             <div className="create__business-header">
-          <span >
-            <MdClear onClick={() => setShowModal(false)}/>
-          </span>
-          <div className="create__business-detail">
-            <h4>Remove Product from Wishlist</h4>
-          </div>
-        </div>
-        <p>This will remove this product from your wishlist</p>
+              <span>
+                <MdClear onClick={() => setShowModal(false)} />
+              </span>
+              <div className="create__business-detail">
+                <h4>Remove Product from Wishlist</h4>
+              </div>
+            </div>
+            <p>This will remove this product from your wishlist</p>
             <div className="promote__button-containerxx">
-              
-              <button className="user_user__button__cancel" onClick={() => setShowModal(false)}>Cancel</button>
-              <button className="user_user__button__signout" onClick={confirmDelete}>Delete</button>
+              <button
+                className="user_user__button__cancel"
+                onClick={() => setShowModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="user_user__button__signout"
+                onClick={confirmDelete}
+              >
+                Delete
+              </button>
             </div>
           </div>
         </div>

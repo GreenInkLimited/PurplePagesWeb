@@ -1,419 +1,399 @@
-@import url('https://fonts.cdnfonts.com/css/clash-display');
+@import url("https://fonts.cdnfonts.com/css/clash-display");
 /*====================tabs========================================*/
 .wishlist-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 150px;
 }
 
 .wishlist__bloc-tabs {
-    width: 10%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  width: 10%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .wishlist__content-tabs {
-    width: 80%;
+  width: 80%;
 }
 
 .wishlist__tabs {
-    padding: 10px;
-    padding-left: 20px;
-    width: 100%;
-    cursor: pointer;
-    outline: none;
-    display: flex;
-    flex-direction: row;
-    background: transparent;
-    outline: none;
+  padding: 10px;
+  padding-left: 20px;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  flex-direction: row;
+  background: transparent;
+  outline: none;
 }
 
-
-
 .active-wishlist__tabs {
-    background: transparent;
-    border-left: 1px solid transparent;
-    border-left: 3px solid #C42AF7;
+  background: transparent;
+  border-left: 1px solid transparent;
+  border-left: 3px solid #c42af7;
 }
 
 .active-wishlist__tabs::before {
-    content: "";
-    display: block;
-    position: absolute;
-    color: #C42AF7;
-    transform: translateX(-50%);
-    height: 5px;
+  content: "";
+  display: block;
+  position: absolute;
+  color: #c42af7;
+  transform: translateX(-50%);
+  height: 5px;
 }
 
-
 .tabs__wishlist-information {
-    display: grid;
+  display: grid;
 }
 
 .tabs__wishlist-information small {
-    display: flex;
-    align-items: center;
-    font-family: "avenir-lt-45-book";
-    margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  font-family: "avenir-lt-45-book";
+  margin-bottom: 12px;
 }
 
 .tabs__wishlist-information .icon {
-    color: var(--color-secondary);
-    margin-right: 18px;
+  color: var(--color-secondary);
+  margin-right: 18px;
 }
 
 .tabs__wishlist-information .location {
-    display: flex;
+  display: flex;
 }
 
 .tabs__wishlist-information .location small {
-    width: 250px;
+  width: 250px;
 }
 
 button {
-    border: none;
-    font-family: "avenir-lt-45-book";
-    font-size: 14px;
-
+  border: none;
+  font-family: "avenir-lt-45-book";
+  font-size: 14px;
 }
 
 /*===============================tabs=============*/
 
 .wishlist__content {
-    display: none;
+  display: none;
 }
 
 .wishlist__contentx {
-    display: none;
+  display: none;
 }
 
 .wishlist__content h4 {
-    color: var(--color-secondary);
-    font-family: "avenir-lt-45-book";
-    margin-bottom: 15px;
+  color: var(--color-secondary);
+  font-family: "avenir-lt-45-book";
+  margin-bottom: 15px;
 }
 
 .wishlist__content hr {
-    width: 100%;
-    height: 0.5px;
-    background: #BDBDBD;
-    margin-bottom: 5px;
-    margin-top: 20px;
+  width: 100%;
+  height: 0.5px;
+  background: #bdbdbd;
+  margin-bottom: 5px;
+  margin-top: 20px;
 }
 
 .wishlist__content p {
-    width: 100%;
-
+  width: 100%;
 }
 
 .active-wishlist__content {
-    display: block;
+  display: block;
 }
 
 .tabs__wishlist-marketplace {
-    color: #C7005C;
-    display: grid;
-    font-family: "avenir-lt-45-book";
+  color: #c7005c;
+  display: grid;
+  font-family: "avenir-lt-45-book";
 }
 
 .wishlist__bloc-tabs h4 {
-    font-family: "avenir-lt-85-heavy";
-    margin-bottom: 40px;
+  font-family: "avenir-lt-85-heavy";
+  margin-bottom: 40px;
 }
 
-.first__wishlist-content h3{
-    font-family: "Clash Display";
-    font-size: 30px;
-    margin-bottom: 32px;
-    font-weight: 600;
+.first__wishlist-content h3 {
+  font-family: "Clash Display";
+  font-size: 30px;
+  margin-bottom: 32px;
+  font-weight: 600;
 }
 
-.first__wishlist-content{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+.first__wishlist-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /*=========================product wishlist==========================*/
-.productwishlist__container{
-    margin-bottom: 120px;
+.productwishlist__container {
+  margin-bottom: 120px;
 }
 
-
-.productwishlist__value{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border: 1px solid rgba(199, 0, 92, 0.2);;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
+.productwishlist__value {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid rgba(199, 0, 92, 0.2);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
-
-.empity-productwishlist__container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
+.empity-productwishlist__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
 }
 
-.empity-productwishlist__container h4{
-    font-family: "avenir-lt-85-heavy";
-    font-weight: 700;
-    font-size: 28px;
-    color: #430359;
+.empity-productwishlist__container h4 {
+  font-family: "avenir-lt-85-heavy";
+  font-weight: 700;
+  font-size: 28px;
+  color: #430359;
 }
 
-.empty__wishlist{
-    background-color: #430359;
-    color: #ffffff;
-    padding: 8px 12px 8px 12px;
-    border-radius: 8px;
-    font-family: "avenir-lt-45-book";
-    margin-top: 40px;
+.empty__wishlist {
+  background-color: #430359;
+  color: #ffffff;
+  padding: 8px 12px 8px 12px;
+  border-radius: 8px;
+  font-family: "avenir-lt-45-book";
+  margin-top: 40px;
 }
 
-
-.blogpost__body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.blogpost__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.blogpost__bottom{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 44px;
+.blogpost__bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 44px;
 }
 
-.productwishlist__left p{
-    line-height: 20px;
+.productwishlist__left p {
+  line-height: 20px;
 }
 
-.productwishlist__left{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.productwishlist__left {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.blogpostswishlist__value{
-    display: flex;
-    flex-direction: row;
-    
+.blogpostswishlist__value {
+  display: flex;
+  flex-direction: row;
 }
 
-
-
-.blogpostswishlist__value-img{
-    width: 250px;
-    height: 188px;
-    border-radius: 8px;
-    margin-right: 10px;
-    object-fit: cover;
+.blogpostswishlist__value-img {
+  width: 250px;
+  height: 188px;
+  border-radius: 8px;
+  margin-right: 10px;
+  object-fit: cover;
 }
 
-.blog__postwishlist-detail p{
-    color: #C7005C;
-    font-size: 14px;
-    margin-bottom: 8px;
+.blog__postwishlist-detail p {
+  color: #c7005c;
+  font-size: 14px;
+  margin-bottom: 8px;
 }
 
-.blog__postwishlist-detail small{
-    font-size: 12px;
+.blog__postwishlist-detail small {
+  font-size: 12px;
 }
 
-.blog__postwishlist-details{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.blog__postwishlist-details {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.blog__post-delete{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    cursor: pointer;
+.blog__post-delete {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
 }
 
-.blog__post-delete img{
-    width: 16px;
-    height: 16px;
+.blog__post-delete img {
+  width: 16px;
+  height: 16px;
 }
 
-.blog__postwishlist-detail{
-    margin-left: 10px;
+.blog__postwishlist-detail {
+  margin-left: 10px;
 }
-.productwishlist__right img{
-    width: 250px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.blog-productwishlist__right{
-    width: 100%;
+.productwishlist__right img {
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.productwishlist__right{
-    display: flex;
-    flex-direction: row;
-    gap: 25px;
+.blog-productwishlist__right {
+  width: 100%;
 }
 
-.first__wishlist-share{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    background-color: #E0E0E0;
-    padding: 3px 10px;
-    border-radius: 20px;
+.productwishlist__right {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
 }
 
-.first__wishlist-share .icon{
-    color: #C7005C;
+.first__wishlist-share {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  background-color: #e0e0e0;
+  padding: 3px 10px;
+  border-radius: 20px;
 }
 
-.productwishlist__frame{
-    display: flex;
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
+.first__wishlist-share .icon {
+  color: #c7005c;
 }
 
-.productwishlist__left{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.productwishlist__frame {
+  display: flex;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }
 
-.blogpost__bottom-img{
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 50px;
+.productwishlist__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.blogpost-title{
-    font-family: "avenir-lt-85-heavy";
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    
+.blogpost__bottom-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50px;
 }
 
+.blogpost-title {
+  font-family: "avenir-lt-85-heavy";
+  font-size: 28px;
+  font-weight: 700;
+}
 
-
-.blogpost__bottom-mobile{
-    display: none;
+.blogpost__bottom-mobile {
+  display: none;
 }
 
 /*=============== media queries (small screens)================*/
-@media screen and (max-width:600px) { 
-    .wishlist__bloc-tabs{
-        display: none;
-    }
+@media screen and (max-width: 600px) {
+  .wishlist__bloc-tabs {
+    display: none;
+  }
 
-        .wishlist-container {
-            display: flex;
-            position: relative;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-top: 101px;
-        }
+  .wishlist-container {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 101px;
+  }
 
-    .productwishlist__right img {
-        width: 100px;
-        height: 80px;
-        object-fit: cover;
-        margin-bottom: 20px;
-    }
-    
-    .productwishlist__right {
-        display: flex;
-        flex-direction: row;  
-    }
-    .wishlist__content-tabs {
-        width: 100%;
-    }
+  .productwishlist__right img {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
 
-    .productwishlist__value{
-        display: grid;
-        grid-template-columns: 1fr;
-    }
+  .productwishlist__right {
+    display: flex;
+    flex-direction: row;
+  }
+  .wishlist__content-tabs {
+    width: 100%;
+  }
 
-    .blogpostswishlist__value {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        
-    }
+  .productwishlist__value {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 
-.blogpostswishlist__value-img{
+  .blogpostswishlist__value {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .blogpostswishlist__value-img {
     width: 100px;
     height: 80px;
     border-radius: 4px;
     margin-right: 10px;
     object-fit: cover;
     margin-bottom: 16px;
-}
-    .product-wishlist__name{
-        font-size: 14px;
-        font-family: 'avenir-lt-85-heavy';
-        margin-bottom: 8px;
-    }
+  }
+  .product-wishlist__name {
+    font-size: 14px;
+    font-family: "avenir-lt-85-heavy";
+    margin-bottom: 8px;
+  }
 
-    .productwishlist__left{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    .blogpost__bottom-mobile{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-bottom: 20px;
-    }
-    .blogpost__bottom{
-        display: none;
-    }
-    .blogpost__bottom-mobile-img{
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        object-fit: cover;
-        
+  .productwishlist__left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .blogpost__bottom-mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .blogpost__bottom {
+    display: none;
+  }
+  .blogpost__bottom-mobile-img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .first__wishlist-content h3 {
+    font-family: "Clash Display";
+    font-size: 20px;
+    font-weight: 600;
+  }
 
-    }
-        .first__wishlist-content h3 {
-            font-family: "Clash Display";
-            font-size: 20px;
-            font-weight: 600;
-            
-        }
-
-.blog-productwishlist__right h4{
+  .blog-productwishlist__right h4 {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 4px;
-}
+  }
 
-.blog__postwishlist-detail p{
+  .blog__postwishlist-detail p {
     font-size: 12px;
     margin-bottom: 4px;
-}
-.blog__postwishlist-detail small{
+  }
+  .blog__postwishlist-detail small {
     font-size: 10px;
+  }
 }
-}
-
